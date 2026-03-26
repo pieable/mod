@@ -1,0 +1,12 @@
+﻿{
+  "name": "city rework",
+  "id": "pieable_city_rework",
+  "version": "0.1",
+  "supported_game_version": "1.1.*",
+  "short_description": "重做了城市建造条件",
+  "tags": ["Balance", "Gameplay"],
+  "relationships": [],
+  "game_custom_data": {
+    "replace_paths": []
+  }
+}

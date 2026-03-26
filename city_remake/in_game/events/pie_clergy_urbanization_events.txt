@@ -1,0 +1,77 @@
+namespace = pie_clergy_urban
+
+pie_clergy_urban.1 = {
+	type = country_event
+	title = pie_clergy_urban.1.title
+	desc = pie_clergy_urban.1.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:clergy_estate
+			background = estate_type:clergy_estate
+		}
+	}
+
+	option = {
+		name = pie_clergy_urban.1.a
+		custom_tooltip = { text = pie_clergy_urban.1.a.tt }
+
+		hidden_effect = {
+			scope:target_location = {
+				change_location_rank = location_rank:town
+				construct_estate_building = {
+					building_type = building_type:pie_clergy_parish_town
+					estate_type = estate_type:clergy_estate
+				}
+			}
+
+			if = {
+				limit = {
+					country_has_estate = estate_type:clergy_estate
+				}
+				add_gold_to_estate = {
+					estate_type = estate_type:clergy_estate
+					value = 500
+				}
+			}
+		}
+	}
+}
+
+pie_clergy_urban.2 = {
+	type = country_event
+	title = pie_clergy_urban.2.title
+	desc = pie_clergy_urban.2.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:clergy_estate
+			background = estate_type:clergy_estate
+		}
+	}
+
+	option = {
+		name = pie_clergy_urban.2.a
+		custom_tooltip = { text = pie_clergy_urban.2.a.tt }
+
+		hidden_effect = {
+			scope:target_location = {
+				change_location_rank = location_rank:city
+				construct_estate_building = {
+					building_type = building_type:pie_clergy_scholastic_city
+					estate_type = estate_type:clergy_estate
+				}
+			}
+
+			if = {
+				limit = {
+					country_has_estate = estate_type:clergy_estate
+				}
+				add_gold_to_estate = {
+					estate_type = estate_type:clergy_estate
+					value = 2000
+				}
+			}
+		}
+	}
+}

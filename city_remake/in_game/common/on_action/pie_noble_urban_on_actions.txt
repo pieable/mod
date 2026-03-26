@@ -1,0 +1,132 @@
+﻿monthly_country_pulse = {
+	on_actions = {
+		pie_noble_urban_monthly_check
+		pie_clergy_urban_monthly_check
+	}
+}
+
+pie_noble_urban_monthly_check = {
+	effect = {
+		if = {
+			limit = {
+				country_has_estate = estate_type:nobles_estate
+				"estate(estate_type:nobles_estate)" = {
+					estate_gold >= 500
+				}
+			}
+			random = {
+				chance = 2
+				random_owned_location = {
+					limit = {
+						controller = root
+						NOT = { is_capital = yes }
+						NOT = { location_rank = location_rank:town }
+						NOT = { location_rank = location_rank:city }
+						population >= 5
+						local_control >= 0.6
+						prosperity >= 0.3
+					}
+
+					save_scope_as = target_location
+					owner = {
+						trigger_event_non_silently = pie_noble_urban.1
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				country_has_estate = estate_type:nobles_estate
+				"estate(estate_type:nobles_estate)" = {
+					estate_gold >= 2000
+				}
+			}
+			random = {
+				chance = 1
+				random_owned_location = {
+					limit = {
+						controller = root
+						NOT = { is_capital = yes }
+						location_rank = location_rank:town
+						NOT = { location_rank = location_rank:city }
+						population >= 30
+						local_control >= 0.8
+						prosperity >= 0.6
+					}
+
+					save_scope_as = target_location
+					owner = {
+						trigger_event_non_silently = pie_noble_urban.2
+					}
+				}
+			}
+		}
+	}
+}
+
+pie_clergy_urban_monthly_check = {
+	effect = {
+		if = {
+			limit = {
+				country_has_estate = estate_type:clergy_estate
+				"estate(estate_type:clergy_estate)" = {
+					estate_gold >= 500
+				}
+			}
+			random = {
+				chance = 2
+				random_owned_location = {
+					limit = {
+						controller = root
+						NOT = { is_capital = yes }
+						NOT = { location_rank = location_rank:town }
+						NOT = { location_rank = location_rank:city }
+						population >= 5
+						prosperity >= 0.3
+						religion_population = {
+							religion = owner.religion
+							value >= 6
+						}
+					}
+
+					save_scope_as = target_location
+					owner = {
+						trigger_event_non_silently = pie_clergy_urban.1
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				country_has_estate = estate_type:clergy_estate
+				"estate(estate_type:clergy_estate)" = {
+					estate_gold >= 2000
+				}
+			}
+			random = {
+				chance = 1
+				random_owned_location = {
+					limit = {
+						controller = root
+						NOT = { is_capital = yes }
+						location_rank = location_rank:town
+						NOT = { location_rank = location_rank:city }
+						population >= 30
+						prosperity >= 0.6
+						religion_population = {
+							religion = owner.religion
+							value >= 18
+						}
+					}
+
+					save_scope_as = target_location
+					owner = {
+						trigger_event_non_silently = pie_clergy_urban.2
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+﻿l_simp_chinese:
+ pie_clergy_parish_town: "教区修院"
+ pie_clergy_parish_town_desc: "由教士出资建立的地方宗教中心。它通过布道、学校和教会组织，强化当地国教的传播与识字教育。"
+
+ pie_clergy_scholastic_city: "宗教学宫"
+ pie_clergy_scholastic_city_desc: "这座城市由教士集团扶植起来，既是地区性的宗教中心，也是汇聚学术、抄写与教化能力的高阶枢纽。"
+
+ pie_clergy_urban.1.title: "教士提议建立集镇"
+ pie_clergy_urban.1.desc: "当地信奉国教的人口已经相当可观，人口与繁荣也足以支撑更稳定的教区组织。我国教士准备在[target_location.GetName]推动建立一座集镇，并在当地兴建教区修院。"
+ pie_clergy_urban.1.a: "批准建立教士集镇"
+ pie_clergy_urban.1.a.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 集镇#!并开始建造#Y 教区修院#!，教士阶层将立刻支付#Y 500#!杜卡特。"
+
+ pie_clergy_urban.2.title: "教士提议扩建城市"
+ pie_clergy_urban.2.desc: "当地信奉国教的人口已经形成稳固基础，人口与繁荣也足以支撑更高层级的宗教与学术中心。我国教士准备在[target_location.GetName]推动扩建城市，并建立一座宗教学宫。"
+ pie_clergy_urban.2.a: "批准建立教士城市"
+ pie_clergy_urban.2.a.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 城市#!并开始建造#Y 宗教学宫#!，教士阶层将立刻支付#Y 2000#!杜卡特。"

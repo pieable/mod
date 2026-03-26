@@ -1,0 +1,18 @@
+﻿l_simp_chinese:
+ pie_noble_manor_town: "庄园府"
+ pie_noble_manor_town_desc: "由地方贵族出资建立的领主中心。它不直接提供邻近度，而是通过乡绅网络、征召能力与贵族定居，强化这一集镇的军事与社会支配力。"
+
+ pie_noble_court_city: "贵族宫廷"
+ pie_noble_court_city_desc: "这座城市由贵族集团扶植起来，既是上层社会的居所，也是区域武备、礼仪和文化影响的中心。"
+
+ pie_noble_urban.1.title: "贵族提议建立集镇"
+ pie_noble_urban.1.desc: "本地控制稳固、人口和繁荣已达到一定水平。我国贵族准备在[target_location.GetName]出资建立一座集镇，并在当地兴建庄园府。"
+ pie_noble_urban.1.a: "批准建立集镇"
+ pie_noble_urban.1.a.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 集镇#!并开始建造#Y 庄园府#!，贵族阶层将立刻支付#Y 500#!杜卡特。"
+
+ pie_noble_urban.2.title: "贵族提议扩建城市"
+ pie_noble_urban.2.desc: "本地控制十分稳固，人口与繁荣都已足以支撑更高层级的定居点。我国贵族准备在[target_location.GetName]推动城市化，并建立一座贵族宫廷。"
+ pie_noble_urban.2.a: "批准扩建城市"
+ pie_noble_urban.2.a.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 城市#!并开始建造#Y 贵族宫廷#!，贵族阶层将立刻支付#Y 2000#!杜卡特。"
+
+

@@ -1,0 +1,77 @@
+﻿namespace = pie_noble_urban
+
+pie_noble_urban.1 = {
+	type = country_event
+	title = pie_noble_urban.1.title
+	desc = pie_noble_urban.1.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:nobles_estate
+			background = estate_type:nobles_estate
+		}
+	}
+
+	option = {
+		name = pie_noble_urban.1.a
+		custom_tooltip = { text = pie_noble_urban.1.a.tt }
+
+		hidden_effect = {
+			scope:target_location = {
+				change_location_rank = location_rank:town
+				construct_estate_building = {
+					building_type = building_type:pie_noble_manor_town
+					estate_type = estate_type:nobles_estate
+				}
+			}
+
+			if = {
+				limit = {
+					country_has_estate = estate_type:nobles_estate
+				}
+				add_gold_to_estate = {
+					estate_type = estate_type:nobles_estate
+					value = 500
+				}
+			}
+		}
+	}
+}
+
+pie_noble_urban.2 = {
+	type = country_event
+	title = pie_noble_urban.2.title
+	desc = pie_noble_urban.2.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:nobles_estate
+			background = estate_type:nobles_estate
+		}
+	}
+
+	option = {
+		name = pie_noble_urban.2.a
+		custom_tooltip = { text = pie_noble_urban.2.a.tt }
+
+		hidden_effect = {
+			scope:target_location = {
+				change_location_rank = location_rank:city
+				construct_estate_building = {
+					building_type = building_type:pie_noble_court_city
+					estate_type = estate_type:nobles_estate
+				}
+			}
+
+			if = {
+				limit = {
+					country_has_estate = estate_type:nobles_estate
+				}
+				add_gold_to_estate = {
+					estate_type = estate_type:nobles_estate
+					value = 2000
+				}
+			}
+		}
+	}
+}

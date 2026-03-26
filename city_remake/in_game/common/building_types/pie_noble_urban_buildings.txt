@@ -1,0 +1,89 @@
+﻿pie_noble_manor_town = {
+	is_foreign = no
+	max_levels = estate_building_single_level
+	pop_type = nobles
+
+	employment_size = estate_nobles_employment
+
+	category = estate_category
+
+	rural_settlement = no
+	town = yes
+
+	location_potential = {
+		location_rank = location_rank:town
+		NOT = { is_capital = yes }
+	}
+	country_potential = {
+		always = no
+	}
+	allow = {
+		always = no
+	}
+
+	estate = nobles_estate
+
+	build_time = estate_build_time
+	price = price:free_building
+
+	possible_production_methods = {
+		estate_building_input
+	}
+
+	construction_demand = pie_free_estate_construction
+
+	modifier = {
+		local_manpower = 0.03
+		local_army_levy_size_modifier = 0.2
+		monthly_prestige = 0.005
+		local_population_growth = 0.0005
+		local_nobles_desired_pop = 0.005
+	}
+
+	graphical_tags = { palace }
+}
+
+pie_noble_court_city = {
+	is_foreign = no
+	max_levels = estate_building_single_level
+	pop_type = nobles
+
+	employment_size = estate_nobles_employment
+
+	category = estate_category
+
+	rural_settlement = no
+	city = yes
+
+	location_potential = {
+		location_rank = location_rank:city
+		NOT = { is_capital = yes }
+	}
+	country_potential = {
+		always = no
+	}
+	allow = {
+		always = no
+	}
+
+	estate = nobles_estate
+
+	build_time = estate_build_time
+	price = price:free_building
+
+	possible_production_methods = {
+		estate_building_input
+	}
+
+	construction_demand = pie_free_estate_construction
+
+	modifier = {
+		local_manpower_modifier = 0.5
+		local_cultural_influence = 1
+		local_cultural_tradition = 1
+		monthly_prestige = 0.02
+		local_nobles_desired_pop = 0.02
+	}
+
+	graphical_tags = { palace }
+}

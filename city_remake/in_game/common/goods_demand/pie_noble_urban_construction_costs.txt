@@ -1,0 +1,3 @@
+pie_free_estate_construction = {
+	category = building_construction
+}
