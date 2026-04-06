@@ -1,0 +1,37 @@
+﻿l_simp_chinese:
+ market_fairs: "市场集会特权"
+ market_fairs_desc: "国家承认市民在定期市集、商贸集散与地方交易网络中的组织权。它提高#Y +10%#!全局商人承载能力、#Y +0.1#!全局每市民贸易次数，使市民阶层目标满意度提高，并增加其权力。"
+
+ pie_burghers_market_town: "商栈会馆"
+ pie_burghers_market_town_desc: "由地方市民和商人出资建立的集镇商业核心。它通过降低当地建筑花费、扩充市民岗位、提高贸易容量，并为整条贸易集市建筑线额外提供 5 级上限，让这个地块更快成长为真正的商贸节点。"
+
+ pie_burghers_exchange_city: "商贸交易所"
+ pie_burghers_exchange_city_desc: "这座城市由市民集团扶植起来，聚集了仓储、手工业与贸易网络。它强化本地生产，提升邻近度传播速度，扩充市民岗位，并为整条贸易集市建筑线额外提供 10 级上限。每拥有一座这样的城市，全国税收效率提高 1%，银行利率降低 0.5%。"
+
+ pie_burghers_urban.1.title: "市民提议建立集镇"
+ pie_burghers_urban.1.desc: "当地市场接入已经十分顺畅，人口、粮食与繁荣也足以支撑稳定的商业聚落。我国市民准备在[target_location.GetName]建立一座集镇，并兴建商栈会馆。"
+ pie_burghers_urban.1.a: "批准建立市民集镇"
+ pie_burghers_urban.1.a.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 集镇#!并开始建造#Y 商栈会馆#!，市民阶层将立刻支付#Y 700#!杜卡特。"
+ pie_burghers_urban.1.b: "拒绝提议"
+ pie_burghers_urban.1.b.tt: "拒绝后，#Y 市民阶层#!满意度将降低#R 10%#!。"
+
+ pie_burghers_urban.2.title: "市民提议扩建城市"
+ pie_burghers_urban.2.desc: "当地市场接入已接近完全畅通，人口、粮食与繁荣都足以支撑更高层级的商业都会。我国市民准备在[target_location.GetName]推动扩建城市，并建立一座商贸交易所。"
+ pie_burghers_urban.2.a: "批准建立市民城市"
+ pie_burghers_urban.2.a.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 城市#!并开始建造#Y 商贸交易所#!，市民阶层将立刻支付#Y 2200#!杜卡特。"
+ pie_burghers_urban.2.b: "拒绝提议"
+ pie_burghers_urban.2.b.tt: "拒绝后，#Y 市民阶层#!满意度将降低#R 10%#!。"
+
+ pie_burghers_urban.11.title: "市民提议资助既有集镇"
+ pie_burghers_urban.11.desc: "[target_location.GetName]已经是一座集镇，但当地市民尚未建立足够稳固的商业据点。如今他们愿意出资兴建商栈会馆。"
+ pie_burghers_urban.11.a: "批准兴建商栈会馆"
+ pie_burghers_urban.11.a.tt: "#Y [target_location.GetNameWithNoTooltip]#!将开始建造#Y 商栈会馆#!，市民阶层将立刻支付#Y 700#!杜卡特。"
+ pie_burghers_urban.11.b: "拒绝提议"
+ pie_burghers_urban.11.b.tt: "拒绝后，#Y 市民阶层#!满意度将降低#R 10%#!。"
+
+ pie_burghers_urban.12.title: "市民提议资助既有城市"
+ pie_burghers_urban.12.desc: "[target_location.GetName]已经是一座成熟的城市，市场接入也足以支撑更强大的商业网络。我国市民愿意出资建立商贸交易所。"
+ pie_burghers_urban.12.a: "批准兴建商贸交易所"
+ pie_burghers_urban.12.a.tt: "#Y [target_location.GetNameWithNoTooltip]#!将开始建造#Y 商贸交易所#!，市民阶层将立刻支付#Y 2200#!杜卡特。"
+ pie_burghers_urban.12.b: "拒绝提议"
+ pie_burghers_urban.12.b.tt: "拒绝后，#Y 市民阶层#!满意度将降低#R 10%#!。"

@@ -1,0 +1,397 @@
+situation_panel = {
+	blockoverride "situation_panel_main_content" {
+		vbox = {
+			layoutpolicy_horizontal = expanding
+			spacing = 10
+
+			situation_card_expandable = {
+				blockoverride "header_button_onclick" {
+					onclick = "[LateralView.Vars.Toggle( 'pie_estate_requirements_toggled' )]"
+				}
+				blockoverride "header_text" {
+					text = "pie_estate_urbanization_requirements"
+				}
+				blockoverride "header_icon" {
+					texture = "gfx/interface/icons/disasters/end_requirements_green.dds"
+				}
+				blockoverride "bottom_content" {
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { 15 10 }
+						spacing = 8
+
+						text_multi = {
+							layoutpolicy_horizontal = expanding
+							text = "pie_estate_urbanization_requirements_intro"
+							max_width = 560
+							autoresize = yes
+						}
+
+						text_single = {
+							text = "pie_estate_urbanization_requirements_common_town_header"
+							default_format = "#yellow_titles"
+						}
+						text_multi = {
+							layoutpolicy_horizontal = expanding
+							text = "pie_estate_urbanization_requirements_common_town"
+							max_width = 560
+							autoresize = yes
+						}
+
+						text_single = {
+							text = "pie_estate_urbanization_requirements_common_city_header"
+							default_format = "#yellow_titles"
+						}
+						text_multi = {
+							layoutpolicy_horizontal = expanding
+							text = "pie_estate_urbanization_requirements_common_city"
+							max_width = 560
+							autoresize = yes
+						}
+
+						text_single = {
+							text = "pie_estate_urbanization_requirements_nobles_header"
+							default_format = "#yellow_titles"
+						}
+						text_multi = {
+							layoutpolicy_horizontal = expanding
+							text = "pie_estate_urbanization_requirements_nobles"
+							max_width = 560
+							autoresize = yes
+						}
+
+						text_single = {
+							text = "pie_estate_urbanization_requirements_clergy_header"
+							default_format = "#yellow_titles"
+						}
+						text_multi = {
+							layoutpolicy_horizontal = expanding
+							text = "pie_estate_urbanization_requirements_clergy"
+							max_width = 560
+							autoresize = yes
+						}
+
+						text_single = {
+							text = "pie_estate_urbanization_requirements_burghers_header"
+							default_format = "#yellow_titles"
+						}
+						text_multi = {
+							layoutpolicy_horizontal = expanding
+							text = "pie_estate_urbanization_requirements_burghers"
+							max_width = 560
+							autoresize = yes
+						}
+
+						text_single = {
+							text = "pie_estate_urbanization_requirements_notes_header"
+							default_format = "#yellow_titles"
+						}
+						text_multi = {
+							layoutpolicy_horizontal = expanding
+							text = "pie_estate_urbanization_requirements_notes"
+							max_width = 560
+							autoresize = yes
+						}
+					}
+				}
+				blockoverride "bottom_content_onclick" {
+					visible = "[LateralView.Vars.Exists( 'pie_estate_requirements_toggled' )]"
+				}
+				blockoverride "icon_replace_visible_yes" {
+					visible = "[LateralView.Vars.Exists( 'pie_estate_requirements_toggled' )]"
+				}
+				blockoverride "icon_replace_visible_not" {
+					visible = "[Not(LateralView.Vars.Exists( 'pie_estate_requirements_toggled' ))]"
+				}
+			}
+
+			situation_card_expandable = {
+				visible = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate').ExistsForCountry]"
+				blockoverride "header_button_onclick" {
+					onclick = "[LateralView.Vars.Toggle( 'pie_nobles_ledger_toggled' )]"
+				}
+				blockoverride "header_content" {
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+
+						icon = {
+							size = { 34 34 }
+							datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate')]"
+							texture = "[GetEstateIcon(Estate.GetType)]"
+							tooltipwidget = {
+								using = Estate_tooltip
+							}
+						}
+
+						text_single = {
+							layoutpolicy_horizontal = expanding
+							maximumsize = { 210 -1 }
+							text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate').GetNameWithNoTooltip]"
+							align = left|nobaseline
+							tooltipwidget = {
+								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate')]"
+								using = Estate_tooltip
+							}
+						}
+
+						text_single = {
+							align = right|nobaseline
+							raw_text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate').GetGold|2]([SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate').GetBalance|+=2])@gold!"
+							tooltipwidget = {
+								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate')]"
+								using = Estate_tooltip
+							}
+						}
+					}
+				}
+				blockoverride "bottom_content" {
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { 15 10 }
+						spacing = 4
+						datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate')]"
+
+						TooltipManualTableField = {
+							text_single = {
+								text = "[gold|e]"
+							}
+							expand = {}
+							text_single = {
+								raw_text = "[Estate.GetGold|2]([Estate.GetBalance|+=2])@gold!"
+							}
+						}
+
+						TooltipManualTableField = {
+							text_single = {
+								text = "ESTATE_INCOME"
+							}
+							expand = {}
+							text_single = {
+								raw_text = "[Estate.GetLastMonthsIncomeAfterTaxWithTooltip]@gold!"
+							}
+						}
+
+						TooltipStringPairList = {
+							textcontext = "[Estate.GetEconomyInfo]"
+						}
+
+						TooltipManualTableField = {
+							text_single = {
+								text = "ESTATE_EXPENSES"
+							}
+							expand = {}
+							text_single = {
+								raw_text = "#R -[Estate.GetLastMonthsExpense|2]@gold!#!"
+							}
+							tooltipwidget = {
+								using = estate_expense_tooltip
+							}
+						}
+					}
+				}
+				blockoverride "bottom_content_onclick" {
+					visible = "[LateralView.Vars.Exists( 'pie_nobles_ledger_toggled' )]"
+				}
+				blockoverride "icon_replace_visible_yes" {
+					visible = "[LateralView.Vars.Exists( 'pie_nobles_ledger_toggled' )]"
+				}
+				blockoverride "icon_replace_visible_not" {
+					visible = "[Not(LateralView.Vars.Exists( 'pie_nobles_ledger_toggled' ))]"
+				}
+			}
+
+			situation_card_expandable = {
+				visible = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate').ExistsForCountry]"
+				blockoverride "header_button_onclick" {
+					onclick = "[LateralView.Vars.Toggle( 'pie_clergy_ledger_toggled' )]"
+				}
+				blockoverride "header_content" {
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+
+						icon = {
+							size = { 34 34 }
+							datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate')]"
+							texture = "[GetEstateIcon(Estate.GetType)]"
+							tooltipwidget = {
+								using = Estate_tooltip
+							}
+						}
+
+						text_single = {
+							layoutpolicy_horizontal = expanding
+							maximumsize = { 210 -1 }
+							text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate').GetNameWithNoTooltip]"
+							align = left|nobaseline
+							tooltipwidget = {
+								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate')]"
+								using = Estate_tooltip
+							}
+						}
+
+						text_single = {
+							align = right|nobaseline
+							raw_text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate').GetGold|2]([SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate').GetBalance|+=2])@gold!"
+							tooltipwidget = {
+								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate')]"
+								using = Estate_tooltip
+							}
+						}
+					}
+				}
+				blockoverride "bottom_content" {
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { 15 10 }
+						spacing = 4
+						datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate')]"
+
+						TooltipManualTableField = {
+							text_single = {
+								text = "[gold|e]"
+							}
+							expand = {}
+							text_single = {
+								raw_text = "[Estate.GetGold|2]([Estate.GetBalance|+=2])@gold!"
+							}
+						}
+
+						TooltipManualTableField = {
+							text_single = {
+								text = "ESTATE_INCOME"
+							}
+							expand = {}
+							text_single = {
+								raw_text = "[Estate.GetLastMonthsIncomeAfterTaxWithTooltip]@gold!"
+							}
+						}
+
+						TooltipStringPairList = {
+							textcontext = "[Estate.GetEconomyInfo]"
+						}
+
+						TooltipManualTableField = {
+							text_single = {
+								text = "ESTATE_EXPENSES"
+							}
+							expand = {}
+							text_single = {
+								raw_text = "#R -[Estate.GetLastMonthsExpense|2]@gold!#!"
+							}
+							tooltipwidget = {
+								using = estate_expense_tooltip
+							}
+						}
+					}
+				}
+				blockoverride "bottom_content_onclick" {
+					visible = "[LateralView.Vars.Exists( 'pie_clergy_ledger_toggled' )]"
+				}
+				blockoverride "icon_replace_visible_yes" {
+					visible = "[LateralView.Vars.Exists( 'pie_clergy_ledger_toggled' )]"
+				}
+				blockoverride "icon_replace_visible_not" {
+					visible = "[Not(LateralView.Vars.Exists( 'pie_clergy_ledger_toggled' ))]"
+				}
+			}
+
+			situation_card_expandable = {
+				visible = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate').ExistsForCountry]"
+				blockoverride "header_button_onclick" {
+					onclick = "[LateralView.Vars.Toggle( 'pie_burghers_ledger_toggled' )]"
+				}
+				blockoverride "header_content" {
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 8
+
+						icon = {
+							size = { 34 34 }
+							datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate')]"
+							texture = "[GetEstateIcon(Estate.GetType)]"
+							tooltipwidget = {
+								using = Estate_tooltip
+							}
+						}
+
+						text_single = {
+							layoutpolicy_horizontal = expanding
+							maximumsize = { 210 -1 }
+							text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate').GetNameWithNoTooltip]"
+							align = left|nobaseline
+							tooltipwidget = {
+								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate')]"
+								using = Estate_tooltip
+							}
+						}
+
+						text_single = {
+							align = right|nobaseline
+							raw_text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate').GetGold|2]([SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate').GetBalance|+=2])@gold!"
+							tooltipwidget = {
+								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate')]"
+								using = Estate_tooltip
+							}
+						}
+					}
+				}
+				blockoverride "bottom_content" {
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { 15 10 }
+						spacing = 4
+						datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate')]"
+
+						TooltipManualTableField = {
+							text_single = {
+								text = "[gold|e]"
+							}
+							expand = {}
+							text_single = {
+								raw_text = "[Estate.GetGold|2]([Estate.GetBalance|+=2])@gold!"
+							}
+						}
+
+						TooltipManualTableField = {
+							text_single = {
+								text = "ESTATE_INCOME"
+							}
+							expand = {}
+							text_single = {
+								raw_text = "[Estate.GetLastMonthsIncomeAfterTaxWithTooltip]@gold!"
+							}
+						}
+
+						TooltipStringPairList = {
+							textcontext = "[Estate.GetEconomyInfo]"
+						}
+
+						TooltipManualTableField = {
+							text_single = {
+								text = "ESTATE_EXPENSES"
+							}
+							expand = {}
+							text_single = {
+								raw_text = "#R -[Estate.GetLastMonthsExpense|2]@gold!#!"
+							}
+							tooltipwidget = {
+								using = estate_expense_tooltip
+							}
+						}
+					}
+				}
+				blockoverride "bottom_content_onclick" {
+					visible = "[LateralView.Vars.Exists( 'pie_burghers_ledger_toggled' )]"
+				}
+				blockoverride "icon_replace_visible_yes" {
+					visible = "[LateralView.Vars.Exists( 'pie_burghers_ledger_toggled' )]"
+				}
+				blockoverride "icon_replace_visible_not" {
+					visible = "[Not(LateralView.Vars.Exists( 'pie_burghers_ledger_toggled' ))]"
+				}
+			}
+		}
+	}
+}

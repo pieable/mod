@@ -1,0 +1,48 @@
+﻿l_english:
+ pie_rural_market_fair: "Market Fair"
+ pie_rural_market_fair_desc: "This local market site is formed by regular market days, livestock trade, and temporary stalls, becoming the earliest stable space of exchange for the surrounding settlements. It provides #Y +50#! building level cap, #Y +500#! laborer jobs, a small amount of market access, construction cost reduction, and #Y +0.05%#! monthly prosperity."
+
+ pie_rural_village_office: "Village Office"
+ pie_rural_village_office_desc: "Village compacts, local headmen, and ledgers are gathered here, gradually drawing scattered settlements into a more stable town-level framework of governance. It provides #Y +25#! noble jobs, #Y +2.5%#! max control, a small reduction to unrest, construction cost reduction, and #Y +0.05%#! monthly prosperity."
+
+ pie_rural_parish_church: "Parish Church"
+ pie_rural_parish_church_desc: "This parish church provides worship, literacy, and registration services to the surrounding settlements, making it easier for local society to be integrated into a diocesan order. It provides #Y +50#! clergy jobs, #Y +2.5%#! max control, a small amount of monthly literacy, pop conversion speed, and #Y +0.05%#! monthly prosperity."
+
+ pie_rural_handicraft_workshop: "Craft Workshop"
+ pie_rural_handicraft_workshop_desc: "Textiles, tanning, woodworking, and metalworking begin to cluster here, giving local society a stable non-agrarian production core. It provides #Y +500#! burgher jobs, #Y +10%#! local pop promotion speed, a small amount of production efficiency, construction cost reduction, and #Y +0.05%#! monthly prosperity."
+
+ pie_rural_communal_granary: "Communal Granary"
+ pie_rural_communal_granary_desc: "Granaries, drying yards, and simple distribution points allow the community to store grain more reliably, redistribute it, and endure poor harvests. They also lay the groundwork for later poor relief and famine response. It provides #Y +75#! local food capacity, a small amount of food growth, and unrest reduction."
+
+ pie_rural_wells_and_drainage: "Wells"
+ pie_rural_wells_and_drainage_desc: "Wells, cisterns, and water channels give the settlement a more stable supply of clean water and lay the groundwork for later, more advanced waterworks. It provides #Y +40K#! local population capacity, a small amount of migration attraction, disease resistance, and #Y +0.05%#! monthly prosperity."
+
+ pie_rural_drainage_ditch: "Drainage Ditch"
+ pie_rural_drainage_ditch_desc: "Simple drainage ditches and open sewage channels keep the settlement from collapsing into disorder during rainy seasons and periods of filth, while preparing the first outline of a more complete sanitation system. It provides #Y +10%#! local population capacity, a small amount of disease resistance, life expectancy, unrest reduction, and #Y +0.05%#! monthly prosperity."
+
+ pie_urban_market_square: "Market Square"
+ pie_urban_market_square_desc: "Squares, stalls, and workshops gather here to form the most basic trading space of a city. It provides #Y +100#! building level cap, #Y +1000#! laborer jobs, #Y +15%#! peasant enfranchisement, market access, construction cost reduction, and #Y +0.10%#! monthly prosperity."
+
+ pie_urban_civic_center: "Civic Center"
+ pie_urban_civic_center_desc: "The city hall, courts, and scribal offices are concentrated here, from where urban order and taxation radiate outward. It provides #Y +50#! noble jobs, #Y +5%#! max control, unrest reduction, faster order propagation, and #Y +0.10%#! monthly prosperity."
+
+ pie_urban_church_quarter: "Church Quarter"
+ pie_urban_church_quarter_desc: "Cathedral complexes, monastic houses, and church schools are gathered here, providing the city with spiritual authority and public order. It provides #Y +100#! clergy jobs, #Y +5%#! max control, monthly literacy, pop conversion speed, and #Y +0.10%#! monthly prosperity."
+
+ pie_urban_guild_quarter: "Guild Quarter"
+ pie_urban_guild_quarter_desc: "Guild workshops and merchant halls cluster here, forming the core of burgher advancement and organized production. It provides #Y +1000#! burgher jobs, #Y +25%#! local pop promotion speed, production efficiency, construction cost reduction, and #Y +0.10%#! monthly prosperity."
+
+ pie_urban_city_walls: "City Walls"
+ pie_urban_city_walls_desc: "High walls, towers, and defensive works define the city's boundary and provide a durable sense of security. It provides #Y +250#! soldier jobs, extra defense, garrison size, a small amount of max control, unrest reduction, and #Y +0.05%#! monthly prosperity."
+
+ pie_urban_warehouse: "Warehouse"
+ pie_urban_warehouse_desc: "Large volumes of goods are stored, sorted, and redistributed here. If the location is a market center, it also grants #Y +50#! stockpile capacity to its market. It provides a small amount of merchant capacity, market access, faster order propagation, and #Y +0.05%#! monthly prosperity."
+
+ pie_urban_aqueduct: "Aqueduct"
+ pie_urban_aqueduct_desc: "In another world it might only be worth a miserable two points of housing, but here a reliable water system is the true lifeline of a great city. It provides #Y +75K#! local population capacity, migration attraction, a small amount of disease resistance, and #Y +0.05%#! monthly prosperity."
+
+ pie_urban_sewer: "Sewer"
+ pie_urban_sewer_desc: "In another world it might look like nothing more than a tiny +2 housing utility, but a real city without drainage would soon drown in its own waste. It provides #Y +25K#! local population capacity, #Y +25%#! local population capacity, disease resistance, life expectancy, unrest reduction, and #Y +0.05%#! monthly prosperity."
+
+ pie_urban_relief_house: "Relief House"
+ pie_urban_relief_house_desc: "Soup kitchens, poorhouses, and temporary shelters help support the most vulnerable urban residents during famine and unrest. It provides #Y +150#! local food capacity, food growth, a small amount of disease resistance, life expectancy, unrest reduction, and #Y +0.05%#! monthly prosperity."

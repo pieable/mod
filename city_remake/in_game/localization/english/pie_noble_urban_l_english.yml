@@ -1,0 +1,44 @@
+﻿l_english:
+ pie_noble_manor_town: "Manor Hall"
+ pie_noble_manor_town_desc: "A lordly center financed by the local nobility. Rather than directly providing proximity, it strengthens the military and social dominance of this town through gentry networks, levy capacity, and noble settlement."
+
+ pie_noble_frontier_town: "Frontier Manor"
+ pie_noble_frontier_town_desc: "A frontier colonization outpost financed by border nobles. Instead of focusing on levies and court life, it expands cultivation, suppresses frontier unrest, and strengthens local noble power, gradually pulling remote countryside into the noble order."
+
+ pie_noble_court_city: "Noble Court"
+ pie_noble_court_city_desc: "This city was fostered by the nobility, serving both as the residence of the upper strata and as a regional center of arms, ceremony, and cultural influence."
+
+ pie_noble_urban.1.title: "Nobles Propose Founding a Town"
+ pie_noble_urban.1.desc: "Local control is firm, and the area's population and prosperity have reached a level that can sustain a more developed settlement. Our nobles are prepared to finance a town in [target_location.GetName] and construct a Manor Hall there."
+ pie_noble_urban.1.a: "Approve the Town"
+ pie_noble_urban.1.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will be upgraded to a #Y Town#! and begin construction of a #Y Manor Hall#!. The Nobility will immediately pay #Y 700#! ducats."
+ pie_noble_urban.1.b: "Reject the proposal"
+ pie_noble_urban.1.b.tt: "If rejected, #Y Noble Estate#! satisfaction will be reduced by #R 10%#!."
+
+ pie_noble_urban.2.title: "Nobles Propose Expanding a City"
+ pie_noble_urban.2.desc: "Local control is extremely firm, and the area's population and prosperity can support a higher-order settlement. Our nobles are prepared to urbanize [target_location.GetName] further and establish a Noble Court."
+ pie_noble_urban.2.a: "Approve the City Expansion"
+ pie_noble_urban.2.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will be upgraded to a #Y City#! and begin construction of a #Y Noble Court#!. The Nobility will immediately pay #Y 2200#! ducats."
+ pie_noble_urban.2.b: "Reject the proposal"
+ pie_noble_urban.2.b.tt: "If rejected, #Y Noble Estate#! satisfaction will be reduced by #R 10%#!."
+
+ pie_noble_urban.3.title: "Frontier Nobles Propose Founding a Town"
+ pie_noble_urban.3.desc: "[target_location.GetName] is still a weakly controlled rural location, but its tax base is already strong enough to support a genuine frontier noble outpost. Our nobles are prepared to found a town there and construct a Frontier Manor."
+ pie_noble_urban.3.a: "Approve the Frontier Town"
+ pie_noble_urban.3.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will be upgraded to a #Y Town#! and begin construction of a #Y Frontier Manor#!. The Nobility will immediately pay #Y 700#! ducats."
+ pie_noble_urban.3.b: "Reject the proposal"
+ pie_noble_urban.3.b.tt: "If rejected, #Y Noble Estate#! satisfaction will be reduced by #R 10%#!."
+
+ pie_noble_urban.11.title: "Nobles Propose Funding an Existing Town"
+ pie_noble_urban.11.desc: "[target_location.GetName] has long been a town, but the local nobility still lack a proper power center there. They are now willing to finance a Manor Hall."
+ pie_noble_urban.11.a: "Approve the Manor Hall"
+ pie_noble_urban.11.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will begin construction of a #Y Manor Hall#!. The Nobility will immediately pay #Y 700#! ducats."
+ pie_noble_urban.11.b: "Reject the proposal"
+ pie_noble_urban.11.b.tt: "If rejected, #Y Noble Estate#! satisfaction will be reduced by #R 10%#!."
+
+ pie_noble_urban.12.title: "Nobles Propose Funding an Existing City"
+ pie_noble_urban.12.desc: "[target_location.GetName] is already a mature city, but the local nobility still lack a court and symbols of power worthy of it. They are now willing to finance a Noble Court."
+ pie_noble_urban.12.a: "Approve the Noble Court"
+ pie_noble_urban.12.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will begin construction of a #Y Noble Court#!. The Nobility will immediately pay #Y 2200#! ducats."
+ pie_noble_urban.12.b: "Reject the proposal"
+ pie_noble_urban.12.b.tt: "If rejected, #Y Noble Estate#! satisfaction will be reduced by #R 10%#!."

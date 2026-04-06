@@ -20,23 +20,36 @@ pie_clergy_parish_town = {
 	allow = {
 		always = no
 	}
+	can_destroy = {
+		always = no
+	}
 
 	estate = clergy_estate
 
 	build_time = estate_build_time
-	price = price:free_building
+	price = pie_estate_special_building
 
 	possible_production_methods = {
-		estate_building_input
+		pie_clergy_parish_town_maintenance
 	}
 
-	construction_demand = pie_free_estate_construction
+	pie_clergy_parish_town_maintenance = {
+		paper = 0.05
+		books = 0.10
+		cloth = 0.05
+		beeswax = 0.10
+
+		category = building_maintenance
+	}
+
+	construction_demand = estate_construct_building
 
 	modifier = {
 		local_pop_conversion_speed = 0.05
 		local_monthly_literacy = 0.05
 		local_clergy_max_literacy = 10
 		local_clergy_desired_pop = 0.01
+		local_clergy_estate_power = 0.25
 	}
 
 	graphical_tags = { small_religious }
@@ -64,22 +77,36 @@ pie_clergy_scholastic_city = {
 	allow = {
 		always = no
 	}
+	can_destroy = {
+		always = no
+	}
 
 	estate = clergy_estate
 
 	build_time = estate_build_time
-	price = price:free_building
+	price = pie_estate_special_building
 
 	possible_production_methods = {
-		estate_building_input
+		pie_clergy_scholastic_city_maintenance
 	}
 
-	construction_demand = pie_free_estate_construction
+	pie_clergy_scholastic_city_maintenance = {
+		paper = 0.35
+		books = 0.30
+		glass = 0.10
+		fine_cloth = 0.05
+		beeswax = 0.10
+
+		category = building_maintenance
+	}
+
+	construction_demand = estate_construct_building
 
 	modifier = {
 		local_monthly_literacy = 0.1
 		local_clergy_max_literacy = 15
-		local_clergy_desired_pop = 0.02
+		local_clergy_desired_pop = 0.05
+		local_clergy_estate_power = 0.5
 	}
 
 	capital_country_modifier = {

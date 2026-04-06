@@ -1,0 +1,5 @@
+﻿pie_governor_building = {
+	gold = expensive_build_price_age_of_tradition
+	government_power = 50
+	stability = 50
+}

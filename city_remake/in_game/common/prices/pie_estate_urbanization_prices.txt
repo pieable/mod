@@ -1,0 +1,7 @@
+pie_estate_urban_downgrade = {
+	gold = 100
+}
+
+pie_estate_urban_building_dismantle = {
+	gold = 100
+}

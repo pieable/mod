@@ -1,0 +1,344 @@
+pie_clear_urban_origin = {
+	if = { limit = { has_variable = pie_pending_origin_nobles_town } remove_variable = pie_pending_origin_nobles_town }
+	if = { limit = { has_variable = pie_pending_origin_nobles_city } remove_variable = pie_pending_origin_nobles_city }
+	if = { limit = { has_variable = pie_pending_origin_clergy_town } remove_variable = pie_pending_origin_clergy_town }
+	if = { limit = { has_variable = pie_pending_origin_clergy_city } remove_variable = pie_pending_origin_clergy_city }
+	if = { limit = { has_variable = pie_pending_origin_burghers_town } remove_variable = pie_pending_origin_burghers_town }
+	if = { limit = { has_variable = pie_pending_origin_burghers_city } remove_variable = pie_pending_origin_burghers_city }
+
+	if = { limit = { has_variable = pie_origin_nobles_town } remove_variable = pie_origin_nobles_town }
+	if = { limit = { has_variable = pie_origin_nobles_city } remove_variable = pie_origin_nobles_city }
+	if = { limit = { has_variable = pie_origin_clergy_town } remove_variable = pie_origin_clergy_town }
+	if = { limit = { has_variable = pie_origin_clergy_city } remove_variable = pie_origin_clergy_city }
+	if = { limit = { has_variable = pie_origin_burghers_town } remove_variable = pie_origin_burghers_town }
+	if = { limit = { has_variable = pie_origin_burghers_city } remove_variable = pie_origin_burghers_city }
+	if = { limit = { has_variable = pie_origin_player_town } remove_variable = pie_origin_player_town }
+	if = { limit = { has_variable = pie_origin_player_city } remove_variable = pie_origin_player_city }
+}
+
+pie_destroy_estate_urban_building_only = {
+	every_buildings_in_location = {
+		limit = {
+			OR = {
+				building_type = building_type:pie_noble_manor_town
+				building_type = building_type:pie_noble_frontier_town
+				building_type = building_type:pie_noble_court_city
+				building_type = building_type:pie_clergy_parish_town
+				building_type = building_type:pie_clergy_scholastic_city
+				building_type = building_type:pie_burghers_market_town
+				building_type = building_type:pie_burghers_exchange_city
+			}
+		}
+		destroy_building = prev
+	}
+	pie_clear_urban_origin = yes
+}
+
+pie_destroy_tracked_urban_location = {
+	pie_destroy_estate_urban_building_only = yes
+	change_location_rank = location_rank:rural_settlement
+}
+
+pie_downgrade_tracked_city_to_town = {
+	every_buildings_in_location = {
+		limit = {
+			OR = {
+				building_type = building_type:pie_noble_court_city
+				building_type = building_type:pie_clergy_scholastic_city
+				building_type = building_type:pie_burghers_exchange_city
+			}
+		}
+		destroy_building = prev
+	}
+
+	if = {
+		limit = { has_variable = pie_origin_nobles_city }
+		remove_variable = pie_origin_nobles_city
+		set_variable = { name = pie_origin_nobles_town value = yes }
+	}
+	if = {
+		limit = { has_variable = pie_origin_clergy_city }
+		remove_variable = pie_origin_clergy_city
+		set_variable = { name = pie_origin_clergy_town value = yes }
+	}
+	if = {
+		limit = { has_variable = pie_origin_burghers_city }
+		remove_variable = pie_origin_burghers_city
+		set_variable = { name = pie_origin_burghers_town value = yes }
+	}
+	if = {
+		limit = { has_variable = pie_origin_player_city }
+		remove_variable = pie_origin_player_city
+		set_variable = { name = pie_origin_player_town value = yes }
+	}
+
+	change_location_rank = location_rank:town
+}
+
+pie_build_next_rural_infrastructure = {
+	if = {
+		limit = { total_building_levels_including_construction:pie_rural_market_fair < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_market_fair
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_rural_village_office < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_village_office
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_rural_parish_church < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_parish_church
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_rural_handicraft_workshop < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_handicraft_workshop
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_rural_communal_granary < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_communal_granary
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_rural_wells_and_drainage < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_wells_and_drainage
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_rural_drainage_ditch < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_drainage_ditch
+			cost_multiplier = 0
+		}
+	}
+}
+
+pie_build_next_noble_rural_infrastructure = {
+	if = {
+		limit = { total_building_levels_including_construction:pie_rural_village_office < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_village_office
+			cost_multiplier = 0
+		}
+	}
+}
+
+pie_build_next_clergy_rural_infrastructure = {
+	if = {
+		limit = { total_building_levels_including_construction:pie_rural_parish_church < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_parish_church
+			cost_multiplier = 0
+		}
+	}
+}
+
+pie_build_next_burghers_rural_infrastructure = {
+	if = {
+		limit = { total_building_levels_including_construction:pie_rural_market_fair < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_market_fair
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_rural_handicraft_workshop < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_handicraft_workshop
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_rural_communal_granary < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_communal_granary
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_rural_wells_and_drainage < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_wells_and_drainage
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_rural_drainage_ditch < 1 }
+		construct_building = {
+			building_type = building_type:pie_rural_drainage_ditch
+			cost_multiplier = 0
+		}
+	}
+}
+
+pie_build_next_city_infrastructure = {
+	if = {
+		limit = { total_building_levels_including_construction:pie_urban_market_square < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_market_square
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_civic_center < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_civic_center
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_church_quarter < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_church_quarter
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_guild_quarter < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_guild_quarter
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_city_walls < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_city_walls
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_warehouse < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_warehouse
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = {
+			total_building_levels_including_construction:hospital < 1
+			development >= 20
+		}
+		construct_building = {
+			building_type = building_type:hospital
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_aqueduct < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_aqueduct
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_sewer < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_sewer
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_relief_house < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_relief_house
+			cost_multiplier = 0
+		}
+	}
+}
+
+pie_build_next_noble_city_infrastructure = {
+	if = {
+		limit = { total_building_levels_including_construction:pie_urban_civic_center < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_civic_center
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_city_walls < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_city_walls
+			cost_multiplier = 0
+		}
+	}
+}
+
+pie_build_next_clergy_city_infrastructure = {
+	if = {
+		limit = { total_building_levels_including_construction:pie_urban_church_quarter < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_church_quarter
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_relief_house < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_relief_house
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = {
+			total_building_levels_including_construction:hospital < 1
+			development >= 20
+		}
+		construct_building = {
+			building_type = building_type:hospital
+			cost_multiplier = 0
+		}
+	}
+}
+
+pie_build_next_burghers_city_infrastructure = {
+	if = {
+		limit = { total_building_levels_including_construction:pie_urban_market_square < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_market_square
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_guild_quarter < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_guild_quarter
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_warehouse < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_warehouse
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_aqueduct < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_aqueduct
+			cost_multiplier = 0
+		}
+	}
+	else_if = {
+		limit = { total_building_levels_including_construction:pie_urban_sewer < 1 }
+		construct_building = {
+			building_type = building_type:pie_urban_sewer
+			cost_multiplier = 0
+		}
+	}
+}

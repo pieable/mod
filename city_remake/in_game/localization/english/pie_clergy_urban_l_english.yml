@@ -1,0 +1,34 @@
+﻿l_english:
+ pie_clergy_parish_town: "Parish Priory"
+ pie_clergy_parish_town_desc: "A local religious center financed by the clergy. Through preaching, schooling, and church organization, it strengthens the spread of the state faith and literacy in the surrounding area."
+
+ pie_clergy_scholastic_city: "Theological Academy"
+ pie_clergy_scholastic_city_desc: "This city was fostered by the clergy, serving both as a regional religious center and as an advanced hub of scholarship, copying, and religious instruction."
+
+ pie_clergy_urban.1.title: "Clergy Propose Founding a Town"
+ pie_clergy_urban.1.desc: "The share of the local population following the state religion has become substantial, and the area's population and prosperity can support a more stable parish structure. Our clergy are prepared to found a town in [target_location.GetName] and build a Parish Priory there."
+ pie_clergy_urban.1.a: "Approve the Clerical Town"
+ pie_clergy_urban.1.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will be upgraded to a #Y Town#! and begin construction of a #Y Parish Priory#!. The Clergy will immediately pay #Y 700#! ducats."
+ pie_clergy_urban.1.b: "Reject the proposal"
+ pie_clergy_urban.1.b.tt: "If rejected, #Y Clergy Estate#! satisfaction will be reduced by #R 10%#!."
+
+ pie_clergy_urban.2.title: "Clergy Propose Expanding a City"
+ pie_clergy_urban.2.desc: "The local share of the state religion has become firmly entrenched, and the area's population and prosperity can support a higher-level religious and scholarly center. Our clergy are prepared to urbanize [target_location.GetName] further and establish a Theological Academy."
+ pie_clergy_urban.2.a: "Approve the Clerical City"
+ pie_clergy_urban.2.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will be upgraded to a #Y City#! and begin construction of a #Y Theological Academy#!. The Clergy will immediately pay #Y 2200#! ducats."
+ pie_clergy_urban.2.b: "Reject the proposal"
+ pie_clergy_urban.2.b.tt: "If rejected, #Y Clergy Estate#! satisfaction will be reduced by #R 10%#!."
+
+ pie_clergy_urban.11.title: "Clergy Propose Funding an Existing Town"
+ pie_clergy_urban.11.desc: "[target_location.GetName] is already a town, and the local share of the state religion is sufficient to support a stronger parish structure. Our clergy are willing to fund a Parish Priory there."
+ pie_clergy_urban.11.a: "Approve the Parish Priory"
+ pie_clergy_urban.11.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will begin construction of a #Y Parish Priory#!. The Clergy will immediately pay #Y 700#! ducats."
+ pie_clergy_urban.11.b: "Reject the proposal"
+ pie_clergy_urban.11.b.tt: "If rejected, #Y Clergy Estate#! satisfaction will be reduced by #R 10%#!."
+
+ pie_clergy_urban.12.title: "Clergy Propose Funding an Existing City"
+ pie_clergy_urban.12.desc: "[target_location.GetName] is already a mature city, and the local share of the state religion is sufficient to sustain a higher-order religious and scholarly center. Our clergy are willing to finance a Theological Academy there."
+ pie_clergy_urban.12.a: "Approve the Theological Academy"
+ pie_clergy_urban.12.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will begin construction of a #Y Theological Academy#!. The Clergy will immediately pay #Y 2200#! ducats."
+ pie_clergy_urban.12.b: "Reject the proposal"
+ pie_clergy_urban.12.b.tt: "If rejected, #Y Clergy Estate#! satisfaction will be reduced by #R 10%#!."

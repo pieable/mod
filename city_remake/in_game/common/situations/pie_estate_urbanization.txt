@@ -1,0 +1,28 @@
+pie_estate_urbanization = {
+	monthly_spawn_chance = monthly_spawn_chance_unique
+
+	can_start = {
+		always = yes
+	}
+
+	can_end = {
+		always = no
+	}
+
+	visible = {
+		OR = {
+			country_has_estate = estate_type:nobles_estate
+			country_has_estate = estate_type:clergy_estate
+			country_has_estate = estate_type:burghers_estate
+			any_owned_location = {
+				pie_has_any_urban_origin = yes
+			}
+		}
+	}
+
+	on_start = {
+	}
+
+	on_monthly = {
+	}
+}

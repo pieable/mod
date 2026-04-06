@@ -1,0 +1,47 @@
+market_max_level = {
+	add = {
+		desc = "BUILDING_LEVEL_BASE"
+		value = 1
+	}
+	add = {
+		desc = "BUILDING_LEVEL_DEVELOPMENT"
+		value = development
+		multiply = 0.1
+	}
+	add = {
+		desc = "BUILDING_LEVEL_POPULATION"
+		value = population
+		multiply = 0.05
+	}
+	if = {
+		limit = {
+			location_rank ?= location_rank:city
+		}
+		add = {
+			desc = "BUILDING_LEVEL_IS_CITY"
+			value = 5
+		}
+	}
+	if = {
+		limit = {
+			any_buildings_in_location = {
+				building_type = building_type:pie_burghers_market_town
+			}
+		}
+		add = {
+			desc = "BUILDING_LEVEL_SPECIAL_BONUS"
+			value = 5
+		}
+	}
+	if = {
+		limit = {
+			any_buildings_in_location = {
+				building_type = building_type:pie_burghers_exchange_city
+			}
+		}
+		add = {
+			desc = "BUILDING_LEVEL_SPECIAL_BONUS"
+			value = 15
+		}
+	}
+}

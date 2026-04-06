@@ -18,11 +18,15 @@ pie_clergy_urban.1 = {
 
 		hidden_effect = {
 			scope:target_location = {
+				set_variable = { name = pie_pending_origin_clergy_town value = yes }
+				pie_clear_urban_origin = yes
 				change_location_rank = location_rank:town
 				construct_estate_building = {
 					building_type = building_type:pie_clergy_parish_town
 					estate_type = estate_type:clergy_estate
 				}
+				remove_variable = pie_pending_origin_clergy_town
+				set_variable = { name = pie_origin_clergy_town value = yes }
 			}
 
 			if = {
@@ -31,8 +35,22 @@ pie_clergy_urban.1 = {
 				}
 				add_gold_to_estate = {
 					estate_type = estate_type:clergy_estate
-					value = 500
+					value = 700
 				}
+			}
+		}
+	}
+
+	option = {
+		name = pie_clergy_urban.1.b
+		custom_tooltip = { text = pie_clergy_urban.1.b.tt }
+
+		hidden_effect = {
+			if = {
+				limit = {
+					country_has_estate = estate_type:clergy_estate
+				}
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 }
 			}
 		}
 	}
@@ -56,11 +74,15 @@ pie_clergy_urban.2 = {
 
 		hidden_effect = {
 			scope:target_location = {
+				set_variable = { name = pie_pending_origin_clergy_city value = yes }
+				pie_clear_urban_origin = yes
 				change_location_rank = location_rank:city
 				construct_estate_building = {
 					building_type = building_type:pie_clergy_scholastic_city
 					estate_type = estate_type:clergy_estate
 				}
+				remove_variable = pie_pending_origin_clergy_city
+				set_variable = { name = pie_origin_clergy_city value = yes }
 			}
 
 			if = {
@@ -69,8 +91,128 @@ pie_clergy_urban.2 = {
 				}
 				add_gold_to_estate = {
 					estate_type = estate_type:clergy_estate
-					value = 2000
+					value = 2200
 				}
+			}
+		}
+	}
+
+	option = {
+		name = pie_clergy_urban.2.b
+		custom_tooltip = { text = pie_clergy_urban.2.b.tt }
+
+		hidden_effect = {
+			if = {
+				limit = {
+					country_has_estate = estate_type:clergy_estate
+				}
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 }
+			}
+		}
+	}
+}
+
+pie_clergy_urban.11 = {
+	type = country_event
+	title = pie_clergy_urban.11.title
+	desc = pie_clergy_urban.11.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:clergy_estate
+			background = estate_type:clergy_estate
+		}
+	}
+
+	option = {
+		name = pie_clergy_urban.11.a
+		custom_tooltip = { text = pie_clergy_urban.11.a.tt }
+
+		hidden_effect = {
+			scope:target_location = {
+				pie_clear_urban_origin = yes
+				construct_estate_building = {
+					building_type = building_type:pie_clergy_parish_town
+					estate_type = estate_type:clergy_estate
+				}
+				set_variable = { name = pie_origin_clergy_town value = yes }
+			}
+
+			if = {
+				limit = {
+					country_has_estate = estate_type:clergy_estate
+				}
+				add_gold_to_estate = {
+					estate_type = estate_type:clergy_estate
+					value = 700
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pie_clergy_urban.11.b
+		custom_tooltip = { text = pie_clergy_urban.11.b.tt }
+
+		hidden_effect = {
+			if = {
+				limit = {
+					country_has_estate = estate_type:clergy_estate
+				}
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 }
+			}
+		}
+	}
+}
+
+pie_clergy_urban.12 = {
+	type = country_event
+	title = pie_clergy_urban.12.title
+	desc = pie_clergy_urban.12.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:clergy_estate
+			background = estate_type:clergy_estate
+		}
+	}
+
+	option = {
+		name = pie_clergy_urban.12.a
+		custom_tooltip = { text = pie_clergy_urban.12.a.tt }
+
+		hidden_effect = {
+			scope:target_location = {
+				pie_clear_urban_origin = yes
+				construct_estate_building = {
+					building_type = building_type:pie_clergy_scholastic_city
+					estate_type = estate_type:clergy_estate
+				}
+				set_variable = { name = pie_origin_clergy_city value = yes }
+			}
+
+			if = {
+				limit = {
+					country_has_estate = estate_type:clergy_estate
+				}
+				add_gold_to_estate = {
+					estate_type = estate_type:clergy_estate
+					value = 2200
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pie_clergy_urban.12.b
+		custom_tooltip = { text = pie_clergy_urban.12.b.tt }
+
+		hidden_effect = {
+			if = {
+				limit = {
+					country_has_estate = estate_type:clergy_estate
+				}
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 }
 			}
 		}
 	}

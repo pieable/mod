@@ -1,0 +1,346 @@
+pie_destroy_urban_location = {
+	type = situation
+	show_message = no
+
+	potential = {
+		always = yes
+	}
+
+	allow = {
+		scope:actor = {
+			any_owned_location = {
+				OR = {
+					location_rank = location_rank:town
+					location_rank = location_rank:city
+				}
+			}
+		}
+	}
+
+	price = price:pie_estate_urban_downgrade
+
+	select_trigger = {
+		looking_for_a = situation
+		interaction_source_list = {
+			situation:pie_estate_urbanization = {
+				add_to_list = source
+			}
+		}
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:pie_estate_urbanization = this
+			situation_is_active = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		interaction_source_list = {
+			scope:actor = {
+				every_owned_location = {
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_location
+		name = "pie_destroy_urban_location_select"
+		none_available_msg_key = "pie_destroy_urban_location_none"
+		column = { data = name }
+		column = { data = population }
+		column = { data = rank }
+		source_flags = only_actual_locations
+		visible = {
+			owner ?= scope:actor
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+			}
+		}
+		enabled = {
+			owner ?= scope:actor
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+			}
+		}
+		map_color = {
+			if = {
+				limit = {
+					owner ?= scope:actor
+					OR = {
+						location_rank = location_rank:town
+						location_rank = location_rank:city
+					}
+				}
+				value = define:NMapColors|MAP_COLOR_HIGH
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		secondary_map_color = {
+			if = {
+				limit = {
+					location_rank = location_rank:city
+				}
+				value = define:NMapColors|MAP_COLOR_MID
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		only_color_selectable = yes
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target_location
+			}
+			scope:target_location = {
+				if = {
+					limit = {
+						is_core_of = scope:actor
+					}
+					if = {
+						limit = { has_variable = pie_origin_nobles_town }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.20 }
+						}
+					}
+					else_if = {
+						limit = { has_variable = pie_origin_nobles_city }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.40 }
+						}
+					}
+					else_if = {
+						limit = { has_variable = pie_origin_clergy_town }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.20 }
+						}
+					}
+					else_if = {
+						limit = { has_variable = pie_origin_clergy_city }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.40 }
+						}
+					}
+					else_if = {
+						limit = { has_variable = pie_origin_burghers_town }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.20 }
+						}
+					}
+					else_if = {
+						limit = { has_variable = pie_origin_burghers_city }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.40 }
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = { location_rank = location_rank:city }
+						owner = {
+							add_stability = -0.20
+						}
+						every_pop = {
+							add_pop_satisfaction = -0.20
+						}
+					}
+					else = {
+						owner = {
+							add_stability = -0.10
+						}
+						every_pop = {
+							add_pop_satisfaction = -0.10
+						}
+					}
+				}
+				pie_destroy_tracked_urban_location = yes
+			}
+		}
+		else = {
+			custom_tooltip = pie_destroy_urban_location_fail_tt
+		}
+	}
+}
+
+pie_destroy_estate_urban_building = {
+	type = situation
+	show_message = no
+
+	potential = {
+		always = yes
+	}
+
+	allow = {
+		scope:actor = {
+			any_owned_location = {
+				OR = {
+					location_rank = location_rank:town
+					location_rank = location_rank:city
+				}
+				pie_has_any_estate_urban_building = yes
+			}
+		}
+	}
+
+	price = price:pie_estate_urban_building_dismantle
+
+	select_trigger = {
+		looking_for_a = situation
+		interaction_source_list = {
+			situation:pie_estate_urbanization = {
+				add_to_list = source
+			}
+		}
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:pie_estate_urbanization = this
+			situation_is_active = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		interaction_source_list = {
+			scope:actor = {
+				every_owned_location = {
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_location
+		name = "pie_destroy_estate_urban_building_select"
+		none_available_msg_key = "pie_destroy_estate_urban_building_none"
+		column = { data = name }
+		column = { data = population }
+		column = { data = rank }
+		source_flags = only_actual_locations
+		visible = {
+			owner ?= scope:actor
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+			}
+			pie_has_any_estate_urban_building = yes
+		}
+		enabled = {
+			owner ?= scope:actor
+			OR = {
+				location_rank = location_rank:town
+				location_rank = location_rank:city
+			}
+			pie_has_any_estate_urban_building = yes
+		}
+		map_color = {
+			if = {
+				limit = {
+					owner ?= scope:actor
+					pie_has_any_estate_urban_building = yes
+				}
+				value = define:NMapColors|MAP_COLOR_HIGH
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		secondary_map_color = {
+			if = {
+				limit = {
+					location_rank = location_rank:city
+					pie_has_any_estate_urban_building = yes
+				}
+				value = define:NMapColors|MAP_COLOR_MID
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		only_color_selectable = yes
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target_location
+			}
+			scope:target_location = {
+				if = {
+					limit = {
+						is_core_of = scope:actor
+					}
+					if = {
+						limit = { has_variable = pie_origin_nobles_town }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.15 }
+						}
+					}
+					else_if = {
+						limit = { has_variable = pie_origin_nobles_city }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.35 }
+						}
+					}
+					else_if = {
+						limit = { has_variable = pie_origin_clergy_town }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.15 }
+						}
+					}
+					else_if = {
+						limit = { has_variable = pie_origin_clergy_city }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.35 }
+						}
+					}
+					else_if = {
+						limit = { has_variable = pie_origin_burghers_town }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.15 }
+						}
+					}
+					else_if = {
+						limit = { has_variable = pie_origin_burghers_city }
+						owner = {
+							add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.35 }
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = { location_rank = location_rank:city }
+						owner = {
+							add_stability = -0.15
+						}
+						every_pop = {
+							add_pop_satisfaction = -0.15
+						}
+					}
+					else = {
+						owner = {
+							add_stability = -0.05
+						}
+						every_pop = {
+							add_pop_satisfaction = -0.05
+						}
+					}
+				}
+				pie_destroy_estate_urban_building_only = yes
+			}
+		}
+		else = {
+			custom_tooltip = pie_destroy_estate_urban_building_fail_tt
+		}
+	}
+}

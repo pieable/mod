@@ -1,0 +1,3 @@
+pie_estate_special_building = {
+	gold = 50
+}

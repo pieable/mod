@@ -1,0 +1,8 @@
+REPLACE:recovery_efforts = {
+	icon = offensive_army
+	age = age_2_renaissance
+
+	requires = blockade_tactics
+
+	global_devastation_recovery = 0.0025
+}

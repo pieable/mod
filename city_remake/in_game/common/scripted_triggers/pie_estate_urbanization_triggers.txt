@@ -1,0 +1,452 @@
+pie_has_any_pending_urban_origin = {
+	OR = {
+		has_variable = pie_pending_origin_nobles_town
+		has_variable = pie_pending_origin_nobles_city
+		has_variable = pie_pending_origin_clergy_town
+		has_variable = pie_pending_origin_clergy_city
+		has_variable = pie_pending_origin_burghers_town
+		has_variable = pie_pending_origin_burghers_city
+	}
+}
+
+pie_common_town_urban_requirements = {
+	population >= 5
+	prosperity >= 0.5
+	province = {
+		province_max_food >= 1000
+	}
+}
+
+pie_has_rural_town_infrastructure_set = {
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_rural_market_fair }
+		any_buildings_in_location = { building_type = building_type:pie_urban_market_square }
+	}
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_rural_village_office }
+		any_buildings_in_location = { building_type = building_type:pie_urban_civic_center }
+	}
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_rural_parish_church }
+		any_buildings_in_location = { building_type = building_type:pie_urban_church_quarter }
+	}
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_rural_handicraft_workshop }
+		any_buildings_in_location = { building_type = building_type:pie_urban_guild_quarter }
+	}
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_rural_communal_granary }
+		any_buildings_in_location = { building_type = building_type:pie_urban_relief_house }
+	}
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_rural_wells_and_drainage }
+		any_buildings_in_location = { building_type = building_type:pie_urban_aqueduct }
+	}
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_rural_drainage_ditch }
+		any_buildings_in_location = { building_type = building_type:pie_urban_sewer }
+	}
+}
+
+pie_has_missing_rural_infrastructure_including_construction = {
+	OR = {
+		AND = {
+			NOT = { has_building = building_type:pie_rural_market_fair }
+			NOT = { has_building = building_type:pie_urban_market_square }
+		}
+		AND = {
+			NOT = { has_building = building_type:pie_rural_village_office }
+			NOT = { has_building = building_type:pie_urban_civic_center }
+		}
+		AND = {
+			NOT = { has_building = building_type:pie_rural_parish_church }
+			NOT = { has_building = building_type:pie_urban_church_quarter }
+		}
+		AND = {
+			NOT = { has_building = building_type:pie_rural_handicraft_workshop }
+			NOT = { has_building = building_type:pie_urban_guild_quarter }
+		}
+		AND = {
+			NOT = { has_building = building_type:pie_rural_communal_granary }
+			NOT = { has_building = building_type:pie_urban_relief_house }
+		}
+		AND = {
+			NOT = { has_building = building_type:pie_rural_wells_and_drainage }
+			NOT = { has_building = building_type:pie_urban_aqueduct }
+		}
+		AND = {
+			NOT = { has_building = building_type:pie_rural_drainage_ditch }
+			NOT = { has_building = building_type:pie_urban_sewer }
+		}
+	}
+}
+
+pie_has_missing_noble_rural_infrastructure_including_construction = {
+	AND = {
+		NOT = { has_building = building_type:pie_rural_village_office }
+		NOT = { has_building = building_type:pie_urban_civic_center }
+	}
+}
+
+pie_has_missing_clergy_rural_infrastructure_including_construction = {
+	AND = {
+		NOT = { has_building = building_type:pie_rural_parish_church }
+		NOT = { has_building = building_type:pie_urban_church_quarter }
+	}
+}
+
+pie_has_missing_burghers_rural_infrastructure_including_construction = {
+	OR = {
+		AND = {
+			NOT = { has_building = building_type:pie_rural_market_fair }
+			NOT = { has_building = building_type:pie_urban_market_square }
+		}
+		AND = {
+			NOT = { has_building = building_type:pie_rural_handicraft_workshop }
+			NOT = { has_building = building_type:pie_urban_guild_quarter }
+		}
+		AND = {
+			NOT = { has_building = building_type:pie_rural_communal_granary }
+			NOT = { has_building = building_type:pie_urban_relief_house }
+		}
+		AND = {
+			NOT = { has_building = building_type:pie_rural_wells_and_drainage }
+			NOT = { has_building = building_type:pie_urban_aqueduct }
+		}
+		AND = {
+			NOT = { has_building = building_type:pie_rural_drainage_ditch }
+			NOT = { has_building = building_type:pie_urban_sewer }
+		}
+	}
+}
+
+pie_common_rural_town_urban_requirements = {
+	pie_common_town_urban_requirements = yes
+}
+
+pie_noble_frontier_town_requirements = {
+	location_rank = location_rank:rural_settlement
+	local_control > 0
+	local_control <= 0.25
+	location_tax_base >= { value = local_control multiply = 15 }
+	population >= 5
+	province = {
+		province_max_food >= 1000
+	}
+	OR = {
+		is_core_of = root
+		integration_level = integrated
+	}
+}
+
+pie_has_city_capital_connection = {
+	OR = {
+		has_road_to_capital = yes
+		AND = {
+			NOT = { is_connected_to = owner.capital }
+			is_overseas_for_owner = no
+			is_port = yes
+		}
+	}
+}
+
+pie_has_city_infrastructure_set = {
+	any_buildings_in_location = {
+		building_type = building_type:pie_urban_market_square
+	}
+	any_buildings_in_location = {
+		building_type = building_type:pie_urban_civic_center
+	}
+	any_buildings_in_location = {
+		building_type = building_type:pie_urban_church_quarter
+	}
+	any_buildings_in_location = {
+		building_type = building_type:pie_urban_guild_quarter
+	}
+	any_buildings_in_location = {
+		building_type = building_type:pie_urban_city_walls
+	}
+	any_buildings_in_location = {
+		building_type = building_type:pie_urban_warehouse
+	}
+	any_buildings_in_location = {
+		building_type = building_type:hospital
+	}
+	any_buildings_in_location = {
+		building_type = building_type:pie_urban_aqueduct
+	}
+	any_buildings_in_location = {
+		building_type = building_type:pie_urban_sewer
+	}
+	any_buildings_in_location = {
+		building_type = building_type:pie_urban_relief_house
+	}
+}
+
+pie_has_missing_city_infrastructure_including_construction = {
+	OR = {
+		NOT = { has_building = building_type:pie_urban_market_square }
+		NOT = { has_building = building_type:pie_urban_civic_center }
+		NOT = { has_building = building_type:pie_urban_church_quarter }
+		NOT = { has_building = building_type:pie_urban_guild_quarter }
+		NOT = { has_building = building_type:pie_urban_city_walls }
+		NOT = { has_building = building_type:pie_urban_warehouse }
+		NOT = { has_building = building_type:hospital }
+		NOT = { has_building = building_type:pie_urban_aqueduct }
+		NOT = { has_building = building_type:pie_urban_sewer }
+		NOT = { has_building = building_type:pie_urban_relief_house }
+	}
+}
+
+pie_has_missing_noble_city_infrastructure_including_construction = {
+	OR = {
+		NOT = { has_building = building_type:pie_urban_civic_center }
+		NOT = { has_building = building_type:pie_urban_city_walls }
+	}
+}
+
+pie_has_missing_clergy_city_infrastructure_including_construction = {
+	OR = {
+		NOT = { has_building = building_type:pie_urban_church_quarter }
+		NOT = { has_building = building_type:hospital }
+		NOT = { has_building = building_type:pie_urban_relief_house }
+	}
+}
+
+pie_has_missing_burghers_city_infrastructure_including_construction = {
+	OR = {
+		NOT = { has_building = building_type:pie_urban_market_square }
+		NOT = { has_building = building_type:pie_urban_guild_quarter }
+		NOT = { has_building = building_type:pie_urban_warehouse }
+		NOT = { has_building = building_type:pie_urban_aqueduct }
+		NOT = { has_building = building_type:pie_urban_sewer }
+	}
+}
+
+pie_has_constructable_missing_noble_city_infrastructure = {
+	OR = {
+		NOT = { has_building = building_type:pie_urban_civic_center }
+		NOT = { has_building = building_type:pie_urban_city_walls }
+	}
+}
+
+pie_has_constructable_missing_clergy_city_infrastructure = {
+	OR = {
+		NOT = { has_building = building_type:pie_urban_church_quarter }
+		NOT = { has_building = building_type:pie_urban_relief_house }
+		AND = {
+			NOT = { has_building = building_type:hospital }
+			development >= 20
+		}
+	}
+}
+
+pie_has_constructable_missing_burghers_city_infrastructure = {
+	OR = {
+		NOT = { has_building = building_type:pie_urban_market_square }
+		NOT = { has_building = building_type:pie_urban_guild_quarter }
+		NOT = { has_building = building_type:pie_urban_warehouse }
+		NOT = { has_building = building_type:pie_urban_aqueduct }
+		NOT = { has_building = building_type:pie_urban_sewer }
+	}
+}
+
+pie_has_constructable_missing_city_infrastructure = {
+	OR = {
+		NOT = { has_building = building_type:pie_urban_market_square }
+		NOT = { has_building = building_type:pie_urban_civic_center }
+		NOT = { has_building = building_type:pie_urban_church_quarter }
+		NOT = { has_building = building_type:pie_urban_guild_quarter }
+		NOT = { has_building = building_type:pie_urban_city_walls }
+		NOT = { has_building = building_type:pie_urban_warehouse }
+		NOT = { has_building = building_type:pie_urban_aqueduct }
+		NOT = { has_building = building_type:pie_urban_sewer }
+		NOT = { has_building = building_type:pie_urban_relief_house }
+		AND = {
+			NOT = { has_building = building_type:hospital }
+			development >= 20
+		}
+	}
+}
+
+pie_noble_can_invest_rural_infrastructure = {
+	pie_has_missing_noble_rural_infrastructure_including_construction = yes
+}
+
+pie_clergy_can_invest_rural_infrastructure = {
+	pie_has_missing_clergy_rural_infrastructure_including_construction = yes
+	religion_percentage = {
+		religion = root.religion
+		value >= 0.8
+	}
+}
+
+pie_burghers_can_invest_rural_infrastructure = {
+	pie_has_missing_burghers_rural_infrastructure_including_construction = yes
+	market_access >= 0.9
+}
+
+pie_can_invest_city_infrastructure = {
+	OR = {
+		location_rank = location_rank:town
+		location_rank = location_rank:city
+	}
+	pie_has_rural_town_infrastructure_set = yes
+	pie_has_constructable_missing_city_infrastructure = yes
+	OR = {
+		pie_has_any_urban_origin = yes
+		pie_is_unmarked_legacy_town = yes
+		pie_is_unmarked_legacy_city = yes
+	}
+}
+
+pie_noble_can_invest_city_infrastructure = {
+	pie_can_invest_city_infrastructure = yes
+	pie_has_constructable_missing_noble_city_infrastructure = yes
+}
+
+pie_location_valid_for_mining_city_bonus = {
+	OR = {
+		location_rank = location_rank:town
+		location_rank = location_rank:city
+	}
+	raw_material ?= {
+		goods_method = mining
+		goods:stone != this
+	}
+}
+
+pie_clergy_can_invest_city_infrastructure = {
+	pie_can_invest_city_infrastructure = yes
+	pie_has_constructable_missing_clergy_city_infrastructure = yes
+	religion_percentage = {
+		religion = root.religion
+		value >= 0.8
+	}
+}
+
+pie_burghers_can_invest_city_infrastructure = {
+	pie_can_invest_city_infrastructure = yes
+	pie_has_constructable_missing_burghers_city_infrastructure = yes
+	market_access >= 0.9
+}
+
+pie_is_unmarked_legacy_town = {
+	location_rank = location_rank:town
+	NOT = { location_rank = location_rank:city }
+	NOT = { pie_has_any_urban_origin = yes }
+	NOT = { pie_has_any_estate_urban_building = yes }
+}
+
+pie_is_unmarked_legacy_city = {
+	location_rank = location_rank:city
+	NOT = { pie_has_any_urban_origin = yes }
+	NOT = { pie_has_any_estate_urban_building = yes }
+}
+
+pie_city_agricultural_requirements = {
+	province = {
+		province_max_food >= 3000
+		province_monthly_food_production >= 300
+	}
+}
+
+pie_city_commercial_requirements = {
+	location_tax_base >= 30
+	market_access >= 0.95
+}
+
+pie_city_administrative_requirements = {
+	OR = {
+		any_buildings_in_location = {
+			building_type = building_type:local_governor
+		}
+		any_buildings_in_location = {
+			building_type = building_type:naval_governor
+		}
+	}
+}
+
+pie_location_has_severe_food_shortage = {
+	province = {
+		OR = {
+			is_starving = yes
+			province_food_percentage < 0.25
+		}
+	}
+}
+
+pie_town_should_auto_downgrade = {
+	location_rank = location_rank:town
+	NOT = { location_rank = location_rank:city }
+	population < 2.5
+	pie_location_has_severe_food_shortage = yes
+}
+
+pie_city_should_auto_downgrade = {
+	location_rank = location_rank:city
+	population < 15
+	pie_location_has_severe_food_shortage = yes
+}
+
+pie_common_city_urban_requirements = {
+	population >= 30
+	prosperity >= 0.9
+	pie_has_city_capital_connection = yes
+	pie_has_city_infrastructure_set = yes
+	OR = {
+		pie_city_agricultural_requirements = yes
+		pie_city_commercial_requirements = yes
+		pie_city_administrative_requirements = yes
+	}
+}
+
+pie_has_any_urban_origin = {
+	OR = {
+		has_variable = pie_origin_nobles_town
+		has_variable = pie_origin_nobles_city
+		has_variable = pie_origin_clergy_town
+		has_variable = pie_origin_clergy_city
+		has_variable = pie_origin_burghers_town
+		has_variable = pie_origin_burghers_city
+		has_variable = pie_origin_player_town
+		has_variable = pie_origin_player_city
+	}
+}
+
+pie_is_estate_urban_origin = {
+	OR = {
+		has_variable = pie_origin_nobles_town
+		has_variable = pie_origin_nobles_city
+		has_variable = pie_origin_clergy_town
+		has_variable = pie_origin_clergy_city
+		has_variable = pie_origin_burghers_town
+		has_variable = pie_origin_burghers_city
+	}
+}
+
+pie_has_any_estate_urban_building = {
+	OR = {
+		any_buildings_in_location = {
+			building_type = building_type:pie_noble_manor_town
+		}
+		any_buildings_in_location = {
+			building_type = building_type:pie_noble_frontier_town
+		}
+		any_buildings_in_location = {
+			building_type = building_type:pie_noble_court_city
+		}
+		any_buildings_in_location = {
+			building_type = building_type:pie_clergy_parish_town
+		}
+		any_buildings_in_location = {
+			building_type = building_type:pie_clergy_scholastic_city
+		}
+		any_buildings_in_location = {
+			building_type = building_type:pie_burghers_market_town
+		}
+		any_buildings_in_location = {
+			building_type = building_type:pie_burghers_exchange_city
+		}
+	}
+}

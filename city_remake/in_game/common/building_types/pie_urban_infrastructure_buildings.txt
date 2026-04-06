@@ -1,0 +1,474 @@
+﻿pie_urban_market_square = {
+	is_foreign = no
+	max_levels = 1
+	pop_type = laborers
+
+	category = infrastructure_category
+
+	employment_size = 0.5
+
+	rural_settlement = no
+	town = yes
+	city = yes
+
+	price = pie_urban_infrastructure_building
+	build_time = government_build_time
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+
+	unique_production_methods = {
+		pie_urban_market_square_maintenance = {
+			cloth = 0.3
+			lumber = 0.3
+			tools = 0.2
+			paper = 0.2
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = town_building_construction
+
+	allow = {
+		has_building_with_at_least_one_level = pie_rural_market_fair
+	}
+
+	on_built = {
+		location = {
+			if = {
+				limit = {
+					has_building = building_type:pie_rural_market_fair
+				}
+				destroy_building = "building(building_type:pie_rural_market_fair|owner)"
+			}
+		}
+	}
+
+	modifier = {
+		free_building_levels = 100
+		local_laborers_desired_pop = 1.0
+		local_peasant_enfranchisment = 0.15
+		local_market_access = 0.01
+		local_build_buildings_cost = -0.05
+		local_monthly_prosperity = 0.001
+	}
+
+	graphical_tags = { market }
+}
+
+pie_urban_civic_center = {
+	is_foreign = no
+	max_levels = 1
+	pop_type = nobles
+
+	category = government_category
+
+	employment_size = 0.1
+
+	rural_settlement = no
+	town = yes
+	city = yes
+
+	price = pie_urban_infrastructure_building
+	build_time = government_build_time
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+
+	unique_production_methods = {
+		pie_urban_civic_center_maintenance = {
+			paper = 0.4
+			beeswax = 0.2
+			lumber = 0.2
+			cloth = 0.1
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = town_building_construction
+
+	allow = {
+		has_building_with_at_least_one_level = pie_rural_village_office
+	}
+
+	on_built = {
+		location = {
+			if = {
+				limit = {
+					has_building = building_type:pie_rural_village_office
+				}
+				destroy_building = "building(building_type:pie_rural_village_office|owner)"
+			}
+		}
+	}
+
+	modifier = {
+		local_nobles_desired_pop = 0.05
+		local_max_control = 0.05
+		local_unrest = -0.025
+		local_monthly_prosperity = 0.001
+	}
+}
+
+pie_urban_church_quarter = {
+	is_foreign = no
+	max_levels = 1
+	pop_type = clergy
+
+	category = infrastructure_category
+
+	employment_size = 0.2
+
+	rural_settlement = no
+	town = yes
+	city = yes
+
+	price = pie_urban_infrastructure_building
+	build_time = generic_town_build_time
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+
+	unique_production_methods = {
+		pie_urban_church_quarter_maintenance = {
+			glass = 0.2
+			cloth = 0.2
+			paper = 0.2
+			beeswax = 0.3
+			lumber = 0.2
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = town_building_construction
+
+	allow = {
+		has_building_with_at_least_one_level = pie_rural_parish_church
+	}
+
+	on_built = {
+		location = {
+			if = {
+				limit = {
+					has_building = building_type:pie_rural_parish_church
+				}
+				destroy_building = "building(building_type:pie_rural_parish_church|owner)"
+			}
+		}
+	}
+
+	modifier = {
+		local_clergy_desired_pop = 0.1
+		local_max_control = 0.05
+		local_monthly_literacy = 0.05
+		local_pop_conversion_speed = 0.005
+		local_monthly_prosperity = 0.001
+	}
+
+	graphical_tags = { medium_religious }
+}
+
+pie_urban_guild_quarter = {
+	is_foreign = no
+	max_levels = 1
+	pop_type = burghers
+
+	category = infrastructure_category
+
+	employment_size = 0.5
+
+	rural_settlement = no
+	town = yes
+	city = yes
+
+	price = pie_urban_infrastructure_building
+	build_time = government_build_time
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+
+	unique_production_methods = {
+		pie_urban_guild_quarter_maintenance = {
+			tools = 0.4
+			lumber = 0.3
+			cloth = 0.2
+			paper = 0.2
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = guild_construction
+
+	allow = {
+		has_building_with_at_least_one_level = pie_rural_handicraft_workshop
+	}
+
+	on_built = {
+		location = {
+			if = {
+				limit = {
+					has_building = building_type:pie_rural_handicraft_workshop
+				}
+				destroy_building = "building(building_type:pie_rural_handicraft_workshop|owner)"
+			}
+		}
+	}
+
+	modifier = {
+		local_burghers_desired_pop = 1.0
+		local_pop_promotion_speed_modifier = 0.25
+		local_production_efficiency = 0.1
+		local_build_buildings_cost = -0.05
+		local_monthly_prosperity = 0.001
+	}
+}
+
+pie_urban_city_walls = {
+	is_foreign = no
+	max_levels = 1
+	pop_type = soldiers
+
+	category = defense_category
+
+	employment_size = 0.25
+
+	rural_settlement = no
+	town = yes
+	city = yes
+
+	price = pie_urban_infrastructure_building
+	build_time = medium_fort_building
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+
+	unique_production_methods = {
+		pie_urban_city_walls_maintenance = {
+			masonry = 0.6
+			lumber = 0.3
+			tools = 0.1
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = fort_construction
+
+	modifier = {
+		local_soldiers_desired_pop = 0.25
+		local_defensive = 0.15
+		local_garrison_size = 0.1
+		local_max_control = 0.025
+		local_unrest = -0.025
+		local_monthly_prosperity = 0.0005
+	}
+}
+
+pie_urban_warehouse = {
+	is_foreign = no
+	max_levels = 1
+	pop_type = burghers
+
+	category = trade_category
+
+	employment_size = 0.25
+
+	rural_settlement = no
+	town = yes
+	city = yes
+
+	price = pie_urban_infrastructure_building
+	build_time = generic_town_build_time
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+
+	unique_production_methods = {
+		pie_urban_warehouse_maintenance = {
+			cloth = 0.2
+			lumber = 0.3
+			tools = 0.2
+			paper = 0.1
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = warehouse_construction
+
+	modifier = {
+		local_merchant_capacity = 3.0
+		local_trades_per_burgher = 0.1
+		local_market_access = 0.005
+		local_monthly_prosperity = 0.0005
+	}
+
+	market_center_modifier = {
+		maximum_stockpile_capacity = 50
+	}
+}
+
+pie_urban_aqueduct = {
+	is_foreign = no
+	max_levels = 1
+	pop_type = laborers
+
+	category = infrastructure_category
+
+	employment_size = 0.5
+
+	rural_settlement = no
+	town = yes
+	city = yes
+
+	price = pie_urban_infrastructure_building
+	build_time = generic_town_build_time
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+
+	unique_production_methods = {
+		pie_urban_aqueduct_maintenance = {
+			masonry = 0.4
+			lumber = 0.1
+			copper = 0.1
+			tools = 0.1
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = town_building_construction
+
+	allow = {
+		has_building_with_at_least_one_level = pie_rural_wells_and_drainage
+	}
+
+	on_built = {
+		location = {
+			if = {
+				limit = {
+					has_building = building_type:pie_rural_wells_and_drainage
+				}
+				destroy_building = "building(building_type:pie_rural_wells_and_drainage|owner)"
+			}
+		}
+	}
+
+	modifier = {
+		local_population_capacity = 75
+		local_migration_attraction = 0.1
+		local_disease_resistance = 0.025
+		local_monthly_prosperity = 0.0005
+	}
+}
+
+pie_urban_sewer = {
+	is_foreign = no
+	max_levels = 1
+	pop_type = laborers
+
+	category = infrastructure_category
+
+	employment_size = 0.5
+
+	rural_settlement = no
+	town = yes
+	city = yes
+
+	price = pie_urban_infrastructure_building
+	build_time = generic_town_build_time
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+
+	unique_production_methods = {
+		pie_urban_sewer_maintenance = {
+			masonry = 0.3
+			lumber = 0.1
+			tools = 0.1
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = town_building_construction
+
+	allow = {
+		has_building_with_at_least_one_level = pie_rural_drainage_ditch
+	}
+
+	on_built = {
+		location = {
+			if = {
+				limit = {
+					has_building = building_type:pie_rural_drainage_ditch
+				}
+				destroy_building = "building(building_type:pie_rural_drainage_ditch|owner)"
+			}
+		}
+	}
+
+	modifier = {
+		local_population_capacity = 25
+		local_population_capacity_modifier = 0.25
+		local_disease_resistance = 0.05
+		local_life_expectancy = 1
+		local_unrest = -0.02
+		local_monthly_prosperity = 0.0005
+	}
+}
+
+pie_urban_relief_house = {
+	is_foreign = no
+	max_levels = 1
+	pop_type = clergy
+
+	category = infrastructure_category
+
+	employment_size = 0.25
+
+	rural_settlement = no
+	town = yes
+	city = yes
+
+	price = pie_urban_infrastructure_building
+	build_time = generic_town_build_time
+	AI_ignore_available_worker_flag = yes
+	important_for_AI = yes
+
+	unique_production_methods = {
+		pie_urban_relief_house_maintenance = {
+			cloth = 0.3
+			paper = 0.2
+			lumber = 0.2
+			beeswax = 0.2
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = town_building_construction
+
+	allow = {
+		has_building_with_at_least_one_level = pie_rural_communal_granary
+	}
+
+	on_built = {
+		location = {
+			if = {
+				limit = {
+					has_building = building_type:pie_rural_communal_granary
+				}
+				destroy_building = "building(building_type:pie_rural_communal_granary|owner)"
+			}
+		}
+	}
+
+	modifier = {
+		local_food_capacity = 500
+		local_disease_resistance = 0.05
+		local_life_expectancy = 1
+		local_monthly_food_modifier = 0.05
+		local_unrest = -0.025
+		local_monthly_prosperity = 0.0005
+	}
+
+	graphical_tags = { medium_religious }
+}

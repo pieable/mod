@@ -1,0 +1,113 @@
+pie_burghers_market_town = {
+	is_foreign = no
+	max_levels = estate_building_single_level
+	pop_type = burghers
+
+	employment_size = trade_employment
+
+	category = estate_category
+
+	rural_settlement = no
+	town = yes
+
+	location_potential = {
+		location_rank = location_rank:town
+		NOT = { is_capital = yes }
+	}
+	country_potential = {
+		always = no
+	}
+	allow = {
+		always = no
+	}
+	can_destroy = {
+		always = no
+	}
+
+	estate = burghers_estate
+
+	build_time = estate_build_time
+	price = pie_estate_special_building
+
+	possible_production_methods = {
+		pie_burghers_market_town_maintenance
+	}
+
+	pie_burghers_market_town_maintenance = {
+		cloth = 0.10
+		paper = 0.05
+		glass = 0.05
+		furniture = 0.05
+		tools = 0.05
+
+		category = building_maintenance
+	}
+
+	construction_demand = estate_construct_building
+
+	modifier = {
+		local_build_buildings_cost = -0.1
+		local_burghers_desired_pop_scaled = 50
+		local_merchant_capacity = 5
+		local_burghers_estate_power = 0.25
+	}
+
+	graphical_tags = { market }
+}
+
+pie_burghers_exchange_city = {
+	is_foreign = no
+	max_levels = estate_building_single_level
+	pop_type = burghers
+
+	employment_size = trade_employment
+
+	category = estate_category
+
+	rural_settlement = no
+	city = yes
+
+	location_potential = {
+		location_rank = location_rank:city
+		NOT = { is_capital = yes }
+	}
+	country_potential = {
+		always = no
+	}
+	allow = {
+		always = no
+	}
+	can_destroy = {
+		always = no
+	}
+
+	estate = burghers_estate
+
+	build_time = estate_build_time
+	price = pie_estate_special_building
+
+	possible_production_methods = {
+		pie_burghers_exchange_city_maintenance
+	}
+
+	pie_burghers_exchange_city_maintenance = {
+		cloth = 0.15
+		paper = 0.20
+		glass = 0.10
+		furniture = 0.10
+		tools = 0.10
+
+		category = building_maintenance
+	}
+
+	construction_demand = estate_construct_building
+
+	modifier = {
+		local_production_efficiency = 0.2
+		local_distance_from_capital_speed_propagation = 0.1
+		local_burghers_desired_pop_scaled = 50
+		local_burghers_estate_power = 0.5
+	}
+
+	graphical_tags = { market }
+}

@@ -1,0 +1,45 @@
+REPLACE:positive_province_food_growth = {
+	game_data = {
+		category = province
+	}
+	local_population_growth = 0.0004
+}
+
+REPLACE:expensive_food_in_location = {
+	game_data = {
+		category = location
+	}
+	local_population_growth = -0.002
+}
+
+REPLACE:looted = {
+	game_data = {
+		category = location
+	}
+	hostile_food_multiplier = -0.10
+	local_population_growth = -0.15
+	local_prosperity_decay = 0.1
+
+	local_monthly_development_modifier = -0.25
+	max_attrition = 5
+}
+
+REPLACE:province_starving = {
+	game_data = {
+		category = province
+	}
+	local_population_growth = -0.25
+	local_supply_limit_modifier = -0.25
+	local_migration_attraction = -1.0
+
+	local_pop_demotion_speed_modifier = 0.5
+
+	local_upper_class_capacity_modifier = -0.5
+	local_life_expectancy = -10
+
+	local_migration_speed = 0.25
+
+	local_tribesmen_migration_allowed = yes
+	local_laborers_migration_allowed = yes
+	local_peasants_migration_allowed = yes
+}

@@ -1,0 +1,37 @@
+﻿l_english:
+ market_fairs: "Market Fairs"
+ market_fairs_desc: "The state recognizes burgher control over recurring fairs, local trade hubs, and the organization of exchange networks. It grants #Y +10%#! global merchant capacity, #Y +0.1#! global trades per burgher, raises Burgher target satisfaction, and increases Burgher Estate power."
+
+ pie_burghers_market_town: "Merchant Hall"
+ pie_burghers_market_town_desc: "The commercial core of a town financed by local burghers and merchants. By reducing local construction costs, expanding burgher jobs, increasing merchant capacity, and granting an extra 5 levels to the entire market-building line, it helps this location grow into a true trade node."
+
+ pie_burghers_exchange_city: "Mercantile Exchange"
+ pie_burghers_exchange_city_desc: "This city was fostered by the burgher class, bringing together storage, craftsmanship, and trade networks. It strengthens local production, improves proximity spread, expands burgher employment, and grants an extra 10 levels to the entire market-building line. Every city of this kind increases national tax efficiency by 1% and lowers bank interest by 0.5%."
+
+ pie_burghers_urban.1.title: "Burghers Propose Founding a Town"
+ pie_burghers_urban.1.desc: "Local market access has become highly efficient, and the area's population, food supply, and prosperity are enough to sustain a stable commercial settlement. Our burghers are prepared to found a town in [target_location.GetName] and build a Merchant Hall there."
+ pie_burghers_urban.1.a: "Approve the Burgher Town"
+ pie_burghers_urban.1.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will be upgraded to a #Y Town#! and begin construction of a #Y Merchant Hall#!. The Burghers will immediately pay #Y 700#! ducats."
+ pie_burghers_urban.1.b: "Reject the proposal"
+ pie_burghers_urban.1.b.tt: "If rejected, #Y Burgher Estate#! satisfaction will be reduced by #R 10%#!."
+
+ pie_burghers_urban.2.title: "Burghers Propose Expanding a City"
+ pie_burghers_urban.2.desc: "Local market access is now nearly perfect, and the area's population, food supply, and prosperity can support a higher-order commercial metropolis. Our burghers are prepared to urbanize [target_location.GetName] further and establish a Mercantile Exchange."
+ pie_burghers_urban.2.a: "Approve the Burgher City"
+ pie_burghers_urban.2.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will be upgraded to a #Y City#! and begin construction of a #Y Mercantile Exchange#!. The Burghers will immediately pay #Y 2200#! ducats."
+ pie_burghers_urban.2.b: "Reject the proposal"
+ pie_burghers_urban.2.b.tt: "If rejected, #Y Burgher Estate#! satisfaction will be reduced by #R 10%#!."
+
+ pie_burghers_urban.11.title: "Burghers Propose Funding an Existing Town"
+ pie_burghers_urban.11.desc: "[target_location.GetName] is already a town, but the local burghers have yet to establish a strong enough commercial foothold there. They are now willing to finance the construction of a Merchant Hall."
+ pie_burghers_urban.11.a: "Approve the Merchant Hall"
+ pie_burghers_urban.11.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will begin construction of a #Y Merchant Hall#!. The Burghers will immediately pay #Y 700#! ducats."
+ pie_burghers_urban.11.b: "Reject the proposal"
+ pie_burghers_urban.11.b.tt: "If rejected, #Y Burgher Estate#! satisfaction will be reduced by #R 10%#!."
+
+ pie_burghers_urban.12.title: "Burghers Propose Funding an Existing City"
+ pie_burghers_urban.12.desc: "[target_location.GetName] is already a mature city, and its market access can support an even stronger commercial network. Our burghers are willing to finance a Mercantile Exchange there."
+ pie_burghers_urban.12.a: "Approve the Mercantile Exchange"
+ pie_burghers_urban.12.a.tt: "#Y [target_location.GetNameWithNoTooltip]#! will begin construction of a #Y Mercantile Exchange#!. The Burghers will immediately pay #Y 2200#! ducats."
+ pie_burghers_urban.12.b: "Reject the proposal"
+ pie_burghers_urban.12.b.tt: "If rejected, #Y Burgher Estate#! satisfaction will be reduced by #R 10%#!."

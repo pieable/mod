@@ -1,0 +1,7 @@
+﻿pie_rural_infrastructure_building = {
+	gold = 100
+}
+
+pie_urban_infrastructure_building = {
+	gold = 200
+}

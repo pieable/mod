@@ -1,0 +1,8 @@
+pie_mining_city_bonus_modifier = {
+	game_data = {
+		category = location
+	}
+
+	local_max_rgo_size_modifier = 1
+	local_raw_material_output = 0.1
+}

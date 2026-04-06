@@ -20,17 +20,30 @@
 	allow = {
 		always = no
 	}
+	can_destroy = {
+		always = no
+	}
 
 	estate = nobles_estate
 
 	build_time = estate_build_time
-	price = price:free_building
+	price = pie_estate_special_building
 
 	possible_production_methods = {
-		estate_building_input
+		pie_noble_manor_town_maintenance
 	}
 
-	construction_demand = pie_free_estate_construction
+	pie_noble_manor_town_maintenance = {
+		cloth = 0.10
+		paper = 0.10
+		furniture = 0.10
+		fine_cloth = 0.05
+		beeswax = 0.05
+
+		category = building_maintenance
+	}
+
+	construction_demand = estate_construct_building
 
 	modifier = {
 		local_manpower = 0.03
@@ -38,6 +51,65 @@
 		monthly_prestige = 0.005
 		local_population_growth = 0.0005
 		local_nobles_desired_pop = 0.005
+	}
+
+	graphical_tags = { palace }
+}
+
+pie_noble_frontier_town = {
+	is_foreign = no
+	max_levels = estate_building_single_level
+	pop_type = nobles
+
+	employment_size = estate_nobles_employment
+
+	category = estate_category
+
+	rural_settlement = no
+	town = yes
+
+	location_potential = {
+		location_rank = location_rank:town
+		NOT = { is_capital = yes }
+	}
+	country_potential = {
+		always = no
+	}
+	allow = {
+		always = no
+	}
+	can_destroy = {
+		always = no
+	}
+
+	estate = nobles_estate
+
+	build_time = estate_build_time
+	price = pie_estate_special_building
+
+	possible_production_methods = {
+		pie_noble_frontier_town_maintenance
+	}
+
+	pie_noble_frontier_town_maintenance = {
+		cloth = 0.08
+		paper = 0.05
+		weaponry = 0.05
+		lumber = 0.05
+		tools = 0.05
+
+		category = building_maintenance
+	}
+
+	construction_demand = estate_construct_building
+
+	modifier = {
+		local_monthly_development = 0.001
+		local_pop_join_rebel_threshold = -0.04
+		local_pop_leave_rebels_threshold = -0.02
+		local_nobles_estate_power = 1.0
+		local_peasant_enfranchisment = -0.35
+		local_raw_material_output = 0.2
 	}
 
 	graphical_tags = { palace }
@@ -65,17 +137,31 @@ pie_noble_court_city = {
 	allow = {
 		always = no
 	}
+	can_destroy = {
+		always = no
+	}
 
 	estate = nobles_estate
 
 	build_time = estate_build_time
-	price = price:free_building
+	price = pie_estate_special_building
 
 	possible_production_methods = {
-		estate_building_input
+		pie_noble_court_city_maintenance
 	}
 
-	construction_demand = pie_free_estate_construction
+	pie_noble_court_city_maintenance = {
+		cloth = 0.15
+		paper = 0.25
+		books = 0.10
+		furniture = 0.15
+		fine_cloth = 0.10
+		beeswax = 0.10
+
+		category = building_maintenance
+	}
+
+	construction_demand = estate_construct_building
 
 	modifier = {
 		local_manpower_modifier = 0.5
