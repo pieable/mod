@@ -1,0 +1,10 @@
+REPLACE:icon = {
+	captured = yes
+	allow = {
+		artist_type = iconographer
+	}
+	religion_scale_modifier = religious_icon_power_modifier
+	location_modifier = {
+		local_unrest = -0.2
+	}
+}

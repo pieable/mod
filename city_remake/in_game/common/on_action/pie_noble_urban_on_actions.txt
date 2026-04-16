@@ -1,31 +1,19 @@
 monthly_country_pulse = {
 	on_actions = {
-		pie_food_shortage_downgrade_monthly
+		pie_population_downgrade_monthly
 		pie_noble_urban_monthly_check
 		pie_clergy_urban_monthly_check
 		pie_burghers_urban_monthly_check
-		pie_mining_city_bonus_monthly
 		pie_burghers_exchange_country_bonus_monthly
 		pie_clergy_wealth_drain_monthly
-	}
-}
-
-on_game_start = {
-	on_actions = {
-		pie_sync_mining_city_bonus_on_game_start
-	}
-}
-
-on_raw_material_changed = {
-	on_actions = {
-		pie_update_mining_city_bonus
+		noicthy_init_pulse
+		noicthy_monthly_pulse
 	}
 }
 
 on_location_changed_rank = {
 	on_actions = {
 		pie_track_player_urban_origin
-		pie_update_mining_city_bonus
 	}
 }
 
@@ -121,22 +109,21 @@ pie_noble_urban_monthly_check = {
 				country_has_estate = estate_type:nobles_estate
 				NOT = { has_variable = pie_noble_urban_action_taken }
 				"estate(estate_type:nobles_estate)" = {
-					estate_gold >= 100
+					estate_gold >= 300
 				}
 			}
-			random_owned_location = {
-				limit = {
-					controller = root
-					NOT = { is_capital = yes }
-					pie_noble_can_invest_rural_infrastructure = yes
-				}
-				pie_build_next_noble_rural_infrastructure = yes
-				owner = {
-					add_gold_to_estate = {
-						estate_type = estate_type:nobles_estate
-						value = 100
+			random = {
+				chance = 35
+				random_owned_location = {
+					limit = {
+						controller = root
+						NOT = { is_capital = yes }
+						pie_noble_can_invest_rural_infrastructure = yes
 					}
-					set_variable = { name = pie_noble_urban_action_taken value = yes }
+					pie_build_next_noble_rural_infrastructure = yes
+					owner = {
+						set_variable = { name = pie_noble_urban_action_taken value = yes }
+					}
 				}
 			}
 		}
@@ -146,22 +133,21 @@ pie_noble_urban_monthly_check = {
 				country_has_estate = estate_type:nobles_estate
 				NOT = { has_variable = pie_noble_urban_action_taken }
 				"estate(estate_type:nobles_estate)" = {
-					estate_gold >= 200
+					estate_gold >= 500
 				}
 			}
-			random_owned_location = {
-				limit = {
-					controller = root
-					NOT = { is_capital = yes }
-					pie_noble_can_invest_city_infrastructure = yes
-				}
-				pie_build_next_noble_city_infrastructure = yes
-				owner = {
-					add_gold_to_estate = {
-						estate_type = estate_type:nobles_estate
-						value = 200
+			random = {
+				chance = 25
+				random_owned_location = {
+					limit = {
+						controller = root
+						NOT = { is_capital = yes }
+						pie_noble_can_invest_city_infrastructure = yes
 					}
-					set_variable = { name = pie_noble_urban_action_taken value = yes }
+					pie_build_next_noble_city_infrastructure = yes
+					owner = {
+						set_variable = { name = pie_noble_urban_action_taken value = yes }
+					}
 				}
 			}
 		}
@@ -300,22 +286,21 @@ pie_clergy_urban_monthly_check = {
 				country_has_estate = estate_type:clergy_estate
 				NOT = { has_variable = pie_clergy_urban_action_taken }
 				"estate(estate_type:clergy_estate)" = {
-					estate_gold >= 100
+					estate_gold >= 300
 				}
 			}
-			random_owned_location = {
-				limit = {
-					controller = root
-					NOT = { is_capital = yes }
-					pie_clergy_can_invest_rural_infrastructure = yes
-				}
-				pie_build_next_clergy_rural_infrastructure = yes
-				owner = {
-					add_gold_to_estate = {
-						estate_type = estate_type:clergy_estate
-						value = 100
+			random = {
+				chance = 35
+				random_owned_location = {
+					limit = {
+						controller = root
+						NOT = { is_capital = yes }
+						pie_clergy_can_invest_rural_infrastructure = yes
 					}
-					set_variable = { name = pie_clergy_urban_action_taken value = yes }
+					pie_build_next_clergy_rural_infrastructure = yes
+					owner = {
+						set_variable = { name = pie_clergy_urban_action_taken value = yes }
+					}
 				}
 			}
 		}
@@ -325,22 +310,21 @@ pie_clergy_urban_monthly_check = {
 				country_has_estate = estate_type:clergy_estate
 				NOT = { has_variable = pie_clergy_urban_action_taken }
 				"estate(estate_type:clergy_estate)" = {
-					estate_gold >= 200
+					estate_gold >= 500
 				}
 			}
-			random_owned_location = {
-				limit = {
-					controller = root
-					NOT = { is_capital = yes }
-					pie_clergy_can_invest_city_infrastructure = yes
-				}
-				pie_build_next_clergy_city_infrastructure = yes
-				owner = {
-					add_gold_to_estate = {
-						estate_type = estate_type:clergy_estate
-						value = 200
+			random = {
+				chance = 25
+				random_owned_location = {
+					limit = {
+						controller = root
+						NOT = { is_capital = yes }
+						pie_clergy_can_invest_city_infrastructure = yes
 					}
-					set_variable = { name = pie_clergy_urban_action_taken value = yes }
+					pie_build_next_clergy_city_infrastructure = yes
+					owner = {
+						set_variable = { name = pie_clergy_urban_action_taken value = yes }
+					}
 				}
 			}
 		}
@@ -479,22 +463,21 @@ pie_burghers_urban_monthly_check = {
 				country_has_estate = estate_type:burghers_estate
 				NOT = { has_variable = pie_burghers_urban_action_taken }
 				"estate(estate_type:burghers_estate)" = {
-					estate_gold >= 100
+					estate_gold >= 300
 				}
 			}
-			random_owned_location = {
-				limit = {
-					controller = root
-					NOT = { is_capital = yes }
-					pie_burghers_can_invest_rural_infrastructure = yes
-				}
-				pie_build_next_burghers_rural_infrastructure = yes
-				owner = {
-					add_gold_to_estate = {
-						estate_type = estate_type:burghers_estate
-						value = 100
+			random = {
+				chance = 35
+				random_owned_location = {
+					limit = {
+						controller = root
+						NOT = { is_capital = yes }
+						pie_burghers_can_invest_rural_infrastructure = yes
 					}
-					set_variable = { name = pie_burghers_urban_action_taken value = yes }
+					pie_build_next_burghers_rural_infrastructure = yes
+					owner = {
+						set_variable = { name = pie_burghers_urban_action_taken value = yes }
+					}
 				}
 			}
 		}
@@ -504,22 +487,21 @@ pie_burghers_urban_monthly_check = {
 				country_has_estate = estate_type:burghers_estate
 				NOT = { has_variable = pie_burghers_urban_action_taken }
 				"estate(estate_type:burghers_estate)" = {
-					estate_gold >= 200
+					estate_gold >= 500
 				}
 			}
-			random_owned_location = {
-				limit = {
-					controller = root
-					NOT = { is_capital = yes }
-					pie_burghers_can_invest_city_infrastructure = yes
-				}
-				pie_build_next_burghers_city_infrastructure = yes
-				owner = {
-					add_gold_to_estate = {
-						estate_type = estate_type:burghers_estate
-						value = 200
+			random = {
+				chance = 25
+				random_owned_location = {
+					limit = {
+						controller = root
+						NOT = { is_capital = yes }
+						pie_burghers_can_invest_city_infrastructure = yes
 					}
-					set_variable = { name = pie_burghers_urban_action_taken value = yes }
+					pie_build_next_burghers_city_infrastructure = yes
+					owner = {
+						set_variable = { name = pie_burghers_urban_action_taken value = yes }
+					}
 				}
 			}
 		}
@@ -586,83 +568,44 @@ pie_burghers_urban_monthly_check = {
 	}
 }
 
-pie_sync_mining_city_bonus_on_game_start = {
-	effect = {
-		every_location_in_the_world = {
-			pie_update_mining_city_bonus = yes
-		}
-	}
-}
-
-pie_update_mining_city_bonus = {
-	effect = {
-		if = {
-			limit = {
-				pie_location_valid_for_mining_city_bonus = yes
-				NOT = { has_location_modifier = pie_mining_city_bonus_modifier }
-			}
-			add_location_modifier = {
-				modifier = pie_mining_city_bonus_modifier
-				years = -1
-				mode = replace
-			}
-		}
-		else_if = {
-			limit = {
-				NOT = { pie_location_valid_for_mining_city_bonus = yes }
-				has_location_modifier = pie_mining_city_bonus_modifier
-			}
-			remove_location_modifier = pie_mining_city_bonus_modifier
-		}
-	}
-}
-
-pie_mining_city_bonus_monthly = {
-	effect = {
-		every_owned_location = {
-			pie_update_mining_city_bonus = yes
-		}
-	}
-}
-
-pie_food_shortage_downgrade_monthly = {
+pie_population_downgrade_monthly = {
 	effect = {
 		every_owned_location = {
 			if = {
 				limit = { pie_city_should_auto_downgrade = yes }
 				if = {
-					limit = { has_variable = pie_city_food_shortage_months }
-					change_variable = { name = pie_city_food_shortage_months add = 1 }
+					limit = { has_variable = pie_city_underpopulated_months }
+					change_variable = { name = pie_city_underpopulated_months add = 1 }
 				}
 				else = {
-					set_variable = { name = pie_city_food_shortage_months value = 1 }
+					set_variable = { name = pie_city_underpopulated_months value = 1 }
 				}
 				if = {
-					limit = { var:pie_city_food_shortage_months >= 12 }
+					limit = { var:pie_city_underpopulated_months >= 12 }
 					pie_downgrade_tracked_city_to_town = yes
-					if = { limit = { has_variable = pie_city_food_shortage_months } remove_variable = pie_city_food_shortage_months }
-					if = { limit = { has_variable = pie_town_food_shortage_months } remove_variable = pie_town_food_shortage_months }
+					if = { limit = { has_variable = pie_city_underpopulated_months } remove_variable = pie_city_underpopulated_months }
+					if = { limit = { has_variable = pie_town_underpopulated_months } remove_variable = pie_town_underpopulated_months }
 				}
 			}
 			else_if = {
 				limit = { pie_town_should_auto_downgrade = yes }
 				if = {
-					limit = { has_variable = pie_town_food_shortage_months }
-					change_variable = { name = pie_town_food_shortage_months add = 1 }
+					limit = { has_variable = pie_town_underpopulated_months }
+					change_variable = { name = pie_town_underpopulated_months add = 1 }
 				}
 				else = {
-					set_variable = { name = pie_town_food_shortage_months value = 1 }
+					set_variable = { name = pie_town_underpopulated_months value = 1 }
 				}
 				if = {
-					limit = { var:pie_town_food_shortage_months >= 12 }
+					limit = { var:pie_town_underpopulated_months >= 12 }
 					pie_destroy_tracked_urban_location = yes
-					if = { limit = { has_variable = pie_city_food_shortage_months } remove_variable = pie_city_food_shortage_months }
-					if = { limit = { has_variable = pie_town_food_shortage_months } remove_variable = pie_town_food_shortage_months }
+					if = { limit = { has_variable = pie_city_underpopulated_months } remove_variable = pie_city_underpopulated_months }
+					if = { limit = { has_variable = pie_town_underpopulated_months } remove_variable = pie_town_underpopulated_months }
 				}
 			}
 			else = {
-				if = { limit = { has_variable = pie_city_food_shortage_months } remove_variable = pie_city_food_shortage_months }
-				if = { limit = { has_variable = pie_town_food_shortage_months } remove_variable = pie_town_food_shortage_months }
+				if = { limit = { has_variable = pie_city_underpopulated_months } remove_variable = pie_city_underpopulated_months }
+				if = { limit = { has_variable = pie_town_underpopulated_months } remove_variable = pie_town_underpopulated_months }
 			}
 		}
 	}

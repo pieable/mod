@@ -1,0 +1,61 @@
+noicthy_calculate_army_penalty = {
+	set_local_variable = { name = noicthy_combined_army value = local_var:noicthy_effective_strength }
+	set_local_variable = { name = noicthy_combined_peak value = var:noicthy_potential_peak }
+
+	if = {
+		limit = { noicthy_is_subject_with_overlord_in_war = yes }
+		overlord = {
+			change_local_variable = {
+				name = noicthy_combined_army
+				add = { add = military_strength subtract = max_manpower add = manpower }
+			}
+
+			if = {
+				limit = { has_variable = noicthy_potential_peak }
+				change_local_variable = { name = noicthy_combined_peak add = var:noicthy_potential_peak }
+			}
+			else = {
+				change_local_variable = {
+					name = noicthy_combined_peak
+					add = { add = military_strength subtract = max_manpower add = manpower }
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { local_var:noicthy_combined_peak > 0 }
+		set_variable = {
+			name = noicthy_war_momentum_army_size
+			value = {
+				add = 1
+				subtract = {
+					add = local_var:noicthy_combined_army
+					divide = local_var:noicthy_combined_peak
+				}
+			}
+		}
+	}
+	else = {
+		set_variable = { name = noicthy_war_momentum_army_size value = 0 }
+	}
+
+	if = {
+		limit = { var:noicthy_war_momentum_army_size > 1 }
+		set_variable = { name = noicthy_war_momentum_army_size value = 1 }
+	}
+	if = {
+		limit = { var:noicthy_war_momentum_army_size < 0 }
+		set_variable = { name = noicthy_war_momentum_army_size value = 0 }
+	}
+
+	remove_country_modifier = noicthy_war_momentum_army
+	if = {
+		limit = { var:noicthy_war_momentum_army_size > 0 }
+		add_country_modifier = {
+			modifier = noicthy_war_momentum_army
+			days = -1
+			size = var:noicthy_war_momentum_army_size
+		}
+	}
+}

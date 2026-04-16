@@ -1,0 +1,152 @@
+pie_expense_building_level_balance_to = {
+	set_variable = {
+		name = pie_expense_level_change
+		value = 0
+	}
+	if = {
+		limit = { var:pie_expense_diff_level > 1 }
+		set_variable = {
+			name = pie_expense_level_change
+			value = 1
+		}
+		if = {
+			limit = { var:pie_expense_diff_level > 10 }
+			change_variable = {
+				name = pie_expense_level_change
+				add = {
+					value = var:pie_expense_diff_level
+					subtract = 10
+					multiply = 0.2
+					floor = yes
+				}
+			}
+		}
+	}
+	if = {
+		limit = { var:pie_expense_diff_level < 0 }
+		set_variable = {
+			name = pie_expense_level_change
+			value = -1
+		}
+		if = {
+			limit = { var:pie_expense_diff_level < -5 }
+			change_variable = {
+				name = pie_expense_level_change
+				add = {
+					value = var:pie_expense_diff_level
+					add = 5
+					multiply = 0.4
+					ceiling = yes
+				}
+			}
+		}
+	}
+	change_building_level_in_location = {
+		building = $target_building$
+		value = var:pie_expense_level_change
+	}
+}
+
+pie_expense_building_level_balance = {
+	set_variable = {
+		name = pie_court_expense_target_level
+		value = {
+			value = pie_expense_monthly_government_power
+			divide = -2
+			max = "court_maintenance"
+			min = 0
+			multiply = "modifier(court_spending_cost)"
+			multiply = pie_expense_economical_base_without_institutions
+			multiply = 0.1
+		}
+	}
+
+	set_variable = {
+		name = pie_diplomatic_expense_target_level
+		value = {
+			value = "diplomatic_maintenance"
+			multiply = "modifier(diplomatic_spending_cost)"
+			multiply = pie_expense_economical_base_without_institutions
+			multiply = 0.1
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_variable = pie_stability_last_month }
+		}
+		set_variable = {
+			name = pie_stability_last_month
+			value = stability
+		}
+	}
+	set_variable = {
+		name = pie_stability_expense_from_budget
+		value = {
+			value = stability
+			subtract = {
+				value = var:pie_stability_last_month
+				multiply = {
+					value = 1
+					subtract = "modifier(stability_decay)"
+				}
+			}
+			subtract = "modifier(stability_investment)"
+		}
+	}
+	set_variable = {
+		name = pie_stability_last_month
+		value = stability
+	}
+
+	set_variable = {
+		name = pie_stability_expense_target_level
+		value = {
+			value = var:pie_stability_expense_from_budget
+			max = 0.50
+			min = 0
+			multiply = 0.2
+			multiply = {
+				value = 1
+				add = "modifier(stability_cost)"
+			}
+			multiply = pie_expense_economical_base_without_institutions
+			multiply = 0.1
+		}
+	}
+
+	capital = {
+		set_variable = {
+			name = pie_expense_diff_level
+			value = {
+				value = owner.var:pie_court_expense_target_level
+				subtract = "location_building_level(building_type:pie_court_expense_building)"
+			}
+		}
+		pie_expense_building_level_balance_to = {
+			target_building = building_type:pie_court_expense_building
+		}
+
+		set_variable = {
+			name = pie_expense_diff_level
+			value = {
+				value = owner.var:pie_diplomatic_expense_target_level
+				subtract = "location_building_level(building_type:pie_diplomatic_expense_building)"
+			}
+		}
+		pie_expense_building_level_balance_to = {
+			target_building = building_type:pie_diplomatic_expense_building
+		}
+
+		set_variable = {
+			name = pie_expense_diff_level
+			value = {
+				value = owner.var:pie_stability_expense_target_level
+				subtract = "location_building_level(building_type:pie_stability_expense_building)"
+			}
+		}
+		pie_expense_building_level_balance_to = {
+			target_building = building_type:pie_stability_expense_building
+		}
+	}
+}

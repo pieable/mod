@@ -212,6 +212,7 @@ pie_rural_communal_granary = {
 	modifier = {
 		local_food_capacity = 500
 		local_monthly_food_modifier = 0.05
+		local_population_growth = 0.0002
 		local_unrest = -0.01
 	}
 }
@@ -252,7 +253,7 @@ pie_rural_wells_and_drainage = {
 
 	modifier = {
 		local_population_capacity = 40
-		local_migration_attraction = 0.05
+		local_migration_attraction = 0.1
 		local_disease_resistance = 0.01
 		local_monthly_prosperity = 0.0005
 	}
@@ -293,6 +294,7 @@ pie_rural_drainage_ditch = {
 
 	modifier = {
 		local_population_capacity_modifier = 0.1
+		local_migration_attraction = 0.05
 		local_disease_resistance = 0.025
 		local_life_expectancy = 0.5
 		local_unrest = -0.01

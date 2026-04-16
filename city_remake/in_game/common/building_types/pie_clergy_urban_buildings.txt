@@ -29,17 +29,15 @@ pie_clergy_parish_town = {
 	build_time = estate_build_time
 	price = pie_estate_special_building
 
-	possible_production_methods = {
-		pie_clergy_parish_town_maintenance
-	}
+	unique_production_methods = {
+		pie_clergy_parish_town_maintenance = {
+			paper = 0.05
+			books = 0.10
+			cloth = 0.05
+			beeswax = 0.10
 
-	pie_clergy_parish_town_maintenance = {
-		paper = 0.05
-		books = 0.10
-		cloth = 0.05
-		beeswax = 0.10
-
-		category = building_maintenance
+			category = building_maintenance
+		}
 	}
 
 	construction_demand = estate_construct_building
@@ -86,18 +84,16 @@ pie_clergy_scholastic_city = {
 	build_time = estate_build_time
 	price = pie_estate_special_building
 
-	possible_production_methods = {
-		pie_clergy_scholastic_city_maintenance
-	}
+	unique_production_methods = {
+		pie_clergy_scholastic_city_maintenance = {
+			paper = 0.35
+			books = 0.30
+			glass = 0.10
+			fine_cloth = 0.05
+			beeswax = 0.10
 
-	pie_clergy_scholastic_city_maintenance = {
-		paper = 0.35
-		books = 0.30
-		glass = 0.10
-		fine_cloth = 0.05
-		beeswax = 0.10
-
-		category = building_maintenance
+			category = building_maintenance
+		}
 	}
 
 	construction_demand = estate_construct_building

@@ -1,0 +1,15 @@
+REPLACE:build_gravel_road = {
+	gold = 30
+}
+
+REPLACE:build_paved_road = {
+	gold = 75
+}
+
+REPLACE:build_modern_road = {
+	gold = 150
+}
+
+REPLACE:build_railroad = {
+	gold = 300
+}

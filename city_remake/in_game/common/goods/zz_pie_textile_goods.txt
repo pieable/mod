@@ -1,0 +1,16 @@
+REPLACE:wool = {
+	method = farming
+	category = raw_material
+	color = goods_wool
+	default_market_price = 1.25
+
+	food = 5.0
+	ai_rgo_size_importance = 1.5
+}
+
+REPLACE:fiber_crops = {
+	method = farming
+	category = raw_material
+	color = goods_fiber_crops
+	default_market_price = 2
+}

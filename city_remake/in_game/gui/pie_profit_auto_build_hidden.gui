@@ -1,0 +1,64 @@
+widget = {
+	name = "pie_profit_auto_build_hidden"
+	layer = top
+	visible = "[GetPlayer.Exists]"
+	size = { 1 1 }
+	position = { 0 0 }
+	alwaystransparent = yes
+	alpha = 0
+
+	fixedgridbox = {
+		addcolumn = 1
+		addrow = 1
+		datamodel = "[GetPlayer.MakeScope.GetList('pie_ab_trigger')]"
+		item = {
+			widget = {
+				size = { 1 1 }
+
+				fixedgridbox = {
+					addcolumn = 1
+					addrow = 1
+					datamodel = "[GetPlayer.MakeScope.GetList('pie_ab_locations')]"
+					item = {
+						widget = {
+							size = { 1 1 }
+							datacontext = "[Scope.Location]"
+							fixedgridbox = {
+								addcolumn = 1
+								addrow = 1
+								datamodel = "[Location.MakeScope.GetList('pie_ab_candidate_buildings')]"
+								item = {
+									widget = {
+										size = { 1 1 }
+										state = {
+											name = pie_ab_compare_new_profit
+											trigger_on_create = yes
+											on_finish = "[GetScriptedGui('pie_ab_sgui_compare_new_profit').Execute(GuiScope.SetRoot(Location.MakeScope).AddScope('bt', Scope.BuildingType.MakeScope).AddScope('profit', MakeScopeValue(GetBuildingTypeIncomeToOwnerInLocation(Scope.BuildingType, Location.Self))).AddScope('cost', MakeScopeValue(GetBuildOrExpandBuildingCost(Scope.BuildingType, Location.Self))).End)]"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+				fixedgridbox = {
+					addcolumn = 1
+					addrow = 1
+					datamodel = "[GetPlayer.MakeScope.GetList('pie_ab_locations')]"
+					item = {
+						widget = {
+							size = { 1 1 }
+							datacontext = "[Scope.Location]"
+							state = {
+								name = pie_ab_sync_best_cost
+								trigger_on_create = yes
+								on_finish = "[GetScriptedGui('pie_ab_sgui_sync_cost').Execute(GuiScope.SetRoot(Location.MakeScope).AddScope('cost', MakeScopeValue(GetBuildOrExpandBuildingCost(Location.MakeScope.Var('pie_ab_best_bt').BuildingType, Location.Self))).End)]"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,29 @@
+pie_expense_monthly_government_power = {
+	if = {
+		limit = { uses_government_power = legitimacy }
+		value = "modifier(monthly_legitimacy)"
+	}
+	else_if = {
+		limit = { uses_government_power = republican_tradition }
+		value = "modifier(monthly_republican_tradition)"
+	}
+	else_if = {
+		limit = { uses_government_power = devotion }
+		value = "modifier(monthly_devotion)"
+	}
+	else_if = {
+		limit = { uses_government_power = horde_unity }
+		value = "modifier(monthly_horde_unity)"
+	}
+	else_if = {
+		limit = { uses_government_power = tribal_cohesion }
+		value = "modifier(monthly_tribal_cohesion)"
+	}
+	else = {
+		value = 0
+	}
+}
+
+pie_expense_economical_base_without_institutions = {
+	value = country_economical_base
+}

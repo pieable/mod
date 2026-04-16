@@ -1,0 +1,1488 @@
+REPLACE:fishing_village = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = peasants
+
+	category = village_category
+	employment_size = village_employment_size
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	AI_optimization_flag_coastal = yes
+	location_potential = {
+		is_coastal = yes
+	}
+
+	build_time = village_build_time
+
+	unique_production_methods = {
+		fishing_village_maintenance = {
+			produced = fish
+			output = 0.5
+
+			salt = 0.06
+			tools = 0.01
+
+			debug_max_profit = 1.0
+
+			category = building_maintenance
+		}
+
+		arctic_fishing_village_maintenance = {
+			produced = fish
+			output = 0.5
+
+			salt = 0.045
+			ivory = 0.02
+
+			debug_max_profit = 1.0
+
+			category = building_maintenance
+		}
+	}
+	construction_demand = village_construction
+
+	modifier = {
+		local_merchant_capacity = 0.25
+		local_peasants_estate_power = 0.25
+		local_food_capacity = 50
+
+		local_maritime_presence = 0.01
+
+		local_laborers_desired_pop = 0.1
+		local_soldiers_desired_pop = 0.05
+
+		harbor_suitability = 0.02
+
+		local_sailors = 0.001
+	}
+}
+
+REPLACE:farming_village = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = peasants
+
+	category = village_category
+	employment_size = village_employment_size
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	location_potential = {
+		OR = {
+			raw_material = goods:wheat
+			raw_material = goods:maize
+			raw_material = goods:rice
+			raw_material = goods:millet
+			raw_material = goods:legumes
+			raw_material = goods:potato
+			raw_material = goods:livestock
+			raw_material = goods:olives
+			raw_material = goods:fruit
+			raw_material = goods:wool
+		}
+	}
+
+	build_time = village_build_time
+
+	unique_production_methods = {
+		farming_village_maintenance = {
+			tools = 0.025
+			clay = 1.0
+
+			output = 0.5
+
+			produced = livestock
+
+			debug_max_profit = 0.6
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = village_construction
+
+	modifier = {
+		local_food_capacity = 50
+		local_monthly_food_modifier = 0.04
+		local_peasants_estate_power = 0.25
+
+		local_laborers_desired_pop = 0.1
+		local_soldiers_desired_pop = 0.05
+	}
+}
+
+REPLACE:forest_village = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = peasants
+
+	category = village_category
+	employment_size = village_employment_size
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	location_potential = {
+		OR = {
+			raw_material = goods:wild_game
+			vegetation = forest
+			vegetation = woods
+			vegetation = jungle
+		}
+	}
+
+	build_time = village_build_time
+
+	unique_production_methods = {
+		forest_tannery = {
+			produced = leather
+
+			output = 0.2
+
+			sand = 0.1
+			tar = 0.02
+			wild_game = 0.4
+
+			category = building_maintenance
+		}
+		hunting_lodges = {
+			produced = wild_game
+
+			output = 0.20
+
+			weaponry = 0.05
+
+			debug_max_profit = 0.4
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = village_construction
+
+	modifier = {
+		local_monthly_food = 1.0
+		local_peasants_estate_power = 0.25
+
+		local_laborers_desired_pop = 0.1
+		local_soldiers_desired_pop = 0.05
+	}
+}
+
+REPLACE:market_village = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = peasants
+
+	employment_size = village_employment_size
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	category = village_category
+
+	build_time = village_build_time
+
+	construction_demand = village_construction
+
+	unique_production_methods = {
+		rural_blacksmith = {
+			produced = tools
+			output = 0.5
+
+			iron = 0.4
+			category = guild_input
+		}
+
+		rural_glassmaker = {
+			produced = glass
+			output = 0.3
+			sand = 1.0
+
+			category = guild_input
+		}
+
+		rural_millet_brewery = {
+			millet = 0.5
+			lumber = 0.1
+			tools = 0.07
+
+			produced = beer
+			output = 0.5
+
+			category = guild_input
+		}
+		rural_weaponmaker = {
+			produced = weaponry
+			output = 0.2
+
+			lumber = 0.32
+			category = guild_input
+		}
+		rural_jewelry_carver = {
+			produced = jewelry
+			output = 0.1
+
+			stone = 0.4
+			category = guild_input
+		}
+
+		rural_pottery_maker = {
+			produced = pottery
+			output = 0.2
+
+			clay = 0.33
+			category = guild_input
+		}
+	}
+
+	modifier = {
+		local_merchant_capacity = 0.10
+		local_merchant_power = 0.10
+		local_market_access = 0.005
+
+		local_food_capacity = 50
+		local_peasants_estate_power = 0.25
+
+		local_burghers_desired_pop = 0.01
+		local_laborers_desired_pop = 0.1
+		local_soldiers_desired_pop = 0.05
+	}
+}
+
+pie_grain_farmstead = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = laborers
+
+	employment_size = rural_peasant_produce_employment
+
+	category = rgo_building_category
+	custom_tags = { pie_resource_industry }
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	location_potential = {
+		OR = {
+			raw_material = goods:wheat
+			raw_material = goods:rice
+			raw_material = goods:millet
+			raw_material = goods:legumes
+			raw_material = goods:maize
+			raw_material = goods:potato
+			raw_material = goods:livestock
+			has_river = yes
+			is_adjacent_to_lake = yes
+		}
+	}
+
+	price = expand_rgo_farming
+	build_time = rural_build_time
+
+	unique_production_methods = {
+		pie_grain_farmstead_wheat = {
+			tools = 0.15
+			livestock = 0.20
+			clay = 0.10
+
+			produced = wheat
+			output = 0.80
+
+			category = building_maintenance
+		}
+
+		pie_grain_farmstead_native_wheat = {
+			tools = 0.12
+			livestock = 0.18
+			clay = 0.08
+
+			produced = wheat
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:wheat }
+			}
+
+			category = building_maintenance
+		}
+
+		pie_grain_farmstead_millet = {
+			tools = 0.10
+			livestock = 0.15
+			lumber = 0.15
+
+			produced = millet
+			output = 0.75
+
+			category = building_maintenance
+		}
+
+		pie_grain_farmstead_native_millet = {
+			tools = 0.08
+			livestock = 0.13
+			lumber = 0.12
+
+			produced = millet
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:millet }
+			}
+
+			category = building_maintenance
+		}
+
+		pie_grain_farmstead_legumes = {
+			tools = 0.08
+			livestock = 0.12
+			clay = 0.08
+
+			produced = legumes
+			output = 0.70
+
+			category = building_maintenance
+		}
+
+		pie_grain_farmstead_native_legumes = {
+			tools = 0.06
+			livestock = 0.10
+			clay = 0.06
+
+			produced = legumes
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:legumes }
+			}
+
+			category = building_maintenance
+		}
+
+		pie_grain_farmstead_rice = {
+			tools = 0.10
+			livestock = 0.12
+			lumber = 0.10
+
+			produced = rice
+			output = 0.85
+
+			category = building_maintenance
+		}
+
+		pie_grain_farmstead_native_rice = {
+			tools = 0.08
+			livestock = 0.10
+			lumber = 0.08
+
+			produced = rice
+			output = 1.05
+
+			allow = {
+				scope:target ?= { raw_material = goods:rice }
+			}
+
+			category = building_maintenance
+		}
+
+		pie_grain_farmstead_native_maize = {
+			tools = 0.07
+			livestock = 0.11
+			lumber = 0.08
+
+			produced = maize
+			output = 1.05
+
+			allow = {
+				scope:target ?= { raw_material = goods:maize }
+			}
+
+			category = building_maintenance
+		}
+
+		pie_grain_farmstead_native_potato = {
+			tools = 0.06
+			livestock = 0.10
+			clay = 0.05
+
+			produced = potato
+			output = 1.05
+
+			allow = {
+				scope:target ?= { raw_material = goods:potato }
+			}
+
+			category = building_maintenance
+		}
+
+		pie_grain_farmstead_livestock = {
+			tools = 0.08
+			wheat = 0.15
+			lumber = 0.08
+
+			produced = livestock
+			output = 0.80
+
+			category = building_maintenance
+		}
+
+		pie_grain_farmstead_native_livestock = {
+			tools = 0.06
+			wheat = 0.12
+			lumber = 0.06
+
+			produced = livestock
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:livestock }
+			}
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = farm_constructions
+
+	modifier = {
+	}
+}
+
+pie_base_metal_mines = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = laborers
+
+	employment_size = rural_peasant_produce_employment
+
+	category = rgo_building_category
+	custom_tags = { pie_resource_industry }
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	location_potential = {
+		OR = {
+			raw_material = goods:copper
+			raw_material = goods:tin
+			raw_material = goods:lead
+			raw_material = goods:iron
+			raw_material = goods:coal
+			raw_material = goods:saltpeter
+			raw_material = goods:alum
+			topography = mountains
+			topography = hills
+			topography = plateau
+		}
+	}
+
+	price = expand_rgo_mining
+	build_time = rural_build_time
+
+	unique_production_methods = {
+		pie_base_metal_mines_copper = {
+			tools = 0.15
+			lumber = 0.10
+			coal = 0.08
+
+			produced = copper
+			output = 0.55
+
+			category = building_maintenance
+		}
+		pie_base_metal_mines_native_copper = {
+			tools = 0.12
+			lumber = 0.08
+			coal = 0.06
+
+			produced = copper
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:copper }
+			}
+
+			category = building_maintenance
+		}
+		pie_base_metal_mines_tin = {
+			tools = 0.14
+			lumber = 0.10
+			coal = 0.06
+
+			produced = tin
+			output = 0.50
+
+			category = building_maintenance
+		}
+		pie_base_metal_mines_native_tin = {
+			tools = 0.11
+			lumber = 0.08
+			coal = 0.05
+
+			produced = tin
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:tin }
+			}
+
+			category = building_maintenance
+		}
+		pie_base_metal_mines_lead = {
+			tools = 0.14
+			lumber = 0.09
+			coal = 0.06
+
+			produced = lead
+			output = 0.50
+
+			category = building_maintenance
+		}
+		pie_base_metal_mines_native_lead = {
+			tools = 0.11
+			lumber = 0.07
+			coal = 0.05
+
+			produced = lead
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:lead }
+			}
+
+			category = building_maintenance
+		}
+		pie_base_metal_mines_iron = {
+			tools = 0.14
+			lumber = 0.10
+			coal = 0.06
+
+			produced = iron
+			output = 0.55
+
+			category = building_maintenance
+		}
+		pie_base_metal_mines_native_iron = {
+			tools = 0.11
+			lumber = 0.08
+			coal = 0.05
+
+			produced = iron
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:iron }
+			}
+
+			category = building_maintenance
+		}
+		pie_base_metal_mines_coal = {
+			tools = 0.15
+			lumber = 0.12
+			clay = 0.08
+
+			produced = coal
+			output = 0.60
+
+			category = building_maintenance
+		}
+		pie_base_metal_mines_native_coal = {
+			tools = 0.12
+			lumber = 0.10
+			clay = 0.06
+
+			produced = coal
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:coal }
+			}
+
+			category = building_maintenance
+		}
+		pie_base_metal_mines_native_saltpeter = {
+			tools = 0.08
+			lumber = 0.06
+			clay = 0.08
+
+			produced = saltpeter
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:saltpeter }
+			}
+
+			category = building_maintenance
+		}
+		pie_base_metal_mines_native_alum = {
+			tools = 0.08
+			lumber = 0.06
+			clay = 0.06
+
+			produced = alum
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:alum }
+			}
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = basic_construction_needs
+}
+
+pie_special_mineral_works = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = laborers
+
+	employment_size = rural_peasant_produce_employment
+
+	category = rgo_building_category
+	custom_tags = { pie_resource_industry }
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	location_potential = {
+		OR = {
+			raw_material = goods:gems
+			raw_material = goods:marble
+			raw_material = goods:mercury
+			raw_material = goods:goods_gold
+			raw_material = goods:silver
+			raw_material = goods:amber
+		}
+	}
+
+	price = expand_rgo_mining
+	build_time = rural_build_time
+
+	unique_production_methods = {
+		pie_special_mineral_works_native_gems = {
+			tools = 0.08
+			lumber = 0.04
+			leather = 0.04
+
+			produced = gems
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:gems }
+			}
+
+			category = building_maintenance
+		}
+		pie_special_mineral_works_native_marble = {
+			tools = 0.10
+			lumber = 0.08
+			leather = 0.03
+
+			produced = marble
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:marble }
+			}
+
+			category = building_maintenance
+		}
+		pie_special_mineral_works_native_mercury = {
+			tools = 0.10
+			clay = 0.08
+			lumber = 0.05
+
+			produced = mercury
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:mercury }
+			}
+
+			category = building_maintenance
+		}
+		pie_special_mineral_works_native_goods_gold = {
+			tools = 0.08
+			lumber = 0.05
+			leather = 0.03
+
+			produced = goods_gold
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:goods_gold }
+			}
+
+			category = building_maintenance
+		}
+		pie_special_mineral_works_native_silver = {
+			tools = 0.08
+			lumber = 0.05
+			leather = 0.03
+
+			produced = silver
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:silver }
+			}
+
+			category = building_maintenance
+		}
+		pie_special_mineral_works_native_amber = {
+			tools = 0.06
+			lumber = 0.05
+			leather = 0.03
+
+			produced = amber
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:amber }
+			}
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = basic_construction_needs
+}
+
+pie_horse_ranches = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = laborers
+
+	employment_size = rural_peasant_produce_employment
+
+	category = rgo_building_category
+	custom_tags = { pie_resource_industry }
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	location_potential = {
+		OR = {
+			raw_material = goods:horses
+			raw_material = goods:wool
+			raw_material = goods:fiber_crops
+			raw_material = goods:livestock
+			vegetation = grasslands
+			vegetation = farmland
+		}
+	}
+
+	price = expand_rgo_farming
+	build_time = rural_build_time
+
+	unique_production_methods = {
+		pie_horse_ranches_native_horses = {
+			tools = 0.06
+			wheat = 0.10
+			lumber = 0.05
+
+			produced = horses
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:horses }
+			}
+
+			category = building_maintenance
+		}
+		pie_horse_ranches_wool = {
+			tools = 0.08
+			lumber = 0.06
+
+			produced = wool
+			output = 0.85
+
+			category = building_maintenance
+		}
+		pie_horse_ranches_native_wool = {
+			tools = 0.06
+			lumber = 0.05
+
+			produced = wool
+			output = 1.15
+
+			allow = {
+				scope:target ?= { raw_material = goods:wool }
+			}
+
+			category = building_maintenance
+		}
+		pie_horse_ranches_fiber_crops = {
+			tools = 0.10
+			lumber = 0.08
+			clay = 0.06
+
+			produced = fiber_crops
+			output = 0.70
+
+			category = building_maintenance
+		}
+		pie_horse_ranches_native_fiber_crops = {
+			tools = 0.08
+			lumber = 0.06
+			clay = 0.05
+
+			produced = fiber_crops
+			output = 0.90
+
+			allow = {
+				scope:target ?= { raw_material = goods:fiber_crops }
+			}
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = farm_constructions
+}
+
+pie_river_coastal_fishery = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = laborers
+
+	employment_size = rural_peasant_produce_employment
+
+	category = rgo_building_category
+	custom_tags = { pie_resource_industry }
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	location_potential = {
+		OR = {
+			raw_material = goods:fish
+			raw_material = goods:pearls
+			raw_material = goods:salt
+			has_river = yes
+			is_adjacent_to_lake = yes
+			is_coastal = yes
+		}
+	}
+
+	price = expand_rgo_farming
+	build_time = rural_build_time
+
+	unique_production_methods = {
+		pie_river_coastal_fishery_fish = {
+			tools = 0.06
+			lumber = 0.08
+			salt = 0.04
+
+			produced = fish
+			output = 0.75
+
+			category = building_maintenance
+		}
+		pie_river_coastal_fishery_native_fish = {
+			tools = 0.05
+			lumber = 0.06
+			salt = 0.03
+
+			produced = fish
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:fish }
+			}
+
+			category = building_maintenance
+		}
+		pie_river_coastal_fishery_native_pearls = {
+			tools = 0.05
+			lumber = 0.04
+			fish = 0.08
+
+			produced = pearls
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:pearls }
+			}
+
+			category = building_maintenance
+		}
+		pie_river_coastal_fishery_native_salt = {
+			tools = 0.05
+			lumber = 0.05
+			clay = 0.05
+
+			produced = salt
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:salt }
+			}
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = farm_constructions
+}
+
+pie_fur_trapping_camps = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = laborers
+
+	employment_size = rural_peasant_produce_employment
+
+	category = rgo_building_category
+	custom_tags = { pie_resource_industry }
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	location_potential = {
+		OR = {
+			raw_material = goods:wild_game
+			raw_material = goods:fur
+			raw_material = goods:beeswax
+			raw_material = goods:lumber
+			raw_material = goods:medicaments
+			raw_material = goods:ivory
+			vegetation = forest
+			vegetation = woods
+			vegetation = jungle
+		}
+	}
+
+	price = expand_rgo_farming
+	build_time = rural_build_time
+
+	unique_production_methods = {
+		pie_fur_trapping_camps_wild_game = {
+			tools = 0.06
+			weaponry = 0.04
+			lumber = 0.05
+
+			produced = wild_game
+			output = 0.70
+
+			category = building_maintenance
+		}
+		pie_fur_trapping_camps_native_wild_game = {
+			tools = 0.05
+			weaponry = 0.03
+			lumber = 0.04
+
+			produced = wild_game
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:wild_game }
+			}
+
+			category = building_maintenance
+		}
+		pie_fur_trapping_camps_fur = {
+			tools = 0.06
+			weaponry = 0.04
+			lumber = 0.05
+
+			produced = fur
+			output = 0.45
+
+			category = building_maintenance
+		}
+		pie_fur_trapping_camps_native_fur = {
+			tools = 0.05
+			weaponry = 0.03
+			lumber = 0.04
+
+			produced = fur
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:fur }
+			}
+
+			category = building_maintenance
+		}
+		pie_fur_trapping_camps_beeswax = {
+			tools = 0.05
+			lumber = 0.06
+			clay = 0.04
+
+			produced = beeswax
+			output = 0.45
+
+			category = building_maintenance
+		}
+		pie_fur_trapping_camps_native_beeswax = {
+			tools = 0.04
+			lumber = 0.05
+			clay = 0.03
+
+			produced = beeswax
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:beeswax }
+			}
+
+			category = building_maintenance
+		}
+		pie_fur_trapping_camps_lumber = {
+			tools = 0.10
+			livestock = 0.08
+			clay = 0.05
+
+			produced = lumber
+			output = 0.80
+
+			category = building_maintenance
+		}
+		pie_fur_trapping_camps_native_lumber = {
+			tools = 0.08
+			livestock = 0.06
+			clay = 0.04
+
+			produced = lumber
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:lumber }
+			}
+
+			category = building_maintenance
+		}
+		pie_fur_trapping_camps_medicaments = {
+			tools = 0.05
+			lumber = 0.06
+			clay = 0.04
+
+			produced = medicaments
+			output = 0.35
+
+			category = building_maintenance
+		}
+		pie_fur_trapping_camps_native_medicaments = {
+			tools = 0.04
+			lumber = 0.05
+			clay = 0.03
+
+			produced = medicaments
+			output = 1.00
+
+			category = building_maintenance
+		}
+		pie_fur_trapping_camps_native_ivory = {
+			tools = 0.04
+			weaponry = 0.03
+			lumber = 0.04
+
+			produced = ivory
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:ivory }
+			}
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = farm_constructions
+}
+
+pie_coffee_grove = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = laborers
+
+	employment_size = rural_peasant_produce_employment
+
+	category = rgo_building_category
+	custom_tags = { pie_resource_industry }
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	location_potential = {
+		OR = {
+			raw_material = goods:coffee
+			raw_material = goods:tea
+			raw_material = goods:silk
+			raw_material = goods:dyes
+			raw_material = goods:incense
+			raw_material = goods:wine
+			raw_material = goods:cocoa
+			raw_material = goods:pepper
+			raw_material = goods:cloves
+			raw_material = goods:saffron
+			raw_material = goods:chili
+		}
+	}
+
+	price = expand_rgo_farming
+	build_time = rural_build_time
+
+	unique_production_methods = {
+		
+		pie_coffee_grove_native_coffee = {
+			tools = 0.06
+			lumber = 0.06
+			clay = 0.03
+
+			produced = coffee
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:coffee }
+			}
+
+			category = building_maintenance
+		}
+		
+		pie_coffee_grove_native_tea = {
+			tools = 0.06
+			lumber = 0.06
+			clay = 0.03
+
+			produced = tea
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:tea }
+			}
+
+			category = building_maintenance
+		}
+		
+		pie_coffee_grove_native_silk = {
+			tools = 0.05
+			lumber = 0.05
+			beeswax = 0.02
+
+			produced = silk
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:silk }
+			}
+
+			category = building_maintenance
+		}
+		
+		pie_coffee_grove_native_dyes = {
+			tools = 0.05
+			lumber = 0.05
+			clay = 0.03
+
+			produced = dyes
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:dyes }
+			}
+
+			category = building_maintenance
+		}
+		
+		pie_coffee_grove_native_incense = {
+			tools = 0.05
+			lumber = 0.04
+			clay = 0.02
+
+			produced = incense
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:incense }
+			}
+
+			category = building_maintenance
+		}
+		
+		pie_coffee_grove_native_wine = {
+			tools = 0.06
+			lumber = 0.06
+			clay = 0.04
+
+			produced = wine
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:wine }
+			}
+
+			category = building_maintenance
+		}
+		
+		pie_coffee_grove_native_cocoa = {
+			tools = 0.06
+			lumber = 0.06
+			clay = 0.03
+
+			produced = cocoa
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:cocoa }
+			}
+
+			category = building_maintenance
+		}
+		
+		pie_coffee_grove_native_pepper = {
+			tools = 0.05
+			lumber = 0.05
+			clay = 0.02
+
+			produced = pepper
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:pepper }
+			}
+
+			category = building_maintenance
+		}
+		
+		pie_coffee_grove_native_cloves = {
+			tools = 0.05
+			lumber = 0.05
+			clay = 0.02
+
+			produced = cloves
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:cloves }
+			}
+
+			category = building_maintenance
+		}
+		
+		pie_coffee_grove_native_saffron = {
+			tools = 0.05
+			lumber = 0.04
+			clay = 0.02
+
+			produced = saffron
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:saffron }
+			}
+
+			category = building_maintenance
+		}
+		
+		pie_coffee_grove_native_chili = {
+			tools = 0.05
+			lumber = 0.04
+			clay = 0.02
+
+			produced = chili
+			output = 1.00
+
+			allow = {
+				scope:target ?= { raw_material = goods:chili }
+			}
+
+			category = building_maintenance
+		}
+	}
+
+	construction_demand = farm_constructions
+}
+
+REPLACE:stone_quarry = {
+	is_foreign = no
+	max_levels = rural_building_cap
+	pop_type = laborers
+
+	employment_size = rural_peasant_produce_employment
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	location_potential = {
+		OR = {
+			topography = mountains
+			topography = plateau
+			topography = hills
+			is_coastal = yes
+			has_river = yes
+			is_adjacent_to_lake = yes
+		}
+	}
+
+	category = rgo_building_category
+
+	unique_production_methods = {
+		stone_quarry_maintenance = {
+			tools = 0.1
+			lumber = 0.12
+			leather = 0.1
+
+			produced = stone
+			output = 1
+
+			allow = {
+				scope:target ?= {
+					OR = {
+						topography = mountains
+						topography = plateau
+						topography = hills
+					}
+					NOT = {
+						raw_material = goods:stone
+					}
+				}
+			}
+
+			category = building_maintenance
+		}
+
+		crude_quarry_maintenance = {
+			lumber = 0.28
+
+			produced = stone
+			output = 0.5
+
+			allow = {
+				scope:target ?= {
+					OR = {
+						topography = mountains
+						topography = plateau
+						topography = hills
+					}
+					NOT = {
+						raw_material = goods:stone
+					}
+				}
+			}
+
+			category = building_maintenance
+		}
+
+		pie_clay_pit_maintenance = {
+			produced = clay
+			output = 1
+			lumber = 0.28
+
+			allow = {
+				scope:target ?= {
+					OR = {
+						is_coastal = yes
+						has_river = yes
+						is_adjacent_to_lake = yes
+					}
+					NOT = {
+						raw_material = goods:clay
+					}
+				}
+			}
+
+			category = building_maintenance
+		}
+
+		pie_sand_pit_maintenance = {
+			tools = 0.06
+			lumber = 0.15
+
+			produced = sand
+			output = 1
+
+			allow = {
+				scope:target ?= {
+					NOT = {
+						raw_material = goods:sand
+					}
+				}
+			}
+
+			category = building_maintenance
+		}
+	}
+
+	build_time = rural_build_time
+
+	construction_demand = basic_construction_needs
+}
+
+REPLACE:sand_pit = {
+	is_foreign = no
+	max_levels = 0
+	pop_type = laborers
+	employment_size = rural_peasant_produce_employment
+	rural_settlement = no
+	town = no
+	city = no
+	country_potential = { always = no }
+	location_potential = { always = no }
+	allow = { always = no }
+	category = rgo_building_category
+	build_time = rural_build_time
+}
+
+REPLACE:clay_pit = {
+	is_foreign = no
+	max_levels = 0
+	pop_type = laborers
+	employment_size = rural_peasant_produce_employment
+	rural_settlement = no
+	town = no
+	city = no
+	country_potential = { always = no }
+	location_potential = { always = no }
+	allow = { always = no }
+	category = rgo_building_category
+	build_time = rural_build_time
+}
+
+REPLACE:fiber_crops_farm = {
+	is_foreign = no
+	max_levels = 0
+	pop_type = laborers
+	employment_size = rural_peasant_produce_employment
+	rural_settlement = no
+	town = no
+	city = no
+	country_potential = { always = no }
+	location_potential = { always = no }
+	allow = { always = no }
+	category = rgo_building_category
+	build_time = rural_build_time
+}
+
+REPLACE:sheep_farms = {
+	is_foreign = no
+	max_levels = 0
+	pop_type = laborers
+	employment_size = rural_peasant_produce_employment
+	rural_settlement = no
+	town = no
+	city = no
+	country_potential = { always = no }
+	location_potential = { always = no }
+	allow = { always = no }
+	category = rgo_building_category
+	build_time = rural_build_time
+}

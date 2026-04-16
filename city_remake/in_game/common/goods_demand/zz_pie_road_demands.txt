@@ -1,0 +1,63 @@
+REPLACE:build_gravel_road_demand = {
+	lumber = 1.5
+	masonry = 2.5
+	sand = 1.0
+	tools = 0.25
+	category = building_construction
+}
+
+REPLACE:maintain_gravel_road_demand = {
+	sand = 0.01
+	masonry = 0.02
+	tools = 0.01
+	category = building_maintenance
+}
+
+REPLACE:build_paved_road_demand = {
+	lumber = 1.5
+	masonry = 3.0
+	sand = 1.0
+	tools = 0.5
+	category = building_construction
+}
+
+REPLACE:maintain_paved_road_demand = {
+	sand = 0.01
+	masonry = 0.04
+	tools = 0.015
+	category = building_maintenance
+}
+
+REPLACE:build_modern_road_demand = {
+	lumber = 1.0
+	masonry = 3.0
+	sand = 1.0
+	tools = 0.75
+	steel = 0.5
+	category = building_construction
+}
+
+REPLACE:maintain_modern_road_demand = {
+	sand = 0.012
+	masonry = 0.04
+	tools = 0.02
+	steel = 0.02
+	category = building_maintenance
+}
+
+REPLACE:build_railroad_demand = {
+	lumber = 1.0
+	masonry = 2.0
+	sand = 0.75
+	tools = 1.0
+	steel = 2.0
+	category = building_construction
+}
+
+REPLACE:maintain_railroad_demand = {
+	sand = 0.01
+	masonry = 0.03
+	tools = 0.03
+	steel = 0.05
+	category = building_maintenance
+}

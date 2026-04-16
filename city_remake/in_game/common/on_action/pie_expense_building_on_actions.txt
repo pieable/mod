@@ -1,0 +1,9 @@
+monthly_country_pulse = {
+	trigger = {
+		country_type = location
+		exists = capital
+	}
+	effect = {
+		pie_expense_building_level_balance = yes
+	}
+}

@@ -1,0 +1,116 @@
+pie_ab_precompute_best_building = {
+	save_scope_as = pie_ab_loc
+	owner = {
+		save_scope_as = pie_ab_owner
+
+		scope:pie_ab_loc = {
+			set_variable = { name = pie_ab_best_profit value = 0 }
+			remove_variable = pie_ab_best_bt
+			remove_variable = pie_ab_best_cost
+			clear_variable_list = pie_ab_candidate_buildings
+		}
+
+		every_buildable_building_type = {
+			limit = {
+				is_special_building = no
+				NOT = {
+					scope:pie_ab_owner = {
+						building_type_is_obsolete = prev
+					}
+				}
+				NOT = { building_category = estate_category }
+				scope:pie_ab_owner = {
+					can_build_building = prev
+				}
+				scope:pie_ab_loc = {
+					can_build_building = prev
+					has_building = prev
+					"building(prev|scope:pie_ab_owner)" = {
+						pie_ab_remaining_build_capacity > 0
+					}
+				}
+				NOT = {
+					any_construction_material_for_building_type = {
+						NOT = {
+							scope:pie_ab_loc = {
+								is_produced_in_location_market = prev
+							}
+						}
+					}
+				}
+			}
+			scope:pie_ab_loc = {
+				add_to_variable_list = {
+					name = pie_ab_candidate_buildings
+					target = prev
+				}
+			}
+		}
+
+		every_buildable_building_type = {
+			limit = {
+				is_special_building = no
+				NOT = {
+					scope:pie_ab_owner = {
+						building_type_is_obsolete = prev
+					}
+				}
+				NOT = { building_category = estate_category }
+				scope:pie_ab_owner = {
+					can_build_building = prev
+				}
+				scope:pie_ab_loc = {
+					can_build_building = prev
+					NOT = { has_building = prev }
+				}
+				NOT = {
+					any_construction_material_for_building_type = {
+						NOT = {
+							scope:pie_ab_loc = {
+								is_produced_in_location_market = prev
+							}
+						}
+					}
+				}
+			}
+			scope:pie_ab_loc = {
+				add_to_variable_list = {
+					name = pie_ab_candidate_buildings
+					target = prev
+				}
+			}
+		}
+	}
+}
+
+pie_ab_queue_precompute_enabled_locations = {
+	clear_variable_list = pie_ab_locations
+	clear_variable_list = pie_ab_trigger
+
+	every_owned_location = {
+		limit = {
+			has_variable = pie_ab_auto_build
+			num_civil_constructions = 0
+		}
+		pie_ab_precompute_best_building = yes
+		ROOT = {
+			add_to_variable_list = {
+				name = pie_ab_locations
+				target = prev
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			any_in_list = {
+				variable = pie_ab_locations
+				always = yes
+			}
+		}
+		add_to_variable_list = {
+			name = pie_ab_trigger
+			target = this
+		}
+	}
+}

@@ -1,7 +1,10 @@
 ﻿REPLACE:city = {
 	rank_modifier = {
+		local_max_rgo_size_modifier = 1.0
 		local_construction_speed = 0.25
 		local_integration_speed_modifier = -0.5
+		local_migration_attraction = 0.1
+		local_peasant_enfranchisment = 0.25
 		max_constructions_at_same_time = 1
 	}
 
@@ -32,46 +35,6 @@
 			}
 		}
 		custom_tooltip = {
-			text = pie_manual_city_market_square_tt
-			has_building_with_at_least_one_level = pie_urban_market_square
-		}
-		custom_tooltip = {
-			text = pie_manual_city_civic_center_tt
-			has_building_with_at_least_one_level = pie_urban_civic_center
-		}
-		custom_tooltip = {
-			text = pie_manual_city_church_quarter_tt
-			has_building_with_at_least_one_level = pie_urban_church_quarter
-		}
-		custom_tooltip = {
-			text = pie_manual_city_guild_quarter_tt
-			has_building_with_at_least_one_level = pie_urban_guild_quarter
-		}
-		custom_tooltip = {
-			text = pie_manual_city_walls_tt
-			has_building_with_at_least_one_level = pie_urban_city_walls
-		}
-		custom_tooltip = {
-			text = pie_manual_city_warehouse_tt
-			has_building_with_at_least_one_level = pie_urban_warehouse
-		}
-		custom_tooltip = {
-			text = pie_manual_city_hospital_tt
-			has_building_with_at_least_one_level = hospital
-		}
-		custom_tooltip = {
-			text = pie_manual_city_aqueduct_tt
-			has_building_with_at_least_one_level = pie_urban_aqueduct
-		}
-		custom_tooltip = {
-			text = pie_manual_city_sewer_tt
-			has_building_with_at_least_one_level = pie_urban_sewer
-		}
-		custom_tooltip = {
-			text = pie_manual_city_relief_house_tt
-			has_building_with_at_least_one_level = pie_urban_relief_house
-		}
-		custom_tooltip = {
 			text = pie_manual_city_path_tt
 			OR = {
 				pie_city_agricultural_requirements = yes
@@ -97,7 +60,9 @@
 
 REPLACE:town = {
 	rank_modifier = {
+		local_max_rgo_size_modifier = 1.0
 		local_integration_speed_modifier = -0.25
+		local_migration_attraction = 0.05
 		local_peasant_enfranchisment = 0.1
 	}
 

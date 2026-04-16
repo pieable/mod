@@ -1,0 +1,25 @@
+REPLACE:laborers = {
+	color = pop_laborers
+
+	editor = 1.0
+
+	assimilation_conversion_factor = 0.5
+
+	pop_food_consumption = 1.0
+
+	city_graphics = 0.05
+
+	has_cap = yes
+
+	promotion_factor = 1.5
+
+	migration_factor = 0.1
+
+	dhimmi_estate = { is_dhimmi = yes }
+	tribes_estate = { is_gaelic_clans = yes }
+	peasants_estate = {}
+
+	literacy_impact = {
+		local_production_efficiency = medium_production_efficiency_bonus
+	}
+}

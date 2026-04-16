@@ -1,0 +1,50 @@
+monthly_country_pulse = {
+	on_actions = {
+		pie_ab_auto_build_monthly
+	}
+}
+
+pie_ab_auto_build_monthly = {
+	trigger = {
+		is_ai = no
+	}
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_profit_threshold } }
+			set_variable = { name = pie_ab_profit_threshold value = 0 }
+		}
+		if = {
+			limit = { NOT = { has_variable = pie_ab_gold_limit } }
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+
+		set_variable = { name = pie_ab_spent value = 0 }
+		every_owned_location = {
+			limit = {
+				has_variable = pie_ab_auto_build
+				has_variable = pie_ab_best_bt
+				has_variable = pie_ab_best_cost
+				can_build_building = var:pie_ab_best_bt
+				num_civil_constructions = 0
+				OR = {
+					NOT = { owner = { has_variable = pie_ab_profit_threshold } }
+					var:pie_ab_best_profit >= owner.var:pie_ab_profit_threshold
+				}
+			}
+			if = {
+				limit = {
+					owner = { gold >= prev.pie_ab_min_gold_with_spent }
+				}
+				construct_building = {
+					building_type = var:pie_ab_best_bt
+				}
+				owner = {
+					change_variable = { name = pie_ab_spent add = prev.var:pie_ab_best_cost }
+				}
+			}
+		}
+		remove_variable = pie_ab_spent
+
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}

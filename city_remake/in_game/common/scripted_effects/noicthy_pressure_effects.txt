@@ -1,0 +1,113 @@
+noicthy_update_pressure = {
+	set_local_variable = { name = noicthy_pressure value = 0 }
+	set_local_variable = { name = noicthy_leader_tax value = country_tax_base }
+
+	if = {
+		limit = { local_var:noicthy_leader_tax > 0 }
+		save_scope_as = noicthy_pressure_leader
+
+		every_subject = {
+			limit = {
+				at_war = yes
+				has_limited_diplomacy = yes
+				is_fighting_war_together_with = scope:noicthy_pressure_leader
+			}
+
+			set_local_variable = {
+				name = noicthy_contribution
+				value = {
+					add = war_exhaustion
+					multiply = country_tax_base
+					divide = local_var:noicthy_leader_tax
+					multiply = 0.001
+				}
+			}
+			set_local_variable = {
+				name = noicthy_contribution_check
+				value = { add = local_var:noicthy_contribution multiply = 1000 }
+			}
+			if = {
+				limit = { local_var:noicthy_contribution_check >= 1 }
+				change_local_variable = { name = noicthy_pressure add = local_var:noicthy_contribution }
+			}
+		}
+
+		every_war = {
+			limit = {
+				is_in_war = scope:noicthy_pressure_leader
+				OR = {
+					attacker_leader = { this = scope:noicthy_pressure_leader }
+					defender_leader = { this = scope:noicthy_pressure_leader }
+				}
+			}
+
+			if = {
+				limit = { attacker_leader = { this = scope:noicthy_pressure_leader } }
+				defender_leader = { save_scope_as = noicthy_war_enemy_leader }
+			}
+			else = {
+				attacker_leader = { save_scope_as = noicthy_war_enemy_leader }
+			}
+
+			every_war_participant = {
+				limit = {
+					NOT = { this = scope:noicthy_pressure_leader }
+					NOT = { is_subject_of = scope:noicthy_pressure_leader }
+					is_fighting_war_together_with = scope:noicthy_pressure_leader
+					is_member_of_international_organization_of_type = {
+						type = coalition
+						target = scope:noicthy_war_enemy_leader
+					}
+				}
+
+				set_local_variable = {
+					name = noicthy_contribution
+					value = {
+						add = war_exhaustion
+						subtract = 5
+						multiply = country_tax_base
+						divide = local_var:noicthy_leader_tax
+						multiply = 0.001
+					}
+				}
+				set_local_variable = {
+					name = noicthy_contribution_check
+					value = { add = local_var:noicthy_contribution multiply = 1000 }
+				}
+				if = {
+					limit = {
+						OR = {
+							local_var:noicthy_contribution_check >= 1
+							NOT = { local_var:noicthy_contribution_check > -1 }
+						}
+					}
+					change_local_variable = { name = noicthy_pressure add = local_var:noicthy_contribution }
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { local_var:noicthy_pressure > 1 }
+		set_local_variable = { name = noicthy_pressure value = 1 }
+	}
+	if = {
+		limit = { NOT = { local_var:noicthy_pressure > -1 } }
+		set_local_variable = { name = noicthy_pressure value = -1 }
+	}
+
+	remove_country_modifier = noicthy_war_momentum_diplomatic_pressure
+	if = {
+		limit = {
+			OR = {
+				local_var:noicthy_pressure > 0
+				NOT = { local_var:noicthy_pressure >= 0 }
+			}
+		}
+		add_country_modifier = {
+			modifier = noicthy_war_momentum_diplomatic_pressure
+			days = -1
+			size = local_var:noicthy_pressure
+		}
+	}
+}

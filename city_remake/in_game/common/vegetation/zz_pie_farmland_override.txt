@@ -1,0 +1,19 @@
+REPLACE:farmland = {
+	color = terrain_farmlands
+	movement_cost = 1.10
+	proximity = -0.05
+	location_modifier = {
+		local_road_building_time = 0.20
+		local_population_capacity = 100
+		local_monthly_development_modifier = 0.10
+		local_monthly_food_modifier = 0.33
+		supply_limit = 5
+	}
+
+	colonial_migration_size_modifier = 0.1
+
+	audio_tags = {
+		masDataVegetationDensity = 0.3
+	}
+	debug_color = rgb { 0 255 0 }
+}

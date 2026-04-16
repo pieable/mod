@@ -1,0 +1,103 @@
+@noicthy_version = 201
+
+noicthy_monthly_update = {
+	if = {
+		limit = { at_war = yes }
+
+		set_local_variable = { name = noicthy_mil_strength value = military_strength }
+		set_local_variable = { name = noicthy_reg_capacity value = regular_army_size }
+		set_local_variable = { name = noicthy_raw_manpower value = manpower }
+		set_local_variable = { name = noicthy_max_manpower value = max_manpower }
+
+		set_local_variable = {
+			name = noicthy_effective_army
+			value = { add = local_var:noicthy_mil_strength subtract = local_var:noicthy_max_manpower }
+		}
+		set_local_variable = {
+			name = noicthy_manpower_cap
+			value = { add = local_var:noicthy_reg_capacity multiply = 4 }
+		}
+		set_local_variable = { name = noicthy_effective_manpower value = local_var:noicthy_raw_manpower }
+		if = {
+			limit = { local_var:noicthy_raw_manpower > local_var:noicthy_manpower_cap }
+			set_local_variable = { name = noicthy_effective_manpower value = local_var:noicthy_manpower_cap }
+		}
+
+		set_local_variable = {
+			name = noicthy_effective_strength
+			value = { add = local_var:noicthy_effective_army add = local_var:noicthy_effective_manpower }
+		}
+
+		noicthy_update_peaks = yes
+		noicthy_update_exhaustion = yes
+		noicthy_update_army = yes
+		noicthy_update_pressure = yes
+		noicthy_update_territory = yes
+	}
+	else = {
+		noicthy_cleanup = yes
+	}
+}
+
+noicthy_update_peaks = {
+	if = {
+		limit = { NOT = { has_variable = noicthy_potential_peak } }
+		set_variable = { name = noicthy_potential_peak value = local_var:noicthy_effective_strength }
+	}
+	if = {
+		limit = { local_var:noicthy_effective_strength > var:noicthy_potential_peak }
+		set_variable = { name = noicthy_potential_peak value = local_var:noicthy_effective_strength }
+	}
+}
+
+noicthy_update_army = {
+	noicthy_calculate_army_penalty = yes
+}
+
+noicthy_cleanup = {
+	remove_variable = noicthy_war_momentum_army_size
+	remove_variable = noicthy_potential_peak
+	remove_variable = noicthy_army_peak
+	remove_variable = noicthy_manpower_peak
+	remove_variable = noicthy_was_auto_conquered
+
+	remove_country_modifier = noicthy_war_momentum_army
+	remove_country_modifier = noicthy_war_momentum_army_exhaustion
+	remove_country_modifier = noicthy_war_momentum_diplomatic_pressure
+	remove_country_modifier = noicthy_war_momentum_occupation
+	remove_country_modifier = noicthy_war_momentum_capital_fallen
+
+	capital ?= {
+		remove_location_modifier = noicthy_war_momentum_capital
+	}
+}
+
+noicthy_init = {
+	set_global_variable = { name = noicthy_rebuilding value = 1 }
+
+	every_ownable_location = {
+		limit = {
+			OR = {
+				has_location_modifier = noicthy_war_momentum_capital
+				has_variable = noicthy_original_owner
+			}
+		}
+		remove_location_modifier = noicthy_war_momentum_capital
+		remove_variable = noicthy_original_owner
+	}
+
+	every_country = {
+		limit = { has_variable = noicthy_potential_peak }
+		remove_variable = noicthy_potential_peak
+		remove_variable = noicthy_army_peak
+		remove_variable = noicthy_manpower_peak
+	}
+
+	location:bouvet_island = {
+		remove_location_modifier = noicthy_active
+		add_location_modifier = { modifier = noicthy_active days = -1 }
+		set_variable = { name = noicthy_version value = @noicthy_version }
+	}
+
+	remove_global_variable = noicthy_rebuilding
+}

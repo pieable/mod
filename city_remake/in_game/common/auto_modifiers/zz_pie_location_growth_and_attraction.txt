@@ -1,0 +1,67 @@
+pie_location_wealth_attraction_1 = {
+	type = location
+	category = location
+	hide_effects = yes
+	potential_trigger = {
+		location_tax_base >= 5
+	}
+	local_migration_attraction = 0.025
+}
+
+pie_location_wealth_attraction_2 = {
+	type = location
+	category = location
+	hide_effects = yes
+	potential_trigger = {
+		location_tax_base >= 15
+	}
+	local_migration_attraction = 0.025
+}
+
+pie_location_wealth_attraction_3 = {
+	type = location
+	category = location
+	hide_effects = yes
+	potential_trigger = {
+		location_tax_base >= 30
+	}
+	local_migration_attraction = 0.04
+}
+
+pie_location_wealth_attraction_4 = {
+	type = location
+	category = location
+	hide_effects = yes
+	potential_trigger = {
+		location_tax_base >= 60
+	}
+	local_migration_attraction = 0.06
+}
+
+pie_food_secure_growth = {
+	type = location
+	category = location
+	hide_effects = yes
+	potential_trigger = {
+		province = {
+			province_food_percentage >= 0.5
+			province_monthly_food_production >= 100
+			NOT = { province_food_percentage >= 1.0 }
+		}
+	}
+	local_population_growth = 0.0002
+}
+
+pie_food_abundant_growth = {
+	type = location
+	category = location
+	hide_effects = yes
+	potential_trigger = {
+		province = {
+			province_food_percentage >= 1.0
+			province_monthly_food_production >= 150
+		}
+	}
+	local_population_growth = 0.0004
+	local_migration_attraction = 0.05
+}

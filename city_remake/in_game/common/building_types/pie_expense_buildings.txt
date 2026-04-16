@@ -1,0 +1,295 @@
+pie_court_expense_building = {
+	is_foreign = no
+	pop_type = nobles
+	max_levels = 99999
+
+	category = government_category
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	build_time = large_capital_build_time
+	employment_size = 0.020
+
+	country_potential = {
+		always = yes
+	}
+	allow = {
+		always = no
+	}
+	can_destroy = {
+		always = no
+	}
+
+	location_potential = {
+		is_capital = yes
+	}
+	remove_if = {
+		location = {
+			is_capital = no
+		}
+	}
+
+	modifier = {
+		free_building_levels = 1.0
+		local_trades_per_burgher = 0.05
+		local_crown_estate_power = 0.02
+	}
+
+	unique_production_methods = {
+		pie_court_expense_household = {
+			furniture = 0.12
+			fine_cloth = 0.10
+			jewelry = 0.04
+			silver = 0.02
+			goods_gold = 0.01
+			category = building_maintenance
+		}
+	}
+
+	unique_production_methods = {
+		pie_court_expense_chancery = {
+			paper = 0.14
+			books = 0.08
+			beeswax = 0.05
+			incense = 0.03
+			category = building_maintenance
+		}
+	}
+
+	unique_production_methods = {
+		pie_court_expense_feasts = {
+			livestock = 0.14
+			fish = 0.08
+			fruit = 0.08
+			sugar = 0.04
+			wine = 0.10
+			category = building_maintenance
+
+			allow = {
+				NOT = {
+					OR = {
+						religion = religion:jain
+						religion = religion:sikhism
+						religion.group = religion_group:muslim
+					}
+				}
+			}
+		}
+		pie_court_expense_feasts_no_alcohol = {
+			livestock = 0.16
+			fish = 0.10
+			fruit = 0.10
+			sugar = 0.08
+			category = building_maintenance
+
+			allow = {
+				OR = {
+					religion = religion:jain
+					religion = religion:sikhism
+					religion.group = religion_group:muslim
+				}
+			}
+		}
+	}
+}
+
+pie_diplomatic_expense_building = {
+	is_foreign = no
+	pop_type = nobles
+	max_levels = 99999
+
+	category = government_category
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	build_time = large_capital_build_time
+	employment_size = 0.012
+
+	country_potential = {
+		always = yes
+	}
+	allow = {
+		always = no
+	}
+	can_destroy = {
+		always = no
+	}
+
+	location_potential = {
+		is_capital = yes
+	}
+	remove_if = {
+		location = {
+			is_capital = no
+		}
+	}
+
+	modifier = {
+		free_building_levels = 1.0
+		local_trades_per_burgher = 0.05
+		local_merchant_capacity = 0.15
+	}
+	capital_country_modifier = {
+		max_diplomats = 0.005
+	}
+
+	unique_production_methods = {
+		pie_diplomatic_expense_chancery = {
+			paper = 0.18
+			books = 0.10
+			horses = 0.10
+			cloth = 0.06
+			category = building_maintenance
+		}
+	}
+
+	unique_production_methods = {
+		pie_diplomatic_expense_gifts = {
+			fine_cloth = 0.08
+			jewelry = 0.08
+			porcelain = 0.04
+			lacquerware = 0.03
+			silver = 0.02
+			goods_gold = 0.01
+			category = building_maintenance
+		}
+	}
+
+	unique_production_methods = {
+		pie_diplomatic_expense_receptions = {
+			livestock = 0.10
+			fruit = 0.08
+			sugar = 0.04
+			wine = 0.08
+			furniture = 0.06
+			category = building_maintenance
+
+			allow = {
+				NOT = {
+					OR = {
+						religion = religion:jain
+						religion = religion:sikhism
+						religion.group = religion_group:muslim
+					}
+				}
+			}
+		}
+		pie_diplomatic_expense_receptions_no_alcohol = {
+			livestock = 0.12
+			fruit = 0.10
+			sugar = 0.08
+			furniture = 0.08
+			category = building_maintenance
+
+			allow = {
+				OR = {
+					religion = religion:jain
+					religion = religion:sikhism
+					religion.group = religion_group:muslim
+				}
+			}
+		}
+	}
+}
+
+pie_stability_expense_building = {
+	is_foreign = no
+	pop_type = clergy
+	max_levels = 99999
+
+	category = government_category
+
+	rural_settlement = yes
+	town = yes
+	city = yes
+
+	build_time = large_capital_build_time
+	employment_size = 0.018
+
+	country_potential = {
+		always = yes
+	}
+	allow = {
+		always = no
+	}
+	can_destroy = {
+		always = no
+	}
+
+	location_potential = {
+		is_capital = yes
+	}
+	remove_if = {
+		location = {
+			is_capital = no
+		}
+	}
+
+	modifier = {
+		free_building_levels = 1.0
+		local_food_capacity = 25
+		local_population_capacity = 0.02
+	}
+
+	unique_production_methods = {
+		pie_stability_expense_relief = {
+			wheat = 0.08
+			rice = 0.08
+			millet = 0.08
+			legumes = 0.06
+			livestock = 0.04
+			category = building_maintenance
+		}
+	}
+
+	unique_production_methods = {
+		pie_stability_expense_administration = {
+			paper = 0.12
+			books = 0.06
+			cloth = 0.06
+			beeswax = 0.04
+			category = building_maintenance
+		}
+	}
+
+	unique_production_methods = {
+		pie_stability_expense_order_pre_gunpowder = {
+			weaponry = 0.12
+			horses = 0.08
+			category = building_maintenance
+
+			allow = {
+				NOT = {
+					current_age_or_later = { age = age_2_renaissance }
+				}
+			}
+		}
+		pie_stability_expense_order_early_gunpowder = {
+			weaponry = 0.08
+			horses = 0.08
+			cannons = 0.04
+			category = building_maintenance
+
+			allow = {
+				current_age_or_later = { age = age_2_renaissance }
+				NOT = {
+					current_age_or_later = { age = age_3_discovery }
+				}
+			}
+		}
+		pie_stability_expense_order_gunpowder = {
+			firearms = 0.10
+			horses = 0.06
+			cannons = 0.05
+			category = building_maintenance
+
+			allow = {
+				current_age_or_later = { age = age_3_discovery }
+			}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+pie_ab_remaining_build_capacity = {
+	value = building_max_level
+	subtract = building_level
+	subtract = building_levels_under_construction
+}
+
+pie_ab_min_gold_with_spent = {
+	value = var:pie_ab_best_cost
+	if = {
+		limit = { owner = { has_variable = pie_ab_gold_limit } }
+		add = owner.var:pie_ab_gold_limit
+	}
+	if = {
+		limit = { owner = { has_variable = pie_ab_spent } }
+		add = owner.var:pie_ab_spent
+	}
+}

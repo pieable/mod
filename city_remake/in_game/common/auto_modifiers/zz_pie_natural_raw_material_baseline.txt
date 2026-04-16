@@ -1,0 +1,8 @@
+pie_natural_raw_material_baseline = {
+	requires_real = no
+	potential_trigger = { always = yes }
+	hide_effects = no
+	alert = no
+
+	global_raw_material_output = -0.50
+}

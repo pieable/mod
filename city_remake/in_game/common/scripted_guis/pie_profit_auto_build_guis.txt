@@ -1,0 +1,348 @@
+pie_ab_sgui_compare_new_profit = {
+	scope = location
+	saved_scopes = { bt profit cost }
+	effect = {
+		if = {
+			limit = {
+				scope:profit > var:pie_ab_best_profit
+				can_build_building = scope:bt
+				OR = {
+					NOT = { owner = { has_variable = pie_ab_profit_threshold } }
+					scope:profit >= owner.var:pie_ab_profit_threshold
+				}
+				OR = {
+					NOT = { has_building = scope:bt }
+					"building(scope:bt|owner)" = {
+						pie_ab_remaining_build_capacity > 0
+					}
+				}
+			}
+			set_variable = { name = pie_ab_best_profit value = scope:profit }
+			set_variable = { name = pie_ab_best_bt value = scope:bt }
+			set_variable = { name = pie_ab_best_cost value = scope:cost }
+		}
+	}
+}
+
+pie_ab_sgui_sync_cost = {
+	scope = location
+	saved_scopes = { cost }
+	is_valid = {
+		has_variable = pie_ab_best_bt
+	}
+	effect = {
+		set_variable = { name = pie_ab_best_cost value = scope:cost }
+	}
+}
+
+pie_ab_sgui_precompute_all = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_profit_threshold } }
+			set_variable = { name = pie_ab_profit_threshold value = 0 }
+		}
+		if = {
+			limit = { NOT = { has_variable = pie_ab_gold_limit } }
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}
+
+pie_ab_sgui_toggle_all_auto_build = {
+	scope = country
+	effect = {
+		if = {
+			limit = {
+				any_owned_location = {
+					has_variable = pie_ab_auto_build
+				}
+			}
+			every_owned_location = {
+				limit = { has_variable = pie_ab_auto_build }
+				remove_variable = pie_ab_auto_build
+			}
+		}
+		else = {
+			every_owned_location = {
+				set_variable = { name = pie_ab_auto_build value = 1 }
+			}
+		}
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}
+
+pie_ab_sgui_toggle_core_auto_build = {
+	scope = country
+	effect = {
+		if = {
+			limit = {
+				any_owned_location = {
+					has_variable = pie_ab_auto_build
+					integration_level = core
+				}
+			}
+			every_owned_location = {
+				limit = {
+					has_variable = pie_ab_auto_build
+					integration_level = core
+				}
+				remove_variable = pie_ab_auto_build
+			}
+		}
+		else = {
+			every_owned_location = {
+				limit = { integration_level = core }
+				set_variable = { name = pie_ab_auto_build value = 1 }
+			}
+		}
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}
+
+pie_ab_sgui_disable_all_auto_build = {
+	scope = country
+	effect = {
+		every_owned_location = {
+			limit = { has_variable = pie_ab_auto_build }
+			remove_variable = pie_ab_auto_build
+		}
+		clear_variable_list = pie_ab_locations
+		clear_variable_list = pie_ab_trigger
+	}
+}
+
+pie_ab_sgui_profit_threshold_inc = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_profit_threshold } }
+			set_variable = { name = pie_ab_profit_threshold value = 0 }
+		}
+		if = {
+			limit = { var:pie_ab_profit_threshold < 5 }
+			change_variable = { name = pie_ab_profit_threshold add = 0.01 }
+		}
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}
+
+pie_ab_sgui_profit_threshold_inc_mid = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_profit_threshold } }
+			set_variable = { name = pie_ab_profit_threshold value = 0 }
+		}
+		if = {
+			limit = { var:pie_ab_profit_threshold < 5 }
+			change_variable = { name = pie_ab_profit_threshold add = 0.1 }
+		}
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}
+
+pie_ab_sgui_profit_threshold_inc_big = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_profit_threshold } }
+			set_variable = { name = pie_ab_profit_threshold value = 0 }
+		}
+		if = {
+			limit = { var:pie_ab_profit_threshold < 5 }
+			change_variable = { name = pie_ab_profit_threshold add = 1 }
+		}
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}
+
+pie_ab_sgui_profit_threshold_dec = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_profit_threshold } }
+			set_variable = { name = pie_ab_profit_threshold value = 0 }
+		}
+		if = {
+			limit = { var:pie_ab_profit_threshold >= 0.01 }
+			change_variable = { name = pie_ab_profit_threshold add = -0.01 }
+		}
+		else = {
+			set_variable = { name = pie_ab_profit_threshold value = 0 }
+		}
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}
+
+pie_ab_sgui_profit_threshold_dec_mid = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_profit_threshold } }
+			set_variable = { name = pie_ab_profit_threshold value = 0 }
+		}
+		if = {
+			limit = { var:pie_ab_profit_threshold >= 0.1 }
+			change_variable = { name = pie_ab_profit_threshold add = -0.1 }
+		}
+		else = {
+			set_variable = { name = pie_ab_profit_threshold value = 0 }
+		}
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}
+
+pie_ab_sgui_profit_threshold_dec_big = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_profit_threshold } }
+			set_variable = { name = pie_ab_profit_threshold value = 0 }
+		}
+		if = {
+			limit = { var:pie_ab_profit_threshold >= 1 }
+			change_variable = { name = pie_ab_profit_threshold add = -1 }
+		}
+		else = {
+			set_variable = { name = pie_ab_profit_threshold value = 0 }
+		}
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}
+
+pie_ab_sgui_profit_threshold_reset = {
+	scope = country
+	effect = {
+		set_variable = { name = pie_ab_profit_threshold value = 0 }
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}
+
+pie_ab_sgui_profit_threshold_max = {
+	scope = country
+	effect = {
+		set_variable = { name = pie_ab_profit_threshold value = 5 }
+		pie_ab_queue_precompute_enabled_locations = yes
+	}
+}
+
+pie_ab_sgui_gold_limit_inc = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_gold_limit } }
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+		change_variable = { name = pie_ab_gold_limit add = 10 }
+	}
+}
+
+pie_ab_sgui_gold_limit_inc_big = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_gold_limit } }
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+		change_variable = { name = pie_ab_gold_limit add = 100 }
+	}
+}
+
+pie_ab_sgui_gold_limit_inc_ctrl = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_gold_limit } }
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+		change_variable = { name = pie_ab_gold_limit add = 500 }
+	}
+}
+
+pie_ab_sgui_gold_limit_inc_shift = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_gold_limit } }
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+		change_variable = { name = pie_ab_gold_limit add = 5000 }
+	}
+}
+
+pie_ab_sgui_gold_limit_dec = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_gold_limit } }
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+		if = {
+			limit = { var:pie_ab_gold_limit >= 10 }
+			change_variable = { name = pie_ab_gold_limit add = -10 }
+		}
+		else = {
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+	}
+}
+
+pie_ab_sgui_gold_limit_dec_big = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_gold_limit } }
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+		if = {
+			limit = { var:pie_ab_gold_limit >= 100 }
+			change_variable = { name = pie_ab_gold_limit add = -100 }
+		}
+		else = {
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+	}
+}
+
+pie_ab_sgui_gold_limit_dec_ctrl = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_gold_limit } }
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+		if = {
+			limit = { var:pie_ab_gold_limit >= 500 }
+			change_variable = { name = pie_ab_gold_limit add = -500 }
+		}
+		else = {
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+	}
+}
+
+pie_ab_sgui_gold_limit_dec_shift = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_gold_limit } }
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+		if = {
+			limit = { var:pie_ab_gold_limit >= 5000 }
+			change_variable = { name = pie_ab_gold_limit add = -5000 }
+		}
+		else = {
+			set_variable = { name = pie_ab_gold_limit value = 0 }
+		}
+	}
+}
+
+pie_ab_sgui_gold_limit_reset = {
+	scope = country
+	effect = {
+		set_variable = { name = pie_ab_gold_limit value = 0 }
+	}
+}

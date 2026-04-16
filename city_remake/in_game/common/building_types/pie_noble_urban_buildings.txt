@@ -29,18 +29,16 @@
 	build_time = estate_build_time
 	price = pie_estate_special_building
 
-	possible_production_methods = {
-		pie_noble_manor_town_maintenance
-	}
+	unique_production_methods = {
+		pie_noble_manor_town_maintenance = {
+			cloth = 0.10
+			paper = 0.10
+			furniture = 0.10
+			fine_cloth = 0.05
+			beeswax = 0.05
 
-	pie_noble_manor_town_maintenance = {
-		cloth = 0.10
-		paper = 0.10
-		furniture = 0.10
-		fine_cloth = 0.05
-		beeswax = 0.05
-
-		category = building_maintenance
+			category = building_maintenance
+		}
 	}
 
 	construction_demand = estate_construct_building
@@ -87,18 +85,16 @@ pie_noble_frontier_town = {
 	build_time = estate_build_time
 	price = pie_estate_special_building
 
-	possible_production_methods = {
-		pie_noble_frontier_town_maintenance
-	}
+	unique_production_methods = {
+		pie_noble_frontier_town_maintenance = {
+			cloth = 0.08
+			paper = 0.05
+			weaponry = 0.05
+			lumber = 0.05
+			tools = 0.05
 
-	pie_noble_frontier_town_maintenance = {
-		cloth = 0.08
-		paper = 0.05
-		weaponry = 0.05
-		lumber = 0.05
-		tools = 0.05
-
-		category = building_maintenance
+			category = building_maintenance
+		}
 	}
 
 	construction_demand = estate_construct_building
@@ -109,7 +105,7 @@ pie_noble_frontier_town = {
 		local_pop_leave_rebels_threshold = -0.02
 		local_nobles_estate_power = 1.0
 		local_peasant_enfranchisment = -0.35
-		local_raw_material_output = 0.2
+		local_production_efficiency = 0.1
 	}
 
 	graphical_tags = { palace }
@@ -146,19 +142,17 @@ pie_noble_court_city = {
 	build_time = estate_build_time
 	price = pie_estate_special_building
 
-	possible_production_methods = {
-		pie_noble_court_city_maintenance
-	}
+	unique_production_methods = {
+		pie_noble_court_city_maintenance = {
+			cloth = 0.15
+			paper = 0.25
+			books = 0.10
+			furniture = 0.15
+			fine_cloth = 0.10
+			beeswax = 0.10
 
-	pie_noble_court_city_maintenance = {
-		cloth = 0.15
-		paper = 0.25
-		books = 0.10
-		furniture = 0.15
-		fine_cloth = 0.10
-		beeswax = 0.10
-
-		category = building_maintenance
+			category = building_maintenance
+		}
 	}
 
 	construction_demand = estate_construct_building
