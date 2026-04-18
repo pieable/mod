@@ -17,6 +17,18 @@ pie_ab_auto_build_monthly = {
 			limit = { NOT = { has_variable = pie_ab_gold_limit } }
 			set_variable = { name = pie_ab_gold_limit value = 0 }
 		}
+		if = {
+			limit = { NOT = { has_variable = pie_ab_infra_min_control } }
+			set_variable = { name = pie_ab_infra_min_control value = 0 }
+		}
+		if = {
+			limit = { NOT = { has_variable = pie_ab_infra_min_wealth } }
+			set_variable = { name = pie_ab_infra_min_wealth value = 0 }
+		}
+		if = {
+			limit = { NOT = { has_variable = pie_ab_infra_min_market_access } }
+			set_variable = { name = pie_ab_infra_min_market_access value = 0 }
+		}
 
 		set_variable = { name = pie_ab_spent value = 0 }
 		every_owned_location = {
@@ -46,5 +58,16 @@ pie_ab_auto_build_monthly = {
 		remove_variable = pie_ab_spent
 
 		pie_ab_queue_precompute_enabled_locations = yes
+
+		if = {
+			limit = { has_variable = pie_ab_auto_infrastructure }
+			every_owned_location = {
+				limit = {
+					pie_ab_basic_infrastructure_filter = yes
+					pie_ab_has_basic_infrastructure_to_build = yes
+				}
+				pie_ab_build_next_basic_infrastructure = yes
+			}
+		}
 	}
 }

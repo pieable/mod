@@ -346,3 +346,157 @@ pie_ab_sgui_gold_limit_reset = {
 		set_variable = { name = pie_ab_gold_limit value = 0 }
 	}
 }
+
+pie_ab_sgui_toggle_infrastructure_auto_build = {
+	scope = country
+	effect = {
+		if = {
+			limit = { NOT = { has_variable = pie_ab_infra_min_control } }
+			set_variable = { name = pie_ab_infra_min_control value = 0 }
+		}
+		if = {
+			limit = { NOT = { has_variable = pie_ab_infra_min_wealth } }
+			set_variable = { name = pie_ab_infra_min_wealth value = 0 }
+		}
+		if = {
+			limit = { NOT = { has_variable = pie_ab_infra_min_market_access } }
+			set_variable = { name = pie_ab_infra_min_market_access value = 0 }
+		}
+		if = {
+			limit = { has_variable = pie_ab_auto_infrastructure }
+			remove_variable = pie_ab_auto_infrastructure
+		}
+		else = {
+			set_variable = { name = pie_ab_auto_infrastructure value = 1 }
+		}
+	}
+}
+
+pie_ab_sgui_infra_control_inc = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_control } } set_variable = { name = pie_ab_infra_min_control value = 0 } }
+		change_variable = { name = pie_ab_infra_min_control add = 0.05 }
+		clamp_variable = { name = pie_ab_infra_min_control max = 1 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_control_inc_big = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_control } } set_variable = { name = pie_ab_infra_min_control value = 0 } }
+		change_variable = { name = pie_ab_infra_min_control add = 0.25 }
+		clamp_variable = { name = pie_ab_infra_min_control max = 1 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_control_dec = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_control } } set_variable = { name = pie_ab_infra_min_control value = 0 } }
+		change_variable = { name = pie_ab_infra_min_control add = -0.05 }
+		clamp_variable = { name = pie_ab_infra_min_control max = 1 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_control_dec_big = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_control } } set_variable = { name = pie_ab_infra_min_control value = 0 } }
+		change_variable = { name = pie_ab_infra_min_control add = -0.25 }
+		clamp_variable = { name = pie_ab_infra_min_control max = 1 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_control_reset = {
+	scope = country
+	effect = {
+		set_variable = { name = pie_ab_infra_min_control value = 0 }
+	}
+}
+
+pie_ab_sgui_infra_wealth_inc = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_wealth } } set_variable = { name = pie_ab_infra_min_wealth value = 0 } }
+		change_variable = { name = pie_ab_infra_min_wealth add = 5 }
+		clamp_variable = { name = pie_ab_infra_min_wealth max = 500 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_wealth_inc_big = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_wealth } } set_variable = { name = pie_ab_infra_min_wealth value = 0 } }
+		change_variable = { name = pie_ab_infra_min_wealth add = 25 }
+		clamp_variable = { name = pie_ab_infra_min_wealth max = 500 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_wealth_dec = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_wealth } } set_variable = { name = pie_ab_infra_min_wealth value = 0 } }
+		change_variable = { name = pie_ab_infra_min_wealth add = -5 }
+		clamp_variable = { name = pie_ab_infra_min_wealth max = 500 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_wealth_dec_big = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_wealth } } set_variable = { name = pie_ab_infra_min_wealth value = 0 } }
+		change_variable = { name = pie_ab_infra_min_wealth add = -25 }
+		clamp_variable = { name = pie_ab_infra_min_wealth max = 500 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_wealth_reset = {
+	scope = country
+	effect = {
+		set_variable = { name = pie_ab_infra_min_wealth value = 0 }
+	}
+}
+
+pie_ab_sgui_infra_market_inc = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_market_access } } set_variable = { name = pie_ab_infra_min_market_access value = 0 } }
+		change_variable = { name = pie_ab_infra_min_market_access add = 0.05 }
+		clamp_variable = { name = pie_ab_infra_min_market_access max = 1 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_market_inc_big = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_market_access } } set_variable = { name = pie_ab_infra_min_market_access value = 0 } }
+		change_variable = { name = pie_ab_infra_min_market_access add = 0.25 }
+		clamp_variable = { name = pie_ab_infra_min_market_access max = 1 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_market_dec = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_market_access } } set_variable = { name = pie_ab_infra_min_market_access value = 0 } }
+		change_variable = { name = pie_ab_infra_min_market_access add = -0.05 }
+		clamp_variable = { name = pie_ab_infra_min_market_access max = 1 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_market_dec_big = {
+	scope = country
+	effect = {
+		if = { limit = { NOT = { has_variable = pie_ab_infra_min_market_access } } set_variable = { name = pie_ab_infra_min_market_access value = 0 } }
+		change_variable = { name = pie_ab_infra_min_market_access add = -0.25 }
+		clamp_variable = { name = pie_ab_infra_min_market_access max = 1 min = 0 }
+	}
+}
+
+pie_ab_sgui_infra_market_reset = {
+	scope = country
+	effect = {
+		set_variable = { name = pie_ab_infra_min_market_access value = 0 }
+	}
+}

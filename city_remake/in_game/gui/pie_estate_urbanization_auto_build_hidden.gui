@@ -1,5 +1,5 @@
 widget = {
-	name = "pie_profit_auto_build_hidden"
+	name = "pie_estate_urbanization_auto_build_hidden"
 	layer = top
 	visible = "[GetPlayer.Exists]"
 	size = { 1 1 }

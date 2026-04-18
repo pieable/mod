@@ -6,6 +6,427 @@ situation_panel = {
 
 			situation_card_expandable = {
 				blockoverride "header_button_onclick" {
+					onclick = "[LateralView.Vars.Toggle( 'pie_auto_build_collapsed' )]"
+				}
+				blockoverride "header_text" {
+					text = "pie_estate_urbanization_auto_build_controls"
+				}
+				blockoverride "header_icon" {
+					texture = "gfx/interface/icons/flat_icons/building_panel/build.dds"
+				}
+				blockoverride "bottom_content" {
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						margin = { 15 10 }
+						spacing = 10
+
+						text_multi = {
+							layoutpolicy_horizontal = expanding
+							text = "pie_estate_urbanization_auto_build_desc"
+							max_width = 500
+							autoresize = yes
+						}
+
+						text_single = {
+							text = "pie_estate_urbanization_profit_auto_build_header"
+							default_format = "#yellow_titles"
+						}
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 5
+
+							adjustable_budget_card = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 58 }
+								blockoverride "top_widget" {
+									hbox = {
+										margin = { 5 0 }
+										spacing = 5
+										tooltip = "pie_estate_urbanization_profit_threshold_tt"
+										icon = {
+											size = { 24 24 }
+											texture = "gfx/interface/icons/resources/gold.dds"
+										}
+										text_single = {
+											layoutpolicy_horizontal = expanding
+											autoresize = no
+											align = left|nobaseline
+											text = "pie_estate_urbanization_profit_threshold"
+										}
+										text_single = {
+											autoresize = yes
+											align = right|nobaseline
+											raw_text = "[GetPlayer.MakeScope.Var('pie_ab_profit_threshold').GetValue|2]"
+										}
+									}
+								}
+								blockoverride "bottom_widget" {
+									hbox = {
+										margin = { 5 0 }
+										spacing = 3
+
+										button_minus = {
+											size = { 22 22 }
+											tooltip = "pie_estate_urbanization_profit_threshold_dec_tt"
+											click_modifiers = {
+												ondefault = "[GetScriptedGui('pie_ab_sgui_profit_threshold_dec').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onctrl = "[GetScriptedGui('pie_ab_sgui_profit_threshold_dec_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onshift = "[GetScriptedGui('pie_ab_sgui_profit_threshold_reset').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											}
+											onrightclick = "[GetScriptedGui('pie_ab_sgui_profit_threshold_dec_mid').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+
+										button_plus = {
+											size = { 22 22 }
+											tooltip = "pie_estate_urbanization_profit_threshold_inc_tt"
+											click_modifiers = {
+												ondefault = "[GetScriptedGui('pie_ab_sgui_profit_threshold_inc').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onctrl = "[GetScriptedGui('pie_ab_sgui_profit_threshold_inc_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onshift = "[GetScriptedGui('pie_ab_sgui_profit_threshold_max').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											}
+											onrightclick = "[GetScriptedGui('pie_ab_sgui_profit_threshold_inc_mid').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+
+										expand = {}
+
+										button_regular = {
+											size = { 105 22 }
+											onclick = "[GetScriptedGui('pie_ab_sgui_precompute_all').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											tooltip = "pie_estate_urbanization_recalc_tt"
+											hbox = {
+												spacing = 3
+												margin = { 3 0 }
+												text_single = {
+													text = "pie_estate_urbanization_recalc"
+													fontsize = 12
+												}
+											}
+										}
+									}
+								}
+							}
+
+							adjustable_budget_card = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 58 }
+								blockoverride "top_widget" {
+									hbox = {
+										margin = { 5 0 }
+										spacing = 5
+										tooltip = "pie_estate_urbanization_gold_limit_tt"
+										icon = {
+											size = { 24 24 }
+											texture = "gfx/interface/icons/resources/gold.dds"
+										}
+										text_single = {
+											layoutpolicy_horizontal = expanding
+											autoresize = no
+											align = left|nobaseline
+											text = "pie_estate_urbanization_gold_limit"
+										}
+										text_single = {
+											autoresize = yes
+											align = right|nobaseline
+											raw_text = "[GetPlayer.MakeScope.Var('pie_ab_gold_limit').GetValue|0]"
+										}
+									}
+								}
+								blockoverride "bottom_widget" {
+									hbox = {
+										margin = { 5 0 }
+										spacing = 3
+
+										button_minus = {
+											size = { 22 22 }
+											tooltip = "pie_estate_urbanization_gold_limit_dec_tt"
+											click_modifiers = {
+												ondefault = "[GetScriptedGui('pie_ab_sgui_gold_limit_dec').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onctrl = "[GetScriptedGui('pie_ab_sgui_gold_limit_dec_ctrl').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onshift = "[GetScriptedGui('pie_ab_sgui_gold_limit_dec_shift').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											}
+											onrightclick = "[GetScriptedGui('pie_ab_sgui_gold_limit_dec_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+
+										button_plus = {
+											size = { 22 22 }
+											tooltip = "pie_estate_urbanization_gold_limit_inc_tt"
+											click_modifiers = {
+												ondefault = "[GetScriptedGui('pie_ab_sgui_gold_limit_inc').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onctrl = "[GetScriptedGui('pie_ab_sgui_gold_limit_inc_ctrl').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onshift = "[GetScriptedGui('pie_ab_sgui_gold_limit_inc_shift').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											}
+											onrightclick = "[GetScriptedGui('pie_ab_sgui_gold_limit_inc_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+
+										expand = {}
+
+										button_regular = {
+											size = { 80 22 }
+											onclick = "[GetScriptedGui('pie_ab_sgui_gold_limit_reset').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											tooltip = "pie_estate_urbanization_gold_limit_reset_tt"
+											hbox = {
+												margin = { 3 0 }
+												text_single = {
+													text = "pie_estate_urbanization_reset"
+													fontsize = 12
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 8
+
+							button_regular = {
+								size = { 170 32 }
+								onclick = "[GetScriptedGui('pie_ab_sgui_toggle_all_auto_build').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								onrightclick = "[GetScriptedGui('pie_ab_sgui_toggle_core_auto_build').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								tooltip = "pie_estate_urbanization_toggle_all_tt"
+								hbox = {
+									margin = { 8 0 }
+									spacing = 5
+									icon = {
+										size = { 18 18 }
+										texture = "gfx/interface/buttons/checkbox_auto.dds"
+										texture_density = 2
+										frame_grid = { 2 1 }
+										frame = 2
+									}
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										align = center|nobaseline
+										text = "pie_estate_urbanization_toggle_all"
+									}
+								}
+							}
+
+							button_regular = {
+								size = { 150 32 }
+								onclick = "[GetScriptedGui('pie_ab_sgui_disable_all_auto_build').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								tooltip = "pie_estate_urbanization_disable_all_tt"
+								hbox = {
+									margin = { 8 0 }
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										align = center|nobaseline
+										text = "pie_estate_urbanization_disable_all"
+									}
+								}
+							}
+
+							expand = {}
+						}
+
+						text_single = {
+							text = "pie_estate_urbanization_basic_infra_header"
+							default_format = "#yellow_titles"
+						}
+
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 8
+
+							button_regular = {
+								size = { 210 32 }
+								onclick = "[GetScriptedGui('pie_ab_sgui_toggle_infrastructure_auto_build').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								tooltip = "pie_estate_urbanization_basic_infra_toggle_tt"
+								hbox = {
+									margin = { 8 0 }
+									spacing = 5
+									icon = {
+										size = { 18 18 }
+										texture = "gfx/interface/buttons/checkbox_auto.dds"
+										texture_density = 2
+										frame_grid = { 2 1 }
+										frame = 2
+									}
+									text_single = {
+										visible = "[GetPlayer.MakeScope.Var('pie_ab_auto_infrastructure').IsSet]"
+										layoutpolicy_horizontal = expanding
+										align = center|nobaseline
+										text = "pie_estate_urbanization_basic_infra_on"
+									}
+									text_single = {
+										visible = "[Not(GetPlayer.MakeScope.Var('pie_ab_auto_infrastructure').IsSet)]"
+										layoutpolicy_horizontal = expanding
+										align = center|nobaseline
+										text = "pie_estate_urbanization_basic_infra_off"
+									}
+								}
+							}
+
+							expand = {}
+						}
+
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							spacing = 5
+
+							adjustable_budget_card = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 58 }
+								blockoverride "top_widget" {
+									hbox = {
+										margin = { 5 0 }
+										spacing = 5
+										tooltip = "pie_estate_urbanization_infra_control_tt"
+										text_single = {
+											layoutpolicy_horizontal = expanding
+											autoresize = no
+											align = left|nobaseline
+											text = "pie_estate_urbanization_infra_control"
+										}
+										text_single = {
+											autoresize = yes
+											align = right|nobaseline
+											raw_text = "[GetPlayer.MakeScope.Var('pie_ab_infra_min_control').GetValue|%0]"
+										}
+									}
+								}
+								blockoverride "bottom_widget" {
+									hbox = {
+										margin = { 5 0 }
+										spacing = 3
+										button_minus = {
+											size = { 22 22 }
+											tooltip = "pie_estate_urbanization_infra_percent_dec_tt"
+											click_modifiers = {
+												ondefault = "[GetScriptedGui('pie_ab_sgui_infra_control_dec').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onctrl = "[GetScriptedGui('pie_ab_sgui_infra_control_dec_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onshift = "[GetScriptedGui('pie_ab_sgui_infra_control_reset').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											}
+										}
+										button_plus = {
+											size = { 22 22 }
+											tooltip = "pie_estate_urbanization_infra_percent_inc_tt"
+											click_modifiers = {
+												ondefault = "[GetScriptedGui('pie_ab_sgui_infra_control_inc').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onctrl = "[GetScriptedGui('pie_ab_sgui_infra_control_inc_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											}
+										}
+									}
+								}
+							}
+
+							adjustable_budget_card = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 58 }
+								blockoverride "top_widget" {
+									hbox = {
+										margin = { 5 0 }
+										spacing = 5
+										tooltip = "pie_estate_urbanization_infra_wealth_tt"
+										text_single = {
+											layoutpolicy_horizontal = expanding
+											autoresize = no
+											align = left|nobaseline
+											text = "pie_estate_urbanization_infra_wealth"
+										}
+										text_single = {
+											autoresize = yes
+											align = right|nobaseline
+											raw_text = "[GetPlayer.MakeScope.Var('pie_ab_infra_min_wealth').GetValue|0]"
+										}
+									}
+								}
+								blockoverride "bottom_widget" {
+									hbox = {
+										margin = { 5 0 }
+										spacing = 3
+										button_minus = {
+											size = { 22 22 }
+											tooltip = "pie_estate_urbanization_infra_wealth_dec_tt"
+											click_modifiers = {
+												ondefault = "[GetScriptedGui('pie_ab_sgui_infra_wealth_dec').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onctrl = "[GetScriptedGui('pie_ab_sgui_infra_wealth_dec_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onshift = "[GetScriptedGui('pie_ab_sgui_infra_wealth_reset').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											}
+										}
+										button_plus = {
+											size = { 22 22 }
+											tooltip = "pie_estate_urbanization_infra_wealth_inc_tt"
+											click_modifiers = {
+												ondefault = "[GetScriptedGui('pie_ab_sgui_infra_wealth_inc').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onctrl = "[GetScriptedGui('pie_ab_sgui_infra_wealth_inc_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											}
+										}
+									}
+								}
+							}
+
+							adjustable_budget_card = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 58 }
+								blockoverride "top_widget" {
+									hbox = {
+										margin = { 5 0 }
+										spacing = 5
+										tooltip = "pie_estate_urbanization_infra_market_tt"
+										text_single = {
+											layoutpolicy_horizontal = expanding
+											autoresize = no
+											align = left|nobaseline
+											text = "pie_estate_urbanization_infra_market"
+										}
+										text_single = {
+											autoresize = yes
+											align = right|nobaseline
+											raw_text = "[GetPlayer.MakeScope.Var('pie_ab_infra_min_market_access').GetValue|%0]"
+										}
+									}
+								}
+								blockoverride "bottom_widget" {
+									hbox = {
+										margin = { 5 0 }
+										spacing = 3
+										button_minus = {
+											size = { 22 22 }
+											tooltip = "pie_estate_urbanization_infra_percent_dec_tt"
+											click_modifiers = {
+												ondefault = "[GetScriptedGui('pie_ab_sgui_infra_market_dec').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onctrl = "[GetScriptedGui('pie_ab_sgui_infra_market_dec_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onshift = "[GetScriptedGui('pie_ab_sgui_infra_market_reset').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											}
+										}
+										button_plus = {
+											size = { 22 22 }
+											tooltip = "pie_estate_urbanization_infra_percent_inc_tt"
+											click_modifiers = {
+												ondefault = "[GetScriptedGui('pie_ab_sgui_infra_market_inc').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+												onctrl = "[GetScriptedGui('pie_ab_sgui_infra_market_inc_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+											}
+										}
+									}
+								}
+							}
+						}
+
+						text_multi = {
+							layoutpolicy_horizontal = expanding
+							text = "pie_estate_urbanization_basic_infra_order"
+							max_width = 500
+							autoresize = yes
+						}
+					}
+				}
+				blockoverride "bottom_content_onclick" {
+					visible = "[Not(LateralView.Vars.Exists( 'pie_auto_build_collapsed' ))]"
+				}
+				blockoverride "icon_replace_visible_yes" {
+					visible = "[Not(LateralView.Vars.Exists( 'pie_auto_build_collapsed' ))]"
+				}
+				blockoverride "icon_replace_visible_not" {
+					visible = "[LateralView.Vars.Exists( 'pie_auto_build_collapsed' )]"
+				}
+			}
+
+			situation_card_expandable = {
+				blockoverride "header_button_onclick" {
 					onclick = "[LateralView.Vars.Toggle( 'pie_estate_requirements_toggled' )]"
 				}
 				blockoverride "header_text" {

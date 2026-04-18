@@ -314,3 +314,104 @@ pie_build_next_burghers_city_infrastructure = {
 		}
 	}
 }
+
+pie_ab_build_next_basic_infrastructure = {
+	if = {
+		limit = {
+			can_build_building = building_type:pie_rural_communal_granary
+			owner = { can_build_building = building_type:pie_rural_communal_granary }
+		}
+		construct_building = { building_type = building_type:pie_rural_communal_granary }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_rural_wells_and_drainage
+			owner = { can_build_building = building_type:pie_rural_wells_and_drainage }
+		}
+		construct_building = { building_type = building_type:pie_rural_wells_and_drainage }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_rural_drainage_ditch
+			owner = { can_build_building = building_type:pie_rural_drainage_ditch }
+		}
+		construct_building = { building_type = building_type:pie_rural_drainage_ditch }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_rural_village_office
+			owner = { can_build_building = building_type:pie_rural_village_office }
+		}
+		construct_building = { building_type = building_type:pie_rural_village_office }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_rural_parish_church
+			owner = { can_build_building = building_type:pie_rural_parish_church }
+		}
+		construct_building = { building_type = building_type:pie_rural_parish_church }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_rural_market_fair
+			owner = { can_build_building = building_type:pie_rural_market_fair }
+		}
+		construct_building = { building_type = building_type:pie_rural_market_fair }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_urban_market_square
+			owner = { can_build_building = building_type:pie_urban_market_square }
+		}
+		construct_building = { building_type = building_type:pie_urban_market_square }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_urban_civic_center
+			owner = { can_build_building = building_type:pie_urban_civic_center }
+		}
+		construct_building = { building_type = building_type:pie_urban_civic_center }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_urban_church_quarter
+			owner = { can_build_building = building_type:pie_urban_church_quarter }
+		}
+		construct_building = { building_type = building_type:pie_urban_church_quarter }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_urban_aqueduct
+			owner = { can_build_building = building_type:pie_urban_aqueduct }
+		}
+		construct_building = { building_type = building_type:pie_urban_aqueduct }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_urban_sewer
+			owner = { can_build_building = building_type:pie_urban_sewer }
+		}
+		construct_building = { building_type = building_type:pie_urban_sewer }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_urban_relief_house
+			owner = { can_build_building = building_type:pie_urban_relief_house }
+		}
+		construct_building = { building_type = building_type:pie_urban_relief_house }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:hospital
+			owner = { can_build_building = building_type:hospital }
+		}
+		construct_building = { building_type = building_type:hospital }
+	}
+	else_if = {
+		limit = {
+			can_build_building = building_type:pie_urban_city_walls
+			owner = { can_build_building = building_type:pie_urban_city_walls }
+		}
+		construct_building = { building_type = building_type:pie_urban_city_walls }
+	}
+}

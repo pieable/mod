@@ -314,3 +314,74 @@ pie_has_any_estate_urban_building = {
 		}
 	}
 }
+
+pie_ab_basic_infrastructure_filter = {
+	num_civil_constructions = 0
+	local_control >= owner.var:pie_ab_infra_min_control
+	location_tax_base >= owner.var:pie_ab_infra_min_wealth
+	market_access >= owner.var:pie_ab_infra_min_market_access
+	owner = {
+		gold >= var:pie_ab_gold_limit
+	}
+}
+
+pie_ab_has_basic_infrastructure_to_build = {
+	OR = {
+		AND = {
+			can_build_building = building_type:pie_rural_communal_granary
+			owner = { can_build_building = building_type:pie_rural_communal_granary }
+		}
+		AND = {
+			can_build_building = building_type:pie_rural_wells_and_drainage
+			owner = { can_build_building = building_type:pie_rural_wells_and_drainage }
+		}
+		AND = {
+			can_build_building = building_type:pie_rural_drainage_ditch
+			owner = { can_build_building = building_type:pie_rural_drainage_ditch }
+		}
+		AND = {
+			can_build_building = building_type:pie_rural_village_office
+			owner = { can_build_building = building_type:pie_rural_village_office }
+		}
+		AND = {
+			can_build_building = building_type:pie_rural_parish_church
+			owner = { can_build_building = building_type:pie_rural_parish_church }
+		}
+		AND = {
+			can_build_building = building_type:pie_rural_market_fair
+			owner = { can_build_building = building_type:pie_rural_market_fair }
+		}
+		AND = {
+			can_build_building = building_type:pie_urban_market_square
+			owner = { can_build_building = building_type:pie_urban_market_square }
+		}
+		AND = {
+			can_build_building = building_type:pie_urban_civic_center
+			owner = { can_build_building = building_type:pie_urban_civic_center }
+		}
+		AND = {
+			can_build_building = building_type:pie_urban_church_quarter
+			owner = { can_build_building = building_type:pie_urban_church_quarter }
+		}
+		AND = {
+			can_build_building = building_type:pie_urban_aqueduct
+			owner = { can_build_building = building_type:pie_urban_aqueduct }
+		}
+		AND = {
+			can_build_building = building_type:pie_urban_sewer
+			owner = { can_build_building = building_type:pie_urban_sewer }
+		}
+		AND = {
+			can_build_building = building_type:pie_urban_relief_house
+			owner = { can_build_building = building_type:pie_urban_relief_house }
+		}
+		AND = {
+			can_build_building = building_type:hospital
+			owner = { can_build_building = building_type:hospital }
+		}
+		AND = {
+			can_build_building = building_type:pie_urban_city_walls
+			owner = { can_build_building = building_type:pie_urban_city_walls }
+		}
+	}
+}
