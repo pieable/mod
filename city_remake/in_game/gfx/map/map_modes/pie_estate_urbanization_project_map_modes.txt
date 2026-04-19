@@ -1,0 +1,174 @@
+pie_estate_urbanization_projects = {
+	map_color = {
+		if = {
+			limit = {
+				OR = {
+					has_variable = pie_town_project_active
+					has_variable = pie_city_project_active
+				}
+				has_variable = pie_project_estate_nobles
+			}
+			value = rgb { 83 116 204 }
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_variable = pie_town_project_active
+					has_variable = pie_city_project_active
+				}
+				has_variable = pie_project_estate_clergy
+			}
+			value = rgb { 200 214 230 }
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_variable = pie_town_project_active
+					has_variable = pie_city_project_active
+				}
+				has_variable = pie_project_estate_burghers
+			}
+			value = rgb { 201 139 26 }
+		}
+	}
+
+	secondary_map_color = {
+		if = {
+			limit = {
+				has_variable = pie_city_project_active
+				has_variable = pie_project_estate_nobles
+			}
+			value = rgb { 150 185 255 }
+		}
+		else_if = {
+			limit = {
+				has_variable = pie_city_project_active
+				has_variable = pie_project_estate_clergy
+			}
+			value = rgb { 240 245 255 }
+		}
+		else_if = {
+			limit = {
+				has_variable = pie_city_project_active
+				has_variable = pie_project_estate_burghers
+			}
+			value = rgb { 255 205 95 }
+		}
+	}
+
+	tooltip_key = {
+		if = {
+			limit = {
+				has_variable = pie_town_project_active
+				has_variable = pie_project_estate_nobles
+			}
+			value = PIE_ESTATE_URBAN_PROJECT_MAPMODE_NOBLES_TOWN_TT
+		}
+		else_if = {
+			limit = {
+				has_variable = pie_city_project_active
+				has_variable = pie_project_estate_nobles
+			}
+			value = PIE_ESTATE_URBAN_PROJECT_MAPMODE_NOBLES_CITY_TT
+		}
+		else_if = {
+			limit = {
+				has_variable = pie_town_project_active
+				has_variable = pie_project_estate_clergy
+			}
+			value = PIE_ESTATE_URBAN_PROJECT_MAPMODE_CLERGY_TOWN_TT
+		}
+		else_if = {
+			limit = {
+				has_variable = pie_city_project_active
+				has_variable = pie_project_estate_clergy
+			}
+			value = PIE_ESTATE_URBAN_PROJECT_MAPMODE_CLERGY_CITY_TT
+		}
+		else_if = {
+			limit = {
+				has_variable = pie_town_project_active
+				has_variable = pie_project_estate_burghers
+			}
+			value = PIE_ESTATE_URBAN_PROJECT_MAPMODE_BURGHERS_TOWN_TT
+		}
+		else_if = {
+			limit = {
+				has_variable = pie_city_project_active
+				has_variable = pie_project_estate_burghers
+			}
+			value = PIE_ESTATE_URBAN_PROJECT_MAPMODE_BURGHERS_CITY_TT
+		}
+		else = {
+			value = PIE_ESTATE_URBAN_PROJECT_MAPMODE_NONE_TT
+		}
+	}
+
+	legend_key = {
+		desc = "PIE_ESTATE_URBAN_PROJECT_MAPMODE_NOBLES_LEGEND"
+		color = rgb { 83 116 204 }
+	}
+	legend_key = {
+		desc = "PIE_ESTATE_URBAN_PROJECT_MAPMODE_CLERGY_LEGEND"
+		color = rgb { 200 214 230 }
+	}
+	legend_key = {
+		desc = "PIE_ESTATE_URBAN_PROJECT_MAPMODE_BURGHERS_LEGEND"
+		color = rgb { 201 139 26 }
+	}
+	legend_key = {
+		desc = "PIE_ESTATE_URBAN_PROJECT_MAPMODE_CITY_LEGEND"
+		color = rgb { 255 205 95 }
+	}
+
+	small_map_names = location
+	medium_map_names = location
+	large_map_names = country
+
+	small_tooltip_context = location
+	medium_tooltip_context = location
+	large_tooltip_context = location
+
+	fill_in_impassable = no
+	allow_allocate_hotkey = no
+	flatmap_behaviour = Always
+	use_fow = no
+
+	category = hidden
+
+	map_markers = {
+		all = no
+	}
+
+	gradient_parameters = {
+		zoom_step = 4
+		gradient_alpha_inside = 1
+		gradient_alpha_outside = 1
+		gradient_width = 1
+		gradient_color_mult = 0.75
+		edge_width = 0.02
+		edge_sharpness = 0.01
+		edge_alpha = 0.9
+		edge_color_mult = 0.25
+		before_lighting_blend = 1
+		after_lighting_blend = 0.5
+	}
+
+	flatmap_gradient_parameters = {
+		zoom_step = 12
+		gradient_alpha_inside = 1
+		gradient_alpha_outside = 1
+		gradient_width = 0.5
+		gradient_color_mult = 0.85
+		edge_width = 0.02
+		edge_sharpness = 0.01
+		edge_alpha = 0.9
+		edge_color_mult = 0.25
+		before_lighting_blend = 1
+		after_lighting_blend = 0.5
+	}
+
+	refresh_colors_on_selection_change = yes
+	color_refresh_counters = { Month LocationControllerChanged }
+	color_and_names_refresh_counters = { Month LocationOwnerChanged CountryStatus }
+}

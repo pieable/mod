@@ -3,10 +3,22 @@
  market_fairs_desc: "The state recognizes burgher control over recurring fairs, local trade hubs, and the organization of exchange networks. It grants #Y +10%#! global merchant capacity, #Y +0.1#! global trades per burgher, raises Burgher target satisfaction, and increases Burgher Estate power."
 
  pie_burghers_market_town: "Merchant Hall"
- pie_burghers_market_town_desc: "The commercial core of a town financed by local burghers and merchants. By reducing local construction costs, expanding burgher jobs, increasing merchant capacity, and granting an extra 5 levels to the entire market-building line, it helps this location grow into a true trade node."
+ pie_burghers_market_town_desc: "The commercial core of a town financed by local burghers and merchants. By reducing local construction costs, expanding burgher jobs, adding trades per burgher, and granting an extra 5 levels to the entire market-building line, it helps this location grow into a true trade node."
 
  pie_burghers_exchange_city: "Mercantile Exchange"
- pie_burghers_exchange_city_desc: "This city was fostered by the burgher class, bringing together storage, craftsmanship, and trade networks. It strengthens local production, improves proximity spread, expands burgher employment, and grants an extra 10 levels to the entire market-building line. Every city of this kind increases national tax efficiency by 1% and lowers bank interest by 0.5%."
+ pie_burghers_exchange_city_desc: "This city was fostered by the burgher class, bringing together storage, craftsmanship, and trade networks. It strengthens local production, improves proximity spread, expands burgher employment, adds trades per burgher, and grants an extra 10 levels to the entire market-building line. Every city of this kind increases national tax efficiency by 1% and lowers bank interest by 0.5%."
+
+ pie_burghers_marketplace: "Burgher Marketplace"
+ pie_burghers_marketplace_desc: "A commercial organization established by the Burghers around the local marketplace. Its level cap matches the local market cap, and it carries the Burgher power and merchant capacity formerly provided by the marketplace."
+
+ pie_burghers_merchants_quarters: "Burgher Merchant Quarter"
+ pie_burghers_merchants_quarters_desc: "A commercial organization established by the Burghers around the local merchant quarter. Its level cap matches the local market cap, and it carries the Burgher power and merchant capacity formerly provided by merchant quarters."
+
+ pie_burghers_grand_marketplace: "Burgher Grand Market"
+ pie_burghers_grand_marketplace_desc: "A higher commercial organization established by the Burghers around the local grand marketplace. Its level cap matches the local market cap, and it carries the Burgher power and merchant capacity formerly provided by the grand marketplace."
+
+ pie_burghers_commerce_center: "Burgher Commerce Center"
+ pie_burghers_commerce_center_desc: "An urban commercial organization established by the Burghers around the local commerce center. Its level cap matches the local market cap, and it carries the Burgher power and merchant capacity formerly provided by the commerce center."
 
  pie_burghers_urban.1.title: "Burghers Propose Founding a Town"
  pie_burghers_urban.1.desc: "Local market access has become highly efficient, and the area's population, food supply, and prosperity are enough to sustain a stable commercial settlement. Our burghers are prepared to found a town in [target_location.GetName] and build a Merchant Hall there."

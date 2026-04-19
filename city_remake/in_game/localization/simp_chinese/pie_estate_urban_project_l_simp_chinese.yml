@@ -1,0 +1,33 @@
+l_simp_chinese:
+ pie_estate_urban_project.approve: "批准建造"
+ pie_estate_urban_project.reject: "拒绝建造"
+
+ pie_estate_urban_project.1.title: "贵族准备建立集镇"
+ pie_estate_urban_project.1.desc: "经过持续投入，[target_location.GetName]已经具备建立集镇的条件。当地贵族准备立刻推动升格，并在这里建立庄园府。"
+ pie_estate_urban_project.1.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 集镇#!，并由#Y 贵族阶层#!完成建造。"
+ pie_estate_urban_project.1.reject.tt: "终止#Y [target_location.GetNameWithNoTooltip]#!的集镇计划，#Y 贵族阶层#!满意度将降低#R 20%#!。"
+
+ pie_estate_urban_project.2.title: "教士准备建立集镇"
+ pie_estate_urban_project.2.desc: "经过持续投入，[target_location.GetName]已经具备建立集镇的条件。当地教士准备立刻推动升格，并在这里建立教区修院。"
+ pie_estate_urban_project.2.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 集镇#!，并由#Y 教士阶层#!完成建造。"
+ pie_estate_urban_project.2.reject.tt: "终止#Y [target_location.GetNameWithNoTooltip]#!的集镇计划，#Y 教士阶层#!满意度将降低#R 20%#!。"
+
+ pie_estate_urban_project.3.title: "市民准备建立集镇"
+ pie_estate_urban_project.3.desc: "经过持续投入，[target_location.GetName]已经具备建立集镇的条件。当地市民准备立刻推动升格，并在这里建立商栈会馆。"
+ pie_estate_urban_project.3.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 集镇#!，并由#Y 市民阶层#!完成建造。"
+ pie_estate_urban_project.3.reject.tt: "终止#Y [target_location.GetNameWithNoTooltip]#!的集镇计划，#Y 市民阶层#!满意度将降低#R 20%#!。"
+
+ pie_estate_urban_project.4.title: "贵族准备扩建城市"
+ pie_estate_urban_project.4.desc: "经过持续投入，[target_location.GetName]已经具备扩建城市的条件。当地贵族准备立刻推动升格，并在这里建立贵族宫廷。"
+ pie_estate_urban_project.4.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 城市#!，并由#Y 贵族阶层#!完成建造。"
+ pie_estate_urban_project.4.reject.tt: "终止#Y [target_location.GetNameWithNoTooltip]#!的城市计划，#Y 贵族阶层#!满意度将降低#R 20%#!。"
+
+ pie_estate_urban_project.5.title: "教士准备扩建城市"
+ pie_estate_urban_project.5.desc: "经过持续投入，[target_location.GetName]已经具备扩建城市的条件。当地教士准备立刻推动升格，并在这里建立宗教学宫。"
+ pie_estate_urban_project.5.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 城市#!，并由#Y 教士阶层#!完成建造。"
+ pie_estate_urban_project.5.reject.tt: "终止#Y [target_location.GetNameWithNoTooltip]#!的城市计划，#Y 教士阶层#!满意度将降低#R 20%#!。"
+
+ pie_estate_urban_project.6.title: "市民准备扩建城市"
+ pie_estate_urban_project.6.desc: "经过持续投入，[target_location.GetName]已经具备扩建城市的条件。当地市民准备立刻推动升格，并在这里建立商贸交易所。"
+ pie_estate_urban_project.6.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#!将升为#Y 城市#!，并由#Y 市民阶层#!完成建造。"
+ pie_estate_urban_project.6.reject.tt: "终止#Y [target_location.GetNameWithNoTooltip]#!的城市计划，#Y 市民阶层#!满意度将降低#R 20%#!。"

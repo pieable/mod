@@ -3,10 +3,22 @@
  market_fairs_desc: "国家承认市民在定期市集、商贸集散与地方交易网络中的组织权。它提高#Y +10%#!全局商人承载能力、#Y +0.1#!全局每市民贸易次数，使市民阶层目标满意度提高，并增加其权力。"
 
  pie_burghers_market_town: "商栈会馆"
- pie_burghers_market_town_desc: "由地方市民和商人出资建立的集镇商业核心。它通过降低当地建筑花费、扩充市民岗位、提高贸易容量，并为整条贸易集市建筑线额外提供 5 级上限，让这个地块更快成长为真正的商贸节点。"
+ pie_burghers_market_town_desc: "由地方市民和商人出资建立的集镇商业核心。它通过降低当地建筑花费、扩充市民岗位、增加每市民贸易次数，并为整条贸易集市建筑线额外提供 5 级上限，让这个地块更快成长为真正的商贸节点。"
 
  pie_burghers_exchange_city: "商贸交易所"
- pie_burghers_exchange_city_desc: "这座城市由市民集团扶植起来，聚集了仓储、手工业与贸易网络。它强化本地生产，提升邻近度传播速度，扩充市民岗位，并为整条贸易集市建筑线额外提供 10 级上限。每拥有一座这样的城市，全国税收效率提高 1%，银行利率降低 0.5%。"
+ pie_burghers_exchange_city_desc: "这座城市由市民集团扶植起来，聚集了仓储、手工业与贸易网络。它强化本地生产，提升邻近度传播速度，扩充市民岗位，增加每市民贸易次数，并为整条贸易集市建筑线额外提供 10 级上限。每拥有一座这样的城市，全国税收效率提高 1%，银行利率降低 0.5%。"
+
+ pie_burghers_marketplace: "市民集市"
+ pie_burghers_marketplace_desc: "市民阶层依托当地集市建立的商业组织。它的建筑等级上限与当地集市一致，并承接原本由集市提供的市民势力和商人容量。"
+
+ pie_burghers_merchants_quarters: "市民商栈"
+ pie_burghers_merchants_quarters_desc: "市民阶层依托当地商栈区扩张的商业组织。它的建筑等级上限与当地集市一致，并承接原本由商栈区提供的市民势力和商人容量。"
+
+ pie_burghers_grand_marketplace: "市民大集市"
+ pie_burghers_grand_marketplace_desc: "市民阶层依托当地大集市建立的高阶商业组织。它的建筑等级上限与当地集市一致，并承接原本由大集市提供的市民势力和商人容量。"
+
+ pie_burghers_commerce_center: "市民商业中心"
+ pie_burghers_commerce_center_desc: "市民阶层依托当地商业中心建立的城市商业组织。它的建筑等级上限与当地集市一致，并承接原本由商业中心提供的市民势力和商人容量。"
 
  pie_burghers_urban.1.title: "市民提议建立集镇"
  pie_burghers_urban.1.desc: "当地市场接入已经十分顺畅，人口、粮食与繁荣也足以支撑稳定的商业聚落。我国市民准备在[target_location.GetName]建立一座集镇，并兴建商栈会馆。"

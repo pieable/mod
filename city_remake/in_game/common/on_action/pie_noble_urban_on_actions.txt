@@ -11,9 +11,21 @@ monthly_country_pulse = {
 	}
 }
 
+yearly_country_pulse = {
+	on_actions = {
+		pie_estate_urbanization_projects_yearly_pulse
+	}
+}
+
 on_location_changed_rank = {
 	on_actions = {
 		pie_track_player_urban_origin
+	}
+}
+
+pie_estate_urbanization_projects_yearly_pulse = {
+	effect = {
+		pie_estate_urbanization_projects_yearly = yes
 	}
 }
 
@@ -99,54 +111,6 @@ pie_noble_urban_monthly_check = {
 					owner = {
 						set_variable = { name = pie_noble_urban_action_taken value = yes }
 						trigger_event_non_silently = pie_noble_urban.11
-					}
-				}
-			}
-		}
-
-		if = {
-			limit = {
-				country_has_estate = estate_type:nobles_estate
-				NOT = { has_variable = pie_noble_urban_action_taken }
-				"estate(estate_type:nobles_estate)" = {
-					estate_gold >= 300
-				}
-			}
-			random = {
-				chance = 35
-				random_owned_location = {
-					limit = {
-						controller = root
-						NOT = { is_capital = yes }
-						pie_noble_can_invest_rural_infrastructure = yes
-					}
-					pie_build_next_noble_rural_infrastructure = yes
-					owner = {
-						set_variable = { name = pie_noble_urban_action_taken value = yes }
-					}
-				}
-			}
-		}
-
-		if = {
-			limit = {
-				country_has_estate = estate_type:nobles_estate
-				NOT = { has_variable = pie_noble_urban_action_taken }
-				"estate(estate_type:nobles_estate)" = {
-					estate_gold >= 500
-				}
-			}
-			random = {
-				chance = 25
-				random_owned_location = {
-					limit = {
-						controller = root
-						NOT = { is_capital = yes }
-						pie_noble_can_invest_city_infrastructure = yes
-					}
-					pie_build_next_noble_city_infrastructure = yes
-					owner = {
-						set_variable = { name = pie_noble_urban_action_taken value = yes }
 					}
 				}
 			}
@@ -286,54 +250,6 @@ pie_clergy_urban_monthly_check = {
 				country_has_estate = estate_type:clergy_estate
 				NOT = { has_variable = pie_clergy_urban_action_taken }
 				"estate(estate_type:clergy_estate)" = {
-					estate_gold >= 300
-				}
-			}
-			random = {
-				chance = 35
-				random_owned_location = {
-					limit = {
-						controller = root
-						NOT = { is_capital = yes }
-						pie_clergy_can_invest_rural_infrastructure = yes
-					}
-					pie_build_next_clergy_rural_infrastructure = yes
-					owner = {
-						set_variable = { name = pie_clergy_urban_action_taken value = yes }
-					}
-				}
-			}
-		}
-
-		if = {
-			limit = {
-				country_has_estate = estate_type:clergy_estate
-				NOT = { has_variable = pie_clergy_urban_action_taken }
-				"estate(estate_type:clergy_estate)" = {
-					estate_gold >= 500
-				}
-			}
-			random = {
-				chance = 25
-				random_owned_location = {
-					limit = {
-						controller = root
-						NOT = { is_capital = yes }
-						pie_clergy_can_invest_city_infrastructure = yes
-					}
-					pie_build_next_clergy_city_infrastructure = yes
-					owner = {
-						set_variable = { name = pie_clergy_urban_action_taken value = yes }
-					}
-				}
-			}
-		}
-
-		if = {
-			limit = {
-				country_has_estate = estate_type:clergy_estate
-				NOT = { has_variable = pie_clergy_urban_action_taken }
-				"estate(estate_type:clergy_estate)" = {
 					estate_gold >= 2200
 				}
 			}
@@ -418,7 +334,7 @@ pie_burghers_urban_monthly_check = {
 						NOT = { location_rank = location_rank:town }
 						NOT = { location_rank = location_rank:city }
 						pie_common_rural_town_urban_requirements = yes
-						market_access >= 0.9
+						market_access >= 0.85
 					}
 
 					save_scope_as = target_location
@@ -446,61 +362,13 @@ pie_burghers_urban_monthly_check = {
 						NOT = { is_capital = yes }
 						pie_is_unmarked_legacy_town = yes
 						pie_common_town_urban_requirements = yes
-						market_access >= 0.9
+						market_access >= 0.85
 					}
 
 					save_scope_as = target_location
 					owner = {
 						set_variable = { name = pie_burghers_urban_action_taken value = yes }
 						trigger_event_non_silently = pie_burghers_urban.11
-					}
-				}
-			}
-		}
-
-		if = {
-			limit = {
-				country_has_estate = estate_type:burghers_estate
-				NOT = { has_variable = pie_burghers_urban_action_taken }
-				"estate(estate_type:burghers_estate)" = {
-					estate_gold >= 300
-				}
-			}
-			random = {
-				chance = 35
-				random_owned_location = {
-					limit = {
-						controller = root
-						NOT = { is_capital = yes }
-						pie_burghers_can_invest_rural_infrastructure = yes
-					}
-					pie_build_next_burghers_rural_infrastructure = yes
-					owner = {
-						set_variable = { name = pie_burghers_urban_action_taken value = yes }
-					}
-				}
-			}
-		}
-
-		if = {
-			limit = {
-				country_has_estate = estate_type:burghers_estate
-				NOT = { has_variable = pie_burghers_urban_action_taken }
-				"estate(estate_type:burghers_estate)" = {
-					estate_gold >= 500
-				}
-			}
-			random = {
-				chance = 25
-				random_owned_location = {
-					limit = {
-						controller = root
-						NOT = { is_capital = yes }
-						pie_burghers_can_invest_city_infrastructure = yes
-					}
-					pie_build_next_burghers_city_infrastructure = yes
-					owner = {
-						set_variable = { name = pie_burghers_urban_action_taken value = yes }
 					}
 				}
 			}

@@ -6,7 +6,7 @@
  pie_noble_frontier_town_desc: "由边境贵族出资建立的拓殖据点。它不再主打征召与宫廷，而是通过拓垦土地、压制边患和强化地方贵族权势，把偏远乡地逐步拉进贵族秩序。"
 
  pie_noble_court_city: "贵族宫廷"
- pie_noble_court_city_desc: "这座城市由贵族集团扶植起来，既是上层社会的居所，也是区域武备、礼仪和文化影响的中心。"
+ pie_noble_court_city_desc: "这座城市由贵族集团扶植起来，既是上层社会的居所，也是区域武备、礼仪和文化影响的中心。它会按每 1,000 人口扩充当地可容纳的贵族岗位。"
 
  pie_noble_urban.1.title: "贵族提议建立集镇"
  pie_noble_urban.1.desc: "本地控制稳固、人口和繁荣已达到一定水平。我国贵族准备在[target_location.GetName]出资建立一座集镇，并在当地兴建庄园府。"

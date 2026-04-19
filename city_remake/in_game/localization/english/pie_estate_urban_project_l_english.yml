@@ -1,0 +1,33 @@
+l_english:
+ pie_estate_urban_project.approve: "Approve Construction"
+ pie_estate_urban_project.reject: "Reject Construction"
+
+ pie_estate_urban_project.1.title: "Nobles Ready to Found a Town"
+ pie_estate_urban_project.1.desc: "After sustained investment, [target_location.GetName] is ready to become a town. The local nobility intend to act at once and establish a Manor Hall there."
+ pie_estate_urban_project.1.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#! will become a #Y Town#!, completed by the #Y Nobility#!."
+ pie_estate_urban_project.1.reject.tt: "Cancel the town project in #Y [target_location.GetNameWithNoTooltip]#!. #Y Noble Estate#! satisfaction will be reduced by #R 20%#!."
+
+ pie_estate_urban_project.2.title: "Clergy Ready to Found a Town"
+ pie_estate_urban_project.2.desc: "After sustained investment, [target_location.GetName] is ready to become a town. The local clergy intend to act at once and establish a Parish Priory there."
+ pie_estate_urban_project.2.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#! will become a #Y Town#!, completed by the #Y Clergy#!."
+ pie_estate_urban_project.2.reject.tt: "Cancel the town project in #Y [target_location.GetNameWithNoTooltip]#!. #Y Clergy Estate#! satisfaction will be reduced by #R 20%#!."
+
+ pie_estate_urban_project.3.title: "Burghers Ready to Found a Town"
+ pie_estate_urban_project.3.desc: "After sustained investment, [target_location.GetName] is ready to become a town. The local burghers intend to act at once and establish a Merchant Hall there."
+ pie_estate_urban_project.3.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#! will become a #Y Town#!, completed by the #Y Burghers#!."
+ pie_estate_urban_project.3.reject.tt: "Cancel the town project in #Y [target_location.GetNameWithNoTooltip]#!. #Y Burgher Estate#! satisfaction will be reduced by #R 20%#!."
+
+ pie_estate_urban_project.4.title: "Nobles Ready to Expand a City"
+ pie_estate_urban_project.4.desc: "After sustained investment, [target_location.GetName] is ready to become a city. The local nobility intend to act at once and establish a Noble Court there."
+ pie_estate_urban_project.4.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#! will become a #Y City#!, completed by the #Y Nobility#!."
+ pie_estate_urban_project.4.reject.tt: "Cancel the city project in #Y [target_location.GetNameWithNoTooltip]#!. #Y Noble Estate#! satisfaction will be reduced by #R 20%#!."
+
+ pie_estate_urban_project.5.title: "Clergy Ready to Expand a City"
+ pie_estate_urban_project.5.desc: "After sustained investment, [target_location.GetName] is ready to become a city. The local clergy intend to act at once and establish a Theological Academy there."
+ pie_estate_urban_project.5.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#! will become a #Y City#!, completed by the #Y Clergy#!."
+ pie_estate_urban_project.5.reject.tt: "Cancel the city project in #Y [target_location.GetNameWithNoTooltip]#!. #Y Clergy Estate#! satisfaction will be reduced by #R 20%#!."
+
+ pie_estate_urban_project.6.title: "Burghers Ready to Expand a City"
+ pie_estate_urban_project.6.desc: "After sustained investment, [target_location.GetName] is ready to become a city. The local burghers intend to act at once and establish a Mercantile Exchange there."
+ pie_estate_urban_project.6.approve.tt: "#Y [target_location.GetNameWithNoTooltip]#! will become a #Y City#!, completed by the #Y Burghers#!."
+ pie_estate_urban_project.6.reject.tt: "Cancel the city project in #Y [target_location.GetNameWithNoTooltip]#!. #Y Burgher Estate#! satisfaction will be reduced by #R 20%#!."

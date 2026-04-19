@@ -180,7 +180,7 @@ pie_clergy_can_invest_rural_infrastructure = {
 pie_burghers_can_invest_rural_infrastructure = {
 	num_civil_constructions < 1
 	pie_has_missing_burghers_rural_infrastructure_including_construction = yes
-	market_access >= 0.9
+	market_access >= 0.85
 }
 
 pie_can_invest_city_infrastructure = {
@@ -215,7 +215,7 @@ pie_clergy_can_invest_city_infrastructure = {
 pie_burghers_can_invest_city_infrastructure = {
 	pie_can_invest_city_infrastructure = yes
 	pie_has_constructable_missing_burghers_city_infrastructure = yes
-	market_access >= 0.9
+	market_access >= 0.98
 }
 
 pie_is_unmarked_legacy_town = {
@@ -382,6 +382,270 @@ pie_ab_has_basic_infrastructure_to_build = {
 		AND = {
 			can_build_building = building_type:pie_urban_city_walls
 			owner = { can_build_building = building_type:pie_urban_city_walls }
+		}
+	}
+}
+
+pie_has_active_urbanization_project = {
+	OR = {
+		has_variable = pie_town_project_active
+		has_variable = pie_city_project_active
+	}
+}
+
+pie_has_project_estate = {
+	OR = {
+		has_variable = pie_project_estate_nobles
+		has_variable = pie_project_estate_clergy
+		has_variable = pie_project_estate_burghers
+	}
+}
+
+pie_has_any_estate_urban_origin = {
+	OR = {
+		has_variable = pie_origin_nobles_town
+		has_variable = pie_origin_nobles_city
+		has_variable = pie_origin_clergy_town
+		has_variable = pie_origin_clergy_city
+		has_variable = pie_origin_burghers_town
+		has_variable = pie_origin_burghers_city
+	}
+}
+
+pie_can_start_new_urbanization_project = {
+	at_war = no
+	monthly_balance >= 0
+	num_loans < 3
+	is_during_bankruptcy = no
+}
+
+pie_nobles_can_fund_reserved_urbanization_budget = {
+	OR = {
+		var:pie_project_budget_nobles <= 0
+		"estate(estate_type:nobles_estate)" = { estate_gold >= root.var:pie_project_budget_nobles }
+	}
+}
+
+pie_clergy_can_fund_reserved_urbanization_budget = {
+	OR = {
+		var:pie_project_budget_clergy <= 0
+		"estate(estate_type:clergy_estate)" = { estate_gold >= root.var:pie_project_budget_clergy }
+	}
+}
+
+pie_burghers_can_fund_reserved_urbanization_budget = {
+	OR = {
+		var:pie_project_budget_burghers <= 0
+		"estate(estate_type:burghers_estate)" = { estate_gold >= root.var:pie_project_budget_burghers }
+	}
+}
+
+pie_town_project_base_candidate = {
+	controller = root
+	NOT = { is_capital = yes }
+	location_rank = location_rank:rural_settlement
+	NOT = { location_rank = location_rank:town }
+	NOT = { location_rank = location_rank:city }
+	NOT = { pie_has_active_urbanization_project = yes }
+	population >= 5
+	province = {
+		province_max_food >= 1000
+	}
+}
+
+pie_city_project_base_candidate = {
+	controller = root
+	NOT = { is_capital = yes }
+	location_rank = location_rank:town
+	NOT = { location_rank = location_rank:city }
+	NOT = { pie_has_active_urbanization_project = yes }
+	population >= 20
+}
+
+pie_town_project_still_viable = {
+	controller = root
+	location_rank = location_rank:rural_settlement
+	population >= 3
+	prosperity >= 0
+	province = {
+		province_max_food >= 500
+	}
+	has_siege = no
+	is_looted = no
+}
+
+pie_city_project_still_viable = {
+	controller = root
+	location_rank = location_rank:town
+	NOT = { location_rank = location_rank:city }
+	population >= 15
+	prosperity >= 0
+	has_siege = no
+	is_looted = no
+}
+
+pie_noble_town_project_candidate = {
+	pie_town_project_base_candidate = yes
+	owner = { country_has_estate = estate_type:nobles_estate }
+	max_control >= 0.6
+}
+
+pie_clergy_town_project_candidate = {
+	pie_town_project_base_candidate = yes
+	owner = { country_has_estate = estate_type:clergy_estate }
+	religion_percentage = {
+		religion = root.religion
+		value >= 0.8
+	}
+}
+
+pie_burghers_town_project_candidate = {
+	pie_town_project_base_candidate = yes
+	owner = { country_has_estate = estate_type:burghers_estate }
+	market_access >= 0.85
+}
+
+pie_noble_city_project_candidate = {
+	pie_city_project_base_candidate = yes
+	owner = { country_has_estate = estate_type:nobles_estate }
+	max_control >= 0.8
+	OR = {
+		has_variable = pie_origin_nobles_town
+		NOT = { pie_has_any_estate_urban_origin = yes }
+	}
+}
+
+pie_clergy_city_project_candidate = {
+	pie_city_project_base_candidate = yes
+	owner = { country_has_estate = estate_type:clergy_estate }
+	religion_percentage = {
+		religion = root.religion
+		value >= 0.95
+	}
+	OR = {
+		has_variable = pie_origin_clergy_town
+		NOT = { pie_has_any_estate_urban_origin = yes }
+	}
+}
+
+pie_burghers_city_project_candidate = {
+	pie_city_project_base_candidate = yes
+	owner = { country_has_estate = estate_type:burghers_estate }
+	market_access >= 0.98
+	OR = {
+		has_variable = pie_origin_burghers_town
+		NOT = { pie_has_any_estate_urban_origin = yes }
+	}
+}
+
+pie_project_estate_can_pay_rural_infrastructure = {
+	OR = {
+		AND = {
+			has_variable = pie_project_estate_nobles
+			owner = {
+				var:pie_project_budget_nobles >= 100
+				"estate(estate_type:nobles_estate)" = { estate_gold >= 100 }
+			}
+		}
+		AND = {
+			has_variable = pie_project_estate_clergy
+			owner = {
+				var:pie_project_budget_clergy >= 100
+				"estate(estate_type:clergy_estate)" = { estate_gold >= 100 }
+			}
+		}
+		AND = {
+			has_variable = pie_project_estate_burghers
+			owner = {
+				var:pie_project_budget_burghers >= 100
+				"estate(estate_type:burghers_estate)" = { estate_gold >= 100 }
+			}
+		}
+	}
+}
+
+pie_project_estate_can_pay_city_infrastructure = {
+	OR = {
+		AND = {
+			has_variable = pie_project_estate_nobles
+			owner = {
+				var:pie_project_budget_nobles >= 200
+				"estate(estate_type:nobles_estate)" = { estate_gold >= 200 }
+			}
+		}
+		AND = {
+			has_variable = pie_project_estate_clergy
+			owner = {
+				var:pie_project_budget_clergy >= 200
+				"estate(estate_type:clergy_estate)" = { estate_gold >= 200 }
+			}
+		}
+		AND = {
+			has_variable = pie_project_estate_burghers
+			owner = {
+				var:pie_project_budget_burghers >= 200
+				"estate(estate_type:burghers_estate)" = { estate_gold >= 200 }
+			}
+		}
+	}
+}
+
+pie_town_project_has_base_infrastructure = {
+	any_buildings_in_location = { building_type = building_type:pie_rural_communal_granary }
+	any_buildings_in_location = { building_type = building_type:pie_rural_wells_and_drainage }
+	any_buildings_in_location = { building_type = building_type:pie_rural_drainage_ditch }
+}
+
+pie_town_project_can_complete = {
+	has_variable = pie_town_project_active
+	location_rank = location_rank:rural_settlement
+	pie_common_rural_town_urban_requirements = yes
+	pie_town_project_has_base_infrastructure = yes
+	OR = {
+		AND = {
+			has_variable = pie_project_estate_nobles
+			any_buildings_in_location = { building_type = building_type:pie_rural_village_office }
+			max_control >= 0.6
+		}
+		AND = {
+			has_variable = pie_project_estate_clergy
+			any_buildings_in_location = { building_type = building_type:pie_rural_parish_church }
+			religion_percentage = {
+				religion = root.religion
+				value >= 0.8
+			}
+		}
+		AND = {
+			has_variable = pie_project_estate_burghers
+			any_buildings_in_location = { building_type = building_type:pie_rural_market_fair }
+			market_access >= 0.85
+		}
+	}
+}
+
+pie_city_project_can_complete = {
+	has_variable = pie_city_project_active
+	location_rank = location_rank:town
+	NOT = { location_rank = location_rank:city }
+	pie_common_city_urban_requirements = yes
+	OR = {
+		AND = {
+			has_variable = pie_project_estate_nobles
+			any_buildings_in_location = { building_type = building_type:pie_urban_civic_center }
+			max_control >= 0.8
+		}
+		AND = {
+			has_variable = pie_project_estate_clergy
+			any_buildings_in_location = { building_type = building_type:pie_urban_church_quarter }
+			religion_percentage = {
+				religion = root.religion
+				value >= 0.95
+			}
+		}
+		AND = {
+			has_variable = pie_project_estate_burghers
+			any_buildings_in_location = { building_type = building_type:pie_urban_market_square }
+			market_access >= 0.98
 		}
 	}
 }

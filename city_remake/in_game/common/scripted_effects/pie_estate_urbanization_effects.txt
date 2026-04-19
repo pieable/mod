@@ -415,3 +415,1033 @@ pie_ab_build_next_basic_infrastructure = {
 		construct_building = { building_type = building_type:pie_urban_city_walls }
 	}
 }
+
+pie_clear_urbanization_project = {
+	if = { limit = { has_variable = pie_town_project_active } remove_variable = pie_town_project_active }
+	if = { limit = { has_variable = pie_city_project_active } remove_variable = pie_city_project_active }
+	if = { limit = { has_variable = pie_project_estate_nobles } remove_variable = pie_project_estate_nobles }
+	if = { limit = { has_variable = pie_project_estate_clergy } remove_variable = pie_project_estate_clergy }
+	if = { limit = { has_variable = pie_project_estate_burghers } remove_variable = pie_project_estate_burghers }
+}
+
+pie_assign_urbanization_project_estate = {
+	if = { limit = { has_variable = pie_project_estate_nobles } remove_variable = pie_project_estate_nobles }
+	if = { limit = { has_variable = pie_project_estate_clergy } remove_variable = pie_project_estate_clergy }
+	if = { limit = { has_variable = pie_project_estate_burghers } remove_variable = pie_project_estate_burghers }
+
+	if = {
+		limit = {
+			OR = {
+				has_variable = pie_origin_nobles_town
+				has_variable = pie_origin_nobles_city
+			}
+			owner = { country_has_estate = estate_type:nobles_estate }
+		}
+		set_variable = { name = pie_project_estate_nobles value = yes }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_variable = pie_origin_clergy_town
+				has_variable = pie_origin_clergy_city
+			}
+			owner = { country_has_estate = estate_type:clergy_estate }
+		}
+		set_variable = { name = pie_project_estate_clergy value = yes }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_variable = pie_origin_burghers_town
+				has_variable = pie_origin_burghers_city
+			}
+			owner = { country_has_estate = estate_type:burghers_estate }
+		}
+		set_variable = { name = pie_project_estate_burghers value = yes }
+	}
+	else_if = {
+		limit = {
+			owner = {
+				country_has_estate = estate_type:nobles_estate
+				country_has_estate = estate_type:clergy_estate
+				country_has_estate = estate_type:burghers_estate
+			}
+		}
+		random_list = {
+			1 = { set_variable = { name = pie_project_estate_nobles value = yes } }
+			1 = { set_variable = { name = pie_project_estate_clergy value = yes } }
+			1 = { set_variable = { name = pie_project_estate_burghers value = yes } }
+		}
+	}
+	else_if = {
+		limit = {
+			owner = {
+				country_has_estate = estate_type:nobles_estate
+				country_has_estate = estate_type:clergy_estate
+			}
+		}
+		random_list = {
+			1 = { set_variable = { name = pie_project_estate_nobles value = yes } }
+			1 = { set_variable = { name = pie_project_estate_clergy value = yes } }
+		}
+	}
+	else_if = {
+		limit = {
+			owner = {
+				country_has_estate = estate_type:nobles_estate
+				country_has_estate = estate_type:burghers_estate
+			}
+		}
+		random_list = {
+			1 = { set_variable = { name = pie_project_estate_nobles value = yes } }
+			1 = { set_variable = { name = pie_project_estate_burghers value = yes } }
+		}
+	}
+	else_if = {
+		limit = {
+			owner = {
+				country_has_estate = estate_type:clergy_estate
+				country_has_estate = estate_type:burghers_estate
+			}
+		}
+		random_list = {
+			1 = { set_variable = { name = pie_project_estate_clergy value = yes } }
+			1 = { set_variable = { name = pie_project_estate_burghers value = yes } }
+		}
+	}
+	else_if = {
+		limit = { owner = { country_has_estate = estate_type:nobles_estate } }
+		set_variable = { name = pie_project_estate_nobles value = yes }
+	}
+	else_if = {
+		limit = { owner = { country_has_estate = estate_type:clergy_estate } }
+		set_variable = { name = pie_project_estate_clergy value = yes }
+	}
+	else_if = {
+		limit = { owner = { country_has_estate = estate_type:burghers_estate } }
+		set_variable = { name = pie_project_estate_burghers value = yes }
+	}
+}
+
+pie_create_town_urbanization_project = {
+	pie_clear_urbanization_project = yes
+	set_variable = { name = pie_town_project_active value = yes }
+	pie_assign_urbanization_project_estate = yes
+	if = {
+		limit = { NOT = { pie_has_project_estate = yes } }
+		pie_clear_urbanization_project = yes
+	}
+}
+
+pie_create_city_urbanization_project = {
+	pie_clear_urbanization_project = yes
+	set_variable = { name = pie_city_project_active value = yes }
+	pie_assign_urbanization_project_estate = yes
+	if = {
+		limit = { NOT = { pie_has_project_estate = yes } }
+		pie_clear_urbanization_project = yes
+	}
+}
+
+pie_create_noble_town_urbanization_project = {
+	pie_clear_urbanization_project = yes
+	set_variable = { name = pie_town_project_active value = yes }
+	set_variable = { name = pie_project_estate_nobles value = yes }
+}
+
+pie_create_clergy_town_urbanization_project = {
+	pie_clear_urbanization_project = yes
+	set_variable = { name = pie_town_project_active value = yes }
+	set_variable = { name = pie_project_estate_clergy value = yes }
+}
+
+pie_create_burghers_town_urbanization_project = {
+	pie_clear_urbanization_project = yes
+	set_variable = { name = pie_town_project_active value = yes }
+	set_variable = { name = pie_project_estate_burghers value = yes }
+}
+
+pie_create_noble_city_urbanization_project = {
+	pie_clear_urbanization_project = yes
+	set_variable = { name = pie_city_project_active value = yes }
+	set_variable = { name = pie_project_estate_nobles value = yes }
+}
+
+pie_create_clergy_city_urbanization_project = {
+	pie_clear_urbanization_project = yes
+	set_variable = { name = pie_city_project_active value = yes }
+	set_variable = { name = pie_project_estate_clergy value = yes }
+}
+
+pie_create_burghers_city_urbanization_project = {
+	pie_clear_urbanization_project = yes
+	set_variable = { name = pie_city_project_active value = yes }
+	set_variable = { name = pie_project_estate_burghers value = yes }
+}
+
+pie_prepare_urbanization_project_budgets = {
+	set_variable = { name = pie_project_budget_nobles value = 0 }
+	set_variable = { name = pie_project_budget_clergy value = 0 }
+	set_variable = { name = pie_project_budget_burghers value = 0 }
+
+	every_owned_location = {
+		limit = {
+			has_variable = pie_town_project_active
+			has_variable = pie_project_estate_nobles
+			NOT = { pie_town_project_can_complete = yes }
+		}
+		owner = { change_variable = { name = pie_project_budget_nobles add = 100 } }
+	}
+	every_owned_location = {
+		limit = {
+			has_variable = pie_city_project_active
+			has_variable = pie_project_estate_nobles
+			NOT = { pie_city_project_can_complete = yes }
+		}
+		owner = { change_variable = { name = pie_project_budget_nobles add = 200 } }
+	}
+	every_owned_location = {
+		limit = {
+			has_variable = pie_town_project_active
+			has_variable = pie_project_estate_clergy
+			NOT = { pie_town_project_can_complete = yes }
+		}
+		owner = { change_variable = { name = pie_project_budget_clergy add = 100 } }
+	}
+	every_owned_location = {
+		limit = {
+			has_variable = pie_city_project_active
+			has_variable = pie_project_estate_clergy
+			NOT = { pie_city_project_can_complete = yes }
+		}
+		owner = { change_variable = { name = pie_project_budget_clergy add = 200 } }
+	}
+	every_owned_location = {
+		limit = {
+			has_variable = pie_town_project_active
+			has_variable = pie_project_estate_burghers
+			NOT = { pie_town_project_can_complete = yes }
+		}
+		owner = { change_variable = { name = pie_project_budget_burghers add = 100 } }
+	}
+	every_owned_location = {
+		limit = {
+			has_variable = pie_city_project_active
+			has_variable = pie_project_estate_burghers
+			NOT = { pie_city_project_can_complete = yes }
+		}
+		owner = { change_variable = { name = pie_project_budget_burghers add = 200 } }
+	}
+}
+
+pie_clear_urbanization_project_budgets = {
+	if = { limit = { has_variable = pie_project_budget_nobles } remove_variable = pie_project_budget_nobles }
+	if = { limit = { has_variable = pie_project_budget_clergy } remove_variable = pie_project_budget_clergy }
+	if = { limit = { has_variable = pie_project_budget_burghers } remove_variable = pie_project_budget_burghers }
+}
+
+pie_prepare_urbanization_project_caps = {
+	set_variable = { name = pie_town_project_cap value = 1 }
+	if = { limit = { country_tax_base >= 50 } change_variable = { name = pie_town_project_cap add = 1 } }
+	if = { limit = { country_tax_base >= 150 } change_variable = { name = pie_town_project_cap add = 1 } }
+	if = { limit = { country_tax_base >= 300 } change_variable = { name = pie_town_project_cap add = 1 } }
+	if = { limit = { country_tax_base >= 600 } change_variable = { name = pie_town_project_cap add = 1 } }
+	if = { limit = { country_tax_base >= 1000 } change_variable = { name = pie_town_project_cap add = 1 } }
+	if = { limit = { country_tax_base >= 1600 } change_variable = { name = pie_town_project_cap add = 1 } }
+
+	set_variable = { name = pie_city_project_cap value = 1 }
+	if = { limit = { country_tax_base >= 300 } change_variable = { name = pie_city_project_cap add = 1 } }
+	if = { limit = { country_tax_base >= 600 } change_variable = { name = pie_city_project_cap add = 1 } }
+	if = { limit = { country_tax_base >= 1000 } change_variable = { name = pie_city_project_cap add = 1 } }
+	if = { limit = { country_tax_base >= 1600 } change_variable = { name = pie_city_project_cap add = 1 } }
+	if = { limit = { country_tax_base >= 2500 } change_variable = { name = pie_city_project_cap add = 1 } }
+}
+
+pie_clear_urbanization_project_caps = {
+	if = { limit = { has_variable = pie_town_project_cap } remove_variable = pie_town_project_cap }
+	if = { limit = { has_variable = pie_city_project_cap } remove_variable = pie_city_project_cap }
+}
+
+pie_spend_rural_urbanization_project_budget = {
+	owner = {
+		if = {
+			limit = { prev = { has_variable = pie_project_estate_nobles } }
+			change_variable = { name = pie_project_budget_nobles add = -100 }
+		}
+		else_if = {
+			limit = { prev = { has_variable = pie_project_estate_clergy } }
+			change_variable = { name = pie_project_budget_clergy add = -100 }
+		}
+		else_if = {
+			limit = { prev = { has_variable = pie_project_estate_burghers } }
+			change_variable = { name = pie_project_budget_burghers add = -100 }
+		}
+	}
+}
+
+pie_spend_city_urbanization_project_budget = {
+	owner = {
+		if = {
+			limit = { prev = { has_variable = pie_project_estate_nobles } }
+			change_variable = { name = pie_project_budget_nobles add = -200 }
+		}
+		else_if = {
+			limit = { prev = { has_variable = pie_project_estate_clergy } }
+			change_variable = { name = pie_project_budget_clergy add = -200 }
+		}
+		else_if = {
+			limit = { prev = { has_variable = pie_project_estate_burghers } }
+			change_variable = { name = pie_project_budget_burghers add = -200 }
+		}
+	}
+}
+
+pie_project_construct_rural_communal_granary = {
+	if = {
+		limit = { has_variable = pie_project_estate_nobles }
+		construct_estate_building = {
+			building_type = building_type:pie_rural_communal_granary
+			estate_type = estate_type:nobles_estate
+		}
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_clergy }
+		construct_estate_building = {
+			building_type = building_type:pie_rural_communal_granary
+			estate_type = estate_type:clergy_estate
+		}
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_burghers }
+		construct_estate_building = {
+			building_type = building_type:pie_rural_communal_granary
+			estate_type = estate_type:burghers_estate
+		}
+	}
+	pie_spend_rural_urbanization_project_budget = yes
+}
+
+pie_project_construct_rural_wells = {
+	if = {
+		limit = { has_variable = pie_project_estate_nobles }
+		construct_estate_building = {
+			building_type = building_type:pie_rural_wells_and_drainage
+			estate_type = estate_type:nobles_estate
+		}
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_clergy }
+		construct_estate_building = {
+			building_type = building_type:pie_rural_wells_and_drainage
+			estate_type = estate_type:clergy_estate
+		}
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_burghers }
+		construct_estate_building = {
+			building_type = building_type:pie_rural_wells_and_drainage
+			estate_type = estate_type:burghers_estate
+		}
+	}
+	pie_spend_rural_urbanization_project_budget = yes
+}
+
+pie_project_construct_rural_drainage = {
+	if = {
+		limit = { has_variable = pie_project_estate_nobles }
+		construct_estate_building = {
+			building_type = building_type:pie_rural_drainage_ditch
+			estate_type = estate_type:nobles_estate
+		}
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_clergy }
+		construct_estate_building = {
+			building_type = building_type:pie_rural_drainage_ditch
+			estate_type = estate_type:clergy_estate
+		}
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_burghers }
+		construct_estate_building = {
+			building_type = building_type:pie_rural_drainage_ditch
+			estate_type = estate_type:burghers_estate
+		}
+	}
+	pie_spend_rural_urbanization_project_budget = yes
+}
+
+pie_build_next_town_project_infrastructure = {
+	if = {
+		limit = { NOT = { any_buildings_in_location = { building_type = building_type:pie_rural_communal_granary } } }
+		pie_project_construct_rural_communal_granary = yes
+	}
+	else_if = {
+		limit = { NOT = { any_buildings_in_location = { building_type = building_type:pie_rural_wells_and_drainage } } }
+		pie_project_construct_rural_wells = yes
+	}
+	else_if = {
+		limit = { NOT = { any_buildings_in_location = { building_type = building_type:pie_rural_drainage_ditch } } }
+		pie_project_construct_rural_drainage = yes
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_project_estate_nobles
+			NOT = { any_buildings_in_location = { building_type = building_type:pie_rural_village_office } }
+		}
+		construct_estate_building = {
+			building_type = building_type:pie_rural_village_office
+			estate_type = estate_type:nobles_estate
+		}
+		pie_spend_rural_urbanization_project_budget = yes
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_project_estate_clergy
+			NOT = { any_buildings_in_location = { building_type = building_type:pie_rural_parish_church } }
+		}
+		construct_estate_building = {
+			building_type = building_type:pie_rural_parish_church
+			estate_type = estate_type:clergy_estate
+		}
+		pie_spend_rural_urbanization_project_budget = yes
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_project_estate_burghers
+			NOT = { any_buildings_in_location = { building_type = building_type:pie_rural_market_fair } }
+		}
+		construct_estate_building = {
+			building_type = building_type:pie_rural_market_fair
+			estate_type = estate_type:burghers_estate
+		}
+		pie_spend_rural_urbanization_project_budget = yes
+	}
+}
+
+pie_build_next_city_project_infrastructure = {
+	if = {
+		limit = {
+			has_variable = pie_project_estate_nobles
+			NOT = { any_buildings_in_location = { building_type = building_type:pie_urban_civic_center } }
+		}
+		construct_estate_building = {
+			building_type = building_type:pie_urban_civic_center
+			estate_type = estate_type:nobles_estate
+		}
+		pie_spend_city_urbanization_project_budget = yes
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_project_estate_clergy
+			NOT = { any_buildings_in_location = { building_type = building_type:pie_urban_church_quarter } }
+		}
+		construct_estate_building = {
+			building_type = building_type:pie_urban_church_quarter
+			estate_type = estate_type:clergy_estate
+		}
+		pie_spend_city_urbanization_project_budget = yes
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_project_estate_burghers
+			NOT = { any_buildings_in_location = { building_type = building_type:pie_urban_market_square } }
+		}
+		construct_estate_building = {
+			building_type = building_type:pie_urban_market_square
+			estate_type = estate_type:burghers_estate
+		}
+		pie_spend_city_urbanization_project_budget = yes
+	}
+}
+
+pie_complete_town_urbanization_project = {
+	if = {
+		limit = { has_variable = pie_project_estate_nobles }
+		set_variable = { name = pie_pending_origin_nobles_town value = yes }
+		pie_clear_urban_origin = yes
+		change_location_rank = location_rank:town
+		construct_estate_building = {
+			building_type = building_type:pie_noble_manor_town
+			estate_type = estate_type:nobles_estate
+		}
+		remove_variable = pie_pending_origin_nobles_town
+		set_variable = { name = pie_origin_nobles_town value = yes }
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_clergy }
+		set_variable = { name = pie_pending_origin_clergy_town value = yes }
+		pie_clear_urban_origin = yes
+		change_location_rank = location_rank:town
+		construct_estate_building = {
+			building_type = building_type:pie_clergy_parish_town
+			estate_type = estate_type:clergy_estate
+		}
+		remove_variable = pie_pending_origin_clergy_town
+		set_variable = { name = pie_origin_clergy_town value = yes }
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_burghers }
+		set_variable = { name = pie_pending_origin_burghers_town value = yes }
+		pie_clear_urban_origin = yes
+		change_location_rank = location_rank:town
+		construct_estate_building = {
+			building_type = building_type:pie_burghers_market_town
+			estate_type = estate_type:burghers_estate
+		}
+		remove_variable = pie_pending_origin_burghers_town
+		set_variable = { name = pie_origin_burghers_town value = yes }
+	}
+	pie_clear_urbanization_project = yes
+}
+
+pie_complete_city_urbanization_project = {
+	if = {
+		limit = { has_variable = pie_project_estate_nobles }
+		set_variable = { name = pie_pending_origin_nobles_city value = yes }
+		pie_clear_urban_origin = yes
+		change_location_rank = location_rank:city
+		construct_estate_building = {
+			building_type = building_type:pie_noble_court_city
+			estate_type = estate_type:nobles_estate
+		}
+		remove_variable = pie_pending_origin_nobles_city
+		set_variable = { name = pie_origin_nobles_city value = yes }
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_clergy }
+		set_variable = { name = pie_pending_origin_clergy_city value = yes }
+		pie_clear_urban_origin = yes
+		change_location_rank = location_rank:city
+		construct_estate_building = {
+			building_type = building_type:pie_clergy_scholastic_city
+			estate_type = estate_type:clergy_estate
+		}
+		remove_variable = pie_pending_origin_clergy_city
+		set_variable = { name = pie_origin_clergy_city value = yes }
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_burghers }
+		set_variable = { name = pie_pending_origin_burghers_city value = yes }
+		pie_clear_urban_origin = yes
+		change_location_rank = location_rank:city
+		construct_estate_building = {
+			building_type = building_type:pie_burghers_exchange_city
+			estate_type = estate_type:burghers_estate
+		}
+		remove_variable = pie_pending_origin_burghers_city
+		set_variable = { name = pie_origin_burghers_city value = yes }
+	}
+	pie_clear_urbanization_project = yes
+}
+
+pie_trigger_town_urbanization_project_event = {
+	save_scope_as = target_location
+	if = {
+		limit = { has_variable = pie_project_estate_nobles }
+		owner = { trigger_event_non_silently = pie_estate_urban_project.1 }
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_clergy }
+		owner = { trigger_event_non_silently = pie_estate_urban_project.2 }
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_burghers }
+		owner = { trigger_event_non_silently = pie_estate_urban_project.3 }
+	}
+}
+
+pie_trigger_city_urbanization_project_event = {
+	save_scope_as = target_location
+	if = {
+		limit = { has_variable = pie_project_estate_nobles }
+		owner = { trigger_event_non_silently = pie_estate_urban_project.4 }
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_clergy }
+		owner = { trigger_event_non_silently = pie_estate_urban_project.5 }
+	}
+	else_if = {
+		limit = { has_variable = pie_project_estate_burghers }
+		owner = { trigger_event_non_silently = pie_estate_urban_project.6 }
+	}
+}
+
+pie_advance_town_urbanization_project = {
+	if = {
+		limit = { pie_town_project_can_complete = yes }
+		if = {
+			limit = { owner = { is_ai = no } }
+			pie_trigger_town_urbanization_project_event = yes
+		}
+		else = {
+			pie_complete_town_urbanization_project = yes
+		}
+	}
+	else_if = {
+		limit = {
+			location_rank = location_rank:rural_settlement
+			num_civil_constructions < 1
+			pie_project_estate_can_pay_rural_infrastructure = yes
+		}
+		pie_build_next_town_project_infrastructure = yes
+	}
+}
+
+pie_advance_city_urbanization_project = {
+	if = {
+		limit = { pie_city_project_can_complete = yes }
+		if = {
+			limit = { owner = { is_ai = no } }
+			pie_trigger_city_urbanization_project_event = yes
+		}
+		else = {
+			pie_complete_city_urbanization_project = yes
+		}
+	}
+	else_if = {
+		limit = {
+			location_rank = location_rank:town
+			NOT = { location_rank = location_rank:city }
+			num_civil_constructions < 1
+			pie_project_estate_can_pay_city_infrastructure = yes
+		}
+		pie_build_next_city_project_infrastructure = yes
+	}
+}
+
+pie_advance_noble_urbanization_projects = {
+	if = {
+		limit = {
+			var:pie_project_budget_nobles > 0
+			pie_nobles_can_fund_reserved_urbanization_budget = yes
+		}
+		every_owned_location = {
+			limit = {
+				has_variable = pie_town_project_active
+				has_variable = pie_project_estate_nobles
+				NOT = { pie_town_project_can_complete = yes }
+			}
+			pie_advance_town_urbanization_project = yes
+		}
+		every_owned_location = {
+			limit = {
+				has_variable = pie_city_project_active
+				has_variable = pie_project_estate_nobles
+				NOT = { pie_city_project_can_complete = yes }
+			}
+			pie_advance_city_urbanization_project = yes
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				AND = {
+					"estate(estate_type:nobles_estate)" = { estate_gold >= 200 }
+					any_owned_location = {
+						has_variable = pie_city_project_active
+						has_variable = pie_project_estate_nobles
+						NOT = { pie_city_project_can_complete = yes }
+					}
+				}
+				AND = {
+					"estate(estate_type:nobles_estate)" = { estate_gold >= 100 }
+					any_owned_location = {
+						has_variable = pie_town_project_active
+						has_variable = pie_project_estate_nobles
+						NOT = { pie_town_project_can_complete = yes }
+					}
+				}
+			}
+		}
+		random_list = {
+			1 = {
+				trigger = {
+					"estate(estate_type:nobles_estate)" = { estate_gold >= 200 }
+					any_owned_location = {
+						has_variable = pie_city_project_active
+						has_variable = pie_project_estate_nobles
+						NOT = { pie_city_project_can_complete = yes }
+					}
+				}
+				set_variable = { name = pie_project_budget_nobles value = 200 }
+				random_owned_location = {
+					limit = {
+						has_variable = pie_city_project_active
+						has_variable = pie_project_estate_nobles
+						NOT = { pie_city_project_can_complete = yes }
+					}
+					pie_advance_city_urbanization_project = yes
+				}
+			}
+			1 = {
+				trigger = {
+					"estate(estate_type:nobles_estate)" = { estate_gold >= 100 }
+					any_owned_location = {
+						has_variable = pie_town_project_active
+						has_variable = pie_project_estate_nobles
+						NOT = { pie_town_project_can_complete = yes }
+					}
+				}
+				set_variable = { name = pie_project_budget_nobles value = 100 }
+				random_owned_location = {
+					limit = {
+						has_variable = pie_town_project_active
+						has_variable = pie_project_estate_nobles
+						NOT = { pie_town_project_can_complete = yes }
+					}
+					pie_advance_town_urbanization_project = yes
+				}
+			}
+		}
+	}
+}
+
+pie_advance_clergy_urbanization_projects = {
+	if = {
+		limit = {
+			var:pie_project_budget_clergy > 0
+			pie_clergy_can_fund_reserved_urbanization_budget = yes
+		}
+		every_owned_location = {
+			limit = {
+				has_variable = pie_town_project_active
+				has_variable = pie_project_estate_clergy
+				NOT = { pie_town_project_can_complete = yes }
+			}
+			pie_advance_town_urbanization_project = yes
+		}
+		every_owned_location = {
+			limit = {
+				has_variable = pie_city_project_active
+				has_variable = pie_project_estate_clergy
+				NOT = { pie_city_project_can_complete = yes }
+			}
+			pie_advance_city_urbanization_project = yes
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				AND = {
+					"estate(estate_type:clergy_estate)" = { estate_gold >= 200 }
+					any_owned_location = {
+						has_variable = pie_city_project_active
+						has_variable = pie_project_estate_clergy
+						NOT = { pie_city_project_can_complete = yes }
+					}
+				}
+				AND = {
+					"estate(estate_type:clergy_estate)" = { estate_gold >= 100 }
+					any_owned_location = {
+						has_variable = pie_town_project_active
+						has_variable = pie_project_estate_clergy
+						NOT = { pie_town_project_can_complete = yes }
+					}
+				}
+			}
+		}
+		random_list = {
+			1 = {
+				trigger = {
+					"estate(estate_type:clergy_estate)" = { estate_gold >= 200 }
+					any_owned_location = {
+						has_variable = pie_city_project_active
+						has_variable = pie_project_estate_clergy
+						NOT = { pie_city_project_can_complete = yes }
+					}
+				}
+				set_variable = { name = pie_project_budget_clergy value = 200 }
+				random_owned_location = {
+					limit = {
+						has_variable = pie_city_project_active
+						has_variable = pie_project_estate_clergy
+						NOT = { pie_city_project_can_complete = yes }
+					}
+					pie_advance_city_urbanization_project = yes
+				}
+			}
+			1 = {
+				trigger = {
+					"estate(estate_type:clergy_estate)" = { estate_gold >= 100 }
+					any_owned_location = {
+						has_variable = pie_town_project_active
+						has_variable = pie_project_estate_clergy
+						NOT = { pie_town_project_can_complete = yes }
+					}
+				}
+				set_variable = { name = pie_project_budget_clergy value = 100 }
+				random_owned_location = {
+					limit = {
+						has_variable = pie_town_project_active
+						has_variable = pie_project_estate_clergy
+						NOT = { pie_town_project_can_complete = yes }
+					}
+					pie_advance_town_urbanization_project = yes
+				}
+			}
+		}
+	}
+}
+
+pie_advance_burghers_urbanization_projects = {
+	if = {
+		limit = {
+			var:pie_project_budget_burghers > 0
+			pie_burghers_can_fund_reserved_urbanization_budget = yes
+		}
+		every_owned_location = {
+			limit = {
+				has_variable = pie_town_project_active
+				has_variable = pie_project_estate_burghers
+				NOT = { pie_town_project_can_complete = yes }
+			}
+			pie_advance_town_urbanization_project = yes
+		}
+		every_owned_location = {
+			limit = {
+				has_variable = pie_city_project_active
+				has_variable = pie_project_estate_burghers
+				NOT = { pie_city_project_can_complete = yes }
+			}
+			pie_advance_city_urbanization_project = yes
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				AND = {
+					"estate(estate_type:burghers_estate)" = { estate_gold >= 200 }
+					any_owned_location = {
+						has_variable = pie_city_project_active
+						has_variable = pie_project_estate_burghers
+						NOT = { pie_city_project_can_complete = yes }
+					}
+				}
+				AND = {
+					"estate(estate_type:burghers_estate)" = { estate_gold >= 100 }
+					any_owned_location = {
+						has_variable = pie_town_project_active
+						has_variable = pie_project_estate_burghers
+						NOT = { pie_town_project_can_complete = yes }
+					}
+				}
+			}
+		}
+		random_list = {
+			1 = {
+				trigger = {
+					"estate(estate_type:burghers_estate)" = { estate_gold >= 200 }
+					any_owned_location = {
+						has_variable = pie_city_project_active
+						has_variable = pie_project_estate_burghers
+						NOT = { pie_city_project_can_complete = yes }
+					}
+				}
+				set_variable = { name = pie_project_budget_burghers value = 200 }
+				random_owned_location = {
+					limit = {
+						has_variable = pie_city_project_active
+						has_variable = pie_project_estate_burghers
+						NOT = { pie_city_project_can_complete = yes }
+					}
+					pie_advance_city_urbanization_project = yes
+				}
+			}
+			1 = {
+				trigger = {
+					"estate(estate_type:burghers_estate)" = { estate_gold >= 100 }
+					any_owned_location = {
+						has_variable = pie_town_project_active
+						has_variable = pie_project_estate_burghers
+						NOT = { pie_town_project_can_complete = yes }
+					}
+				}
+				set_variable = { name = pie_project_budget_burghers value = 100 }
+				random_owned_location = {
+					limit = {
+						has_variable = pie_town_project_active
+						has_variable = pie_project_estate_burghers
+						NOT = { pie_town_project_can_complete = yes }
+					}
+					pie_advance_town_urbanization_project = yes
+				}
+			}
+		}
+	}
+}
+
+pie_clean_invalid_urbanization_project = {
+	if = {
+		limit = {
+			has_variable = pie_town_project_active
+			NOT = { pie_town_project_still_viable = yes }
+		}
+		pie_clear_urbanization_project = yes
+	}
+	if = {
+		limit = {
+			has_variable = pie_city_project_active
+			NOT = { pie_city_project_still_viable = yes }
+		}
+		pie_clear_urbanization_project = yes
+	}
+	if = {
+		limit = {
+			pie_has_active_urbanization_project = yes
+			NOT = { pie_has_project_estate = yes }
+		}
+		pie_clear_urbanization_project = yes
+	}
+}
+
+pie_estate_urbanization_projects_yearly = {
+	every_owned_location = {
+		pie_clean_invalid_urbanization_project = yes
+	}
+
+	every_owned_location = {
+		limit = {
+			has_variable = pie_town_project_active
+			pie_town_project_can_complete = yes
+		}
+		pie_advance_town_urbanization_project = yes
+	}
+
+	every_owned_location = {
+		limit = {
+			has_variable = pie_city_project_active
+			pie_city_project_can_complete = yes
+		}
+		pie_advance_city_urbanization_project = yes
+	}
+
+	pie_prepare_urbanization_project_budgets = yes
+	pie_advance_noble_urbanization_projects = yes
+	pie_advance_clergy_urbanization_projects = yes
+	pie_advance_burghers_urbanization_projects = yes
+
+	if = {
+		limit = { pie_can_start_new_urbanization_project = yes }
+		set_variable = { name = pie_town_project_count value = 0 }
+		set_variable = { name = pie_city_project_count value = 0 }
+
+		every_owned_location = {
+			limit = { has_variable = pie_town_project_active }
+			owner = { change_variable = { name = pie_town_project_count add = 1 } }
+		}
+		every_owned_location = {
+			limit = { has_variable = pie_city_project_active }
+			owner = { change_variable = { name = pie_city_project_count add = 1 } }
+		}
+		pie_prepare_urbanization_project_caps = yes
+
+		if = {
+			limit = {
+				var:pie_town_project_count < var:pie_town_project_cap
+				any_owned_location = { pie_noble_town_project_candidate = yes }
+			}
+			ordered_owned_location = {
+				limit = { pie_noble_town_project_candidate = yes }
+				order_by = pie_estate_urbanization_project_score
+				max = 1
+				pie_create_noble_town_urbanization_project = yes
+				owner = { change_variable = { name = pie_town_project_count add = 1 } }
+			}
+		}
+
+		if = {
+			limit = {
+				var:pie_town_project_count < var:pie_town_project_cap
+				any_owned_location = { pie_clergy_town_project_candidate = yes }
+			}
+			ordered_owned_location = {
+				limit = { pie_clergy_town_project_candidate = yes }
+				order_by = pie_estate_urbanization_project_score
+				max = 1
+				pie_create_clergy_town_urbanization_project = yes
+				owner = { change_variable = { name = pie_town_project_count add = 1 } }
+			}
+		}
+
+		if = {
+			limit = {
+				var:pie_town_project_count < var:pie_town_project_cap
+				any_owned_location = { pie_burghers_town_project_candidate = yes }
+			}
+			ordered_owned_location = {
+				limit = { pie_burghers_town_project_candidate = yes }
+				order_by = pie_estate_urbanization_project_score
+				max = 1
+				pie_create_burghers_town_urbanization_project = yes
+				owner = { change_variable = { name = pie_town_project_count add = 1 } }
+			}
+		}
+
+		if = {
+			limit = {
+				var:pie_city_project_count < var:pie_city_project_cap
+				any_owned_location = { pie_noble_city_project_candidate = yes }
+			}
+			ordered_owned_location = {
+				limit = { pie_noble_city_project_candidate = yes }
+				order_by = pie_estate_urbanization_project_score
+				max = 1
+				pie_create_noble_city_urbanization_project = yes
+				owner = { change_variable = { name = pie_city_project_count add = 1 } }
+			}
+		}
+
+		if = {
+			limit = {
+				var:pie_city_project_count < var:pie_city_project_cap
+				any_owned_location = { pie_clergy_city_project_candidate = yes }
+			}
+			ordered_owned_location = {
+				limit = { pie_clergy_city_project_candidate = yes }
+				order_by = pie_estate_urbanization_project_score
+				max = 1
+				pie_create_clergy_city_urbanization_project = yes
+				owner = { change_variable = { name = pie_city_project_count add = 1 } }
+			}
+		}
+
+		if = {
+			limit = {
+				var:pie_city_project_count < var:pie_city_project_cap
+				any_owned_location = { pie_burghers_city_project_candidate = yes }
+			}
+			ordered_owned_location = {
+				limit = { pie_burghers_city_project_candidate = yes }
+				order_by = pie_estate_urbanization_project_score
+				max = 1
+				pie_create_burghers_city_urbanization_project = yes
+				owner = { change_variable = { name = pie_city_project_count add = 1 } }
+			}
+		}
+
+		remove_variable = pie_town_project_count
+		remove_variable = pie_city_project_count
+		pie_clear_urbanization_project_caps = yes
+	}
+
+	pie_clear_urbanization_project_budgets = yes
+}
+
+pie_transfer_urbanization_project_to_nobles = {
+	if = { limit = { has_variable = pie_project_estate_clergy } remove_variable = pie_project_estate_clergy }
+	if = { limit = { has_variable = pie_project_estate_burghers } remove_variable = pie_project_estate_burghers }
+	set_variable = { name = pie_project_estate_nobles value = yes }
+}
+
+pie_transfer_urbanization_project_to_clergy = {
+	if = { limit = { has_variable = pie_project_estate_nobles } remove_variable = pie_project_estate_nobles }
+	if = { limit = { has_variable = pie_project_estate_burghers } remove_variable = pie_project_estate_burghers }
+	set_variable = { name = pie_project_estate_clergy value = yes }
+}
+
+pie_transfer_urbanization_project_to_burghers = {
+	if = { limit = { has_variable = pie_project_estate_nobles } remove_variable = pie_project_estate_nobles }
+	if = { limit = { has_variable = pie_project_estate_clergy } remove_variable = pie_project_estate_clergy }
+	set_variable = { name = pie_project_estate_burghers value = yes }
+}

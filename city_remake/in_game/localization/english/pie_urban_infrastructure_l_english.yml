@@ -36,7 +36,7 @@
  pie_urban_city_walls_desc: "High walls, towers, and defensive works define the city's boundary and provide a durable sense of security. It provides #Y +250#! soldier jobs, extra defense, garrison size, a small amount of max control, unrest reduction, and #Y +0.05%#! monthly prosperity."
 
  pie_urban_warehouse: "Warehouse"
- pie_urban_warehouse_desc: "Large volumes of goods are stored, sorted, and redistributed here. If the location is a market center, it also grants #Y +50#! stockpile capacity to its market. It provides a small amount of merchant capacity, market access, faster order propagation, and #Y +0.05%#! monthly prosperity."
+ pie_urban_warehouse_desc: "Large volumes of goods are stored, sorted, and redistributed here. If the location is a market center, it also grants #Y +50#! stockpile capacity to its market. It provides a small amount of market access, faster order propagation, and #Y +0.05%#! monthly prosperity."
 
  pie_urban_aqueduct: "Aqueduct"
  pie_urban_aqueduct_desc: "In another world it might only be worth a miserable two points of housing, but here a reliable water system is the true lifeline of a great city. It provides local population capacity, strong migration attraction, a small amount of disease resistance, and #Y +0.05%#! monthly prosperity."

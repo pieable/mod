@@ -46,7 +46,7 @@ pie_clergy_parish_town = {
 		local_pop_conversion_speed = 0.05
 		local_monthly_literacy = 0.05
 		local_clergy_max_literacy = 10
-		local_clergy_desired_pop = 0.01
+		local_clergy_desired_pop_scaled = 0.01
 		local_clergy_estate_power = 0.25
 	}
 
@@ -101,7 +101,7 @@ pie_clergy_scholastic_city = {
 	modifier = {
 		local_monthly_literacy = 0.1
 		local_clergy_max_literacy = 15
-		local_clergy_desired_pop = 0.05
+		local_clergy_desired_pop_scaled = 0.05
 		local_clergy_estate_power = 0.5
 	}
 

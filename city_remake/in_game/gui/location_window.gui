@@ -2970,6 +2970,210 @@ lateralview = {
 				}
 
 				widget = {
+					parentanchor = right|top
+					position = { -16 12 }
+					size = { 52 52 }
+					datacontext = "[LocationView.GetLocation]"
+					visible = "[And(Location.MakeScope.Var('pie_town_project_active').IsSet, Location.MakeScope.Var('pie_project_estate_nobles').IsSet)]"
+					tooltip = "pie_estate_urban_project_badge_nobles_town_tt"
+					background = {
+						texture = "gfx/interface/colors/black.dds"
+						alpha = 0.65
+					}
+					using = bg_cabinet_card_frame
+					icon = {
+						parentanchor = center
+						position = { -4 -4 }
+						size = { 34 34 }
+						texture = "gfx/interface/icons/estates/nobles_estate.dds"
+					}
+					widget = {
+						parentanchor = right|bottom
+						position = { -2 -2 }
+						size = { 24 24 }
+						background = {
+							texture = "gfx/interface/colors/black.dds"
+							alpha = 0.75
+						}
+						icon = {
+							parentanchor = center
+							size = { 18 18 }
+							texture = "gfx/interface/icons/buildings/settlement_building.dds"
+						}
+					}
+				}
+
+				widget = {
+					parentanchor = right|top
+					position = { -16 12 }
+					size = { 52 52 }
+					datacontext = "[LocationView.GetLocation]"
+					visible = "[And(Location.MakeScope.Var('pie_city_project_active').IsSet, Location.MakeScope.Var('pie_project_estate_nobles').IsSet)]"
+					tooltip = "pie_estate_urban_project_badge_nobles_city_tt"
+					background = {
+						texture = "gfx/interface/colors/black.dds"
+						alpha = 0.65
+					}
+					using = bg_cabinet_card_frame
+					icon = {
+						parentanchor = center
+						position = { -4 -4 }
+						size = { 34 34 }
+						texture = "gfx/interface/icons/estates/nobles_estate.dds"
+					}
+					widget = {
+						parentanchor = right|bottom
+						position = { -2 -2 }
+						size = { 24 24 }
+						background = {
+							texture = "gfx/interface/colors/black.dds"
+							alpha = 0.75
+						}
+						icon = {
+							parentanchor = center
+							size = { 18 18 }
+							texture = "gfx/interface/icons/location_icons/city.dds"
+						}
+					}
+				}
+
+				widget = {
+					parentanchor = right|top
+					position = { -16 12 }
+					size = { 52 52 }
+					datacontext = "[LocationView.GetLocation]"
+					visible = "[And(Location.MakeScope.Var('pie_town_project_active').IsSet, Location.MakeScope.Var('pie_project_estate_clergy').IsSet)]"
+					tooltip = "pie_estate_urban_project_badge_clergy_town_tt"
+					background = {
+						texture = "gfx/interface/colors/black.dds"
+						alpha = 0.65
+					}
+					using = bg_cabinet_card_frame
+					icon = {
+						parentanchor = center
+						position = { -4 -4 }
+						size = { 34 34 }
+						texture = "gfx/interface/icons/estates/clergy_estate.dds"
+					}
+					widget = {
+						parentanchor = right|bottom
+						position = { -2 -2 }
+						size = { 24 24 }
+						background = {
+							texture = "gfx/interface/colors/black.dds"
+							alpha = 0.75
+						}
+						icon = {
+							parentanchor = center
+							size = { 18 18 }
+							texture = "gfx/interface/icons/buildings/settlement_building.dds"
+						}
+					}
+				}
+
+				widget = {
+					parentanchor = right|top
+					position = { -16 12 }
+					size = { 52 52 }
+					datacontext = "[LocationView.GetLocation]"
+					visible = "[And(Location.MakeScope.Var('pie_city_project_active').IsSet, Location.MakeScope.Var('pie_project_estate_clergy').IsSet)]"
+					tooltip = "pie_estate_urban_project_badge_clergy_city_tt"
+					background = {
+						texture = "gfx/interface/colors/black.dds"
+						alpha = 0.65
+					}
+					using = bg_cabinet_card_frame
+					icon = {
+						parentanchor = center
+						position = { -4 -4 }
+						size = { 34 34 }
+						texture = "gfx/interface/icons/estates/clergy_estate.dds"
+					}
+					widget = {
+						parentanchor = right|bottom
+						position = { -2 -2 }
+						size = { 24 24 }
+						background = {
+							texture = "gfx/interface/colors/black.dds"
+							alpha = 0.75
+						}
+						icon = {
+							parentanchor = center
+							size = { 18 18 }
+							texture = "gfx/interface/icons/location_icons/city.dds"
+						}
+					}
+				}
+
+				widget = {
+					parentanchor = right|top
+					position = { -16 12 }
+					size = { 52 52 }
+					datacontext = "[LocationView.GetLocation]"
+					visible = "[And(Location.MakeScope.Var('pie_town_project_active').IsSet, Location.MakeScope.Var('pie_project_estate_burghers').IsSet)]"
+					tooltip = "pie_estate_urban_project_badge_burghers_town_tt"
+					background = {
+						texture = "gfx/interface/colors/black.dds"
+						alpha = 0.65
+					}
+					using = bg_cabinet_card_frame
+					icon = {
+						parentanchor = center
+						position = { -4 -4 }
+						size = { 34 34 }
+						texture = "gfx/interface/icons/estates/burghers_estate.dds"
+					}
+					widget = {
+						parentanchor = right|bottom
+						position = { -2 -2 }
+						size = { 24 24 }
+						background = {
+							texture = "gfx/interface/colors/black.dds"
+							alpha = 0.75
+						}
+						icon = {
+							parentanchor = center
+							size = { 18 18 }
+							texture = "gfx/interface/icons/buildings/settlement_building.dds"
+						}
+					}
+				}
+
+				widget = {
+					parentanchor = right|top
+					position = { -16 12 }
+					size = { 52 52 }
+					datacontext = "[LocationView.GetLocation]"
+					visible = "[And(Location.MakeScope.Var('pie_city_project_active').IsSet, Location.MakeScope.Var('pie_project_estate_burghers').IsSet)]"
+					tooltip = "pie_estate_urban_project_badge_burghers_city_tt"
+					background = {
+						texture = "gfx/interface/colors/black.dds"
+						alpha = 0.65
+					}
+					using = bg_cabinet_card_frame
+					icon = {
+						parentanchor = center
+						position = { -4 -4 }
+						size = { 34 34 }
+						texture = "gfx/interface/icons/estates/burghers_estate.dds"
+					}
+					widget = {
+						parentanchor = right|bottom
+						position = { -2 -2 }
+						size = { 24 24 }
+						background = {
+							texture = "gfx/interface/colors/black.dds"
+							alpha = 0.75
+						}
+						icon = {
+							parentanchor = center
+							size = { 18 18 }
+							texture = "gfx/interface/icons/location_icons/city.dds"
+						}
+					}
+				}
+
+				widget = {
 					parentanchor = center
 					size = { 100% 40 }
 					datacontext = "[LocationView.GetLocation]"

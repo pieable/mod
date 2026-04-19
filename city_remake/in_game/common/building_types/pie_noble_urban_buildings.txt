@@ -162,7 +162,7 @@ pie_noble_court_city = {
 		local_cultural_influence = 1
 		local_cultural_tradition = 1
 		monthly_prestige = 0.02
-		local_nobles_desired_pop = 0.02
+		local_nobles_desired_pop_scaled = 0.01
 	}
 
 	graphical_tags = { palace }

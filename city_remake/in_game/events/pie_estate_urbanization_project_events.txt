@@ -1,0 +1,211 @@
+namespace = pie_estate_urban_project
+
+pie_estate_urban_project.1 = {
+	type = country_event
+	title = pie_estate_urban_project.1.title
+	desc = pie_estate_urban_project.1.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:nobles_estate
+			background = estate_type:nobles_estate
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.approve
+		custom_tooltip = { text = pie_estate_urban_project.1.approve.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_complete_town_urbanization_project = yes }
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.reject
+		custom_tooltip = { text = pie_estate_urban_project.1.reject.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_clear_urbanization_project = yes }
+			if = {
+				limit = { country_has_estate = estate_type:nobles_estate }
+				add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.20 }
+			}
+		}
+	}
+}
+
+pie_estate_urban_project.2 = {
+	type = country_event
+	title = pie_estate_urban_project.2.title
+	desc = pie_estate_urban_project.2.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:clergy_estate
+			background = estate_type:clergy_estate
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.approve
+		custom_tooltip = { text = pie_estate_urban_project.2.approve.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_complete_town_urbanization_project = yes }
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.reject
+		custom_tooltip = { text = pie_estate_urban_project.2.reject.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_clear_urbanization_project = yes }
+			if = {
+				limit = { country_has_estate = estate_type:clergy_estate }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.20 }
+			}
+		}
+	}
+}
+
+pie_estate_urban_project.3 = {
+	type = country_event
+	title = pie_estate_urban_project.3.title
+	desc = pie_estate_urban_project.3.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:burghers_estate
+			background = estate_type:burghers_estate
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.approve
+		custom_tooltip = { text = pie_estate_urban_project.3.approve.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_complete_town_urbanization_project = yes }
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.reject
+		custom_tooltip = { text = pie_estate_urban_project.3.reject.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_clear_urbanization_project = yes }
+			if = {
+				limit = { country_has_estate = estate_type:burghers_estate }
+				add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.20 }
+			}
+		}
+	}
+}
+
+pie_estate_urban_project.4 = {
+	type = country_event
+	title = pie_estate_urban_project.4.title
+	desc = pie_estate_urban_project.4.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:nobles_estate
+			background = estate_type:nobles_estate
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.approve
+		custom_tooltip = { text = pie_estate_urban_project.4.approve.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_complete_city_urbanization_project = yes }
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.reject
+		custom_tooltip = { text = pie_estate_urban_project.4.reject.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_clear_urbanization_project = yes }
+			if = {
+				limit = { country_has_estate = estate_type:nobles_estate }
+				add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.20 }
+			}
+		}
+	}
+}
+
+pie_estate_urban_project.5 = {
+	type = country_event
+	title = pie_estate_urban_project.5.title
+	desc = pie_estate_urban_project.5.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:clergy_estate
+			background = estate_type:clergy_estate
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.approve
+		custom_tooltip = { text = pie_estate_urban_project.5.approve.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_complete_city_urbanization_project = yes }
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.reject
+		custom_tooltip = { text = pie_estate_urban_project.5.reject.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_clear_urbanization_project = yes }
+			if = {
+				limit = { country_has_estate = estate_type:clergy_estate }
+				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.20 }
+			}
+		}
+	}
+}
+
+pie_estate_urban_project.6 = {
+	type = country_event
+	title = pie_estate_urban_project.6.title
+	desc = pie_estate_urban_project.6.desc
+
+	immediate = {
+		event_illustration_estate_effect = {
+			foreground = estate_type:burghers_estate
+			background = estate_type:burghers_estate
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.approve
+		custom_tooltip = { text = pie_estate_urban_project.6.approve.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_complete_city_urbanization_project = yes }
+		}
+	}
+
+	option = {
+		name = pie_estate_urban_project.reject
+		custom_tooltip = { text = pie_estate_urban_project.6.reject.tt }
+
+		hidden_effect = {
+			scope:target_location = { pie_clear_urbanization_project = yes }
+			if = {
+				limit = { country_has_estate = estate_type:burghers_estate }
+				add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.20 }
+			}
+		}
+	}
+}

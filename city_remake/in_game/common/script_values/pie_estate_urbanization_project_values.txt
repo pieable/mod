@@ -1,0 +1,38 @@
+pie_estate_urbanization_project_score = {
+	value = 0
+
+	add = {
+		value = max_control
+		multiply = 50
+	}
+
+	add = {
+		value = location_tax_base
+		max = 80
+		multiply = 0.4
+	}
+
+	add = {
+		value = market_access
+		multiply = 12
+	}
+
+	if = {
+		limit = {
+			religion_percentage = {
+				religion = root.religion
+				value >= 0.8
+			}
+		}
+		add = 6
+	}
+	else_if = {
+		limit = {
+			religion_percentage = {
+				religion = root.religion
+				value >= 0.5
+			}
+		}
+		add = 3
+	}
+}

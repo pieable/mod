@@ -1,9 +1,9 @@
 ﻿l_english:
  pie_clergy_parish_town: "Parish Priory"
- pie_clergy_parish_town_desc: "A local religious center financed by the clergy. Through preaching, schooling, and church organization, it strengthens the spread of the state faith and literacy in the surrounding area."
+ pie_clergy_parish_town_desc: "A local religious center financed by the clergy. Through preaching, schooling, and church organization, it strengthens the spread of the state faith and literacy in the surrounding area, while expanding local clergy capacity for each 1,000 population."
 
  pie_clergy_scholastic_city: "Theological Academy"
- pie_clergy_scholastic_city_desc: "This city was fostered by the clergy, serving both as a regional religious center and as an advanced hub of scholarship, copying, and religious instruction."
+ pie_clergy_scholastic_city_desc: "This city was fostered by the clergy, serving both as a regional religious center and as an advanced hub of scholarship, copying, and religious instruction. It greatly expands local clergy capacity for each 1,000 population."
 
  pie_clergy_urban.1.title: "Clergy Propose Founding a Town"
  pie_clergy_urban.1.desc: "The share of the local population following the state religion has become substantial, and the area's population and prosperity can support a more stable parish structure. Our clergy are prepared to found a town in [target_location.GetName] and build a Parish Priory there."

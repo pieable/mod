@@ -4,6 +4,37 @@ situation_panel = {
 			layoutpolicy_horizontal = expanding
 			spacing = 10
 
+			button_regular = {
+				layoutpolicy_horizontal = expanding
+				size = { -1 36 }
+				datacontext = "[GetMapMode('pie_estate_urbanization_projects')]"
+				tooltip = "pie_estate_urbanization_projects_mapmode_button_tt"
+				action_tooltip = {
+					click_type = left
+					click_mode = single
+					title = "MAPMODE_SELECT"
+					on_action = "[MapMode.SetMapMode]"
+				}
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					margin = { 8 0 }
+					spacing = 8
+
+					icon = {
+						size = { 26 26 }
+						parentanchor = vcenter
+						texture = "gfx/interface/icons/map_modes/locations.dds"
+					}
+
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						parentanchor = vcenter
+						text = "pie_estate_urbanization_projects_mapmode_button"
+						align = left|nobaseline
+					}
+				}
+			}
+
 			situation_card_expandable = {
 				blockoverride "header_button_onclick" {
 					onclick = "[LateralView.Vars.Toggle( 'pie_auto_build_collapsed' )]"

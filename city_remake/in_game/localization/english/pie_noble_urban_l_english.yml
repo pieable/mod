@@ -6,7 +6,7 @@
  pie_noble_frontier_town_desc: "A frontier colonization outpost financed by border nobles. Instead of focusing on levies and court life, it expands cultivation, suppresses frontier unrest, and strengthens local noble power, gradually pulling remote countryside into the noble order."
 
  pie_noble_court_city: "Noble Court"
- pie_noble_court_city_desc: "This city was fostered by the nobility, serving both as the residence of the upper strata and as a regional center of arms, ceremony, and cultural influence."
+ pie_noble_court_city_desc: "This city was fostered by the nobility, serving both as the residence of the upper strata and as a regional center of arms, ceremony, and cultural influence. It expands the local capacity for nobles for each 1,000 population."
 
  pie_noble_urban.1.title: "Nobles Propose Founding a Town"
  pie_noble_urban.1.desc: "Local control is firm, and the area's population and prosperity have reached a level that can sustain a more developed settlement. Our nobles are prepared to finance a town in [target_location.GetName] and construct a Manor Hall there."

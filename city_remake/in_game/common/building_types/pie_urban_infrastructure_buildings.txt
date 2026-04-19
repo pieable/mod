@@ -296,8 +296,6 @@ pie_urban_warehouse = {
 	construction_demand = warehouse_construction
 
 	modifier = {
-		local_merchant_capacity = 3.0
-		local_trades_per_burgher = 0.1
 		local_market_access = 0.005
 		local_monthly_prosperity = 0.0005
 	}
