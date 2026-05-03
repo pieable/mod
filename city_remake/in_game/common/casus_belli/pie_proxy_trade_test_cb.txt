@@ -1,0 +1,15 @@
+﻿cb_pie_proxy_trade_test = {
+	visible = { always = yes }
+
+	allow_creation = {
+		always = yes
+	}
+
+	allow_declaration = {
+		always = yes
+	}
+
+	can_expire = no
+	allow_separate_peace = yes
+	war_goal_type = naval
+}

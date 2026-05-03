@@ -2970,6 +2970,101 @@ lateralview = {
 				}
 
 				widget = {
+					parentanchor = left|top
+					position = { 16 12 }
+					size = { 44 44 }
+					datacontext = "[LocationView.GetLocation]"
+					visible = "[Location.MakeScope.Var('pie_land_owner_crown').IsSet]"
+					tooltip = "pie_land_owner_badge_crown_tt"
+					background = {
+						texture = "gfx/interface/colors/black.dds"
+						alpha = 0.65
+					}
+					using = bg_cabinet_card_frame
+					icon = {
+						parentanchor = center
+						size = { 30 30 }
+						texture = "gfx/interface/icons/estates/crown_estate.dds"
+					}
+				}
+
+				widget = {
+					parentanchor = left|top
+					position = { 16 12 }
+					size = { 44 44 }
+					datacontext = "[LocationView.GetLocation]"
+					visible = "[Location.MakeScope.Var('pie_land_owner_nobles').IsSet]"
+					tooltip = "pie_land_owner_badge_nobles_tt"
+					background = {
+						texture = "gfx/interface/colors/black.dds"
+						alpha = 0.65
+					}
+					using = bg_cabinet_card_frame
+					icon = {
+						parentanchor = center
+						size = { 30 30 }
+						texture = "gfx/interface/icons/estates/nobles_estate.dds"
+					}
+				}
+
+				widget = {
+					parentanchor = left|top
+					position = { 16 12 }
+					size = { 44 44 }
+					datacontext = "[LocationView.GetLocation]"
+					visible = "[Location.MakeScope.Var('pie_land_owner_clergy').IsSet]"
+					tooltip = "pie_land_owner_badge_clergy_tt"
+					background = {
+						texture = "gfx/interface/colors/black.dds"
+						alpha = 0.65
+					}
+					using = bg_cabinet_card_frame
+					icon = {
+						parentanchor = center
+						size = { 30 30 }
+						texture = "gfx/interface/icons/estates/clergy_estate.dds"
+					}
+				}
+
+				widget = {
+					parentanchor = left|top
+					position = { 16 12 }
+					size = { 44 44 }
+					datacontext = "[LocationView.GetLocation]"
+					visible = "[Location.MakeScope.Var('pie_land_owner_burghers').IsSet]"
+					tooltip = "pie_land_owner_badge_burghers_tt"
+					background = {
+						texture = "gfx/interface/colors/black.dds"
+						alpha = 0.65
+					}
+					using = bg_cabinet_card_frame
+					icon = {
+						parentanchor = center
+						size = { 30 30 }
+						texture = "gfx/interface/icons/estates/burghers_estate.dds"
+					}
+				}
+
+				widget = {
+					parentanchor = left|top
+					position = { 16 12 }
+					size = { 44 44 }
+					datacontext = "[LocationView.GetLocation]"
+					visible = "[Location.MakeScope.Var('pie_land_owner_peasants').IsSet]"
+					tooltip = "pie_land_owner_badge_peasants_tt"
+					background = {
+						texture = "gfx/interface/colors/black.dds"
+						alpha = 0.65
+					}
+					using = bg_cabinet_card_frame
+					icon = {
+						parentanchor = center
+						size = { 30 30 }
+						texture = "gfx/interface/icons/estates/peasants_estate.dds"
+					}
+				}
+
+				widget = {
 					parentanchor = right|top
 					position = { -16 12 }
 					size = { 52 52 }

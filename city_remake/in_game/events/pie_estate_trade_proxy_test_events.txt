@@ -1,0 +1,962 @@
+namespace = pie_proxy_trade_test
+
+pie_proxy_trade_test.1 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.1.title
+	desc = pie_proxy_trade_test.1.desc
+
+	option = {
+		name = pie_proxy_trade_test.1.start
+		custom_tooltip = { text = pie_proxy_trade_test.1.start.tt }
+
+		hidden_effect = {
+			if = {
+				limit = { at_war = yes }
+				trigger_event_non_silently = pie_proxy_trade_test.40
+			}
+			else = {
+				every_country = {
+					limit = { has_variable = pie_proxy_trade_test_marker }
+					if = {
+						limit = { is_at_war_with = root }
+						root = { white_peace = prev }
+					}
+					remove_truce_with = root
+					root = { remove_truce_with = prev }
+					root = {
+						annex_country = {
+							country = prev
+							reason = Diplomatic
+						}
+					}
+				}
+
+				location:south_pacific_ocean = {
+					save_scope_as = pie_proxy_test_sea_location
+					create_building_country_in_location = {
+						set_variable = { name = pie_proxy_trade_test_sea_building value = 1 }
+						set_variable = { name = pie_proxy_trade_test_marker value = 1 }
+						add_gold = 1
+					}
+				}
+
+				every_country = {
+					limit = { has_variable = pie_proxy_trade_test_sea_building }
+					save_scope_as = pie_proxy_building_country
+				}
+
+				if = {
+					limit = { exists = scope:pie_proxy_building_country }
+					declare_war_with_cb = {
+						target = scope:pie_proxy_building_country
+						type = casus_belli:cb_pie_proxy_trade_test
+					}
+					if = {
+						limit = { is_at_war_with = scope:pie_proxy_building_country }
+						random_current_war = {
+							limit = {
+								any_war_participant = { this = root }
+								any_war_participant = { this = scope:pie_proxy_building_country }
+							}
+							add_bonus_warscore = {
+								country = root
+								amount = 75
+							}
+						}
+						trigger_event_non_silently = pie_proxy_trade_test.10
+					}
+					else = {
+						root = {
+							annex_country = {
+								country = scope:pie_proxy_building_country
+								reason = Diplomatic
+							}
+						}
+						trigger_event_silently = pie_proxy_trade_test.2
+					}
+				}
+				else = {
+					trigger_event_silently = pie_proxy_trade_test.2
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pie_proxy_trade_test.1.cleanup
+		custom_tooltip = { text = pie_proxy_trade_test.1.cleanup.tt }
+
+		hidden_effect = {
+			every_country = {
+				limit = { has_variable = pie_proxy_trade_test_marker }
+				if = {
+					limit = { is_at_war_with = root }
+					root = { white_peace = prev }
+				}
+				remove_truce_with = root
+				root = { remove_truce_with = prev }
+				root = {
+					annex_country = {
+						country = prev
+						reason = Diplomatic
+					}
+				}
+			}
+			trigger_event_non_silently = pie_proxy_trade_test.90
+		}
+	}
+
+	option = {
+		name = pie_proxy_trade_test.1.cancel
+	}
+}
+
+pie_proxy_trade_test.2 = {
+	type = country_event
+	is_triggered_only = yes
+	hidden = yes
+	title = pie_proxy_trade_test.hidden.title
+	desc = pie_proxy_trade_test.hidden.desc
+
+	immediate = {
+		location:south_pacific_ocean = {
+			save_scope_as = pie_proxy_test_sea_location
+			create_country_from_location = {
+				set_variable = { name = pie_proxy_trade_test_sea_location value = 1 }
+				set_variable = { name = pie_proxy_trade_test_marker value = 1 }
+				add_gold = 1
+			}
+		}
+
+		every_country = {
+			limit = { has_variable = pie_proxy_trade_test_sea_location }
+			save_scope_as = pie_proxy_location_country
+		}
+
+		if = {
+			limit = { exists = scope:pie_proxy_location_country }
+			declare_war_with_cb = {
+				target = scope:pie_proxy_location_country
+				type = casus_belli:cb_pie_proxy_trade_test
+			}
+			if = {
+				limit = { is_at_war_with = scope:pie_proxy_location_country }
+				random_current_war = {
+					limit = {
+						any_war_participant = { this = root }
+						any_war_participant = { this = scope:pie_proxy_location_country }
+					}
+					add_bonus_warscore = {
+						country = root
+						amount = 75
+					}
+				}
+				trigger_event_non_silently = pie_proxy_trade_test.20
+			}
+			else = {
+				root = {
+					annex_country = {
+						country = scope:pie_proxy_location_country
+						reason = Diplomatic
+					}
+				}
+				trigger_event_non_silently = pie_proxy_trade_test.30
+			}
+		}
+		else = {
+			trigger_event_non_silently = pie_proxy_trade_test.30
+		}
+	}
+}
+
+pie_proxy_trade_test.10 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.10.title
+	desc = pie_proxy_trade_test.10.desc
+
+	option = {
+		name = pie_proxy_trade_test.keep_open
+	}
+
+	option = {
+		name = pie_proxy_trade_test.cleanup_now
+		custom_tooltip = { text = pie_proxy_trade_test.cleanup_now.tt }
+
+		hidden_effect = {
+			every_country = {
+				limit = { has_variable = pie_proxy_trade_test_marker }
+				if = {
+					limit = { is_at_war_with = root }
+					root = { white_peace = prev }
+				}
+				remove_truce_with = root
+				root = { remove_truce_with = prev }
+				root = {
+					annex_country = {
+						country = prev
+						reason = Diplomatic
+					}
+				}
+			}
+			trigger_event_non_silently = pie_proxy_trade_test.90
+		}
+	}
+}
+
+pie_proxy_trade_test.20 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.20.title
+	desc = pie_proxy_trade_test.20.desc
+
+	option = {
+		name = pie_proxy_trade_test.keep_open
+	}
+
+	option = {
+		name = pie_proxy_trade_test.cleanup_now
+		custom_tooltip = { text = pie_proxy_trade_test.cleanup_now.tt }
+
+		hidden_effect = {
+			every_country = {
+				limit = { has_variable = pie_proxy_trade_test_marker }
+				if = {
+					limit = { is_at_war_with = root }
+					root = { white_peace = prev }
+				}
+				remove_truce_with = root
+				root = { remove_truce_with = prev }
+				root = {
+					annex_country = {
+						country = prev
+						reason = Diplomatic
+					}
+				}
+			}
+			trigger_event_non_silently = pie_proxy_trade_test.90
+		}
+	}
+}
+
+pie_proxy_trade_test.30 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.30.title
+	desc = pie_proxy_trade_test.30.desc
+
+	option = {
+		name = pie_proxy_trade_test.30.ok
+	}
+}
+
+pie_proxy_trade_test.40 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.40.title
+	desc = pie_proxy_trade_test.40.desc
+
+	option = {
+		name = pie_proxy_trade_test.40.ok
+	}
+}
+
+pie_proxy_trade_test.90 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.90.title
+	desc = pie_proxy_trade_test.90.desc
+
+	option = {
+		name = pie_proxy_trade_test.90.ok
+	}
+}
+
+pie_proxy_trade_test.101 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.101.title
+	desc = pie_proxy_trade_test.101.desc
+
+	option = {
+		name = pie_proxy_trade_test.101.start
+
+		hidden_effect = {
+			if = {
+				limit = { at_war = yes }
+				trigger_event_non_silently = pie_proxy_trade_test.40
+			}
+			else = {
+				every_country = {
+					limit = { has_variable = pie_proxy_trade_test_marker }
+					if = {
+						limit = { is_at_war_with = root }
+						root = { white_peace = prev }
+					}
+					remove_truce_with = root
+					root = { remove_truce_with = prev }
+					root = {
+						annex_country = {
+							country = prev
+							reason = Diplomatic
+						}
+					}
+				}
+
+				location:eiriksfjord = {
+					save_scope_as = pie_proxy_test_impassable_location
+					create_building_country_in_location = {
+						set_variable = { name = pie_proxy_trade_test_impassable_direct_building value = 1 }
+						set_variable = { name = pie_proxy_trade_test_marker value = 1 }
+						add_gold = 1
+					}
+				}
+
+				every_country = {
+					limit = { has_variable = pie_proxy_trade_test_impassable_direct_building }
+					save_scope_as = pie_proxy_impassable_building_country
+				}
+
+				if = {
+					limit = { exists = scope:pie_proxy_impassable_building_country }
+					declare_war_with_cb = {
+						target = scope:pie_proxy_impassable_building_country
+						type = casus_belli:cb_pie_proxy_trade_test
+					}
+					if = {
+						limit = { is_at_war_with = scope:pie_proxy_impassable_building_country }
+						random_current_war = {
+							limit = {
+								any_war_participant = { this = root }
+								any_war_participant = { this = scope:pie_proxy_impassable_building_country }
+							}
+							add_bonus_warscore = {
+								country = root
+								amount = 75
+							}
+						}
+						trigger_event_non_silently = pie_proxy_trade_test.110
+					}
+					else = {
+						root = {
+							annex_country = {
+								country = scope:pie_proxy_impassable_building_country
+								reason = Diplomatic
+							}
+						}
+						trigger_event_silently = pie_proxy_trade_test.102
+					}
+				}
+				else = {
+					trigger_event_silently = pie_proxy_trade_test.102
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pie_proxy_trade_test.101.cleanup
+
+		hidden_effect = {
+			every_country = {
+				limit = { has_variable = pie_proxy_trade_test_marker }
+				if = {
+					limit = { is_at_war_with = root }
+					root = { white_peace = prev }
+				}
+				remove_truce_with = root
+				root = { remove_truce_with = prev }
+				root = {
+					annex_country = {
+						country = prev
+						reason = Diplomatic
+					}
+				}
+			}
+			trigger_event_non_silently = pie_proxy_trade_test.190
+		}
+	}
+
+	option = {
+		name = pie_proxy_trade_test.101.cancel
+	}
+}
+
+pie_proxy_trade_test.102 = {
+	type = country_event
+	is_triggered_only = yes
+	hidden = yes
+	title = pie_proxy_trade_test.hidden.title
+	desc = pie_proxy_trade_test.hidden.desc
+
+	immediate = {
+		location:eiriksfjord = {
+			save_scope_as = pie_proxy_test_impassable_location
+			create_country_from_location = {
+				set_variable = { name = pie_proxy_trade_test_impassable_direct_location value = 1 }
+				set_variable = { name = pie_proxy_trade_test_marker value = 1 }
+				add_gold = 1
+			}
+		}
+
+		every_country = {
+			limit = { has_variable = pie_proxy_trade_test_impassable_direct_location }
+			save_scope_as = pie_proxy_impassable_location_country
+		}
+
+		if = {
+			limit = { exists = scope:pie_proxy_impassable_location_country }
+			declare_war_with_cb = {
+				target = scope:pie_proxy_impassable_location_country
+				type = casus_belli:cb_pie_proxy_trade_test
+			}
+			if = {
+				limit = { is_at_war_with = scope:pie_proxy_impassable_location_country }
+				random_current_war = {
+					limit = {
+						any_war_participant = { this = root }
+						any_war_participant = { this = scope:pie_proxy_impassable_location_country }
+					}
+					add_bonus_warscore = {
+						country = root
+						amount = 75
+					}
+				}
+				trigger_event_non_silently = pie_proxy_trade_test.120
+			}
+			else = {
+				root = {
+					annex_country = {
+						country = scope:pie_proxy_impassable_location_country
+						reason = Diplomatic
+					}
+				}
+				trigger_event_silently = pie_proxy_trade_test.103
+			}
+		}
+		else = {
+			trigger_event_silently = pie_proxy_trade_test.103
+		}
+	}
+}
+
+pie_proxy_trade_test.103 = {
+	type = country_event
+	is_triggered_only = yes
+	hidden = yes
+	title = pie_proxy_trade_test.hidden.title
+	desc = pie_proxy_trade_test.hidden.desc
+
+	immediate = {
+		location:eiriksfjord = {
+			change_location_owner = root
+			save_scope_as = pie_proxy_test_impassable_location
+			create_building_country_in_location = {
+				set_variable = { name = pie_proxy_trade_test_impassable_seeded_building value = 1 }
+				set_variable = { name = pie_proxy_trade_test_marker value = 1 }
+				add_gold = 1
+			}
+		}
+
+		every_country = {
+			limit = { has_variable = pie_proxy_trade_test_impassable_seeded_building }
+			save_scope_as = pie_proxy_impassable_seeded_building_country
+		}
+
+		if = {
+			limit = { exists = scope:pie_proxy_impassable_seeded_building_country }
+			declare_war_with_cb = {
+				target = scope:pie_proxy_impassable_seeded_building_country
+				type = casus_belli:cb_pie_proxy_trade_test
+			}
+			if = {
+				limit = { is_at_war_with = scope:pie_proxy_impassable_seeded_building_country }
+				random_current_war = {
+					limit = {
+						any_war_participant = { this = root }
+						any_war_participant = { this = scope:pie_proxy_impassable_seeded_building_country }
+					}
+					add_bonus_warscore = {
+						country = root
+						amount = 75
+					}
+				}
+				trigger_event_non_silently = pie_proxy_trade_test.130
+			}
+			else = {
+				root = {
+					annex_country = {
+						country = scope:pie_proxy_impassable_seeded_building_country
+						reason = Diplomatic
+					}
+				}
+				trigger_event_silently = pie_proxy_trade_test.104
+			}
+		}
+		else = {
+			trigger_event_silently = pie_proxy_trade_test.104
+		}
+	}
+}
+
+pie_proxy_trade_test.104 = {
+	type = country_event
+	is_triggered_only = yes
+	hidden = yes
+	title = pie_proxy_trade_test.hidden.title
+	desc = pie_proxy_trade_test.hidden.desc
+
+	immediate = {
+		location:eiriksfjord = {
+			change_location_owner = root
+			save_scope_as = pie_proxy_test_impassable_location
+			create_country_from_location = {
+				set_variable = { name = pie_proxy_trade_test_impassable_seeded_location value = 1 }
+				set_variable = { name = pie_proxy_trade_test_marker value = 1 }
+				add_gold = 1
+			}
+		}
+
+		every_country = {
+			limit = { has_variable = pie_proxy_trade_test_impassable_seeded_location }
+			save_scope_as = pie_proxy_impassable_seeded_location_country
+		}
+
+		if = {
+			limit = { exists = scope:pie_proxy_impassable_seeded_location_country }
+			declare_war_with_cb = {
+				target = scope:pie_proxy_impassable_seeded_location_country
+				type = casus_belli:cb_pie_proxy_trade_test
+			}
+			if = {
+				limit = { is_at_war_with = scope:pie_proxy_impassable_seeded_location_country }
+				random_current_war = {
+					limit = {
+						any_war_participant = { this = root }
+						any_war_participant = { this = scope:pie_proxy_impassable_seeded_location_country }
+					}
+					add_bonus_warscore = {
+						country = root
+						amount = 75
+					}
+				}
+				trigger_event_non_silently = pie_proxy_trade_test.140
+			}
+			else = {
+				root = {
+					annex_country = {
+						country = scope:pie_proxy_impassable_seeded_location_country
+						reason = Diplomatic
+					}
+				}
+				trigger_event_non_silently = pie_proxy_trade_test.150
+			}
+		}
+		else = {
+			trigger_event_non_silently = pie_proxy_trade_test.150
+		}
+	}
+}
+
+pie_proxy_trade_test.110 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.110.title
+	desc = pie_proxy_trade_test.110.desc
+
+	option = {
+		name = pie_proxy_trade_test.keep_open
+	}
+
+	option = {
+		name = pie_proxy_trade_test.cleanup_now
+
+		hidden_effect = {
+			every_country = {
+				limit = { has_variable = pie_proxy_trade_test_marker }
+				if = {
+					limit = { is_at_war_with = root }
+					root = { white_peace = prev }
+				}
+				remove_truce_with = root
+				root = { remove_truce_with = prev }
+				root = {
+					annex_country = {
+						country = prev
+						reason = Diplomatic
+					}
+				}
+			}
+			trigger_event_non_silently = pie_proxy_trade_test.190
+		}
+	}
+}
+
+pie_proxy_trade_test.120 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.120.title
+	desc = pie_proxy_trade_test.120.desc
+
+	option = {
+		name = pie_proxy_trade_test.keep_open
+	}
+
+	option = {
+		name = pie_proxy_trade_test.cleanup_now
+
+		hidden_effect = {
+			every_country = {
+				limit = { has_variable = pie_proxy_trade_test_marker }
+				if = {
+					limit = { is_at_war_with = root }
+					root = { white_peace = prev }
+				}
+				remove_truce_with = root
+				root = { remove_truce_with = prev }
+				root = {
+					annex_country = {
+						country = prev
+						reason = Diplomatic
+					}
+				}
+			}
+			trigger_event_non_silently = pie_proxy_trade_test.190
+		}
+	}
+}
+
+pie_proxy_trade_test.130 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.130.title
+	desc = pie_proxy_trade_test.130.desc
+
+	option = {
+		name = pie_proxy_trade_test.keep_open
+	}
+
+	option = {
+		name = pie_proxy_trade_test.cleanup_now
+
+		hidden_effect = {
+			every_country = {
+				limit = { has_variable = pie_proxy_trade_test_marker }
+				if = {
+					limit = { is_at_war_with = root }
+					root = { white_peace = prev }
+				}
+				remove_truce_with = root
+				root = { remove_truce_with = prev }
+				root = {
+					annex_country = {
+						country = prev
+						reason = Diplomatic
+					}
+				}
+			}
+			trigger_event_non_silently = pie_proxy_trade_test.190
+		}
+	}
+}
+
+pie_proxy_trade_test.140 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.140.title
+	desc = pie_proxy_trade_test.140.desc
+
+	option = {
+		name = pie_proxy_trade_test.keep_open
+	}
+
+	option = {
+		name = pie_proxy_trade_test.cleanup_now
+
+		hidden_effect = {
+			every_country = {
+				limit = { has_variable = pie_proxy_trade_test_marker }
+				if = {
+					limit = { is_at_war_with = root }
+					root = { white_peace = prev }
+				}
+				remove_truce_with = root
+				root = { remove_truce_with = prev }
+				root = {
+					annex_country = {
+						country = prev
+						reason = Diplomatic
+					}
+				}
+			}
+			trigger_event_non_silently = pie_proxy_trade_test.190
+		}
+	}
+}
+
+pie_proxy_trade_test.150 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.150.title
+	desc = pie_proxy_trade_test.150.desc
+
+	option = {
+		name = pie_proxy_trade_test.150.ok
+	}
+}
+
+pie_proxy_trade_test.190 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.190.title
+	desc = pie_proxy_trade_test.190.desc
+
+	option = {
+		name = pie_proxy_trade_test.190.ok
+	}
+}
+
+pie_proxy_trade_test.201 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.201.title
+	desc = pie_proxy_trade_test.201.desc
+
+	option = {
+		name = pie_proxy_trade_test.201.start
+
+		hidden_effect = {
+			if = {
+				limit = { at_war = yes }
+				trigger_event_non_silently = pie_proxy_trade_test.40
+			}
+			else = {
+				every_country = {
+					limit = { has_variable = pie_proxy_trade_test_marker }
+					if = {
+						limit = { is_at_war_with = root }
+						root = { white_peace = prev }
+					}
+					remove_truce_with = root
+					root = { remove_truce_with = prev }
+					root = {
+						annex_country = {
+							country = prev
+							reason = Diplomatic
+						}
+					}
+				}
+				area:greenland_area = {
+					every_location_in_area = {
+						limit = { has_variable = pie_proxy_trade_test_navy_location_marker }
+						if = {
+							limit = { has_owner = yes }
+							owner = { abandon_location = prev }
+						}
+						remove_variable = pie_proxy_trade_test_navy_location_marker
+					}
+				}
+
+				area:greenland_area = {
+					random_location_in_area = {
+						limit = {
+							has_owner = no
+							is_ownable = yes
+							is_land = yes
+							is_coastal = yes
+						}
+						save_scope_as = pie_proxy_navy_test_location
+						set_variable = { name = pie_proxy_trade_test_navy_location_marker value = 1 }
+					}
+				}
+
+				if = {
+					limit = { exists = scope:pie_proxy_navy_test_location }
+					scope:pie_proxy_navy_test_location = {
+						change_location_owner = root
+						create_country_from_location = {
+							hidden_effect = {
+								scope:pie_proxy_navy_test_location = {
+									create_sub_unit_of_category = sub_unit_category:navy_galley
+									create_sub_unit_of_category = sub_unit_category:navy_galley
+								}
+							}
+							set_variable = { name = pie_proxy_trade_test_navy_country value = 1 }
+							set_variable = { name = pie_proxy_trade_test_marker value = 1 }
+							add_gold = 25
+							save_scope_as = pie_proxy_navy_country
+							change_country_type = navy
+						}
+					}
+
+					every_country = {
+						limit = { has_variable = pie_proxy_trade_test_navy_country }
+						save_scope_as = pie_proxy_navy_country
+					}
+
+					if = {
+						limit = { exists = scope:pie_proxy_navy_country }
+						declare_war_with_cb = {
+							target = scope:pie_proxy_navy_country
+							type = casus_belli:cb_pie_proxy_trade_test
+						}
+						if = {
+							limit = { is_at_war_with = scope:pie_proxy_navy_country }
+							random_current_war = {
+								limit = {
+									any_war_participant = { this = root }
+									any_war_participant = { this = scope:pie_proxy_navy_country }
+								}
+								add_bonus_warscore = {
+									country = root
+									amount = 75
+								}
+							}
+							trigger_event_non_silently = pie_proxy_trade_test.210
+						}
+						else = {
+							scope:pie_proxy_navy_test_location = {
+								if = {
+									limit = { has_owner = yes }
+									owner = { abandon_location = prev }
+								}
+								remove_variable = pie_proxy_trade_test_navy_location_marker
+							}
+							root = {
+								annex_country = {
+									country = scope:pie_proxy_navy_country
+									reason = Diplomatic
+								}
+							}
+							trigger_event_non_silently = pie_proxy_trade_test.250
+						}
+					}
+					else = {
+						scope:pie_proxy_navy_test_location = {
+							remove_variable = pie_proxy_trade_test_navy_location_marker
+						}
+						trigger_event_non_silently = pie_proxy_trade_test.250
+					}
+				}
+				else = {
+					trigger_event_non_silently = pie_proxy_trade_test.220
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pie_proxy_trade_test.201.cleanup
+
+		hidden_effect = {
+			every_country = {
+				limit = { has_variable = pie_proxy_trade_test_marker }
+				if = {
+					limit = { is_at_war_with = root }
+					root = { white_peace = prev }
+				}
+				remove_truce_with = root
+				root = { remove_truce_with = prev }
+				root = {
+					annex_country = {
+						country = prev
+						reason = Diplomatic
+					}
+				}
+			}
+			area:greenland_area = {
+				every_location_in_area = {
+					limit = { has_variable = pie_proxy_trade_test_navy_location_marker }
+					if = {
+						limit = { has_owner = yes }
+						owner = { abandon_location = prev }
+					}
+					remove_variable = pie_proxy_trade_test_navy_location_marker
+				}
+			}
+			trigger_event_non_silently = pie_proxy_trade_test.290
+		}
+	}
+
+	option = {
+		name = pie_proxy_trade_test.201.cancel
+	}
+}
+
+pie_proxy_trade_test.210 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.210.title
+	desc = pie_proxy_trade_test.210.desc
+
+	option = {
+		name = pie_proxy_trade_test.keep_open
+	}
+
+	option = {
+		name = pie_proxy_trade_test.cleanup_now
+
+		hidden_effect = {
+			every_country = {
+				limit = { has_variable = pie_proxy_trade_test_marker }
+				if = {
+					limit = { is_at_war_with = root }
+					root = { white_peace = prev }
+				}
+				remove_truce_with = root
+				root = { remove_truce_with = prev }
+				root = {
+					annex_country = {
+						country = prev
+						reason = Diplomatic
+					}
+				}
+			}
+			area:greenland_area = {
+				every_location_in_area = {
+					limit = { has_variable = pie_proxy_trade_test_navy_location_marker }
+					if = {
+						limit = { has_owner = yes }
+						owner = { abandon_location = prev }
+					}
+					remove_variable = pie_proxy_trade_test_navy_location_marker
+				}
+			}
+			trigger_event_non_silently = pie_proxy_trade_test.290
+		}
+	}
+}
+
+pie_proxy_trade_test.220 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.220.title
+	desc = pie_proxy_trade_test.220.desc
+
+	option = {
+		name = pie_proxy_trade_test.220.ok
+	}
+}
+
+pie_proxy_trade_test.250 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.250.title
+	desc = pie_proxy_trade_test.250.desc
+
+	option = {
+		name = pie_proxy_trade_test.250.ok
+	}
+}
+
+pie_proxy_trade_test.290 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_proxy_trade_test.290.title
+	desc = pie_proxy_trade_test.290.desc
+
+	option = {
+		name = pie_proxy_trade_test.290.ok
+	}
+}

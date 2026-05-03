@@ -1,0 +1,925 @@
+window = {
+	name = "pie_estate_trade_window"
+	size = { 600 1000 }
+	parentanchor = center
+	movable = yes
+	allow_outside = yes
+	visible = "[GetPlayer.MakeScope.Var('pie_et_window_open').IsSet]"
+	layer = windows_layer
+
+	using = bg_main_inner_alt
+
+	fixedgridbox = {
+		ignore_layout = yes
+		size = { 1 1 }
+		addcolumn = 1
+		addrow = 1
+		alwaystransparent = yes
+		alpha = 0
+		datamodel = "[GetPlayer.MakeScope.GetList('pie_et_mapmode_trigger')]"
+
+		item = {
+			widget = {
+				size = { 1 1 }
+				datacontext = "[GetMapMode('pie_estate_trade_land')]"
+
+				state = {
+					name = pie_et_open_trade_mapmode
+					trigger_on_create = yes
+					duration = 0.01
+					on_start = "[MapMode.SetMapMode]"
+				}
+			}
+		}
+	}
+
+	vbox = {
+		using = layoutpolicy_expanding
+		allow_outside = yes
+		margin = { 8 8 }
+		spacing = 6
+
+		widget = {
+			layoutpolicy_horizontal = expanding
+			size = { -1 38 }
+
+			background = {
+				using = tile_background_squared_texture
+				modify_texture = {
+					using = color_default_brown_texture
+				}
+			}
+
+			widget = {
+				ignore_layout = yes
+				size = { 38 38 }
+				position = { 0 0 }
+				button_close_alt = {
+					parentanchor = center
+					size = { 30 30 }
+					blockoverride "close_properties" {}
+					blockoverride "close_onclick" {
+						onclick = "[GetScriptedGui('pie_et_sgui_close_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					}
+					blockoverride "close_inputaction" {
+						input_action = "close_window"
+						use_global_input_instance = yes
+					}
+				}
+			}
+
+			text_single = {
+				ignore_layout = yes
+				size = { 100% 38 }
+				parentanchor = hcenter|vcenter
+				widgetanchor = hcenter|vcenter
+				align = center|vcenter
+				text = "pie_estate_trade_title"
+				fontsize = 24
+				default_format = "#yellow_titles"
+			}
+		}
+
+		vbox = {
+			using = layoutpolicy_expanding
+			using = window_main_tabs_margin_alt
+			allow_outside = yes
+			spacing = 7
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+				size = { -1 64 }
+				allow_outside = yes
+				using = bg_market_card
+				using = bg_cabinet_card_frame
+
+				widget = {
+					ignore_layout = yes
+					parentanchor = left|vcenter
+					size = { 110 100% }
+					datacontext = "[Player]"
+
+					country_flag_mid = {
+						parentanchor = center
+						size = { 78 48 }
+					}
+				}
+
+				vbox = {
+					ignore_layout = yes
+					parentanchor = center
+					size = { 330 54 }
+					spacing = 3
+
+					text_single = {
+						layoutpolicy_horizontal = expanding
+						size = { 100% 22 }
+						autoresize = no
+						align = center|vcenter
+						text = "pie_estate_trade_header_desc"
+						fontsize = 14
+					}
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						size = { 100% 28 }
+
+						expand = {}
+
+						widget = {
+							size = { 104 28 }
+							using = bg_number_container_bckg
+							tooltip = "pie_estate_trade_acceptance_tt"
+
+							hbox = {
+								parentanchor = center
+								spacing = 5
+
+								icon = {
+									parentanchor = vcenter
+									size = { 20 20 }
+									texture = "gfx/interface/icons/flat_icons/declare_war/peace_score.dds"
+								}
+
+								text_single = {
+									parentanchor = vcenter
+									size = { 42 22 }
+									autoresize = no
+									align = center|vcenter
+									visible = "[GreaterThanOrEqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_et_acceptance_value'), '(CFixedPoint)0')]"
+									raw_text = "#P [GetPlayer.MakeScope.ScriptValue('pie_et_acceptance_value')|0]#!"
+								}
+
+								text_single = {
+									parentanchor = vcenter
+									size = { 42 22 }
+									autoresize = no
+									align = center|vcenter
+									visible = "[LessThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_et_acceptance_value'), '(CFixedPoint)0')]"
+									raw_text = "#N [GetPlayer.MakeScope.ScriptValue('pie_et_acceptance_value')|0]#!"
+								}
+							}
+						}
+
+						expand = {}
+					}
+				}
+
+				widget = {
+					ignore_layout = yes
+					parentanchor = right|vcenter
+					size = { 86 100% }
+					
+					widget = {
+						parentanchor = center
+						size = { 56 48 }
+						using = bg_main_inner_notabs_alt
+
+						icon = {
+							visible = "[GetPlayer.MakeScope.Var('pie_et_estate_nobles').IsSet]"
+							parentanchor = center
+							size = { 30 30 }
+							texture = "gfx/interface/icons/estates/nobles_estate.dds"
+						}
+
+						icon = {
+							visible = "[GetPlayer.MakeScope.Var('pie_et_estate_clergy').IsSet]"
+							parentanchor = center
+							size = { 30 30 }
+							texture = "gfx/interface/icons/estates/clergy_estate.dds"
+						}
+
+						icon = {
+							visible = "[GetPlayer.MakeScope.Var('pie_et_estate_burghers').IsSet]"
+							parentanchor = center
+							size = { 30 30 }
+							texture = "gfx/interface/icons/estates/burghers_estate.dds"
+						}
+					}
+				}
+
+			}
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+				size = { -1 78 }
+				using = bg_main_inner_notabs_alt
+
+				vbox = {
+					parentanchor = center
+					size = { 100% 74 }
+					margin = { 12 0 }
+					spacing = 4
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						size = { 100% 35 }
+						spacing = 6
+
+						button_regular = {
+							size = { 35 35 }
+							tooltip = "pie_estate_trade_select_nobles_tt"
+							onclick = "[GetScriptedGui('pie_et_sgui_select_nobles').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							down = "[GetPlayer.MakeScope.Var('pie_et_estate_nobles').IsSet]"
+
+							icon = {
+								parentanchor = center
+								size = { 24 24 }
+								texture = "gfx/interface/icons/estates/nobles_estate.dds"
+							}
+						}
+
+						button_regular = {
+							size = { 35 35 }
+							tooltip = "pie_estate_trade_select_clergy_tt"
+							onclick = "[GetScriptedGui('pie_et_sgui_select_clergy').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							down = "[GetPlayer.MakeScope.Var('pie_et_estate_clergy').IsSet]"
+
+							icon = {
+								parentanchor = center
+								size = { 24 24 }
+								texture = "gfx/interface/icons/estates/clergy_estate.dds"
+							}
+						}
+
+						button_regular = {
+							size = { 35 35 }
+							tooltip = "pie_estate_trade_select_burghers_tt"
+							onclick = "[GetScriptedGui('pie_et_sgui_select_burghers').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							down = "[GetPlayer.MakeScope.Var('pie_et_estate_burghers').IsSet]"
+
+							icon = {
+								parentanchor = center
+								size = { 24 24 }
+								texture = "gfx/interface/icons/estates/burghers_estate.dds"
+							}
+						}
+
+						expand = {}
+					}
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						size = { 100% 35 }
+						spacing = 6
+
+						button_regular = {
+							size = { 35 35 }
+							tooltip = "pie_estate_trade_category_land_tt"
+							onclick = "[GetScriptedGui('pie_et_sgui_select_land').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							down = "[GetPlayer.MakeScope.Var('pie_et_category_land').IsSet]"
+
+							icon = {
+								parentanchor = center
+								size = { 24 24 }
+								texture = "gfx/interface/icons/peace_treaty/seize_land_treaty.dds"
+							}
+						}
+
+						button_regular = {
+							size = { 35 35 }
+							tooltip = "pie_estate_trade_category_privilege_tt"
+							onclick = "[GetScriptedGui('pie_et_sgui_select_privilege').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							down = "[GetPlayer.MakeScope.Var('pie_et_category_privilege').IsSet]"
+
+							icon = {
+								parentanchor = center
+								size = { 24 24 }
+								texture = "gfx/interface/icons/flat_icons/privilege.dds"
+							}
+						}
+
+						button_regular = {
+							size = { 35 35 }
+							tooltip = "pie_estate_trade_category_other_tt"
+							onclick = "[GetScriptedGui('pie_et_sgui_select_other').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							down = "[GetPlayer.MakeScope.Var('pie_et_category_other').IsSet]"
+
+							icon = {
+								parentanchor = center
+								size = { 24 24 }
+								texture = "gfx/interface/icons/peace_treaty/other_treaty.dds"
+							}
+						}
+
+						expand = {}
+
+						button_regular = {
+							size = { 35 35 }
+							onclick = "[GetScriptedGui('pie_et_sgui_autogenerate_terms').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "pie_estate_trade_auto_terms_tt"
+
+							icon = {
+								parentanchor = center
+								size = { 24 24 }
+								texture = "gfx/interface/icons/peace_treaty/demand_treaty.dds"
+							}
+						}
+
+						button_regular = {
+							size = { 35 35 }
+							onclick = "[GetScriptedGui('pie_et_sgui_clear_terms').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+							tooltip = "pie_estate_trade_clear_terms_tt"
+
+							icon = {
+								parentanchor = center
+								size = { 24 24 }
+								texture = "gfx/interface/icons/text_icons/trigger_no.dds"
+							}
+						}
+					}
+				}
+			}
+
+			widget = {
+				layoutpolicy_horizontal = expanding
+				layoutpolicy_vertical = expanding
+				size = { -1 542 }
+				using = bg_main_inner_notabs_alt
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
+					margin = { 12 10 }
+
+					expand = {}
+
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						minimumsize = { 480 -1 }
+						maximumsize = { 520 -1 }
+						spacing = 4
+						ignoreinvisible = yes
+
+						vbox = {
+							visible = "[Or(GetPlayer.MakeScope.Var('pie_et_category_land').IsSet, And(Not(GetPlayer.MakeScope.Var('pie_et_category_privilege').IsSet), Not(GetPlayer.MakeScope.Var('pie_et_category_other').IsSet)))]"
+							layoutpolicy_horizontal = expanding
+							spacing = 4
+
+							button_regular = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 42 }
+								onclick = "[GetScriptedGui('pie_et_sgui_toggle_estate_funds_project').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								down = "[GetPlayer.MakeScope.Var('pie_et_term_estate_funds_project').IsSet]"
+								tooltip = "pie_estate_trade_term_estate_funds_project_tt"
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
+									size = { 100% 100% }
+									margin = { 10 0 }
+									spacing = 8
+
+									widget = {
+										size = { 24 100% }
+
+										checkbox_diamond_alt = {
+											parentanchor = center
+											checked = "[GetPlayer.MakeScope.Var('pie_et_term_estate_funds_project').IsSet]"
+											onclick = "[GetScriptedGui('pie_et_sgui_toggle_estate_funds_project').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+									}
+
+									widget = {
+										size = { 24 100% }
+
+										icon = {
+											parentanchor = center
+											size = { 24 24 }
+											texture = "gfx/interface/icons/peace_treaty/increase_gold.dds"
+										}
+									}
+
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										layoutpolicy_vertical = expanding
+										size = { -1 100% }
+										autoresize = no
+										align = left|vcenter
+										text = "pie_estate_trade_term_estate_funds_project"
+									}
+
+									text_single = {
+										layoutpolicy_vertical = expanding
+										size = { 48 100% }
+										autoresize = no
+										align = right|vcenter
+										raw_text = "#N -20#!"
+									}
+								}
+							}
+
+							button_regular = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 42 }
+								onclick = "[GetScriptedGui('pie_et_sgui_toggle_crown_grants_rights').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								down = "[GetPlayer.MakeScope.Var('pie_et_term_crown_grants_rights').IsSet]"
+								tooltip = "pie_estate_trade_term_crown_grants_rights_tt"
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
+									size = { 100% 100% }
+									margin = { 10 0 }
+									spacing = 8
+
+									widget = {
+										size = { 24 100% }
+
+										checkbox_diamond_alt = {
+											parentanchor = center
+											checked = "[GetPlayer.MakeScope.Var('pie_et_term_crown_grants_rights').IsSet]"
+											onclick = "[GetScriptedGui('pie_et_sgui_toggle_crown_grants_rights').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+									}
+
+									widget = {
+										size = { 24 100% }
+
+										icon = {
+											parentanchor = center
+											size = { 24 24 }
+											texture = "gfx/interface/icons/peace_treaty/seize_land_treaty.dds"
+										}
+									}
+
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										layoutpolicy_vertical = expanding
+										size = { -1 100% }
+										autoresize = no
+										align = left|vcenter
+										text = "pie_estate_trade_term_crown_grants_rights"
+									}
+
+									text_single = {
+										layoutpolicy_vertical = expanding
+										size = { 48 100% }
+										autoresize = no
+										align = right|vcenter
+										raw_text = "#P +20#!"
+									}
+								}
+							}
+
+						}
+
+						vbox = {
+							visible = "[GetPlayer.MakeScope.Var('pie_et_category_privilege').IsSet]"
+							layoutpolicy_horizontal = expanding
+							spacing = 4
+
+							button_regular = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 42 }
+								onclick = "[GetScriptedGui('pie_et_sgui_toggle_grant_privilege').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								down = "[GetPlayer.MakeScope.Var('pie_et_term_grant_privilege').IsSet]"
+								tooltip = "pie_estate_trade_term_grant_privilege_tt"
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
+									size = { 100% 100% }
+									margin = { 10 0 }
+									spacing = 8
+
+									widget = {
+										size = { 24 100% }
+
+										checkbox_diamond_alt = {
+											parentanchor = center
+											checked = "[GetPlayer.MakeScope.Var('pie_et_term_grant_privilege').IsSet]"
+											onclick = "[GetScriptedGui('pie_et_sgui_toggle_grant_privilege').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+									}
+
+									widget = {
+										size = { 24 100% }
+
+										icon = {
+											parentanchor = center
+											size = { 24 24 }
+											texture = "gfx/interface/icons/flat_icons/privilege.dds"
+										}
+									}
+
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										layoutpolicy_vertical = expanding
+										size = { -1 100% }
+										autoresize = no
+										align = left|vcenter
+										text = "pie_estate_trade_term_grant_privilege"
+									}
+
+									text_single = {
+										layoutpolicy_vertical = expanding
+										size = { 48 100% }
+										autoresize = no
+										align = right|vcenter
+										raw_text = "#P +30#!"
+									}
+								}
+							}
+
+							button_regular = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 42 }
+								onclick = "[GetScriptedGui('pie_et_sgui_toggle_reduce_privilege').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								down = "[GetPlayer.MakeScope.Var('pie_et_term_reduce_privilege').IsSet]"
+								tooltip = "pie_estate_trade_term_reduce_privilege_tt"
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
+									size = { 100% 100% }
+									margin = { 10 0 }
+									spacing = 8
+
+									widget = {
+										size = { 24 100% }
+
+										checkbox_diamond_alt = {
+											parentanchor = center
+											checked = "[GetPlayer.MakeScope.Var('pie_et_term_reduce_privilege').IsSet]"
+											onclick = "[GetScriptedGui('pie_et_sgui_toggle_reduce_privilege').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+									}
+
+									widget = {
+										size = { 24 100% }
+
+										icon = {
+											parentanchor = center
+											size = { 24 24 }
+											texture = "gfx/interface/icons/peace_treaty/demand_treaty.dds"
+										}
+									}
+
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										layoutpolicy_vertical = expanding
+										size = { -1 100% }
+										autoresize = no
+										align = left|vcenter
+										text = "pie_estate_trade_term_reduce_privilege"
+									}
+
+									text_single = {
+										layoutpolicy_vertical = expanding
+										size = { 48 100% }
+										autoresize = no
+										align = right|vcenter
+										raw_text = "#N -30#!"
+									}
+								}
+							}
+						}
+
+						vbox = {
+							visible = "[GetPlayer.MakeScope.Var('pie_et_category_other').IsSet]"
+							layoutpolicy_horizontal = expanding
+							spacing = 4
+
+							button_regular = {
+								layoutpolicy_horizontal = expanding
+								size = { -1 42 }
+								onclick = "[GetScriptedGui('pie_et_sgui_toggle_repay_principal').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								down = "[GetPlayer.MakeScope.Var('pie_et_term_repay_principal').IsSet]"
+								tooltip = "pie_estate_trade_term_repay_principal_tt"
+
+								hbox = {
+									layoutpolicy_horizontal = expanding
+									layoutpolicy_vertical = expanding
+									size = { 100% 100% }
+									margin = { 10 0 }
+									spacing = 8
+
+									widget = {
+										size = { 24 100% }
+
+										checkbox_diamond_alt = {
+											parentanchor = center
+											checked = "[GetPlayer.MakeScope.Var('pie_et_term_repay_principal').IsSet]"
+											onclick = "[GetScriptedGui('pie_et_sgui_toggle_repay_principal').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+									}
+
+									widget = {
+										size = { 24 100% }
+
+										icon = {
+											parentanchor = center
+											size = { 24 24 }
+											texture = "gfx/interface/icons/resources/gold.dds"
+										}
+									}
+
+									text_single = {
+										layoutpolicy_horizontal = expanding
+										layoutpolicy_vertical = expanding
+										size = { -1 100% }
+										autoresize = no
+										align = left|vcenter
+										text = "pie_estate_trade_term_repay_principal"
+									}
+
+									text_single = {
+										layoutpolicy_vertical = expanding
+										size = { 48 100% }
+										autoresize = no
+										align = right|vcenter
+										raw_text = "#P +5#!"
+									}
+								}
+							}
+						}
+
+						expand = {}
+					}
+
+					expand = {}
+				}
+			}
+
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				spacing = 5
+
+				widget = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 50 }
+					using = bg_main_inner_notabs_alt
+
+					hbox = {
+						parentanchor = center
+						layoutpolicy_horizontal = expanding
+						size = { 100% 34 }
+						margin = { 12 0 }
+						spacing = 10
+
+						hbox = {
+							layoutpolicy_vertical = expanding
+							size = { 212 100% }
+							spacing = 6
+
+							text_single = {
+								layoutpolicy_vertical = expanding
+								size = { 42 100% }
+								autoresize = no
+								align = right|vcenter
+								text = "pie_estate_trade_principal"
+								default_format = "#yellow_titles"
+							}
+
+							widget = {
+								layoutpolicy_vertical = expanding
+								size = { 24 100% }
+
+								button_minus = {
+									parentanchor = center
+									size = { 24 24 }
+									click_modifiers = {
+										ondefault = "[GetScriptedGui('pie_et_sgui_gold_dec').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										onctrl = "[GetScriptedGui('pie_et_sgui_gold_dec_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									}
+									onrightclick = "[GetScriptedGui('pie_et_sgui_gold_dec_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+							}
+
+							widget = {
+								layoutpolicy_vertical = expanding
+								size = { 104 100% }
+
+								widget = {
+									parentanchor = center
+									size = { 104 30 }
+									using = bg_number_container_bckg
+									tooltip = "pie_estate_trade_gold_tt"
+
+									text_single = {
+										parentanchor = center
+										size = { 100% 100% }
+										autoresize = no
+										align = center|vcenter
+										raw_text = "[GetPlayer.MakeScope.Var('pie_et_gold').GetValue|+=0] @gold!"
+									}
+								}
+							}
+
+							widget = {
+								layoutpolicy_vertical = expanding
+								size = { 24 100% }
+
+								button_plus = {
+									parentanchor = center
+									size = { 24 24 }
+									click_modifiers = {
+										ondefault = "[GetScriptedGui('pie_et_sgui_gold_inc').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										onctrl = "[GetScriptedGui('pie_et_sgui_gold_inc_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+									}
+									onrightclick = "[GetScriptedGui('pie_et_sgui_gold_inc_big').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+							}
+						}
+
+						expand = {}
+
+						hbox = {
+							layoutpolicy_vertical = expanding
+							size = { 316 100% }
+							spacing = 6
+
+							text_single = {
+								layoutpolicy_vertical = expanding
+								size = { 58 100% }
+								autoresize = no
+								align = right|vcenter
+								text = "pie_estate_trade_interest"
+								default_format = "#yellow_titles"
+							}
+
+							widget = {
+								layoutpolicy_vertical = expanding
+								size = { 24 100% }
+
+								button_minus = {
+									parentanchor = center
+									size = { 24 24 }
+									enabled = "[GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('pie_et_gold').GetValue, '(CFixedPoint)0')]"
+									onclick = "[GetScriptedGui('pie_et_sgui_interest_dec').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+							}
+
+							widget = {
+								layoutpolicy_vertical = expanding
+								size = { 68 100% }
+
+								widget = {
+									parentanchor = center
+									size = { 68 30 }
+									using = bg_number_container_bckg
+									tooltip = "pie_estate_trade_interest_tt"
+
+									text_single = {
+										parentanchor = center
+										size = { 100% 100% }
+										autoresize = no
+										align = center|vcenter
+										raw_text = "[GetPlayer.MakeScope.Var('pie_et_interest').GetValue|%0]"
+									}
+								}
+							}
+
+							widget = {
+								layoutpolicy_vertical = expanding
+								size = { 24 100% }
+
+								button_plus = {
+									parentanchor = center
+									size = { 24 24 }
+									enabled = "[GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('pie_et_gold').GetValue, '(CFixedPoint)0')]"
+									onclick = "[GetScriptedGui('pie_et_sgui_interest_inc').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+								}
+							}
+
+							widget = {
+								layoutpolicy_vertical = expanding
+								size = { 118 100% }
+
+								widget = {
+									parentanchor = center
+									size = { 118 30 }
+									using = bg_number_container_bckg
+									tooltip = "pie_estate_trade_monthly_interest_tt"
+
+									hbox = {
+										parentanchor = center
+										size = { 100% 100% }
+										spacing = 4
+
+										text_single = {
+											size = { 38 24 }
+											autoresize = no
+											align = right|vcenter
+											text = "pie_estate_trade_monthly_interest_short"
+										}
+
+										text_single = {
+											size = { 64 24 }
+											autoresize = no
+											align = left|vcenter
+											raw_text = "[GetPlayer.MakeScope.ScriptValue('pie_et_monthly_interest_preview')|2] @gold!"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+				hbox = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 24 }
+					spacing = 8
+
+					text_single = {
+						parentanchor = vcenter
+						layoutpolicy_vertical = expanding
+						size = { -1 100% }
+						autoresize = no
+						align = left|vcenter
+						text = "pie_estate_trade_existing_debt"
+						default_format = "#yellow_titles"
+					}
+
+					text_single = {
+						parentanchor = vcenter
+						layoutpolicy_vertical = expanding
+						size = { -1 100% }
+						autoresize = no
+						align = left|vcenter
+						raw_text = "[GetPlayer.MakeScope.ScriptValue('pie_et_selected_estate_debt')|0] @gold!"
+					}
+
+					expand = {}
+
+					text_single = {
+						parentanchor = vcenter
+						layoutpolicy_vertical = expanding
+						size = { -1 100% }
+						autoresize = no
+						align = right|vcenter
+						text = "pie_estate_trade_existing_interest"
+						default_format = "#yellow_titles"
+					}
+
+					text_single = {
+						parentanchor = vcenter
+						layoutpolicy_vertical = expanding
+						size = { -1 100% }
+						autoresize = no
+						align = right|vcenter
+						raw_text = "[GetPlayer.MakeScope.ScriptValue('pie_et_selected_estate_interest')|%0]"
+					}
+				}
+
+				button_regular = {
+					layoutpolicy_horizontal = expanding
+					size = { -1 44 }
+					enabled = "[GreaterThanOrEqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_et_acceptance_value'), '(CFixedPoint)0')]"
+					onclick = "[GetScriptedGui('pie_et_sgui_accept_trade').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					tooltip = "pie_estate_trade_send_tt"
+
+					hbox = {
+						parentanchor = center
+						spacing = 8
+
+						icon = {
+							parentanchor = vcenter
+							visible = "[GreaterThanOrEqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_et_acceptance_value'), '(CFixedPoint)0')]"
+							size = { 28 28 }
+							texture = "gfx/interface/icons/text_icons/trigger_yes.dds"
+						}
+
+						icon = {
+							parentanchor = vcenter
+							visible = "[LessThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_et_acceptance_value'), '(CFixedPoint)0')]"
+							size = { 28 28 }
+							texture = "gfx/interface/icons/text_icons/trigger_no.dds"
+						}
+
+						text_single = {
+							parentanchor = vcenter
+							size = { -1 28 }
+							autoresize = no
+							align = center|vcenter
+							text = "pie_estate_trade_send"
+							default_format = "#yellow_titles"
+						}
+
+						text_single = {
+							parentanchor = vcenter
+							size = { 48 28 }
+							autoresize = no
+							align = right|vcenter
+							visible = "[GreaterThanOrEqualTo_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_et_acceptance_value'), '(CFixedPoint)0')]"
+							raw_text = "#P [GetPlayer.MakeScope.ScriptValue('pie_et_acceptance_value')|0]#!"
+						}
+
+						text_single = {
+							parentanchor = vcenter
+							size = { 48 28 }
+							autoresize = no
+							align = right|vcenter
+							visible = "[LessThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_et_acceptance_value'), '(CFixedPoint)0')]"
+							raw_text = "#N [GetPlayer.MakeScope.ScriptValue('pie_et_acceptance_value')|0]#!"
+						}
+					}
+				}
+			}
+		}
+	}
+
+}

@@ -1,0 +1,100 @@
+pie_land_has_defined_owner = {
+	OR = {
+		has_variable = pie_land_owner_crown
+		has_variable = pie_land_owner_nobles
+		has_variable = pie_land_owner_clergy
+		has_variable = pie_land_owner_burghers
+		has_variable = pie_land_owner_peasants
+	}
+}
+
+pie_land_can_receive_grant = {
+	is_ownable = yes
+	has_owner = yes
+	is_land = yes
+	controller = root
+	NOT = { is_capital = yes }
+	has_siege = no
+	is_looted = no
+	OR = {
+		NOT = { pie_land_has_defined_owner = yes }
+		has_variable = pie_land_owner_crown
+	}
+}
+
+pie_land_nobles_grant_candidate = {
+	pie_land_can_receive_grant = yes
+	owner = { country_has_estate = estate_type:nobles_estate }
+}
+
+pie_land_clergy_grant_candidate = {
+	pie_land_can_receive_grant = yes
+	owner = { country_has_estate = estate_type:clergy_estate }
+}
+
+pie_land_burghers_grant_candidate = {
+	pie_land_can_receive_grant = yes
+	owner = { country_has_estate = estate_type:burghers_estate }
+}
+
+pie_land_selected_estate_grant_candidate = {
+	OR = {
+		AND = {
+			owner = { has_variable = pie_et_estate_nobles }
+			pie_land_nobles_grant_candidate = yes
+		}
+		AND = {
+			owner = { has_variable = pie_et_estate_clergy }
+			pie_land_clergy_grant_candidate = yes
+		}
+		AND = {
+			owner = { has_variable = pie_et_estate_burghers }
+			pie_land_burghers_grant_candidate = yes
+		}
+	}
+}
+
+pie_land_has_registration_office = {
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_rural_village_office }
+		any_buildings_in_location = { building_type = building_type:pie_urban_civic_center }
+		any_buildings_in_location = { building_type = building_type:bailiff }
+		any_buildings_in_location = { building_type = building_type:local_governor }
+		any_buildings_in_location = { building_type = building_type:naval_governor }
+	}
+}
+
+pie_land_crown_registration_candidate = {
+	is_ownable = yes
+	has_owner = yes
+	is_land = yes
+	has_siege = no
+	is_looted = no
+	NOT = { pie_land_has_defined_owner = yes }
+	pie_land_has_registration_office = yes
+}
+
+pie_land_peasant_freehold_candidate = {
+	is_ownable = yes
+	has_owner = yes
+	is_land = yes
+	controller = root
+	NOT = { is_capital = yes }
+	has_siege = no
+	is_looted = no
+	NOT = { pie_land_has_defined_owner = yes }
+	local_control >= 0.5
+	local_relative_estate_power = {
+		estate_type = estate_type:peasants_estate
+		value >= 0.4
+	}
+	local_relative_estate_power = {
+		estate_type = estate_type:nobles_estate
+		value < 0.3
+	}
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_rural_village_office }
+		any_buildings_in_location = { building_type = building_type:pie_urban_civic_center }
+		any_buildings_in_location = { building_type = building_type:pie_urban_market_square }
+	}
+}

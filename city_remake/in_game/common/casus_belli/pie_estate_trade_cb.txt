@@ -1,0 +1,8 @@
+cb_pie_estate_trade = {
+	visible = { always = yes }
+	allow_creation = { always = yes }
+	allow_declaration = { always = yes }
+	can_expire = no
+	allow_separate_peace = yes
+	war_goal_type = naval
+}

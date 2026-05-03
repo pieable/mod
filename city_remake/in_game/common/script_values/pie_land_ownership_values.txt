@@ -1,0 +1,44 @@
+pie_land_grant_score = {
+	value = location_tax_base
+
+	if = {
+		limit = { has_variable = pie_land_owner_crown }
+		add = 20
+	}
+
+	if = {
+		limit = {
+			owner = { has_variable = pie_et_estate_nobles }
+			local_relative_estate_power = {
+				estate_type = estate_type:nobles_estate
+				value >= 0.34
+			}
+		}
+		add = 25
+	}
+	else_if = {
+		limit = {
+			owner = { has_variable = pie_et_estate_clergy }
+			local_relative_estate_power = {
+				estate_type = estate_type:clergy_estate
+				value >= 0.34
+			}
+		}
+		add = 25
+	}
+	else_if = {
+		limit = {
+			owner = { has_variable = pie_et_estate_burghers }
+			local_relative_estate_power = {
+				estate_type = estate_type:burghers_estate
+				value >= 0.34
+			}
+		}
+		add = 25
+	}
+
+	if = {
+		limit = { local_control < 0.5 }
+		subtract = 10
+	}
+}

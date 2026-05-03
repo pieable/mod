@@ -26,6 +26,7 @@ on_location_changed_rank = {
 pie_estate_urbanization_projects_yearly_pulse = {
 	effect = {
 		pie_estate_urbanization_projects_yearly = yes
+		pie_land_ownership_yearly = yes
 	}
 }
 

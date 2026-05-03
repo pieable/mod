@@ -867,6 +867,7 @@ pie_complete_town_urbanization_project = {
 		}
 		remove_variable = pie_pending_origin_nobles_town
 		set_variable = { name = pie_origin_nobles_town value = yes }
+		pie_set_land_owner_nobles = yes
 	}
 	else_if = {
 		limit = { has_variable = pie_project_estate_clergy }
@@ -879,6 +880,7 @@ pie_complete_town_urbanization_project = {
 		}
 		remove_variable = pie_pending_origin_clergy_town
 		set_variable = { name = pie_origin_clergy_town value = yes }
+		pie_set_land_owner_clergy = yes
 	}
 	else_if = {
 		limit = { has_variable = pie_project_estate_burghers }
@@ -891,6 +893,7 @@ pie_complete_town_urbanization_project = {
 		}
 		remove_variable = pie_pending_origin_burghers_town
 		set_variable = { name = pie_origin_burghers_town value = yes }
+		pie_set_land_owner_burghers = yes
 	}
 	pie_clear_urbanization_project = yes
 }
@@ -907,6 +910,7 @@ pie_complete_city_urbanization_project = {
 		}
 		remove_variable = pie_pending_origin_nobles_city
 		set_variable = { name = pie_origin_nobles_city value = yes }
+		pie_set_land_owner_nobles = yes
 	}
 	else_if = {
 		limit = { has_variable = pie_project_estate_clergy }
@@ -919,6 +923,7 @@ pie_complete_city_urbanization_project = {
 		}
 		remove_variable = pie_pending_origin_clergy_city
 		set_variable = { name = pie_origin_clergy_city value = yes }
+		pie_set_land_owner_clergy = yes
 	}
 	else_if = {
 		limit = { has_variable = pie_project_estate_burghers }
@@ -931,6 +936,7 @@ pie_complete_city_urbanization_project = {
 		}
 		remove_variable = pie_pending_origin_burghers_city
 		set_variable = { name = pie_origin_burghers_city value = yes }
+		pie_set_land_owner_burghers = yes
 	}
 	pie_clear_urbanization_project = yes
 }

@@ -27,6 +27,7 @@ pie_clergy_urban.1 = {
 				}
 				remove_variable = pie_pending_origin_clergy_town
 				set_variable = { name = pie_origin_clergy_town value = yes }
+				pie_set_land_owner_clergy = yes
 			}
 
 			if = {
@@ -83,6 +84,7 @@ pie_clergy_urban.2 = {
 				}
 				remove_variable = pie_pending_origin_clergy_city
 				set_variable = { name = pie_origin_clergy_city value = yes }
+				pie_set_land_owner_clergy = yes
 			}
 
 			if = {
@@ -136,6 +138,7 @@ pie_clergy_urban.11 = {
 					estate_type = estate_type:clergy_estate
 				}
 				set_variable = { name = pie_origin_clergy_town value = yes }
+				pie_set_land_owner_clergy = yes
 			}
 
 			if = {
@@ -189,6 +192,7 @@ pie_clergy_urban.12 = {
 					estate_type = estate_type:clergy_estate
 				}
 				set_variable = { name = pie_origin_clergy_city value = yes }
+				pie_set_land_owner_clergy = yes
 			}
 
 			if = {

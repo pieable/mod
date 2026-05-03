@@ -1,6 +1,7 @@
 monthly_country_pulse = {
 	on_actions = {
 		pie_ab_auto_build_monthly
+		pie_et_trade_monthly
 	}
 }
 
@@ -69,5 +70,15 @@ pie_ab_auto_build_monthly = {
 				pie_ab_build_next_basic_infrastructure = yes
 			}
 		}
+	}
+}
+
+pie_et_trade_monthly = {
+	trigger = {
+		is_ai = no
+	}
+	effect = {
+		pie_et_init_trade = yes
+		pie_et_pay_estate_monthly_interest = yes
 	}
 }

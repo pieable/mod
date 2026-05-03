@@ -1,0 +1,300 @@
+pie_et_cleanup_proxy_trade = {
+	remove_variable = pie_et_trade_war_active
+	remove_variable = pie_et_selected_estate_nobles
+	remove_variable = pie_et_selected_estate_clergy
+	remove_variable = pie_et_selected_estate_burghers
+
+	every_country = {
+		limit = { has_variable = pie_et_proxy_country }
+		if = {
+			limit = { is_at_war_with = root }
+			root = { white_peace = prev }
+		}
+		remove_truce_with = root
+		root = { remove_truce_with = prev }
+		root = {
+			annex_country = {
+				country = prev
+				reason = Diplomatic
+			}
+		}
+	}
+
+	location:savoonga = {
+		if = {
+			limit = { has_variable = pie_et_proxy_anchor_location }
+			if = {
+				limit = { has_owner = yes }
+				owner = { abandon_location = prev }
+			}
+		}
+		remove_variable = pie_et_proxy_anchor_location
+		remove_variable = pie_et_proxy_anchor_nobles
+		remove_variable = pie_et_proxy_anchor_clergy
+		remove_variable = pie_et_proxy_anchor_burghers
+	}
+}
+
+pie_et_open_trade_choice_event = {
+	remove_variable = pie_et_window_open
+
+	if = {
+		limit = { at_war = yes }
+		trigger_event_non_silently = pie_estate_trade.1
+	}
+	else = {
+		trigger_event_non_silently = pie_estate_trade.10
+	}
+}
+
+pie_et_start_proxy_trade_nobles = {
+	remove_variable = pie_et_window_open
+
+	if = {
+		limit = { at_war = yes }
+		trigger_event_non_silently = pie_estate_trade.1
+	}
+	else = {
+		pie_et_cleanup_proxy_trade = yes
+
+		if = {
+			limit = {
+				NOT = { country_has_estate = estate_type:nobles_estate }
+			}
+			trigger_event_non_silently = pie_estate_trade.3
+		}
+		else_if = {
+			limit = {
+				location:savoonga = {
+					OR = {
+						has_owner = yes
+						is_ownable = no
+						is_land = no
+						is_coastal = no
+					}
+				}
+			}
+			trigger_event_non_silently = pie_estate_trade.2
+		}
+		else = {
+			set_variable = { name = pie_et_trade_war_active value = yes }
+			set_variable = { name = pie_et_selected_estate_nobles value = yes }
+
+			location:savoonga = {
+				set_variable = { name = pie_et_proxy_anchor_location value = yes }
+				set_variable = { name = pie_et_proxy_anchor_nobles value = yes }
+				change_location_owner = root
+				create_country_from_location = {
+					hidden_effect = {
+						location:savoonga = {
+							create_sub_unit_of_category = sub_unit_category:navy_galley
+							create_sub_unit_of_category = sub_unit_category:navy_galley
+						}
+					}
+					save_scope_as = pie_et_primary_proxy_country
+					set_variable = { name = pie_et_proxy_country value = yes }
+					set_variable = { name = pie_et_proxy_country_nobles value = yes }
+					change_country_type = navy
+					change_country_name = PIE_ET_PROXY_NOBLES_NAME
+					change_country_adjective = PIE_ET_PROXY_NOBLES_ADJ
+					change_country_flag = FRA
+					add_gold = 2000
+				}
+			}
+
+			if = {
+				limit = { exists = scope:pie_et_primary_proxy_country }
+				declare_war_with_cb = {
+					target = scope:pie_et_primary_proxy_country
+					type = casus_belli:cb_pie_estate_trade
+				}
+
+				random_current_war = {
+					limit = {
+						any_war_participant = { this = root }
+						any_war_participant = { this = scope:pie_et_primary_proxy_country }
+					}
+					save_scope_as = pie_et_trade_war
+					add_bonus_warscore = {
+						country = root
+						amount = 50
+					}
+				}
+			}
+
+			if = {
+				limit = { NOT = { exists = scope:pie_et_trade_war } }
+				pie_et_cleanup_proxy_trade = yes
+				trigger_event_non_silently = pie_estate_trade.3
+			}
+		}
+	}
+}
+
+pie_et_start_proxy_trade_clergy = {
+	remove_variable = pie_et_window_open
+
+	if = {
+		limit = { at_war = yes }
+		trigger_event_non_silently = pie_estate_trade.1
+	}
+	else = {
+		pie_et_cleanup_proxy_trade = yes
+
+		if = {
+			limit = {
+				NOT = { country_has_estate = estate_type:clergy_estate }
+			}
+			trigger_event_non_silently = pie_estate_trade.3
+		}
+		else_if = {
+			limit = {
+				location:savoonga = {
+					OR = {
+						has_owner = yes
+						is_ownable = no
+						is_land = no
+						is_coastal = no
+					}
+				}
+			}
+			trigger_event_non_silently = pie_estate_trade.2
+		}
+		else = {
+			set_variable = { name = pie_et_trade_war_active value = yes }
+			set_variable = { name = pie_et_selected_estate_clergy value = yes }
+
+			location:savoonga = {
+				set_variable = { name = pie_et_proxy_anchor_location value = yes }
+				set_variable = { name = pie_et_proxy_anchor_clergy value = yes }
+				change_location_owner = root
+				create_country_from_location = {
+					hidden_effect = {
+						location:savoonga = {
+							create_sub_unit_of_category = sub_unit_category:navy_galley
+							create_sub_unit_of_category = sub_unit_category:navy_galley
+						}
+					}
+					save_scope_as = pie_et_primary_proxy_country
+					set_variable = { name = pie_et_proxy_country value = yes }
+					set_variable = { name = pie_et_proxy_country_clergy value = yes }
+					change_country_type = navy
+					change_country_name = PIE_ET_PROXY_CLERGY_NAME
+					change_country_adjective = PIE_ET_PROXY_CLERGY_ADJ
+					change_country_flag = PAP
+					add_gold = 2000
+				}
+			}
+
+			if = {
+				limit = { exists = scope:pie_et_primary_proxy_country }
+				declare_war_with_cb = {
+					target = scope:pie_et_primary_proxy_country
+					type = casus_belli:cb_pie_estate_trade
+				}
+
+				random_current_war = {
+					limit = {
+						any_war_participant = { this = root }
+						any_war_participant = { this = scope:pie_et_primary_proxy_country }
+					}
+					save_scope_as = pie_et_trade_war
+					add_bonus_warscore = {
+						country = root
+						amount = 50
+					}
+				}
+			}
+
+			if = {
+				limit = { NOT = { exists = scope:pie_et_trade_war } }
+				pie_et_cleanup_proxy_trade = yes
+				trigger_event_non_silently = pie_estate_trade.3
+			}
+		}
+	}
+}
+
+pie_et_start_proxy_trade_burghers = {
+	remove_variable = pie_et_window_open
+
+	if = {
+		limit = { at_war = yes }
+		trigger_event_non_silently = pie_estate_trade.1
+	}
+	else = {
+		pie_et_cleanup_proxy_trade = yes
+
+		if = {
+			limit = {
+				NOT = { country_has_estate = estate_type:burghers_estate }
+			}
+			trigger_event_non_silently = pie_estate_trade.3
+		}
+		else_if = {
+			limit = {
+				location:savoonga = {
+					OR = {
+						has_owner = yes
+						is_ownable = no
+						is_land = no
+						is_coastal = no
+					}
+				}
+			}
+			trigger_event_non_silently = pie_estate_trade.2
+		}
+		else = {
+			set_variable = { name = pie_et_trade_war_active value = yes }
+			set_variable = { name = pie_et_selected_estate_burghers value = yes }
+
+			location:savoonga = {
+				set_variable = { name = pie_et_proxy_anchor_location value = yes }
+				set_variable = { name = pie_et_proxy_anchor_burghers value = yes }
+				change_location_owner = root
+				create_country_from_location = {
+					hidden_effect = {
+						location:savoonga = {
+							create_sub_unit_of_category = sub_unit_category:navy_galley
+							create_sub_unit_of_category = sub_unit_category:navy_galley
+						}
+					}
+					save_scope_as = pie_et_primary_proxy_country
+					set_variable = { name = pie_et_proxy_country value = yes }
+					set_variable = { name = pie_et_proxy_country_burghers value = yes }
+					change_country_type = navy
+					change_country_name = PIE_ET_PROXY_BURGHERS_NAME
+					change_country_adjective = PIE_ET_PROXY_BURGHERS_ADJ
+					change_country_flag = LUB
+					add_gold = 2000
+				}
+			}
+
+			if = {
+				limit = { exists = scope:pie_et_primary_proxy_country }
+				declare_war_with_cb = {
+					target = scope:pie_et_primary_proxy_country
+					type = casus_belli:cb_pie_estate_trade
+				}
+
+				random_current_war = {
+					limit = {
+						any_war_participant = { this = root }
+						any_war_participant = { this = scope:pie_et_primary_proxy_country }
+					}
+					save_scope_as = pie_et_trade_war
+					add_bonus_warscore = {
+						country = root
+						amount = 50
+					}
+				}
+			}
+
+			if = {
+				limit = { NOT = { exists = scope:pie_et_trade_war } }
+				pie_et_cleanup_proxy_trade = yes
+				trigger_event_non_silently = pie_estate_trade.3
+			}
+		}
+	}
+}

@@ -1,0 +1,11 @@
+l_english:
+ STATIC_MODIFIER_NAME_pie_land_owner_crown_modifier:0 "Crown Demesne"
+ STATIC_MODIFIER_DESC_pie_land_owner_crown_modifier:0 "This location is registered under direct crown administration."
+ STATIC_MODIFIER_NAME_pie_land_owner_nobles_modifier:0 "Noble Land"
+ STATIC_MODIFIER_DESC_pie_land_owner_nobles_modifier:0 "Local land rights are registered to the Nobility."
+ STATIC_MODIFIER_NAME_pie_land_owner_clergy_modifier:0 "Church Land"
+ STATIC_MODIFIER_DESC_pie_land_owner_clergy_modifier:0 "Local land rights are registered to the Clergy."
+ STATIC_MODIFIER_NAME_pie_land_owner_burghers_modifier:0 "Burgher Land"
+ STATIC_MODIFIER_DESC_pie_land_owner_burghers_modifier:0 "Local land rights are registered to the Burghers."
+ STATIC_MODIFIER_NAME_pie_land_owner_peasants_modifier:0 "Peasant Freehold"
+ STATIC_MODIFIER_DESC_pie_land_owner_peasants_modifier:0 "Local land rights are registered to free peasants."

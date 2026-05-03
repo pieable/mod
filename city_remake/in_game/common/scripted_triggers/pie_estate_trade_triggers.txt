@@ -1,0 +1,150 @@
+pie_et_has_selected_estate = {
+	OR = {
+		AND = {
+			has_variable = pie_et_estate_nobles
+			country_has_estate = estate_type:nobles_estate
+		}
+		AND = {
+			has_variable = pie_et_estate_clergy
+			country_has_estate = estate_type:clergy_estate
+		}
+		AND = {
+			has_variable = pie_et_estate_burghers
+			country_has_estate = estate_type:burghers_estate
+		}
+	}
+}
+
+pie_et_has_any_trade_term = {
+	OR = {
+		AND = {
+			has_variable = pie_et_gold
+			var:pie_et_gold > 0
+		}
+		AND = {
+			has_variable = pie_et_gold
+			var:pie_et_gold < 0
+		}
+		has_variable = pie_et_term_estate_funds_project
+		has_variable = pie_et_term_crown_grants_rights
+		has_variable = pie_et_term_grant_privilege
+		has_variable = pie_et_term_reduce_privilege
+		has_variable = pie_et_term_repay_principal
+		pie_et_has_selected_sell_land = yes
+		pie_et_has_selected_buy_land = yes
+	}
+}
+
+pie_et_selected_estate_can_lend_gold = {
+	OR = {
+		AND = {
+			has_variable = pie_et_estate_nobles
+			"estate(estate_type:nobles_estate)" = { estate_gold >= root.var:pie_et_gold }
+		}
+		AND = {
+			has_variable = pie_et_estate_clergy
+			"estate(estate_type:clergy_estate)" = { estate_gold >= root.var:pie_et_gold }
+		}
+		AND = {
+			has_variable = pie_et_estate_burghers
+			"estate(estate_type:burghers_estate)" = { estate_gold >= root.var:pie_et_gold }
+		}
+	}
+}
+
+pie_et_selected_estate_land_grant_candidate = {
+	OR = {
+		AND = {
+			has_variable = pie_et_estate_nobles
+			any_owned_location = { pie_land_nobles_grant_candidate = yes }
+		}
+		AND = {
+			has_variable = pie_et_estate_clergy
+			any_owned_location = { pie_land_clergy_grant_candidate = yes }
+		}
+		AND = {
+			has_variable = pie_et_estate_burghers
+			any_owned_location = { pie_land_burghers_grant_candidate = yes }
+		}
+	}
+}
+
+pie_et_sell_land_candidate = {
+	is_ownable = yes
+	has_owner = yes
+	is_land = yes
+	NOT = { is_capital = yes }
+	has_siege = no
+	is_looted = no
+	has_variable = pie_land_owner_crown
+	owner = { pie_et_has_selected_estate = yes }
+}
+
+pie_et_buy_land_candidate = {
+	is_ownable = yes
+	has_owner = yes
+	is_land = yes
+	NOT = { is_capital = yes }
+	has_siege = no
+	is_looted = no
+	owner = { pie_et_has_selected_estate = yes }
+	OR = {
+		AND = {
+			owner = { has_variable = pie_et_estate_nobles }
+			has_variable = pie_land_owner_nobles
+		}
+		AND = {
+			owner = { has_variable = pie_et_estate_clergy }
+			has_variable = pie_land_owner_clergy
+		}
+		AND = {
+			owner = { has_variable = pie_et_estate_burghers }
+			has_variable = pie_land_owner_burghers
+		}
+	}
+}
+
+pie_et_has_selected_sell_land = {
+	any_owned_location = {
+		has_variable = pie_et_selected_sell_land
+		pie_et_sell_land_candidate = yes
+	}
+}
+
+pie_et_has_selected_buy_land = {
+	any_owned_location = {
+		has_variable = pie_et_selected_buy_land
+		pie_et_buy_land_candidate = yes
+	}
+}
+
+pie_et_can_pay_offered_gold = {
+	gold >= {
+		value = var:pie_et_gold
+		multiply = -1
+	}
+}
+
+pie_et_trade_can_accept = {
+	pie_et_has_selected_estate = yes
+	pie_et_has_any_trade_term = yes
+	pie_et_acceptance_value >= 0
+	if = {
+		limit = {
+			has_variable = pie_et_gold
+			var:pie_et_gold > 0
+		}
+		pie_et_selected_estate_can_lend_gold = yes
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_gold
+			var:pie_et_gold < 0
+		}
+		pie_et_can_pay_offered_gold = yes
+	}
+	if = {
+		limit = { has_variable = pie_et_term_crown_grants_rights }
+		pie_et_selected_estate_land_grant_candidate = yes
+	}
+}

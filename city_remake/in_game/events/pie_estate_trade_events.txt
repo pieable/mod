@@ -1,0 +1,64 @@
+namespace = pie_estate_trade
+
+pie_estate_trade.1 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_estate_trade.1.title
+	desc = pie_estate_trade.1.desc
+
+	option = {
+		name = pie_estate_trade.ok
+	}
+}
+
+pie_estate_trade.10 = {
+	type = country_event
+	is_triggered_only = yes
+	interface_lock = yes
+	title = pie_estate_trade.10.title
+	desc = pie_estate_trade.10.desc
+
+	option = {
+		name = pie_estate_trade.10.nobles
+		trigger = { country_has_estate = estate_type:nobles_estate }
+		pie_et_start_proxy_trade_nobles = yes
+	}
+
+	option = {
+		name = pie_estate_trade.10.clergy
+		trigger = { country_has_estate = estate_type:clergy_estate }
+		pie_et_start_proxy_trade_clergy = yes
+	}
+
+	option = {
+		name = pie_estate_trade.10.burghers
+		trigger = { country_has_estate = estate_type:burghers_estate }
+		pie_et_start_proxy_trade_burghers = yes
+	}
+
+	option = {
+		name = pie_estate_trade.cancel
+	}
+}
+
+pie_estate_trade.2 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_estate_trade.2.title
+	desc = pie_estate_trade.2.desc
+
+	option = {
+		name = pie_estate_trade.ok
+	}
+}
+
+pie_estate_trade.3 = {
+	type = country_event
+	is_triggered_only = yes
+	title = pie_estate_trade.3.title
+	desc = pie_estate_trade.3.desc
+
+	option = {
+		name = pie_estate_trade.ok
+	}
+}

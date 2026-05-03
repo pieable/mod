@@ -1,0 +1,21 @@
+on_ending_war = {
+	on_actions = {
+		pie_et_cleanup_after_trade_war
+	}
+}
+
+pie_et_cleanup_after_trade_war = {
+	effect = {
+		if = {
+			limit = {
+				has_variable = pie_et_trade_war_active
+				scope:war = {
+					any_war_participant = {
+						has_variable = pie_et_proxy_country
+					}
+				}
+			}
+			pie_et_cleanup_proxy_trade = yes
+		}
+	}
+}

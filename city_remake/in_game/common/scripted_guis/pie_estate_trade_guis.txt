@@ -1,0 +1,183 @@
+pie_et_sgui_init = {
+	scope = country
+	effect = {
+		pie_et_init_trade = yes
+	}
+}
+
+pie_et_sgui_open_window = {
+	scope = country
+	effect = {
+		pie_et_init_trade = yes
+		pie_et_queue_trade_mapmode = yes
+		set_variable = { name = pie_et_window_open value = yes }
+	}
+}
+
+pie_et_sgui_start_proxy_trade = {
+	scope = country
+	is_valid = {
+		OR = {
+			country_has_estate = estate_type:nobles_estate
+			country_has_estate = estate_type:clergy_estate
+			country_has_estate = estate_type:burghers_estate
+		}
+		NOT = { at_war = yes }
+	}
+	effect = {
+		pie_et_open_trade_choice_event = yes
+	}
+}
+
+pie_et_sgui_close_window = {
+	scope = country
+	effect = {
+		pie_et_clear_selected_land_locations = yes
+		remove_variable = pie_et_window_open
+		remove_variable = pie_et_estate_picker_open
+		remove_variable = pie_et_land_sell_open
+		remove_variable = pie_et_land_buy_open
+		clear_variable_list = pie_et_sell_land_locations
+		clear_variable_list = pie_et_buy_land_locations
+		clear_variable_list = pie_et_mapmode_trigger
+	}
+}
+
+pie_et_sgui_toggle_estate_picker = {
+	scope = country
+	effect = { pie_et_toggle_estate_picker = yes }
+}
+
+pie_et_sgui_select_nobles = {
+	scope = country
+	is_valid = { country_has_estate = estate_type:nobles_estate }
+	effect = { pie_et_select_nobles = yes }
+}
+
+pie_et_sgui_select_clergy = {
+	scope = country
+	is_valid = { country_has_estate = estate_type:clergy_estate }
+	effect = { pie_et_select_clergy = yes }
+}
+
+pie_et_sgui_select_burghers = {
+	scope = country
+	is_valid = { country_has_estate = estate_type:burghers_estate }
+	effect = { pie_et_select_burghers = yes }
+}
+
+pie_et_sgui_select_land = {
+	scope = country
+	effect = { pie_et_select_land = yes }
+}
+
+pie_et_sgui_select_privilege = {
+	scope = country
+	effect = { pie_et_select_privilege = yes }
+}
+
+pie_et_sgui_select_other = {
+	scope = country
+	effect = { pie_et_select_other = yes }
+}
+
+pie_et_sgui_gold_inc = {
+	scope = country
+	effect = { pie_et_gold_inc = yes }
+}
+
+pie_et_sgui_gold_inc_big = {
+	scope = country
+	effect = { pie_et_gold_inc_big = yes }
+}
+
+pie_et_sgui_gold_dec = {
+	scope = country
+	effect = { pie_et_gold_dec = yes }
+}
+
+pie_et_sgui_gold_dec_big = {
+	scope = country
+	effect = { pie_et_gold_dec_big = yes }
+}
+
+pie_et_sgui_interest_inc = {
+	scope = country
+	is_valid = {
+		has_variable = pie_et_gold
+		var:pie_et_gold > 0
+	}
+	effect = { pie_et_interest_inc = yes }
+}
+
+pie_et_sgui_interest_dec = {
+	scope = country
+	is_valid = {
+		has_variable = pie_et_gold
+		var:pie_et_gold > 0
+	}
+	effect = { pie_et_interest_dec = yes }
+}
+
+pie_et_sgui_toggle_estate_funds_project = {
+	scope = country
+	effect = { pie_et_toggle_estate_funds_project = yes }
+}
+
+pie_et_sgui_toggle_crown_grants_rights = {
+	scope = country
+	effect = { pie_et_toggle_crown_grants_rights = yes }
+}
+
+pie_et_sgui_toggle_sell_land_group = {
+	scope = country
+	effect = { pie_et_toggle_sell_land_group = yes }
+}
+
+pie_et_sgui_toggle_buy_land_group = {
+	scope = country
+	effect = { pie_et_toggle_buy_land_group = yes }
+}
+
+pie_et_sgui_toggle_sell_land_location = {
+	scope = location
+	is_valid = { pie_et_sell_land_candidate = yes }
+	effect = { pie_et_toggle_sell_land_location = yes }
+}
+
+pie_et_sgui_toggle_buy_land_location = {
+	scope = location
+	is_valid = { pie_et_buy_land_candidate = yes }
+	effect = { pie_et_toggle_buy_land_location = yes }
+}
+
+pie_et_sgui_toggle_grant_privilege = {
+	scope = country
+	effect = { pie_et_toggle_grant_privilege = yes }
+}
+
+pie_et_sgui_toggle_reduce_privilege = {
+	scope = country
+	effect = { pie_et_toggle_reduce_privilege = yes }
+}
+
+pie_et_sgui_toggle_repay_principal = {
+	scope = country
+	effect = { pie_et_toggle_repay_principal = yes }
+}
+
+pie_et_sgui_autogenerate_terms = {
+	scope = country
+	effect = { pie_et_autogenerate_terms = yes }
+}
+
+pie_et_sgui_clear_terms = {
+	scope = country
+	effect = { pie_et_clear_current_terms = yes }
+}
+
+pie_et_sgui_accept_trade = {
+	scope = country
+	is_valid = { pie_et_trade_can_accept = yes }
+	effect = { pie_et_accept_trade = yes }
+}

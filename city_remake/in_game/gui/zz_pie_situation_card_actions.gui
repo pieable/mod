@@ -1,0 +1,120 @@
+types Cards
+{
+	type situation_card_actions = card_actions {
+		layoutpolicy_horizontal = expanding
+		blockoverride "bg_card_action" {
+			using = bg_scroll_card_header
+			blockoverride "card_header_pattern" {
+				background = {
+					using = bg_card_header_01_default
+					margin = {-5 0}
+					blockoverride "header_color" {
+						using = color_default_brown_texture
+					}
+					blockoverride "header_pattern" {
+						texture = "gfx/interface/component_overlay/cloth_texture.dds"
+						texture_density = 2
+						spriteType = Corneredtiled
+						spriteborder = { 0 0 }
+						blend_mode = overlay
+					}
+					using = graphical_culture_pattern
+					modify_texture = {
+						block "uiaction_gov" {
+							visible = no
+						}
+						using = color_greyish_texture
+						alpha = 1
+						blend_mode = normal
+					}
+				}
+			}
+		}
+		blockoverride "actions_override" {
+			vbox = {
+				layoutpolicy_horizontal = expanding
+				margin = { 0 8 }
+				scrollarea = {
+					layoutpolicy_horizontal = expanding
+					maximumsize = { -1 250 }
+					scrollbarpolicy_horizontal = always_off
+					autoresizescrollarea = yes
+
+					scrollbar_vertical = {
+						using = Scrollbar_Vertical
+					}
+
+					scrollwidget = {
+						vbox = {
+							datamodel = "[ActionGroup.GetActions]"
+							item = {
+								widget = {
+									size = { 480 34 }
+									action_button_regular = {
+										name = "situation action button"
+										visible = "[Not(EqualTo_string(GenericAction.GetKey, 'pie_estate_trade_open_action'))]"
+										size = { 480 30 }
+										parentanchor = center
+										text = "[GenericAction.GetNameWithNoTooltip]"
+										title = "[GenericAction.GetName]"
+										actor = "[SituationView.GetPlayer]"
+										parameter = {
+											parameter_name = "recipient"
+											parameter_value = "[SituationView.GetActiveSituation.GetSituation]"
+										}
+										left_action = { action_name = "[GenericAction.GetLeftClickKey]" }
+										left_click_and_hold_action = { action_name = "[GenericAction.GetLeftClickAndHoldKey]" }
+										tooltipwidget = {
+											ContextualTooltipType = {
+												blockoverride "title_text" {
+													text = "[GenericAction.GetNameWithNoTooltip]"
+												}
+
+												blockoverride "concept_link" {
+													text = "[situation|e]"
+												}
+
+												blockoverride "title_icon" {
+													icon = {
+														using = tooltip_title_icon_size
+														texture = "[SituationView.GetActiveSituation.GetIcon]"
+													}
+												}
+
+												blockoverride "tooltip_content" {
+													using = action_tooltip_inner_content
+													blockoverride "conditions_list" {
+													}
+												}
+											}
+										}
+									}
+
+									button_regular = {
+										name = "pie estate trade situation action button"
+										visible = "[EqualTo_string(GenericAction.GetKey, 'pie_estate_trade_open_action')]"
+										size = { 480 30 }
+										parentanchor = center
+										tooltip = "pie_estate_trade_open_tt"
+										action_tooltip = {
+											click_type = left
+											click_mode = single
+											title = "pie_estate_trade_open"
+											on_action = "[GetScriptedGui('pie_et_sgui_open_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+
+										text_single = {
+											parentanchor = center
+											align = center|nobaseline
+											text = "[GenericAction.GetNameWithNoTooltip]"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -344,3 +344,240 @@ pie_destroy_estate_urban_building = {
 		}
 	}
 }
+
+pie_register_crown_land = {
+	type = situation
+	show_message = no
+	ai_tick = never
+	automation_tick = never
+
+	potential = {
+		always = yes
+	}
+
+	allow = {
+		scope:actor = {
+			any_owned_location = {
+				pie_land_crown_registration_candidate = yes
+				controller ?= scope:actor
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = situation
+		interaction_source_list = {
+			situation:pie_estate_urbanization = {
+				add_to_list = source
+			}
+		}
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:pie_estate_urbanization = this
+			situation_is_active = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		interaction_source_list = {
+			scope:actor = {
+				every_owned_location = {
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_location
+		name = "pie_register_crown_land_select"
+		none_available_msg_key = "pie_register_crown_land_none"
+		column = { data = name }
+		column = { data = population }
+		column = { data = rank }
+		source_flags = only_actual_locations
+		map_mode = pie_estate_trade_land
+		visible = {
+			owner ?= scope:actor
+			pie_land_crown_registration_candidate = yes
+		}
+		enabled = {
+			owner ?= scope:actor
+			controller ?= scope:actor
+			pie_land_crown_registration_candidate = yes
+		}
+		map_color = {
+			if = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_crown_registration_candidate = yes
+				}
+				value = define:NMapColors|MAP_COLOR_HIGH
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		only_color_selectable = yes
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target_location
+			}
+			scope:target_location = {
+				if = {
+					limit = {
+						owner ?= scope:actor
+						controller ?= scope:actor
+						pie_land_crown_registration_candidate = yes
+					}
+					pie_set_land_owner_crown = yes
+				}
+				else = {
+					custom_tooltip = pie_register_crown_land_fail_tt
+				}
+			}
+		}
+		else = {
+			custom_tooltip = pie_register_crown_land_none
+		}
+	}
+}
+
+pie_estate_urbanization_projects_map = {
+	type = situation
+	show_message = no
+	ai_tick = never
+	automation_tick = never
+
+	potential = {
+		always = yes
+	}
+
+	allow = {
+		scope:actor = {
+			any_owned_location = {
+				is_ownable = yes
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = situation
+		interaction_source_list = {
+			situation:pie_estate_urbanization = {
+				add_to_list = source
+			}
+		}
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:pie_estate_urbanization = this
+			situation_is_active = yes
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		interaction_source_list = {
+			scope:actor = {
+				every_owned_location = {
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_location
+		name = "pie_estate_urbanization_projects_map"
+		none_available_msg_key = "pie_estate_urbanization_projects_map_none"
+		column = { data = name }
+		column = { data = population }
+		column = { data = rank }
+		source_flags = only_actual_locations
+		map_mode = pie_estate_urbanization_projects
+		visible = {
+			owner ?= scope:actor
+		}
+		enabled = {
+			owner ?= scope:actor
+		}
+		map_color = {
+			if = {
+				limit = {
+					owner ?= scope:actor
+				}
+				value = define:NMapColors|MAP_COLOR_HIGH
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		only_color_selectable = yes
+	}
+
+	effect = {
+		if = {
+			limit = {
+				exists = scope:target_location
+			}
+			custom_tooltip = pie_estate_urbanization_projects_map_action_tt
+		}
+		else = {
+			custom_tooltip = pie_estate_urbanization_projects_map_none
+		}
+	}
+}
+
+pie_estate_trade_open_action = {
+	type = situation
+	show_message = no
+	ai_tick = never
+	automation_tick = never
+
+	potential = {
+		always = yes
+	}
+
+	allow = {
+		scope:actor = {
+			OR = {
+				country_has_estate = estate_type:nobles_estate
+				country_has_estate = estate_type:clergy_estate
+				country_has_estate = estate_type:burghers_estate
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = situation
+		interaction_source_list = {
+			situation:pie_estate_urbanization = {
+				add_to_list = source
+			}
+		}
+		target_flag = recipient
+		name = "choose_situation"
+		column = {
+			data = name
+		}
+		visible = {
+			situation:pie_estate_urbanization = this
+			situation_is_active = yes
+		}
+	}
+
+	effect = {
+		scope:actor = {
+			pie_et_init_trade = yes
+			pie_et_queue_trade_mapmode = yes
+			set_variable = { name = pie_et_window_open value = yes }
+		}
+	}
+}

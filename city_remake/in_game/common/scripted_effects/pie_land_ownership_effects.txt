@@ -1,0 +1,85 @@
+pie_clear_land_owner = {
+	remove_variable = pie_land_owner_crown
+	remove_variable = pie_land_owner_nobles
+	remove_variable = pie_land_owner_clergy
+	remove_variable = pie_land_owner_burghers
+	remove_variable = pie_land_owner_peasants
+
+	remove_location_modifier = pie_land_owner_crown_modifier
+	remove_location_modifier = pie_land_owner_nobles_modifier
+	remove_location_modifier = pie_land_owner_clergy_modifier
+	remove_location_modifier = pie_land_owner_burghers_modifier
+	remove_location_modifier = pie_land_owner_peasants_modifier
+}
+
+pie_set_land_owner_crown = {
+	pie_clear_land_owner = yes
+	set_variable = { name = pie_land_owner_crown value = yes }
+	add_location_modifier = { modifier = pie_land_owner_crown_modifier days = -1 mode = replace }
+}
+
+pie_set_land_owner_nobles = {
+	pie_clear_land_owner = yes
+	set_variable = { name = pie_land_owner_nobles value = yes }
+	add_location_modifier = { modifier = pie_land_owner_nobles_modifier days = -1 mode = replace }
+}
+
+pie_set_land_owner_clergy = {
+	pie_clear_land_owner = yes
+	set_variable = { name = pie_land_owner_clergy value = yes }
+	add_location_modifier = { modifier = pie_land_owner_clergy_modifier days = -1 mode = replace }
+}
+
+pie_set_land_owner_burghers = {
+	pie_clear_land_owner = yes
+	set_variable = { name = pie_land_owner_burghers value = yes }
+	add_location_modifier = { modifier = pie_land_owner_burghers_modifier days = -1 mode = replace }
+}
+
+pie_set_land_owner_peasants = {
+	pie_clear_land_owner = yes
+	set_variable = { name = pie_land_owner_peasants value = yes }
+	add_location_modifier = { modifier = pie_land_owner_peasants_modifier days = -1 mode = replace }
+}
+
+pie_grant_land_to_selected_estate = {
+	if = {
+		limit = { has_variable = pie_et_estate_nobles }
+		ordered_owned_location = {
+			limit = { pie_land_nobles_grant_candidate = yes }
+			order_by = pie_land_grant_score
+			max = 1
+			pie_set_land_owner_nobles = yes
+		}
+	}
+	else_if = {
+		limit = { has_variable = pie_et_estate_clergy }
+		ordered_owned_location = {
+			limit = { pie_land_clergy_grant_candidate = yes }
+			order_by = pie_land_grant_score
+			max = 1
+			pie_set_land_owner_clergy = yes
+		}
+	}
+	else_if = {
+		limit = { has_variable = pie_et_estate_burghers }
+		ordered_owned_location = {
+			limit = { pie_land_burghers_grant_candidate = yes }
+			order_by = pie_land_grant_score
+			max = 1
+			pie_set_land_owner_burghers = yes
+		}
+	}
+}
+
+pie_land_ownership_yearly = {
+	if = {
+		limit = {
+			any_owned_location = { pie_land_peasant_freehold_candidate = yes }
+		}
+		random_owned_location = {
+			limit = { pie_land_peasant_freehold_candidate = yes }
+			pie_set_land_owner_peasants = yes
+		}
+	}
+}

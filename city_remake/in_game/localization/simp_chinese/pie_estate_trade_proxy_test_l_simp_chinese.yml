@@ -1,0 +1,86 @@
+﻿l_simp_chinese:
+ cb_pie_proxy_trade_test: "阶层代理国测试"
+ cb_pie_proxy_trade_test_desc: "用于测试代理国能否正常进入宣战与和平谈判链路。"
+
+ pie_proxy_trade_test.hidden.title: "隐藏事件"
+ pie_proxy_trade_test.hidden.desc: "隐藏事件"
+
+ pie_proxy_trade_test.1.title: "海上代理国战争测试"
+ pie_proxy_trade_test.1.desc: "这个测试会在南太平洋海域尝试创建一个临时代理国，然后立刻对它宣战。先试 building-country，不行再试 location-country。目标很简单：确认海上代理国能不能真的吃到战争与和平谈判的硬编码链路。"
+ pie_proxy_trade_test.1.start: "开始自动测试"
+ pie_proxy_trade_test.1.start.tt: "先测试海上 building-country；如果失败，再自动回退到海上 location-country。"
+ pie_proxy_trade_test.1.cleanup: "清理之前的测试代理国"
+ pie_proxy_trade_test.1.cleanup.tt: "对白和平所有测试战争，双向移除停战，然后吞并样本创建的临时代理国。"
+ pie_proxy_trade_test.1.cancel: "暂时不测"
+
+ pie_proxy_trade_test.10.title: "海上 Building 代理国成功"
+ pie_proxy_trade_test.10.desc: "海上 building-country 创建成功，而且测试战争也成功建立。这说明第一条海上路线至少能进入战争链路。接下来可以手动打开战争界面，再点和平谈判按钮，看它在和平界面里的表现是否够干净。"
+
+ pie_proxy_trade_test.20.title: "海上 Location 代理国成功"
+ pie_proxy_trade_test.20.desc: "海上 building-country 没有跑通，但海上 location-country 创建成功，而且能进入测试战争。这说明第二条海上路线是当前可用的后备方案。接下来可以手动检查和平界面表现。"
+
+ pie_proxy_trade_test.30.title: "海上代理国测试失败"
+ pie_proxy_trade_test.30.desc: "海上 building-country 和海上 location-country 这两条路都没能产出可用的战争目标。下一步更值得测的路线，是不可通行地块锚点，或者先正常创建国家再转成 navy。"
+
+ pie_proxy_trade_test.40.title: "测试被阻止"
+ pie_proxy_trade_test.40.desc: "你当前已经处于战争中。为了避免把别的战争和这个样本混在一起，请在和平时再运行这个测试。"
+
+ pie_proxy_trade_test.90.title: "海上测试已清理"
+ pie_proxy_trade_test.90.desc: "这个样本创建的临时代理国和相关测试战争都已清理完毕。"
+
+ pie_proxy_trade_test.keep_open: "知道了，我去检查战争和和平界面"
+ pie_proxy_trade_test.cleanup_now: "现在就清理"
+ pie_proxy_trade_test.cleanup_now.tt: "立即对白和平测试战争，清掉双向停战，并吞并临时代理国。"
+ pie_proxy_trade_test.cleanup_now_impassable.tt: "立即对白和平测试战争，清掉双向停战，并吞并临时代理国。因为这轮测试可能会在不可通行地块上留下所有权痕迹，建议在测试存档里操作。"
+ pie_proxy_trade_test.30.ok: "知道了"
+ pie_proxy_trade_test.40.ok: "知道了"
+ pie_proxy_trade_test.90.ok: "完成"
+
+ pie_proxy_trade_test.101.title: "不可通行地块代理国测试"
+ pie_proxy_trade_test.101.desc: "这个测试会使用格陵兰的不可通行地块埃里克斯峡湾。脚本会自动按顺序尝试四条路线：直接 building-country、直接 location-country、先赋予 owner 再试 building-country、先赋予 owner 再试 location-country。测试只看两件事：能不能创建代理国，能不能成功宣战。"
+ pie_proxy_trade_test.101.start: "开始自动测试"
+ pie_proxy_trade_test.101.start.tt: "自动跑完整个不可通行地块样本，并在最后给出唯一结果事件。"
+ pie_proxy_trade_test.101.cleanup: "清理之前的测试代理国"
+ pie_proxy_trade_test.101.cleanup.tt: "对白和平相关测试战争，双向移除停战，并吞并临时代理国。"
+ pie_proxy_trade_test.101.cancel: "暂时不测"
+
+ pie_proxy_trade_test.110.title: "直接 Building 路线成功"
+ pie_proxy_trade_test.110.desc: "不可通行地块上的直接 building-country 路线成功了，而且测试战争也建起来了。这是最干净的结果，说明不可通行地块本身就能直接承载代理国。"
+
+ pie_proxy_trade_test.120.title: "直接 Location 路线成功"
+ pie_proxy_trade_test.120.desc: "直接 building-country 没有跑通，但直接 location-country 成功进入了测试战争。这说明不可通行地块本身不是拦路虎，更可能是 building-country 这条具体路线有问题。"
+
+ pie_proxy_trade_test.130.title: "先赋予 Owner 的 Building 路线成功"
+ pie_proxy_trade_test.130.desc: "直接创建不行，但先临时赋予 owner 后，building-country 路线成功了。这说明主要卡点大概率是 owner 或 overlord 要求，而不是不可通行地形本身。"
+
+ pie_proxy_trade_test.140.title: "先赋予 Owner 的 Location 路线成功"
+ pie_proxy_trade_test.140.desc: "只有先临时赋予 owner 之后，location-country 路线才能成功进入测试战争。当前看来，这条是不可通行地块锚点里最像样的备选方案。"
+
+ pie_proxy_trade_test.150.title: "不可通行地块测试失败"
+ pie_proxy_trade_test.150.desc: "四条不可通行地块路线都没有成功进入测试战争：直接 building-country、直接 location-country、先赋予 owner 的 building-country、先赋予 owner 的 location-country。下一条更值得试的路线，还是先从正常地块创建，再转成 navy。"
+ pie_proxy_trade_test.150.ok: "知道了"
+
+ pie_proxy_trade_test.190.title: "不可通行地块测试已清理"
+ pie_proxy_trade_test.190.desc: "这个样本创建的临时代理国已经清理完毕。如果你跑过先赋予 owner 的路线，保存前最好再看一眼埃里克斯峡湾有没有残留所有权痕迹。"
+ pie_proxy_trade_test.190.ok: "完成"
+
+ pie_proxy_trade_test.201.title: "格陵兰海军代理体测试"
+ pie_proxy_trade_test.201.desc: "这个测试更接近原版海盗路线。脚本会在格陵兰寻找一个无主、可拥有、沿海、陆地的 location，先从它创建一个国家，再立刻把这个国家改成 #bold country_type = navy#!，然后尝试发起代理国测试战争。\n\n这就是我们目前对“特殊代理体”路线最干净的一轮测试。"
+ pie_proxy_trade_test.201.start: "开始海军代理体测试"
+ pie_proxy_trade_test.201.cleanup: "清理之前的海军代理体测试"
+ pie_proxy_trade_test.201.cancel: "暂时不测"
+
+ pie_proxy_trade_test.210.title: "海军代理体成功"
+ pie_proxy_trade_test.210.desc: "格陵兰测试地块成功生出了一个国家，这个国家也成功转成了 #bold navy#!，并且测试战争顺利建立。\n\n这是到目前为止，“特殊代理体”路线最强的一次正面结果。接下来最值得你在游戏里亲自确认的，就是和平谈判按钮能不能也正常打开。"
+
+ pie_proxy_trade_test.220.title: "没有可用的格陵兰测试地块"
+ pie_proxy_trade_test.220.desc: "脚本没能在格陵兰找到一个无主、可拥有、沿海、陆地的 location。\n\n这通常意味着两种情况之一：\n- 当前存档里，格陵兰已经没有空闲锚点了\n- 或者说，格陵兰本身就不适合作为整局都能复用的代理壳区域\n\n所以你前面担心“格陵兰以后会不会失效”，这个担心是有道理的。"
+ pie_proxy_trade_test.220.ok: "知道了"
+
+ pie_proxy_trade_test.250.title: "海军代理体失败"
+ pie_proxy_trade_test.250.desc: "脚本找到了格陵兰测试地块，也尝试了原版海盗式路线，但仍然没能建立一场可用的测试战争。\n\n这说明真正断掉的链路，已经被压缩到下面这几步之一：\n- 从 location 创建国家\n- 把新国家改成 navy\n- 对这个新 navy 国家宣战\n\n这个结果依然有价值，因为它把失败点锁定到了真正的 navy 路线，而不是之前海上点或不可通行点那些更绕的实验。"
+ pie_proxy_trade_test.250.ok: "知道了"
+
+ pie_proxy_trade_test.290.title: "海军代理体测试已清理"
+ pie_proxy_trade_test.290.desc: "海军代理体样本已经清理完毕。相关测试战争会先白和平，临时代理国会被吞并，标记过的格陵兰测试地块也会被重新放弃回无主状态。"
+ pie_proxy_trade_test.290.ok: "完成"

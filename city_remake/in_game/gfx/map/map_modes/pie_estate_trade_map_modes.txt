@@ -1,0 +1,165 @@
+pie_estate_trade_land = {
+	map_color = {
+		if = {
+			limit = {
+				is_ownable = yes
+				has_owner = yes
+				has_variable = pie_land_owner_crown
+			}
+			value = rgb { 120 72 54 }
+		}
+		else_if = {
+			limit = {
+				is_ownable = yes
+				has_owner = yes
+				has_variable = pie_land_owner_nobles
+			}
+			value = rgb { 83 116 204 }
+		}
+		else_if = {
+			limit = {
+				is_ownable = yes
+				has_owner = yes
+				has_variable = pie_land_owner_clergy
+			}
+			value = rgb { 200 214 230 }
+		}
+		else_if = {
+			limit = {
+				is_ownable = yes
+				has_owner = yes
+				has_variable = pie_land_owner_burghers
+			}
+			value = rgb { 201 139 26 }
+		}
+		else_if = {
+			limit = {
+				is_ownable = yes
+				has_owner = yes
+				has_variable = pie_land_owner_peasants
+			}
+			value = rgb { 86 138 70 }
+		}
+		else = {
+			value = rgb { 70 70 70 }
+		}
+	}
+
+	tooltip_key = {
+		if = {
+			limit = {
+				is_ownable = yes
+				has_owner = yes
+				has_variable = pie_land_owner_crown
+			}
+			value = PIE_ESTATE_TRADE_LAND_MAPMODE_CROWN_TT
+		}
+		else_if = {
+			limit = {
+				is_ownable = yes
+				has_owner = yes
+				has_variable = pie_land_owner_nobles
+			}
+			value = PIE_ESTATE_TRADE_LAND_MAPMODE_NOBLES_TT
+		}
+		else_if = {
+			limit = {
+				is_ownable = yes
+				has_owner = yes
+				has_variable = pie_land_owner_clergy
+			}
+			value = PIE_ESTATE_TRADE_LAND_MAPMODE_CLERGY_TT
+		}
+		else_if = {
+			limit = {
+				is_ownable = yes
+				has_owner = yes
+				has_variable = pie_land_owner_burghers
+			}
+			value = PIE_ESTATE_TRADE_LAND_MAPMODE_BURGHERS_TT
+		}
+		else_if = {
+			limit = {
+				is_ownable = yes
+				has_owner = yes
+				has_variable = pie_land_owner_peasants
+			}
+			value = PIE_ESTATE_TRADE_LAND_MAPMODE_PEASANTS_TT
+		}
+		else = {
+			value = PIE_ESTATE_TRADE_LAND_MAPMODE_OTHER_TT
+		}
+	}
+
+	legend_key = {
+		desc = "PIE_ESTATE_TRADE_LAND_MAPMODE_CROWN_LEGEND"
+		color = rgb { 120 72 54 }
+	}
+	legend_key = {
+		desc = "PIE_ESTATE_TRADE_LAND_MAPMODE_NOBLES_LEGEND"
+		color = rgb { 83 116 204 }
+	}
+	legend_key = {
+		desc = "PIE_ESTATE_TRADE_LAND_MAPMODE_CLERGY_LEGEND"
+		color = rgb { 200 214 230 }
+	}
+	legend_key = {
+		desc = "PIE_ESTATE_TRADE_LAND_MAPMODE_BURGHERS_LEGEND"
+		color = rgb { 201 139 26 }
+	}
+	legend_key = {
+		desc = "PIE_ESTATE_TRADE_LAND_MAPMODE_PEASANTS_LEGEND"
+		color = rgb { 86 138 70 }
+	}
+
+	small_map_names = location
+	medium_map_names = location
+	large_map_names = country
+
+	small_tooltip_context = location
+	medium_tooltip_context = location
+	large_tooltip_context = location
+
+	fill_in_impassable = no
+	flatmap_behaviour = Always
+	use_fow = no
+
+	category = government
+	index = 0
+
+	map_markers = {
+		all = no
+	}
+
+	gradient_parameters = {
+		zoom_step = 4
+		gradient_alpha_inside = 1
+		gradient_alpha_outside = 1
+		gradient_width = 1
+		gradient_color_mult = 0.75
+		edge_width = 0.02
+		edge_sharpness = 0.01
+		edge_alpha = 0.9
+		edge_color_mult = 0.25
+		before_lighting_blend = 1
+		after_lighting_blend = 0.5
+	}
+
+	flatmap_gradient_parameters = {
+		zoom_step = 12
+		gradient_alpha_inside = 1
+		gradient_alpha_outside = 1
+		gradient_width = 0.5
+		gradient_color_mult = 0.85
+		edge_width = 0.02
+		edge_sharpness = 0.01
+		edge_alpha = 0.9
+		edge_color_mult = 0.25
+		before_lighting_blend = 1
+		after_lighting_blend = 0.5
+	}
+
+	refresh_colors_on_selection_change = yes
+	color_refresh_counters = { Month LocationControllerChanged }
+	color_and_names_refresh_counters = { Month LocationOwnerChanged CountryStatus }
+}
