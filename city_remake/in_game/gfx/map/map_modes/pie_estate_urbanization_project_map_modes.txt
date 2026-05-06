@@ -2,6 +2,7 @@ pie_estate_urbanization_projects = {
 	map_color = {
 		if = {
 			limit = {
+				owner ?= scope:actor
 				OR = {
 					has_variable = pie_town_project_active
 					has_variable = pie_city_project_active
@@ -12,6 +13,7 @@ pie_estate_urbanization_projects = {
 		}
 		else_if = {
 			limit = {
+				owner ?= scope:actor
 				OR = {
 					has_variable = pie_town_project_active
 					has_variable = pie_city_project_active
@@ -22,6 +24,7 @@ pie_estate_urbanization_projects = {
 		}
 		else_if = {
 			limit = {
+				owner ?= scope:actor
 				OR = {
 					has_variable = pie_town_project_active
 					has_variable = pie_city_project_active
@@ -35,6 +38,7 @@ pie_estate_urbanization_projects = {
 	secondary_map_color = {
 		if = {
 			limit = {
+				owner ?= scope:actor
 				has_variable = pie_city_project_active
 				has_variable = pie_project_estate_nobles
 			}
@@ -42,6 +46,7 @@ pie_estate_urbanization_projects = {
 		}
 		else_if = {
 			limit = {
+				owner ?= scope:actor
 				has_variable = pie_city_project_active
 				has_variable = pie_project_estate_clergy
 			}
@@ -49,6 +54,7 @@ pie_estate_urbanization_projects = {
 		}
 		else_if = {
 			limit = {
+				owner ?= scope:actor
 				has_variable = pie_city_project_active
 				has_variable = pie_project_estate_burghers
 			}
@@ -59,6 +65,7 @@ pie_estate_urbanization_projects = {
 	tooltip_key = {
 		if = {
 			limit = {
+				owner ?= scope:actor
 				has_variable = pie_town_project_active
 				has_variable = pie_project_estate_nobles
 			}
@@ -66,6 +73,7 @@ pie_estate_urbanization_projects = {
 		}
 		else_if = {
 			limit = {
+				owner ?= scope:actor
 				has_variable = pie_city_project_active
 				has_variable = pie_project_estate_nobles
 			}
@@ -73,6 +81,7 @@ pie_estate_urbanization_projects = {
 		}
 		else_if = {
 			limit = {
+				owner ?= scope:actor
 				has_variable = pie_town_project_active
 				has_variable = pie_project_estate_clergy
 			}
@@ -80,6 +89,7 @@ pie_estate_urbanization_projects = {
 		}
 		else_if = {
 			limit = {
+				owner ?= scope:actor
 				has_variable = pie_city_project_active
 				has_variable = pie_project_estate_clergy
 			}
@@ -87,6 +97,7 @@ pie_estate_urbanization_projects = {
 		}
 		else_if = {
 			limit = {
+				owner ?= scope:actor
 				has_variable = pie_town_project_active
 				has_variable = pie_project_estate_burghers
 			}
@@ -94,6 +105,7 @@ pie_estate_urbanization_projects = {
 		}
 		else_if = {
 			limit = {
+				owner ?= scope:actor
 				has_variable = pie_city_project_active
 				has_variable = pie_project_estate_burghers
 			}

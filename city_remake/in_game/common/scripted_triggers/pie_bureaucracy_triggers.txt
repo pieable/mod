@@ -1,0 +1,22 @@
+pie_bureaucracy_tier_1 = {
+	pie_bureaucracy_coverage >= 15
+}
+
+pie_bureaucracy_tier_2 = {
+	pie_bureaucracy_coverage >= 35
+}
+
+pie_bureaucracy_tier_3 = {
+	pie_bureaucracy_coverage >= 60
+}
+
+pie_bureaucracy_tier_4 = {
+	pie_bureaucracy_coverage >= 90
+}
+
+pie_bureaucracy_can_survey_crown_land = {
+	custom_tooltip = {
+		text = pie_bureaucracy_tier_3_required_tt
+		pie_bureaucracy_tier_3 = yes
+	}
+}

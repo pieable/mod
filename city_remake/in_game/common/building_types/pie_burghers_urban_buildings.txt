@@ -136,7 +136,7 @@ pie_burghers_marketplace = {
 
 	modifier = {
 		local_burghers_estate_power = 0.1
-		local_merchant_capacity = 1
+		local_trades_per_burgher = 0.2
 	}
 
 	graphical_tags = { market }
@@ -171,7 +171,7 @@ pie_burghers_merchants_quarters = {
 
 	modifier = {
 		local_burghers_estate_power = 0.1
-		local_merchant_capacity = 1.5
+		local_trades_per_burgher = 0.3
 	}
 
 	obsolete = pie_burghers_marketplace
@@ -208,7 +208,7 @@ pie_burghers_grand_marketplace = {
 
 	modifier = {
 		local_burghers_estate_power = 0.1
-		local_merchant_capacity = 2.0
+		local_trades_per_burgher = 0.4
 	}
 
 	obsolete = pie_burghers_merchants_quarters
@@ -245,7 +245,7 @@ pie_burghers_commerce_center = {
 
 	modifier = {
 		local_burghers_estate_power = 0.1
-		local_merchant_capacity = 4.0
+		local_trades_per_burgher = 0.8
 	}
 
 	obsolete = pie_burghers_grand_marketplace

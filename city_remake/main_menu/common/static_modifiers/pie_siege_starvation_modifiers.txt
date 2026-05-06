@@ -1,0 +1,8 @@
+pie_starving_siege_pressure = {
+	game_data = {
+		category = location
+	}
+
+	local_defensive = -0.05
+	local_garrison_growth = -0.50
+}

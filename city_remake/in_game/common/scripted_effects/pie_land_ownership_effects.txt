@@ -72,14 +72,351 @@ pie_grant_land_to_selected_estate = {
 	}
 }
 
+pie_apply_land_survey_estate_backlash = {
+	if = {
+		limit = { has_variable = pie_land_owner_nobles }
+		owner = { add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.06 } }
+	}
+	else_if = {
+		limit = { has_variable = pie_land_owner_clergy }
+		owner = { add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.06 } }
+	}
+	else_if = {
+		limit = { has_variable = pie_land_owner_burghers }
+		owner = { add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.06 } }
+	}
+	else_if = {
+		limit = { has_variable = pie_land_owner_peasants }
+		owner = { add_estate_satisfaction = { type = estate_type:peasants_estate value = -0.04 } }
+	}
+	else = {
+		if = {
+			limit = {
+				local_relative_estate_power = {
+					estate_type = estate_type:nobles_estate
+					value >= 0.4
+				}
+			}
+			owner = { add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.02 } }
+		}
+		if = {
+			limit = {
+				local_relative_estate_power = {
+					estate_type = estate_type:clergy_estate
+					value >= 0.4
+				}
+			}
+			owner = { add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.02 } }
+		}
+		if = {
+			limit = {
+				local_relative_estate_power = {
+					estate_type = estate_type:burghers_estate
+					value >= 0.4
+				}
+			}
+			owner = { add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.02 } }
+		}
+		if = {
+			limit = {
+				local_relative_estate_power = {
+					estate_type = estate_type:peasants_estate
+					value >= 0.45
+				}
+			}
+			owner = { add_estate_satisfaction = { type = estate_type:peasants_estate value = -0.01 } }
+		}
+	}
+}
+
+pie_set_passive_land_owner = {
+	if = {
+		limit = { pie_land_nobles_passive_claim_candidate = yes }
+		pie_set_land_owner_nobles = yes
+	}
+	else_if = {
+		limit = { pie_land_clergy_passive_claim_candidate = yes }
+		pie_set_land_owner_clergy = yes
+	}
+	else_if = {
+		limit = { pie_land_burghers_passive_claim_candidate = yes }
+		pie_set_land_owner_burghers = yes
+	}
+	else_if = {
+		limit = { pie_land_peasant_freehold_candidate = yes }
+		pie_set_land_owner_peasants = yes
+	}
+}
+
+pie_set_natural_integrated_land_owner = {
+	if = {
+		limit = { pie_land_nobles_natural_integration_helper = yes }
+		pie_set_land_owner_nobles = yes
+	}
+	else_if = {
+		limit = { pie_land_clergy_natural_integration_helper = yes }
+		pie_set_land_owner_clergy = yes
+	}
+	else_if = {
+		limit = { pie_land_burghers_natural_integration_helper = yes }
+		pie_set_land_owner_burghers = yes
+	}
+	else_if = {
+		limit = { pie_land_peasants_natural_integration_helper = yes }
+		pie_set_land_owner_peasants = yes
+	}
+}
+
+pie_progress_natural_land_integration = {
+	change_integration_progress = pie_land_natural_integration_progress
+	if = {
+		limit = { integration_progress >= 100 }
+		change_integration_level = integrated
+	}
+	if = {
+		limit = {
+			OR = {
+				integration_level = integrated
+				integration_level = core
+			}
+			NOT = { pie_land_has_defined_owner = yes }
+		}
+		pie_set_natural_integrated_land_owner = yes
+	}
+}
+
+pie_complete_crown_land_survey = {
+	if = {
+		limit = { pie_bureaucracy_tier_4 = yes }
+		scope:target = {
+			ordered_location_in_province = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_crown_survey_candidate = yes
+				}
+				order_by = pie_land_survey_score
+				max = 5
+				pie_apply_land_survey_estate_backlash = yes
+				pie_set_land_owner_crown = yes
+			}
+		}
+	}
+	else = {
+		scope:target = {
+			ordered_location_in_province = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_crown_survey_candidate = yes
+				}
+				order_by = pie_land_survey_score
+				max = 3
+				pie_apply_land_survey_estate_backlash = yes
+				pie_set_land_owner_crown = yes
+			}
+		}
+	}
+}
+
+pie_mark_cabinet_integration_crown_reward_province = {
+	scope:target = {
+		every_location_in_province = {
+			limit = {
+				owner ?= scope:actor
+				controller ?= scope:actor
+				integration_level = conquered
+				integration_progress <= 25
+				NOT = { pie_land_has_defined_owner = yes }
+			}
+			set_variable = { name = pie_land_cabinet_integration_reward_eligible value = yes }
+		}
+	}
+}
+
+pie_clear_cabinet_integration_crown_reward_province = {
+	scope:target = {
+		every_location_in_province = {
+			if = {
+				limit = { has_variable = pie_land_cabinet_integration_reward_eligible }
+				remove_variable = pie_land_cabinet_integration_reward_eligible
+			}
+		}
+	}
+}
+
+pie_mark_cabinet_integration_crown_reward_area = {
+	scope:target = {
+		every_location_in_area = {
+			limit = {
+				owner ?= scope:actor
+				controller ?= scope:actor
+				integration_level = conquered
+				integration_progress <= 25
+				NOT = { pie_land_has_defined_owner = yes }
+			}
+			set_variable = { name = pie_land_cabinet_integration_reward_eligible value = yes }
+		}
+	}
+}
+
+pie_clear_cabinet_integration_crown_reward_area = {
+	scope:target = {
+		every_location_in_area = {
+			if = {
+				limit = { has_variable = pie_land_cabinet_integration_reward_eligible }
+				remove_variable = pie_land_cabinet_integration_reward_eligible
+			}
+		}
+	}
+}
+
+pie_apply_cabinet_integration_crown_reward_province = {
+	if = {
+		limit = { pie_bureaucracy_tier_4 = yes }
+		scope:target = {
+			ordered_location_in_province = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_cabinet_crown_reward_candidate = yes
+				}
+				order_by = pie_land_cabinet_crown_reward_score
+				max = 4
+				pie_set_land_owner_crown = yes
+			}
+		}
+	}
+	else_if = {
+		limit = { pie_bureaucracy_tier_3 = yes }
+		scope:target = {
+			ordered_location_in_province = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_cabinet_crown_reward_candidate = yes
+				}
+				order_by = pie_land_cabinet_crown_reward_score
+				max = 3
+				pie_set_land_owner_crown = yes
+			}
+		}
+	}
+	else_if = {
+		limit = { pie_bureaucracy_tier_2 = yes }
+		scope:target = {
+			ordered_location_in_province = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_cabinet_crown_reward_candidate = yes
+				}
+				order_by = pie_land_cabinet_crown_reward_score
+				max = 2
+				pie_set_land_owner_crown = yes
+			}
+		}
+	}
+	else = {
+		scope:target = {
+			ordered_location_in_province = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_cabinet_crown_reward_candidate = yes
+				}
+				order_by = pie_land_cabinet_crown_reward_score
+				max = 1
+				pie_set_land_owner_crown = yes
+			}
+		}
+	}
+}
+
+pie_apply_cabinet_integration_crown_reward_area = {
+	if = {
+		limit = { pie_bureaucracy_tier_4 = yes }
+		scope:target = {
+			ordered_location_in_area = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_cabinet_crown_reward_candidate = yes
+				}
+				order_by = pie_land_cabinet_crown_reward_score
+				max = 8
+				pie_set_land_owner_crown = yes
+			}
+		}
+	}
+	else_if = {
+		limit = { pie_bureaucracy_tier_3 = yes }
+		scope:target = {
+			ordered_location_in_area = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_cabinet_crown_reward_candidate = yes
+				}
+				order_by = pie_land_cabinet_crown_reward_score
+				max = 6
+				pie_set_land_owner_crown = yes
+			}
+		}
+	}
+	else_if = {
+		limit = { pie_bureaucracy_tier_2 = yes }
+		scope:target = {
+			ordered_location_in_area = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_cabinet_crown_reward_candidate = yes
+				}
+				order_by = pie_land_cabinet_crown_reward_score
+				max = 4
+				pie_set_land_owner_crown = yes
+			}
+		}
+	}
+	else = {
+		scope:target = {
+			ordered_location_in_area = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_cabinet_crown_reward_candidate = yes
+				}
+				order_by = pie_land_cabinet_crown_reward_score
+				max = 2
+				pie_set_land_owner_crown = yes
+			}
+		}
+	}
+}
+
 pie_land_ownership_yearly = {
 	if = {
 		limit = {
-			any_owned_location = { pie_land_peasant_freehold_candidate = yes }
+			any_owned_location = { pie_land_natural_integration_candidate = yes }
 		}
-		random_owned_location = {
-			limit = { pie_land_peasant_freehold_candidate = yes }
-			pie_set_land_owner_peasants = yes
+		ordered_owned_location = {
+			limit = { pie_land_natural_integration_candidate = yes }
+			order_by = pie_land_natural_integration_score
+			max = 10
+			pie_progress_natural_land_integration = yes
+		}
+	}
+
+	if = {
+		limit = {
+			any_owned_location = { pie_land_passive_claim_candidate = yes }
+		}
+		ordered_owned_location = {
+			limit = { pie_land_passive_claim_candidate = yes }
+			order_by = pie_land_passive_claim_score
+			max = 1
+			pie_set_passive_land_owner = yes
 		}
 	}
 }

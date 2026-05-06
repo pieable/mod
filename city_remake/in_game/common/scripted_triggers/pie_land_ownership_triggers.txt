@@ -54,6 +54,16 @@ pie_land_selected_estate_grant_candidate = {
 	}
 }
 
+pie_land_traditional_claim_candidate = {
+	is_ownable = yes
+	has_owner = yes
+	is_land = yes
+	NOT = { is_capital = yes }
+	has_siege = no
+	is_looted = no
+	NOT = { pie_land_has_defined_owner = yes }
+}
+
 pie_land_has_registration_office = {
 	OR = {
 		any_buildings_in_location = { building_type = building_type:pie_rural_village_office }
@@ -65,16 +75,204 @@ pie_land_has_registration_office = {
 }
 
 pie_land_crown_registration_candidate = {
-	is_ownable = yes
-	has_owner = yes
-	is_land = yes
-	has_siege = no
-	is_looted = no
-	NOT = { pie_land_has_defined_owner = yes }
+	pie_land_traditional_claim_candidate = yes
+	OR = {
+		integration_level = integrated
+		integration_level = core
+	}
 	pie_land_has_registration_office = yes
 }
 
-pie_land_peasant_freehold_candidate = {
+pie_land_crown_survey_candidate = {
+	is_ownable = yes
+	has_owner = yes
+	is_land = yes
+	NOT = { is_capital = yes }
+	has_siege = no
+	is_looted = no
+	OR = {
+		integration_level = integrated
+		integration_level = core
+	}
+	pie_land_has_registration_office = yes
+	OR = {
+		NOT = { pie_land_has_defined_owner = yes }
+		has_variable = pie_land_owner_nobles
+		has_variable = pie_land_owner_clergy
+		has_variable = pie_land_owner_burghers
+		has_variable = pie_land_owner_peasants
+	}
+	NOT = { has_variable = pie_land_owner_crown }
+}
+
+pie_land_cabinet_crown_reward_candidate = {
+	is_ownable = yes
+	has_owner = yes
+	is_land = yes
+	NOT = { is_capital = yes }
+	has_siege = no
+	is_looted = no
+	has_variable = pie_land_cabinet_integration_reward_eligible
+	OR = {
+		integration_level = integrated
+		integration_level = core
+	}
+	NOT = { pie_land_has_defined_owner = yes }
+}
+
+pie_land_natural_close_culture = {
+	owner = { has_primary_or_accepted_culture = prev.dominant_culture }
+}
+
+pie_land_natural_tolerated_culture = {
+	dominant_culture = { is_tolerated_in = prev.owner }
+}
+
+pie_land_natural_neutral_culture = {
+	dominant_culture = {
+		OR = {
+			cultural_view = {
+				target = prev.owner.culture
+				value >= neutral
+			}
+			reverse_cultural_view = {
+				target = prev.owner.culture
+				value >= neutral
+			}
+		}
+	}
+}
+
+pie_land_natural_state_religion = {
+	dominant_religion = owner.religion
+}
+
+pie_land_natural_same_religion_group = {
+	dominant_religion.group = owner.religion.group
+}
+
+pie_land_nobles_natural_integration_helper = {
+	owner = {
+		country_has_estate = estate_type:nobles_estate
+		estate_satisfaction:nobles_estate >= 0.45
+	}
+	local_relative_estate_power = {
+		estate_type = estate_type:nobles_estate
+		value >= 0.33
+	}
+	OR = {
+		local_control < 0.6
+		any_buildings_in_location = { building_type = building_type:toll_castle }
+		any_buildings_in_location = { building_type = building_type:local_noble_delegation }
+		any_buildings_in_location = { building_type = building_type:nobility_fortifications }
+		any_buildings_in_location = { building_type = building_type:noble_villa }
+		any_buildings_in_location = { building_type = building_type:stockade }
+		any_buildings_in_location = { building_type = building_type:castle }
+	}
+}
+
+pie_land_clergy_natural_integration_helper = {
+	owner = {
+		country_has_estate = estate_type:clergy_estate
+		estate_satisfaction:clergy_estate >= 0.45
+	}
+	local_relative_estate_power = {
+		estate_type = estate_type:clergy_estate
+		value >= 0.3
+	}
+	OR = {
+		pie_land_natural_state_religion = yes
+		pie_land_natural_same_religion_group = yes
+		local_religious_unity >= 0.7
+	}
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_rural_parish_church }
+		any_buildings_in_location = { building_type = building_type:pie_urban_church_quarter }
+		any_buildings_in_location = { building_type = building_type:pie_clergy_parish_town }
+		any_buildings_in_location = { building_type = building_type:pie_clergy_scholastic_city }
+		any_buildings_in_location = { building_type = building_type:temple }
+		any_buildings_in_location = { building_type = building_type:cathedral }
+		any_buildings_in_location = { building_type = building_type:monastery }
+		any_buildings_in_location = { building_type = building_type:clerical_archives }
+	}
+}
+
+pie_land_burghers_natural_integration_helper = {
+	owner = {
+		country_has_estate = estate_type:burghers_estate
+		estate_satisfaction:burghers_estate >= 0.45
+	}
+	local_relative_estate_power = {
+		estate_type = estate_type:burghers_estate
+		value >= 0.3
+	}
+	market_access >= 0.7
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_urban_market_square }
+		any_buildings_in_location = { building_type = building_type:pie_urban_civic_center }
+		any_buildings_in_location = { building_type = building_type:marketplace }
+		any_buildings_in_location = { building_type = building_type:merchants_quarters }
+		any_buildings_in_location = { building_type = building_type:grand_marketplace }
+		any_buildings_in_location = { building_type = building_type:commerce_center }
+		any_buildings_in_location = { building_type = building_type:local_markets }
+		any_buildings_in_location = { building_type = building_type:guild_hall }
+		any_buildings_in_location = { building_type = building_type:burgher_mansion }
+	}
+}
+
+pie_land_peasants_natural_integration_helper = {
+	owner = {
+		country_has_estate = estate_type:peasants_estate
+		estate_satisfaction:peasants_estate >= 0.45
+	}
+	local_control >= 0.45
+	local_relative_estate_power = {
+		estate_type = estate_type:peasants_estate
+		value >= 0.35
+	}
+	local_relative_estate_power = {
+		estate_type = estate_type:nobles_estate
+		value < 0.4
+	}
+	OR = {
+		pie_land_natural_close_culture = yes
+		any_buildings_in_location = { building_type = building_type:pie_rural_village_office }
+		any_buildings_in_location = { building_type = building_type:pie_urban_civic_center }
+		any_buildings_in_location = { building_type = building_type:pie_urban_market_square }
+	}
+}
+
+pie_land_natural_integration_helper = {
+	OR = {
+		pie_land_nobles_natural_integration_helper = yes
+		pie_land_clergy_natural_integration_helper = yes
+		pie_land_burghers_natural_integration_helper = yes
+		pie_land_peasants_natural_integration_helper = yes
+	}
+}
+
+pie_land_natural_high_helper_satisfaction = {
+	OR = {
+		AND = {
+			pie_land_nobles_natural_integration_helper = yes
+			owner = { estate_satisfaction:nobles_estate >= 0.65 }
+		}
+		AND = {
+			pie_land_clergy_natural_integration_helper = yes
+			owner = { estate_satisfaction:clergy_estate >= 0.65 }
+		}
+		AND = {
+			pie_land_burghers_natural_integration_helper = yes
+			owner = { estate_satisfaction:burghers_estate >= 0.65 }
+		}
+		AND = {
+			pie_land_peasants_natural_integration_helper = yes
+			owner = { estate_satisfaction:peasants_estate >= 0.65 }
+		}
+	}
+}
+
+pie_land_natural_integration_candidate = {
 	is_ownable = yes
 	has_owner = yes
 	is_land = yes
@@ -82,7 +280,72 @@ pie_land_peasant_freehold_candidate = {
 	NOT = { is_capital = yes }
 	has_siege = no
 	is_looted = no
+	integration_level = conquered
+	NOT = { is_currently_being_integrated = yes }
 	NOT = { pie_land_has_defined_owner = yes }
+	pie_land_natural_integration_helper = yes
+}
+
+pie_land_nobles_passive_claim_candidate = {
+	pie_land_traditional_claim_candidate = yes
+	owner = { country_has_estate = estate_type:nobles_estate }
+	local_control < 0.75
+	local_relative_estate_power = {
+		estate_type = estate_type:nobles_estate
+		value >= 0.4
+	}
+	OR = {
+		any_buildings_in_location = { building_type = building_type:toll_castle }
+		any_buildings_in_location = { building_type = building_type:local_noble_delegation }
+		any_buildings_in_location = { building_type = building_type:nobility_fortifications }
+		any_buildings_in_location = { building_type = building_type:noble_villa }
+		any_buildings_in_location = { building_type = building_type:stockade }
+		any_buildings_in_location = { building_type = building_type:castle }
+	}
+}
+
+pie_land_clergy_passive_claim_candidate = {
+	pie_land_traditional_claim_candidate = yes
+	owner = { country_has_estate = estate_type:clergy_estate }
+	local_relative_estate_power = {
+		estate_type = estate_type:clergy_estate
+		value >= 0.4
+	}
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_rural_parish_church }
+		any_buildings_in_location = { building_type = building_type:pie_urban_church_quarter }
+		any_buildings_in_location = { building_type = building_type:pie_clergy_parish_town }
+		any_buildings_in_location = { building_type = building_type:pie_clergy_scholastic_city }
+		any_buildings_in_location = { building_type = building_type:temple }
+		any_buildings_in_location = { building_type = building_type:cathedral }
+		any_buildings_in_location = { building_type = building_type:monastery }
+		any_buildings_in_location = { building_type = building_type:clerical_archives }
+	}
+}
+
+pie_land_burghers_passive_claim_candidate = {
+	pie_land_traditional_claim_candidate = yes
+	owner = { country_has_estate = estate_type:burghers_estate }
+	local_relative_estate_power = {
+		estate_type = estate_type:burghers_estate
+		value >= 0.4
+	}
+	OR = {
+		any_buildings_in_location = { building_type = building_type:pie_urban_market_square }
+		any_buildings_in_location = { building_type = building_type:pie_urban_civic_center }
+		any_buildings_in_location = { building_type = building_type:marketplace }
+		any_buildings_in_location = { building_type = building_type:merchants_quarters }
+		any_buildings_in_location = { building_type = building_type:grand_marketplace }
+		any_buildings_in_location = { building_type = building_type:commerce_center }
+		any_buildings_in_location = { building_type = building_type:local_markets }
+		any_buildings_in_location = { building_type = building_type:guild_hall }
+		any_buildings_in_location = { building_type = building_type:burgher_mansion }
+	}
+}
+
+pie_land_peasant_freehold_candidate = {
+	pie_land_traditional_claim_candidate = yes
+	owner = { country_has_estate = estate_type:peasants_estate }
 	local_control >= 0.5
 	local_relative_estate_power = {
 		estate_type = estate_type:peasants_estate
@@ -96,5 +359,16 @@ pie_land_peasant_freehold_candidate = {
 		any_buildings_in_location = { building_type = building_type:pie_rural_village_office }
 		any_buildings_in_location = { building_type = building_type:pie_urban_civic_center }
 		any_buildings_in_location = { building_type = building_type:pie_urban_market_square }
+	}
+}
+
+pie_land_passive_claim_candidate = {
+	controller = root
+	NOT = { integration_level = conquered }
+	OR = {
+		pie_land_nobles_passive_claim_candidate = yes
+		pie_land_clergy_passive_claim_candidate = yes
+		pie_land_burghers_passive_claim_candidate = yes
+		pie_land_peasant_freehold_candidate = yes
 	}
 }

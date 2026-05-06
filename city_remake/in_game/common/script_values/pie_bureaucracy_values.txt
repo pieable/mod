@@ -1,0 +1,48 @@
+pie_bureaucracy_points = {
+	value = 0
+
+	add = total_effective_building_levels:pie_rural_village_office
+
+	add = {
+		value = total_effective_building_levels:bailiff
+		multiply = 2
+	}
+
+	add = {
+		value = total_effective_building_levels:pie_urban_civic_center
+		multiply = 3
+	}
+
+	add = {
+		value = total_effective_building_levels:local_governor
+		multiply = 8
+	}
+
+	add = {
+		value = total_effective_building_levels:naval_governor
+		multiply = 8
+	}
+
+	add = {
+		value = total_effective_building_levels:pie_stability_expense_building
+		multiply = 4
+	}
+
+	add = {
+		value = total_effective_building_levels:pie_court_expense_building
+		multiply = 2
+	}
+}
+
+pie_bureaucracy_coverage = {
+	value = 0
+
+	if = {
+		limit = { num_locations > 0 }
+		add = {
+			value = pie_bureaucracy_points
+			multiply = 100
+			divide = num_locations
+		}
+	}
+}

@@ -32,7 +32,7 @@ REPLACE:marketplace = {
 		local_market_access = 0.005
 
 		local_merchant_power = 1
-		local_trades_per_burgher = 0.2
+		local_merchant_capacity = 1
 	}
 }
 
@@ -70,7 +70,7 @@ REPLACE:merchants_quarters = {
 		local_market_access = 0.005
 
 		local_merchant_power = 1.5
-		local_trades_per_burgher = 0.3
+		local_merchant_capacity = 1.5
 	}
 
 	obsolete = marketplace
@@ -110,7 +110,7 @@ REPLACE:grand_marketplace = {
 		local_market_access = 0.01
 
 		local_merchant_power = 2.0
-		local_trades_per_burgher = 0.4
+		local_merchant_capacity = 2.0
 	}
 
 	obsolete = merchants_quarters
@@ -150,7 +150,7 @@ REPLACE:commerce_center = {
 		local_market_access = 0.01
 
 		local_merchant_power = 4.0
-		local_trades_per_burgher = 0.8
+		local_merchant_capacity = 4.0
 	}
 
 	obsolete = grand_marketplace

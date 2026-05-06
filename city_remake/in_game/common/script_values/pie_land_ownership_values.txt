@@ -42,3 +42,169 @@ pie_land_grant_score = {
 		subtract = 10
 	}
 }
+
+pie_land_survey_score = {
+	value = location_tax_base
+
+	add = {
+		value = local_control
+		multiply = 50
+	}
+
+	if = {
+		limit = { pie_land_has_registration_office = yes }
+		add = 20
+	}
+
+	if = {
+		limit = {
+			OR = {
+				has_variable = pie_land_owner_nobles
+				has_variable = pie_land_owner_clergy
+				has_variable = pie_land_owner_burghers
+			}
+		}
+		add = 35
+	}
+	else_if = {
+		limit = { has_variable = pie_land_owner_peasants }
+		add = 20
+	}
+	else_if = {
+		limit = { NOT = { pie_land_has_defined_owner = yes } }
+		add = 10
+	}
+}
+
+pie_land_cabinet_crown_reward_score = {
+	value = location_tax_base
+
+	add = {
+		value = local_control
+		multiply = 50
+	}
+
+	if = {
+		limit = { pie_land_has_registration_office = yes }
+		add = 30
+	}
+}
+
+pie_land_natural_integration_progress = {
+	value = 0
+
+	if = {
+		limit = { pie_land_natural_integration_helper = yes }
+		add = 2
+	}
+
+	if = {
+		limit = { pie_land_natural_close_culture = yes }
+		add = 3
+	}
+	else_if = {
+		limit = { pie_land_natural_tolerated_culture = yes }
+		add = 2
+	}
+	else_if = {
+		limit = { pie_land_natural_neutral_culture = yes }
+		add = 1
+	}
+	else = {
+		subtract = 1
+	}
+
+	if = {
+		limit = { pie_land_natural_state_religion = yes }
+		add = 3
+	}
+	else_if = {
+		limit = { pie_land_natural_same_religion_group = yes }
+		add = 1
+	}
+	else = {
+		subtract = 2
+	}
+
+	if = {
+		limit = { local_control >= 0.5 }
+		add = 1
+	}
+
+	if = {
+		limit = { local_control >= 0.75 }
+		add = 1
+	}
+
+	if = {
+		limit = { local_religious_unity >= 0.75 }
+		add = 1
+	}
+
+	if = {
+		limit = { pie_land_natural_high_helper_satisfaction = yes }
+		add = 2
+	}
+
+	if = {
+		limit = { local_control < 0.25 }
+		subtract = 2
+	}
+
+	min = 0
+	max = 12
+}
+
+pie_land_natural_integration_score = {
+	value = pie_land_natural_integration_progress
+	multiply = 100
+
+	add = integration_progress
+	add = location_tax_base
+}
+
+pie_land_passive_claim_score = {
+	value = location_tax_base
+
+	if = {
+		limit = { local_control < 0.5 }
+		add = 20
+	}
+
+	if = {
+		limit = {
+			local_relative_estate_power = {
+				estate_type = estate_type:nobles_estate
+				value >= 0.4
+			}
+		}
+		add = 15
+	}
+	else_if = {
+		limit = {
+			local_relative_estate_power = {
+				estate_type = estate_type:clergy_estate
+				value >= 0.4
+			}
+		}
+		add = 15
+	}
+	else_if = {
+		limit = {
+			local_relative_estate_power = {
+				estate_type = estate_type:burghers_estate
+				value >= 0.4
+			}
+		}
+		add = 15
+	}
+	else_if = {
+		limit = {
+			local_relative_estate_power = {
+				estate_type = estate_type:peasants_estate
+				value >= 0.4
+			}
+		}
+		add = 10
+	}
+}

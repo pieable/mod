@@ -1,0 +1,8 @@
+pie_can_direct_manage_peasant_privileges = {
+	value = 0
+
+	if = {
+		limit = { has_reform = government_reform:peasant_republic_reform }
+		add = 1
+	}
+}

@@ -41,6 +41,37 @@ pie_estate_trade.10 = {
 	}
 }
 
+pie_estate_trade.20 = {
+	type = country_event
+	is_triggered_only = yes
+	interface_lock = yes
+	title = pie_estate_trade.20.title
+	desc = pie_estate_trade.20.desc
+
+	option = {
+		name = pie_estate_trade.20.repay
+		trigger = {
+			has_variable = pie_et_debt_due_pending
+			gold >= var:pie_et_due_principal
+		}
+		custom_tooltip = { text = pie_estate_trade_due_debt_repay_tt }
+		hidden_effect = {
+			pie_et_apply_due_debt_repayment = yes
+		}
+	}
+
+	option = {
+		name = pie_estate_trade.20.extend
+		trigger = {
+			has_variable = pie_et_debt_due_pending
+		}
+		custom_tooltip = { text = pie_estate_trade_due_debt_extend_tt }
+		hidden_effect = {
+			pie_et_apply_due_debt_extension = yes
+		}
+	}
+}
+
 pie_estate_trade.2 = {
 	type = country_event
 	is_triggered_only = yes

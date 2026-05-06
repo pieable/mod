@@ -1,0 +1,82 @@
+pie_survey_crown_land_province = {
+	ability = adm
+	icon = increase_control_province
+	allow_multiple = no
+	months = 18
+
+	potential = {
+		num_locations > 0
+	}
+
+	allow = {
+		pie_bureaucracy_can_survey_crown_land = yes
+		gold >= 100
+		any_province = {
+			any_location_in_province = {
+				owner ?= root
+				controller ?= root
+				pie_land_crown_survey_candidate = yes
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = province
+		source = actor
+		target_flag = target
+		name = "pie_survey_crown_land_province_select"
+		none_available_msg_key = "pie_survey_crown_land_province_none"
+		column = { data = name }
+		column = { data = control }
+		column = { data = population }
+		column = { data = province_tax_base }
+		visible = {
+			any_location_in_province = {
+				owner ?= scope:actor
+				controller ?= scope:actor
+				pie_land_crown_survey_candidate = yes
+			}
+		}
+		map_mode = pie_estate_trade_land
+		map_color = {
+			if = {
+				limit = {
+					owner ?= scope:actor
+					controller ?= scope:actor
+					pie_land_crown_survey_candidate = yes
+				}
+				value = define:NMapColors|MAP_COLOR_HIGH
+			}
+			else_if = {
+				limit = {
+					owner ?= scope:actor
+					NOT = { pie_land_has_defined_owner = yes }
+				}
+				value = define:NMapColors|MAP_COLOR_MID
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+	}
+
+	on_activate = {
+		scope:actor = {
+			add_gold = -100
+		}
+	}
+
+	on_fully_activated = {
+		scope:actor = {
+			pie_complete_crown_land_survey = yes
+		}
+	}
+
+	map_marker = {
+		show_for_owner = yes
+	}
+
+	ai_will_do = {
+		add = -100
+	}
+}

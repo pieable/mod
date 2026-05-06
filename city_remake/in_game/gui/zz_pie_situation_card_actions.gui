@@ -52,7 +52,7 @@ types Cards
 									size = { 480 34 }
 									action_button_regular = {
 										name = "situation action button"
-										visible = "[Not(EqualTo_string(GenericAction.GetKey, 'pie_estate_trade_open_action'))]"
+										visible = "[And3(Not(EqualTo_string(GenericAction.GetKey, 'pie_estate_trade_open_action')), Not(EqualTo_string(GenericAction.GetKey, 'pie_estate_trade_land_map')), Not(EqualTo_string(GenericAction.GetKey, 'pie_estate_urbanization_projects_map')))]"
 										size = { 480 30 }
 										parentanchor = center
 										text = "[GenericAction.GetNameWithNoTooltip]"
@@ -101,6 +101,46 @@ types Cards
 											click_mode = single
 											title = "pie_estate_trade_open"
 											on_action = "[GetScriptedGui('pie_et_sgui_open_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+
+										text_single = {
+											parentanchor = center
+											align = center|nobaseline
+											text = "[GenericAction.GetNameWithNoTooltip]"
+										}
+									}
+
+									button_regular = {
+										name = "pie estate trade land map situation action button"
+										visible = "[EqualTo_string(GenericAction.GetKey, 'pie_estate_trade_land_map')]"
+										size = { 480 30 }
+										parentanchor = center
+										tooltip = "pie_estate_trade_land_map_desc"
+										action_tooltip = {
+											click_type = left
+											click_mode = single
+											title = "pie_estate_trade_land_map"
+											on_action = "[GetScriptedGui('pie_et_sgui_open_land_mapmode').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										}
+
+										text_single = {
+											parentanchor = center
+											align = center|nobaseline
+											text = "[GenericAction.GetNameWithNoTooltip]"
+										}
+									}
+
+									button_regular = {
+										name = "pie estate urbanization project map situation action button"
+										visible = "[EqualTo_string(GenericAction.GetKey, 'pie_estate_urbanization_projects_map')]"
+										size = { 480 30 }
+										parentanchor = center
+										tooltip = "pie_estate_urbanization_projects_map_desc"
+										action_tooltip = {
+											click_type = left
+											click_mode = single
+											title = "pie_estate_urbanization_projects_map"
+											on_action = "[GetScriptedGui('pie_et_sgui_open_project_mapmode').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										}
 
 										text_single = {

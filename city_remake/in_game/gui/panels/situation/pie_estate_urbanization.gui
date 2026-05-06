@@ -1,5 +1,98 @@
-situation_panel = {
+﻿situation_panel = {
+	blockoverride "lateralview_topbuttons_extra" {
+		widget = {
+			parentanchor = right
+			size = { 40 40 }
+
+			ui_direction_button_holder_right = {}
+
+			button_close_alt = {
+				blockoverride "close_onclick" {
+					onclick = "[GetScriptedGui('pie_et_sgui_close_situation_mapmodes').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+					onclick = "[LateralView.Close]"
+				}
+
+				blockoverride "close_inputaction" {
+					input_action = "[Select_CString(LateralView.IsLeftPanel,'close_window_left', 'close_window_right')]"
+					use_global_input_instance = yes
+				}
+			}
+		}
+	}
+
 	blockoverride "situation_panel_main_content" {
+		fixedgridbox = {
+			ignore_layout = yes
+			size = { 1 1 }
+			addcolumn = 1
+			addrow = 1
+			alwaystransparent = yes
+			alpha = 0
+			datamodel = "[GetPlayer.MakeScope.GetList('pie_et_mapmode_trigger')]"
+
+			item = {
+				widget = {
+					size = { 1 1 }
+					datacontext = "[GetMapMode('pie_estate_trade_land')]"
+
+					state = {
+						name = pie_et_open_trade_mapmode
+						trigger_on_create = yes
+						duration = 0.01
+						on_start = "[MapMode.SetMapMode]"
+					}
+				}
+			}
+		}
+
+		fixedgridbox = {
+			ignore_layout = yes
+			size = { 1 1 }
+			addcolumn = 1
+			addrow = 1
+			alwaystransparent = yes
+			alpha = 0
+			datamodel = "[GetPlayer.MakeScope.GetList('pie_et_project_mapmode_trigger')]"
+
+			item = {
+				widget = {
+					size = { 1 1 }
+					datacontext = "[GetMapMode('pie_estate_urbanization_projects')]"
+
+					state = {
+						name = pie_et_open_project_mapmode
+						trigger_on_create = yes
+						duration = 0.01
+						on_start = "[MapMode.SetMapMode]"
+					}
+				}
+			}
+		}
+
+		fixedgridbox = {
+			ignore_layout = yes
+			size = { 1 1 }
+			addcolumn = 1
+			addrow = 1
+			alwaystransparent = yes
+			alpha = 0
+			datamodel = "[GetPlayer.MakeScope.GetList('pie_et_default_mapmode_trigger')]"
+
+			item = {
+				widget = {
+					size = { 1 1 }
+					datacontext = "[GetMapMode('political')]"
+
+					state = {
+						name = pie_et_open_default_mapmode
+						trigger_on_create = yes
+						duration = 0.01
+						on_start = "[MapMode.SetMapMode]"
+					}
+				}
+			}
+		}
+
 		vbox = {
 			visible = "[Not(LateralView.Vars.Exists( 'pie_estate_trade_open' ))]"
 			layoutpolicy_horizontal = expanding
@@ -1104,44 +1197,6 @@ situation_panel = {
 							}
 						}
 
-						button_regular = {
-							layoutpolicy_horizontal = expanding
-							size = { -1 42 }
-							onclick = "[GetScriptedGui('pie_et_sgui_toggle_repay_principal').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-							down = "[GetPlayer.MakeScope.Var('pie_et_term_repay_principal').IsSet]"
-							tooltip = "pie_estate_trade_term_repay_principal_tt"
-
-							hbox = {
-								size = { 100% 100% }
-								margin = { 10 0 }
-								spacing = 8
-
-								checkbox_diamond_alt = {
-									parentanchor = vcenter
-									checked = "[GetPlayer.MakeScope.Var('pie_et_term_repay_principal').IsSet]"
-									onclick = "[GetScriptedGui('pie_et_sgui_toggle_repay_principal').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
-								}
-
-								icon = {
-									parentanchor = vcenter
-									size = { 28 28 }
-									texture = "gfx/interface/icons/resources/gold.dds"
-								}
-
-								text_single = {
-									parentanchor = vcenter
-									layoutpolicy_horizontal = expanding
-									text = "pie_estate_trade_term_repay_principal"
-								}
-
-								text_single = {
-									parentanchor = vcenter
-									size = { 48 22 }
-									align = right|nobaseline
-									raw_text = "#P +5#!"
-								}
-							}
-						}
 					}
 
 					vbox = {

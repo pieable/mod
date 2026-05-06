@@ -1,4 +1,117 @@
-pie_et_acceptance_value = {
+pie_et_selected_estate_power_value = {
+	value = 0
+
+	if = {
+		limit = { has_variable = pie_et_estate_nobles }
+		value = "estate_power(estate_type:nobles_estate)"
+	}
+	else_if = {
+		limit = { has_variable = pie_et_estate_clergy }
+		value = "estate_power(estate_type:clergy_estate)"
+	}
+	else_if = {
+		limit = { has_variable = pie_et_estate_burghers }
+		value = "estate_power(estate_type:burghers_estate)"
+	}
+}
+
+pie_et_crown_power_value = {
+	value = "estate_power(estate_type:crown_estate)"
+}
+
+pie_et_selected_estate_power_pressure = {
+	value = pie_et_selected_estate_power_value
+	subtract = 0.25
+	divide = 0.25
+	min = 0
+	max = 1
+}
+
+pie_et_crown_power_pressure = {
+	value = pie_et_crown_power_value
+	subtract = 0.25
+	divide = 0.25
+	min = 0
+	max = 1
+}
+
+pie_et_positive_trade_acceptance_factor = {
+	value = 1
+	subtract = {
+		value = pie_et_selected_estate_power_pressure
+		multiply = 0.35
+	}
+	subtract = {
+		value = pie_et_crown_power_pressure
+		multiply = 0.15
+	}
+	min = 0.5
+	max = 1
+}
+
+pie_et_negative_trade_acceptance_factor = {
+	value = 1
+	add = {
+		value = pie_et_selected_estate_power_pressure
+		multiply = 0.75
+	}
+	subtract = {
+		value = pie_et_crown_power_pressure
+		multiply = 0.25
+	}
+	min = 0.75
+	max = 1.75
+}
+
+pie_et_selected_estate_gold = {
+	value = 0
+
+	if = {
+		limit = {
+			has_variable = pie_et_estate_nobles
+			country_has_estate = estate_type:nobles_estate
+		}
+		add = "estate(estate_type:nobles_estate).estate_gold"
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_clergy
+			country_has_estate = estate_type:clergy_estate
+		}
+		add = "estate(estate_type:clergy_estate).estate_gold"
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_burghers
+			country_has_estate = estate_type:burghers_estate
+		}
+		add = "estate(estate_type:burghers_estate).estate_gold"
+	}
+}
+
+pie_et_gold_income_scale = {
+	value = monthly_income_trade_and_tax
+	min = 1
+}
+
+pie_et_gold_income_months = {
+	value = 0
+
+	if = {
+		limit = { has_variable = pie_et_gold }
+		value = var:pie_et_gold
+		if = {
+			limit = { var:pie_et_gold < 0 }
+			multiply = -1
+		}
+		divide = {
+			value = pie_et_gold_income_scale
+			min = 1
+		}
+	}
+}
+
+pie_et_gold_acceptance = {
 	value = 0
 
 	if = {
@@ -6,64 +119,363 @@ pie_et_acceptance_value = {
 		if = {
 			limit = { var:pie_et_gold > 0 }
 			subtract = {
-				value = var:pie_et_gold
-				divide = 10
+				value = pie_et_gold_income_months
+				multiply = 25
+				multiply = pie_et_negative_trade_acceptance_factor
 			}
 			if = {
-				limit = { has_variable = pie_et_interest }
+				limit = {
+					has_variable = pie_et_interest
+					var:pie_et_interest > 0
+				}
 				add = {
-					value = var:pie_et_gold
+					value = pie_et_gold_income_months
 					multiply = var:pie_et_interest
-					multiply = 2
+					multiply = 400
+					multiply = pie_et_positive_trade_acceptance_factor
 				}
 			}
 		}
 		else_if = {
 			limit = { var:pie_et_gold < 0 }
 			add = {
-				value = var:pie_et_gold
-				multiply = -0.1
+				value = pie_et_gold_income_months
+				multiply = 25
+				multiply = pie_et_positive_trade_acceptance_factor
 			}
 		}
 	}
+}
+
+pie_et_estate_funds_project_acceptance = {
+	value = -20
+	multiply = pie_et_negative_trade_acceptance_factor
+}
+
+pie_et_crown_grants_rights_acceptance = {
+	value = 20
+	multiply = pie_et_positive_trade_acceptance_factor
+}
+
+pie_et_acceptance_value = {
+	value = 0
+
+	add = pie_et_gold_acceptance
 
 	if = {
 		limit = { has_variable = pie_et_term_estate_funds_project }
-		subtract = 20
+		add = pie_et_estate_funds_project_acceptance
 	}
 	if = {
 		limit = { has_variable = pie_et_term_crown_grants_rights }
-		add = 20
+		add = pie_et_crown_grants_rights_acceptance
+	}
+	add = pie_et_selected_land_acceptance
+	add = pie_et_selected_project_acceptance
+	add = pie_et_selected_privilege_acceptance
+}
+
+pie_et_selected_grant_privilege_acceptance = {
+	value = 35
+	multiply = pie_et_positive_trade_acceptance_factor
+}
+
+pie_et_selected_revoke_privilege_acceptance = {
+	value = -55
+	multiply = pie_et_negative_trade_acceptance_factor
+}
+
+pie_et_priv_grant_nobles_land_rights_acceptance = {
+	value = 45
+	multiply = pie_et_positive_trade_acceptance_factor
+}
+
+pie_et_priv_revoke_nobles_land_rights_acceptance = {
+	value = -70
+	multiply = pie_et_negative_trade_acceptance_factor
+}
+
+pie_et_priv_grant_nobility_council_acceptance = {
+	value = 35
+	multiply = pie_et_positive_trade_acceptance_factor
+}
+
+pie_et_priv_revoke_nobility_council_acceptance = {
+	value = -55
+	multiply = pie_et_negative_trade_acceptance_factor
+}
+
+pie_et_priv_grant_clerical_advisory_council_acceptance = {
+	value = 25
+	multiply = pie_et_positive_trade_acceptance_factor
+}
+
+pie_et_priv_revoke_clerical_advisory_council_acceptance = {
+	value = -40
+	multiply = pie_et_negative_trade_acceptance_factor
+}
+
+pie_et_priv_grant_clergy_religious_state_acceptance = {
+	value = 30
+	multiply = pie_et_positive_trade_acceptance_factor
+}
+
+pie_et_priv_revoke_clergy_religious_state_acceptance = {
+	value = -45
+	multiply = pie_et_negative_trade_acceptance_factor
+}
+
+pie_et_priv_grant_formal_guilds_acceptance = {
+	value = 35
+	multiply = pie_et_positive_trade_acceptance_factor
+}
+
+pie_et_priv_revoke_formal_guilds_acceptance = {
+	value = -55
+	multiply = pie_et_negative_trade_acceptance_factor
+}
+
+pie_et_priv_grant_treasury_rights_acceptance = {
+	value = 35
+	multiply = pie_et_positive_trade_acceptance_factor
+}
+
+pie_et_priv_revoke_treasury_rights_acceptance = {
+	value = -55
+	multiply = pie_et_negative_trade_acceptance_factor
+}
+
+pie_et_selected_privilege_acceptance = {
+	value = 0
+
+	if = {
+		limit = { has_variable = pie_et_selected_grant_privilege }
+		add = pie_et_selected_grant_privilege_acceptance
 	}
 	if = {
-		limit = { has_variable = pie_et_term_grant_privilege }
-		add = 30
-	}
-	if = {
-		limit = { has_variable = pie_et_term_reduce_privilege }
-		subtract = 30
-	}
-	if = {
-		limit = { has_variable = pie_et_term_repay_principal }
-		add = 5
+		limit = { has_variable = pie_et_selected_revoke_privilege }
+		add = pie_et_selected_revoke_privilege_acceptance
 	}
 
-	add = pie_et_selected_land_acceptance
+	add = pie_et_generated_selected_privilege_acceptance
+
+	if = { limit = { has_variable = pie_et_priv_grant_nobles_land_rights } add = pie_et_priv_grant_nobles_land_rights_acceptance }
+	if = { limit = { has_variable = pie_et_priv_revoke_nobles_land_rights } add = pie_et_priv_revoke_nobles_land_rights_acceptance }
+	if = { limit = { has_variable = pie_et_priv_grant_nobility_council } add = pie_et_priv_grant_nobility_council_acceptance }
+	if = { limit = { has_variable = pie_et_priv_revoke_nobility_council } add = pie_et_priv_revoke_nobility_council_acceptance }
+
+	if = { limit = { has_variable = pie_et_priv_grant_clerical_advisory_council } add = pie_et_priv_grant_clerical_advisory_council_acceptance }
+	if = { limit = { has_variable = pie_et_priv_revoke_clerical_advisory_council } add = pie_et_priv_revoke_clerical_advisory_council_acceptance }
+	if = { limit = { has_variable = pie_et_priv_grant_clergy_religious_state } add = pie_et_priv_grant_clergy_religious_state_acceptance }
+	if = { limit = { has_variable = pie_et_priv_revoke_clergy_religious_state } add = pie_et_priv_revoke_clergy_religious_state_acceptance }
+
+	if = { limit = { has_variable = pie_et_priv_grant_formal_guilds } add = pie_et_priv_grant_formal_guilds_acceptance }
+	if = { limit = { has_variable = pie_et_priv_revoke_formal_guilds } add = pie_et_priv_revoke_formal_guilds_acceptance }
+	if = { limit = { has_variable = pie_et_priv_grant_treasury_rights } add = pie_et_priv_grant_treasury_rights_acceptance }
+	if = { limit = { has_variable = pie_et_priv_revoke_treasury_rights } add = pie_et_priv_revoke_treasury_rights_acceptance }
+}
+
+pie_et_selected_estate_power_acceptance_penalty = {
+	value = 0
+
+	if = {
+		limit = { has_variable = pie_et_estate_nobles }
+		subtract = {
+			value = "estate_power(estate_type:nobles_estate)"
+			multiply = 60
+		}
+	}
+	else_if = {
+		limit = { has_variable = pie_et_estate_clergy }
+		subtract = {
+			value = "estate_power(estate_type:clergy_estate)"
+			multiply = 60
+		}
+	}
+	else_if = {
+		limit = { has_variable = pie_et_estate_burghers }
+		subtract = {
+			value = "estate_power(estate_type:burghers_estate)"
+			multiply = 60
+		}
+	}
+}
+
+pie_et_project_estate_power_gap_acceptance_penalty = {
+	value = 0
+
+	if = {
+		limit = {
+			has_variable = pie_et_estate_nobles
+			has_variable = pie_et_receiver_clergy
+			"estate_power(estate_type:nobles_estate)" >= "estate_power(estate_type:clergy_estate)"
+		}
+		subtract = {
+			value = "estate_power(estate_type:nobles_estate)"
+			subtract = "estate_power(estate_type:clergy_estate)"
+			multiply = 80
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_nobles
+			has_variable = pie_et_receiver_clergy
+		}
+		subtract = {
+			value = "estate_power(estate_type:clergy_estate)"
+			subtract = "estate_power(estate_type:nobles_estate)"
+			multiply = 80
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_nobles
+			has_variable = pie_et_receiver_burghers
+			"estate_power(estate_type:nobles_estate)" >= "estate_power(estate_type:burghers_estate)"
+		}
+		subtract = {
+			value = "estate_power(estate_type:nobles_estate)"
+			subtract = "estate_power(estate_type:burghers_estate)"
+			multiply = 80
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_nobles
+			has_variable = pie_et_receiver_burghers
+		}
+		subtract = {
+			value = "estate_power(estate_type:burghers_estate)"
+			subtract = "estate_power(estate_type:nobles_estate)"
+			multiply = 80
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_clergy
+			has_variable = pie_et_receiver_nobles
+			"estate_power(estate_type:clergy_estate)" >= "estate_power(estate_type:nobles_estate)"
+		}
+		subtract = {
+			value = "estate_power(estate_type:clergy_estate)"
+			subtract = "estate_power(estate_type:nobles_estate)"
+			multiply = 80
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_clergy
+			has_variable = pie_et_receiver_nobles
+		}
+		subtract = {
+			value = "estate_power(estate_type:nobles_estate)"
+			subtract = "estate_power(estate_type:clergy_estate)"
+			multiply = 80
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_clergy
+			has_variable = pie_et_receiver_burghers
+			"estate_power(estate_type:clergy_estate)" >= "estate_power(estate_type:burghers_estate)"
+		}
+		subtract = {
+			value = "estate_power(estate_type:clergy_estate)"
+			subtract = "estate_power(estate_type:burghers_estate)"
+			multiply = 80
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_clergy
+			has_variable = pie_et_receiver_burghers
+		}
+		subtract = {
+			value = "estate_power(estate_type:burghers_estate)"
+			subtract = "estate_power(estate_type:clergy_estate)"
+			multiply = 80
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_burghers
+			has_variable = pie_et_receiver_nobles
+			"estate_power(estate_type:burghers_estate)" >= "estate_power(estate_type:nobles_estate)"
+		}
+		subtract = {
+			value = "estate_power(estate_type:burghers_estate)"
+			subtract = "estate_power(estate_type:nobles_estate)"
+			multiply = 80
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_burghers
+			has_variable = pie_et_receiver_nobles
+		}
+		subtract = {
+			value = "estate_power(estate_type:nobles_estate)"
+			subtract = "estate_power(estate_type:burghers_estate)"
+			multiply = 80
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_burghers
+			has_variable = pie_et_receiver_clergy
+			"estate_power(estate_type:burghers_estate)" >= "estate_power(estate_type:clergy_estate)"
+		}
+		subtract = {
+			value = "estate_power(estate_type:burghers_estate)"
+			subtract = "estate_power(estate_type:clergy_estate)"
+			multiply = 80
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_burghers
+			has_variable = pie_et_receiver_clergy
+		}
+		subtract = {
+			value = "estate_power(estate_type:clergy_estate)"
+			subtract = "estate_power(estate_type:burghers_estate)"
+			multiply = 80
+		}
+	}
+	multiply = pie_et_negative_trade_acceptance_factor
+}
+
+pie_et_land_trade_value = {
+	value = 10
+	add = {
+		value = population
+		multiply = 0.5
+	}
+	add = {
+		value = location_tax_base
+		divide = 5
+	}
 }
 
 pie_et_sell_land_acceptance = {
-	value = 20
-	add = {
-		value = location_tax_base
-		divide = 10
+	value = pie_et_land_trade_value
+	multiply = {
+		owner = {
+			value = pie_et_positive_trade_acceptance_factor
+		}
 	}
 }
 
 pie_et_buy_land_acceptance = {
-	value = -25
+	value = 0
 	subtract = {
-		value = location_tax_base
-		divide = 10
+		value = pie_et_land_trade_value
+		add = 5
+		multiply = {
+			owner = {
+				value = pie_et_negative_trade_acceptance_factor
+			}
+		}
 	}
 }
 
@@ -107,6 +519,166 @@ pie_et_selected_land_acceptance = {
 	}
 }
 
+pie_et_town_project_infrastructure_score = {
+	value = 0
+
+	if = {
+		limit = {
+			OR = {
+				any_buildings_in_location = { building_type = building_type:pie_rural_market_fair }
+				any_buildings_in_location = { building_type = building_type:pie_urban_market_square }
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			OR = {
+				any_buildings_in_location = { building_type = building_type:pie_rural_village_office }
+				any_buildings_in_location = { building_type = building_type:pie_urban_civic_center }
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			OR = {
+				any_buildings_in_location = { building_type = building_type:pie_rural_parish_church }
+				any_buildings_in_location = { building_type = building_type:pie_urban_church_quarter }
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			OR = {
+				any_buildings_in_location = { building_type = building_type:pie_rural_handicraft_workshop }
+				any_buildings_in_location = { building_type = building_type:pie_urban_guild_quarter }
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			OR = {
+				any_buildings_in_location = { building_type = building_type:pie_rural_communal_granary }
+				any_buildings_in_location = { building_type = building_type:pie_urban_relief_house }
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			OR = {
+				any_buildings_in_location = { building_type = building_type:pie_rural_wells_and_drainage }
+				any_buildings_in_location = { building_type = building_type:pie_urban_aqueduct }
+			}
+		}
+		add = 1
+	}
+	if = {
+		limit = {
+			OR = {
+				any_buildings_in_location = { building_type = building_type:pie_rural_drainage_ditch }
+				any_buildings_in_location = { building_type = building_type:pie_urban_sewer }
+			}
+		}
+		add = 1
+	}
+}
+
+pie_et_city_project_infrastructure_score = {
+	value = 0
+
+	if = { limit = { any_buildings_in_location = { building_type = building_type:pie_urban_market_square } } add = 1 }
+	if = { limit = { any_buildings_in_location = { building_type = building_type:pie_urban_civic_center } } add = 1 }
+	if = { limit = { any_buildings_in_location = { building_type = building_type:pie_urban_church_quarter } } add = 1 }
+	if = { limit = { any_buildings_in_location = { building_type = building_type:pie_urban_guild_quarter } } add = 1 }
+	if = { limit = { any_buildings_in_location = { building_type = building_type:pie_urban_city_walls } } add = 1 }
+	if = { limit = { any_buildings_in_location = { building_type = building_type:pie_urban_warehouse } } add = 1 }
+	if = { limit = { any_buildings_in_location = { building_type = building_type:pie_urban_aqueduct } } add = 1 }
+	if = { limit = { any_buildings_in_location = { building_type = building_type:pie_urban_sewer } } add = 1 }
+	if = { limit = { any_buildings_in_location = { building_type = building_type:pie_urban_relief_house } } add = 1 }
+	if = { limit = { any_buildings_in_location = { building_type = building_type:hospital } } add = 1 }
+}
+
+pie_et_project_infrastructure_acceptance_penalty = {
+	value = 0
+
+	if = {
+		limit = {
+			has_variable = pie_town_project_active
+			pie_et_town_project_infrastructure_score >= 6
+		}
+		subtract = 30
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_town_project_active
+			pie_et_town_project_infrastructure_score >= 4
+		}
+		subtract = 20
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_town_project_active
+			pie_et_town_project_infrastructure_score >= 2
+		}
+		subtract = 10
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_city_project_active
+			pie_et_city_project_infrastructure_score >= 8
+		}
+		subtract = 30
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_city_project_active
+			pie_et_city_project_infrastructure_score >= 5
+		}
+		subtract = 20
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_city_project_active
+			pie_et_city_project_infrastructure_score >= 2
+		}
+		subtract = 10
+	}
+	multiply = {
+		owner = {
+			value = pie_et_negative_trade_acceptance_factor
+		}
+	}
+}
+
+pie_et_project_transfer_base_acceptance = {
+	value = -15
+	multiply = pie_et_negative_trade_acceptance_factor
+}
+
+pie_et_selected_project_acceptance = {
+	value = 0
+
+	if = {
+		limit = {
+			pie_et_has_selected_project = yes
+			pie_et_has_project_receiver = yes
+		}
+		add = pie_et_project_transfer_base_acceptance
+		add = pie_et_project_estate_power_gap_acceptance_penalty
+		every_owned_location = {
+			limit = {
+				has_variable = pie_et_selected_project
+				pie_et_selected_estate_project_candidate = yes
+			}
+			add = pie_et_project_infrastructure_acceptance_penalty
+		}
+	}
+}
+
 pie_et_monthly_interest_preview = {
 	value = 0
 	if = {
@@ -125,49 +697,210 @@ pie_et_monthly_interest_preview = {
 pie_et_selected_estate_debt = {
 	value = 0
 	if = {
-		limit = {
-			has_variable = pie_et_estate_nobles
-			has_variable = pie_et_debt_nobles
-		}
-		value = var:pie_et_debt_nobles
+		limit = { has_variable = pie_et_estate_nobles }
+		value = pie_et_nobles_debt_total
 	}
 	else_if = {
-		limit = {
-			has_variable = pie_et_estate_clergy
-			has_variable = pie_et_debt_clergy
-		}
-		value = var:pie_et_debt_clergy
+		limit = { has_variable = pie_et_estate_clergy }
+		value = pie_et_clergy_debt_total
 	}
 	else_if = {
-		limit = {
-			has_variable = pie_et_estate_burghers
-			has_variable = pie_et_debt_burghers
-		}
-		value = var:pie_et_debt_burghers
+		limit = { has_variable = pie_et_estate_burghers }
+		value = pie_et_burghers_debt_total
 	}
 }
 
 pie_et_selected_estate_interest = {
 	value = 0
 	if = {
-		limit = {
-			has_variable = pie_et_estate_nobles
-			has_variable = pie_et_interest_nobles
+		limit = { pie_et_selected_estate_debt > 0 }
+		value = pie_et_selected_estate_annual_interest
+		divide = {
+			value = pie_et_selected_estate_debt
+			min = 1
 		}
-		value = var:pie_et_interest_nobles
-	}
-	else_if = {
-		limit = {
-			has_variable = pie_et_estate_clergy
-			has_variable = pie_et_interest_clergy
-		}
-		value = var:pie_et_interest_clergy
-	}
-	else_if = {
-		limit = {
-			has_variable = pie_et_estate_burghers
-			has_variable = pie_et_interest_burghers
-		}
-		value = var:pie_et_interest_burghers
 	}
 }
+
+pie_et_selected_estate_annual_interest = {
+	value = 0
+	if = {
+		limit = { has_variable = pie_et_estate_nobles }
+		value = pie_et_nobles_annual_interest_total
+	}
+	else_if = {
+		limit = { has_variable = pie_et_estate_clergy }
+		value = pie_et_clergy_annual_interest_total
+	}
+	else_if = {
+		limit = { has_variable = pie_et_estate_burghers }
+		value = pie_et_burghers_annual_interest_total
+	}
+}
+
+pie_et_selected_estate_monthly_interest_expense = {
+	value = pie_et_selected_estate_annual_interest
+	divide = 12
+}
+
+pie_et_total_monthly_interest_expense = {
+	value = 0
+	add = pie_et_nobles_annual_interest_total
+	add = pie_et_clergy_annual_interest_total
+	add = pie_et_burghers_annual_interest_total
+	divide = 12
+}
+
+pie_et_total_estate_debt = {
+	value = 0
+	add = pie_et_nobles_debt_total
+	add = pie_et_clergy_debt_total
+	add = pie_et_burghers_debt_total
+}
+
+pie_et_total_estate_debt_after_trade = {
+	value = pie_et_total_estate_debt
+
+	if = {
+		limit = {
+			has_variable = pie_et_gold
+			var:pie_et_gold > 0
+		}
+		add = var:pie_et_gold
+	}
+}
+
+pie_et_nobles_debt_total = {
+	value = 0
+	add = var:pie_et_debt_nobles_1
+	add = var:pie_et_debt_nobles_2
+	add = var:pie_et_debt_nobles_3
+	add = var:pie_et_debt_nobles_4
+	add = var:pie_et_debt_nobles_5
+	add = var:pie_et_debt_nobles_6
+	add = var:pie_et_debt_nobles_7
+	add = var:pie_et_debt_nobles_8
+}
+
+pie_et_clergy_debt_total = {
+	value = 0
+	add = var:pie_et_debt_clergy_1
+	add = var:pie_et_debt_clergy_2
+	add = var:pie_et_debt_clergy_3
+	add = var:pie_et_debt_clergy_4
+	add = var:pie_et_debt_clergy_5
+	add = var:pie_et_debt_clergy_6
+	add = var:pie_et_debt_clergy_7
+	add = var:pie_et_debt_clergy_8
+}
+
+pie_et_burghers_debt_total = {
+	value = 0
+	add = var:pie_et_debt_burghers_1
+	add = var:pie_et_debt_burghers_2
+	add = var:pie_et_debt_burghers_3
+	add = var:pie_et_debt_burghers_4
+	add = var:pie_et_debt_burghers_5
+	add = var:pie_et_debt_burghers_6
+	add = var:pie_et_debt_burghers_7
+	add = var:pie_et_debt_burghers_8
+}
+
+pie_et_nobles_annual_interest_total = {
+	value = 0
+	add = { value = var:pie_et_debt_nobles_1 multiply = var:pie_et_interest_nobles_1 }
+	add = { value = var:pie_et_debt_nobles_2 multiply = var:pie_et_interest_nobles_2 }
+	add = { value = var:pie_et_debt_nobles_3 multiply = var:pie_et_interest_nobles_3 }
+	add = { value = var:pie_et_debt_nobles_4 multiply = var:pie_et_interest_nobles_4 }
+	add = { value = var:pie_et_debt_nobles_5 multiply = var:pie_et_interest_nobles_5 }
+	add = { value = var:pie_et_debt_nobles_6 multiply = var:pie_et_interest_nobles_6 }
+	add = { value = var:pie_et_debt_nobles_7 multiply = var:pie_et_interest_nobles_7 }
+	add = { value = var:pie_et_debt_nobles_8 multiply = var:pie_et_interest_nobles_8 }
+}
+
+pie_et_clergy_annual_interest_total = {
+	value = 0
+	add = { value = var:pie_et_debt_clergy_1 multiply = var:pie_et_interest_clergy_1 }
+	add = { value = var:pie_et_debt_clergy_2 multiply = var:pie_et_interest_clergy_2 }
+	add = { value = var:pie_et_debt_clergy_3 multiply = var:pie_et_interest_clergy_3 }
+	add = { value = var:pie_et_debt_clergy_4 multiply = var:pie_et_interest_clergy_4 }
+	add = { value = var:pie_et_debt_clergy_5 multiply = var:pie_et_interest_clergy_5 }
+	add = { value = var:pie_et_debt_clergy_6 multiply = var:pie_et_interest_clergy_6 }
+	add = { value = var:pie_et_debt_clergy_7 multiply = var:pie_et_interest_clergy_7 }
+	add = { value = var:pie_et_debt_clergy_8 multiply = var:pie_et_interest_clergy_8 }
+}
+
+pie_et_burghers_annual_interest_total = {
+	value = 0
+	add = { value = var:pie_et_debt_burghers_1 multiply = var:pie_et_interest_burghers_1 }
+	add = { value = var:pie_et_debt_burghers_2 multiply = var:pie_et_interest_burghers_2 }
+	add = { value = var:pie_et_debt_burghers_3 multiply = var:pie_et_interest_burghers_3 }
+	add = { value = var:pie_et_debt_burghers_4 multiply = var:pie_et_interest_burghers_4 }
+	add = { value = var:pie_et_debt_burghers_5 multiply = var:pie_et_interest_burghers_5 }
+	add = { value = var:pie_et_debt_burghers_6 multiply = var:pie_et_interest_burghers_6 }
+	add = { value = var:pie_et_debt_burghers_7 multiply = var:pie_et_interest_burghers_7 }
+	add = { value = var:pie_et_debt_burghers_8 multiply = var:pie_et_interest_burghers_8 }
+}
+
+pie_et_debt_nobles_1_monthly_interest = { value = var:pie_et_debt_nobles_1 multiply = var:pie_et_interest_nobles_1 divide = 12 }
+pie_et_debt_nobles_2_monthly_interest = { value = var:pie_et_debt_nobles_2 multiply = var:pie_et_interest_nobles_2 divide = 12 }
+pie_et_debt_nobles_3_monthly_interest = { value = var:pie_et_debt_nobles_3 multiply = var:pie_et_interest_nobles_3 divide = 12 }
+pie_et_debt_nobles_4_monthly_interest = { value = var:pie_et_debt_nobles_4 multiply = var:pie_et_interest_nobles_4 divide = 12 }
+pie_et_debt_nobles_5_monthly_interest = { value = var:pie_et_debt_nobles_5 multiply = var:pie_et_interest_nobles_5 divide = 12 }
+pie_et_debt_nobles_6_monthly_interest = { value = var:pie_et_debt_nobles_6 multiply = var:pie_et_interest_nobles_6 divide = 12 }
+pie_et_debt_nobles_7_monthly_interest = { value = var:pie_et_debt_nobles_7 multiply = var:pie_et_interest_nobles_7 divide = 12 }
+pie_et_debt_nobles_8_monthly_interest = { value = var:pie_et_debt_nobles_8 multiply = var:pie_et_interest_nobles_8 divide = 12 }
+
+pie_et_debt_clergy_1_monthly_interest = { value = var:pie_et_debt_clergy_1 multiply = var:pie_et_interest_clergy_1 divide = 12 }
+pie_et_debt_clergy_2_monthly_interest = { value = var:pie_et_debt_clergy_2 multiply = var:pie_et_interest_clergy_2 divide = 12 }
+pie_et_debt_clergy_3_monthly_interest = { value = var:pie_et_debt_clergy_3 multiply = var:pie_et_interest_clergy_3 divide = 12 }
+pie_et_debt_clergy_4_monthly_interest = { value = var:pie_et_debt_clergy_4 multiply = var:pie_et_interest_clergy_4 divide = 12 }
+pie_et_debt_clergy_5_monthly_interest = { value = var:pie_et_debt_clergy_5 multiply = var:pie_et_interest_clergy_5 divide = 12 }
+pie_et_debt_clergy_6_monthly_interest = { value = var:pie_et_debt_clergy_6 multiply = var:pie_et_interest_clergy_6 divide = 12 }
+pie_et_debt_clergy_7_monthly_interest = { value = var:pie_et_debt_clergy_7 multiply = var:pie_et_interest_clergy_7 divide = 12 }
+pie_et_debt_clergy_8_monthly_interest = { value = var:pie_et_debt_clergy_8 multiply = var:pie_et_interest_clergy_8 divide = 12 }
+
+pie_et_debt_burghers_1_monthly_interest = { value = var:pie_et_debt_burghers_1 multiply = var:pie_et_interest_burghers_1 divide = 12 }
+pie_et_debt_burghers_2_monthly_interest = { value = var:pie_et_debt_burghers_2 multiply = var:pie_et_interest_burghers_2 divide = 12 }
+pie_et_debt_burghers_3_monthly_interest = { value = var:pie_et_debt_burghers_3 multiply = var:pie_et_interest_burghers_3 divide = 12 }
+pie_et_debt_burghers_4_monthly_interest = { value = var:pie_et_debt_burghers_4 multiply = var:pie_et_interest_burghers_4 divide = 12 }
+pie_et_debt_burghers_5_monthly_interest = { value = var:pie_et_debt_burghers_5 multiply = var:pie_et_interest_burghers_5 divide = 12 }
+pie_et_debt_burghers_6_monthly_interest = { value = var:pie_et_debt_burghers_6 multiply = var:pie_et_interest_burghers_6 divide = 12 }
+pie_et_debt_burghers_7_monthly_interest = { value = var:pie_et_debt_burghers_7 multiply = var:pie_et_interest_burghers_7 divide = 12 }
+pie_et_debt_burghers_8_monthly_interest = { value = var:pie_et_debt_burghers_8 multiply = var:pie_et_interest_burghers_8 divide = 12 }
+
+pie_et_selected_debt_1 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_debt_nobles_1 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_debt_clergy_1 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_debt_burghers_1 } }
+pie_et_selected_debt_2 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_debt_nobles_2 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_debt_clergy_2 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_debt_burghers_2 } }
+pie_et_selected_debt_3 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_debt_nobles_3 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_debt_clergy_3 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_debt_burghers_3 } }
+pie_et_selected_debt_4 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_debt_nobles_4 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_debt_clergy_4 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_debt_burghers_4 } }
+pie_et_selected_debt_5 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_debt_nobles_5 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_debt_clergy_5 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_debt_burghers_5 } }
+pie_et_selected_debt_6 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_debt_nobles_6 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_debt_clergy_6 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_debt_burghers_6 } }
+pie_et_selected_debt_7 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_debt_nobles_7 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_debt_clergy_7 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_debt_burghers_7 } }
+pie_et_selected_debt_8 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_debt_nobles_8 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_debt_clergy_8 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_debt_burghers_8 } }
+
+pie_et_selected_interest_1 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_interest_nobles_1 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_interest_clergy_1 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_interest_burghers_1 } }
+pie_et_selected_interest_2 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_interest_nobles_2 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_interest_clergy_2 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_interest_burghers_2 } }
+pie_et_selected_interest_3 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_interest_nobles_3 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_interest_clergy_3 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_interest_burghers_3 } }
+pie_et_selected_interest_4 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_interest_nobles_4 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_interest_clergy_4 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_interest_burghers_4 } }
+pie_et_selected_interest_5 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_interest_nobles_5 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_interest_clergy_5 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_interest_burghers_5 } }
+pie_et_selected_interest_6 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_interest_nobles_6 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_interest_clergy_6 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_interest_burghers_6 } }
+pie_et_selected_interest_7 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_interest_nobles_7 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_interest_clergy_7 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_interest_burghers_7 } }
+pie_et_selected_interest_8 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_interest_nobles_8 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_interest_clergy_8 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_interest_burghers_8 } }
+
+pie_et_selected_months_1 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_months_nobles_1 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_months_clergy_1 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_months_burghers_1 } }
+pie_et_selected_months_2 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_months_nobles_2 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_months_clergy_2 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_months_burghers_2 } }
+pie_et_selected_months_3 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_months_nobles_3 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_months_clergy_3 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_months_burghers_3 } }
+pie_et_selected_months_4 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_months_nobles_4 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_months_clergy_4 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_months_burghers_4 } }
+pie_et_selected_months_5 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_months_nobles_5 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_months_clergy_5 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_months_burghers_5 } }
+pie_et_selected_months_6 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_months_nobles_6 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_months_clergy_6 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_months_burghers_6 } }
+pie_et_selected_months_7 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_months_nobles_7 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_months_clergy_7 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_months_burghers_7 } }
+pie_et_selected_months_8 = { value = 0 if = { limit = { has_variable = pie_et_estate_nobles } value = var:pie_et_months_nobles_8 } else_if = { limit = { has_variable = pie_et_estate_clergy } value = var:pie_et_months_clergy_8 } else_if = { limit = { has_variable = pie_et_estate_burghers } value = var:pie_et_months_burghers_8 } }
+
+pie_et_selected_debt_1_monthly_interest = { value = pie_et_selected_debt_1 multiply = pie_et_selected_interest_1 divide = 12 }
+pie_et_selected_debt_2_monthly_interest = { value = pie_et_selected_debt_2 multiply = pie_et_selected_interest_2 divide = 12 }
+pie_et_selected_debt_3_monthly_interest = { value = pie_et_selected_debt_3 multiply = pie_et_selected_interest_3 divide = 12 }
+pie_et_selected_debt_4_monthly_interest = { value = pie_et_selected_debt_4 multiply = pie_et_selected_interest_4 divide = 12 }
+pie_et_selected_debt_5_monthly_interest = { value = pie_et_selected_debt_5 multiply = pie_et_selected_interest_5 divide = 12 }
+pie_et_selected_debt_6_monthly_interest = { value = pie_et_selected_debt_6 multiply = pie_et_selected_interest_6 divide = 12 }
+pie_et_selected_debt_7_monthly_interest = { value = pie_et_selected_debt_7 multiply = pie_et_selected_interest_7 divide = 12 }
+pie_et_selected_debt_8_monthly_interest = { value = pie_et_selected_debt_8 multiply = pie_et_selected_interest_8 divide = 12 }

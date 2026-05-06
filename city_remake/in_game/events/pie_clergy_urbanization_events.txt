@@ -39,6 +39,12 @@ pie_clergy_urban.1 = {
 					value = 700
 				}
 			}
+			if = {
+				limit = {
+					scope:target_location = { has_variable = pie_project_finalization }
+				}
+				scope:target_location = { pie_clear_urbanization_project = yes }
+			}
 		}
 	}
 
@@ -52,6 +58,12 @@ pie_clergy_urban.1 = {
 					country_has_estate = estate_type:clergy_estate
 				}
 				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 }
+			}
+			if = {
+				limit = {
+					scope:target_location = { has_variable = pie_project_finalization }
+				}
+				scope:target_location = { pie_clear_urbanization_project = yes }
 			}
 		}
 	}
@@ -96,6 +108,12 @@ pie_clergy_urban.2 = {
 					value = 2200
 				}
 			}
+			if = {
+				limit = {
+					scope:target_location = { has_variable = pie_project_finalization }
+				}
+				scope:target_location = { pie_clear_urbanization_project = yes }
+			}
 		}
 	}
 
@@ -109,6 +127,12 @@ pie_clergy_urban.2 = {
 					country_has_estate = estate_type:clergy_estate
 				}
 				add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 }
+			}
+			if = {
+				limit = {
+					scope:target_location = { has_variable = pie_project_finalization }
+				}
+				scope:target_location = { pie_clear_urbanization_project = yes }
 			}
 		}
 	}

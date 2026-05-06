@@ -1,0 +1,51 @@
+pie_clear_starving_siege_pressure = {
+	if = {
+		limit = { has_variable = pie_starving_siege_months }
+		remove_variable = pie_starving_siege_months
+	}
+	if = {
+		limit = { has_location_modifier = pie_starving_siege_pressure }
+		remove_location_modifier = pie_starving_siege_pressure
+	}
+}
+
+pie_apply_starving_siege_pressure = {
+	if = {
+		limit = {
+			pie_starving_urban_siege_target = yes
+		}
+		if = {
+			limit = { has_variable = pie_starving_siege_months }
+			change_variable = { name = pie_starving_siege_months add = 1 }
+		}
+		else = {
+			set_variable = { name = pie_starving_siege_months value = 1 }
+		}
+
+		if = {
+			limit = { var:pie_starving_siege_months >= 6 }
+			add_location_modifier = {
+				modifier = pie_starving_siege_pressure
+				days = 35
+				mode = replace
+			}
+		}
+
+		if = {
+			limit = { var:pie_starving_siege_months >= 12 }
+			change_siege_progress = 20
+			set_garrison_size = 0
+		}
+		else_if = {
+			limit = { var:pie_starving_siege_months >= 9 }
+			change_siege_progress = 2
+		}
+		else_if = {
+			limit = { var:pie_starving_siege_months >= 6 }
+			change_siege_progress = 1
+		}
+	}
+	else = {
+		pie_clear_starving_siege_pressure = yes
+	}
+}

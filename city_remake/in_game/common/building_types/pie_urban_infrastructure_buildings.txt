@@ -262,6 +262,11 @@ pie_urban_city_walls = {
 		local_unrest = -0.025
 		local_monthly_prosperity = 0.0005
 	}
+
+	raw_modifier = {
+		fort_level = 1
+		propagating_zone_of_control = no
+	}
 }
 
 pie_urban_warehouse = {

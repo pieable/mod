@@ -16,8 +16,28 @@ pie_et_toggle_estate_picker = {
 
 pie_et_queue_trade_mapmode = {
 	clear_variable_list = pie_et_mapmode_trigger
+	clear_variable_list = pie_et_project_mapmode_trigger
+	clear_variable_list = pie_et_default_mapmode_trigger
 	add_to_variable_list = {
 		name = pie_et_mapmode_trigger
+		target = this
+	}
+}
+pie_et_queue_project_mapmode = {
+	clear_variable_list = pie_et_mapmode_trigger
+	clear_variable_list = pie_et_project_mapmode_trigger
+	clear_variable_list = pie_et_default_mapmode_trigger
+	add_to_variable_list = {
+		name = pie_et_project_mapmode_trigger
+		target = this
+	}
+}
+pie_et_queue_default_mapmode = {
+	clear_variable_list = pie_et_mapmode_trigger
+	clear_variable_list = pie_et_project_mapmode_trigger
+	clear_variable_list = pie_et_default_mapmode_trigger
+	add_to_variable_list = {
+		name = pie_et_default_mapmode_trigger
 		target = this
 	}
 }
@@ -47,6 +67,3921 @@ pie_et_rebuild_land_lists = {
 	}
 }
 
+pie_et_rebuild_project_lists = {
+	clear_variable_list = pie_et_project_locations
+
+	every_owned_location = {
+		limit = { pie_et_selected_estate_project_candidate = yes }
+		ROOT = {
+			add_to_variable_list = {
+				name = pie_et_project_locations
+				target = prev
+			}
+		}
+	}
+}
+
+pie_et_clear_privilege_lists = {
+	clear_variable_list = pie_et_grant_privileges
+	clear_variable_list = pie_et_revoke_privileges
+	pie_et_clear_generated_privilege_visibility = yes
+}
+
+pie_et_rebuild_grant_privilege_list = {
+	clear_variable_list = pie_et_grant_privileges
+
+	if = {
+		limit = {
+			has_variable = pie_et_estate_nobles
+			country_has_estate = estate_type:nobles_estate
+		}
+		"estate(estate_type:nobles_estate)" = {
+			random_possible_privilege = {
+				limit = { this = estate_privilege:nobles_land_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:auxilium_et_consilium }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:noble_serfdom_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:noble_fortification_licenses }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:noble_marriage_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:banal_lordship }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:primacy_of_nobility }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:noble_leaders_only }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:elaborate_court_ceremonies }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:nobles_protected_faith }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:nobility_council }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:manorial_courts }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:increased_civic_engagement }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:inherited_offices }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:recognized_communes }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:appoint_ecclesiastical_offices }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:control_of_the_borderlands }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:feudal_mercenary_contracts }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:liberum_veto }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:visconti_city_states }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:general_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:union_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:signoria_council }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:tysiatskii_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:the_ryad_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:kbo_kaigama }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:kbo_yerima }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:kbo_cima }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:office_of_the_farima_soura_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:office_of_the_sankar_zouma_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:golden_liberty }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:nieszawa_privileges }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:pacta_conventa }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:noble_armies }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:chancellor_nobles }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:great_offices_of_the_crown_of_france }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:residence_in_versailles }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:permanent_residence_in_versailles }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:right_to_inherit }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:inaugural_diplomas }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:district_paving_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:joint_assembly_decrees }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:kormlenije }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:ordinance_of_laborers }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:autonomous_local_commanders }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:bashtinas_and_pronijas_grants }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:zupa_districts }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:vlastele_krayishnik }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:golden_bull_of_1222 }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:monetary_fiefs }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:scholar_officials }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:ghazi_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:share_of_the_spoils }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:tribal_host }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:tribal_autonomy }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:powerful_italian_families }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:plc_empower_orthodox_nobility }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:scottish_clans }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:autonomous_scottish_clans }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:sco_statutes_of_iona }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:coign_and_livery_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:libro_d_oro }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:avogadoria_de_comun }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:zontas }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:rajput_society }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:zamindar_tax_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:consolidated_corruption_of_the_nobles }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:privilege_of_koszyce }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:nihil_novi }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:noble_sponsored_navy }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:charter_of_the_nobility }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:reduced_responsibilities_for_the_nobles }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:reduced_taxation_for_the_nobles }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:heritable_iqta }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:manifesto_of_freedom }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:bavarian_share_of_land }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:cas_fuero_viejo }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:justicia_de_aragon }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:formalized_oath }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:ayans_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:cas_regimiento }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:lit_integrated_ruthenian_laws }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:lit_equal_status_of_orthodox_nobility }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:mam_refined_furusiyya }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:tur_banned_weaponry_for_peasants }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:noble_patronage_of_the_arts }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:statutes_of_piotrkow }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_clergy
+			country_has_estate = estate_type:clergy_estate
+		}
+		"estate(estate_type:clergy_estate)" = {
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clergy_literacy_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clergy_strengthen_faith }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clergy_enforced_unity }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clergy_military_orders }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clergy_lecture_oaths }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clergy_land_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clerical_advisory_council }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clergy_powerful_dioceses }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clergy_protected_faith }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clergy_religious_state }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:expansionist_zealotry }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:religious_diplomats }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:promote_cultural_unity }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:embellish_great_works_of_faith }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clergy_papal_emissary }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:freedom_of_interpretation }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:waqf_payments }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:maintain_clerical_proceedings }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:state_official_oaths }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:mandatory_clerical_donations }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:sponsor_printing_of_religious_texts }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:liturgical_mural_art }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:apostolic_tax_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:tax_exemption }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:clergy_in_administration }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:consolidated_corruption_of_the_clergy }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:commons_petition }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:austere_monastic_life }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:unity_brethren_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:warrior_tribunal }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:hurin_qusqu_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:reduced_from_military_obligations }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:fra_papacy_pragmatic_sanctions }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:french_cardinals }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:dharmic_dhimmi_communities }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:austrian_monastery_reform_melk }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:vienna_concordat_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:vij_patronization_of_local_gods }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:promotion_of_muslim_scholars }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:autonomous_kadiluks }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:ira_clerical_aristocracy }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_burghers
+			country_has_estate = estate_type:burghers_estate
+		}
+		"estate(estate_type:burghers_estate)" = {
+			random_possible_privilege = {
+				limit = { this = estate_privilege:formal_guilds }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:trade_monopolies }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:control_over_monetary_policy }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:building_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:burghers_royal_burgh_commissioners }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:burghers_land_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:commercial_advisory_council }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:milanese_cloth_guilds_privileges }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:florence_guilds }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:novgorod_ivans_hundred }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:kbo_lake_chad_trade_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:kbo_serfdom_economy }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:amenokal_salt_traders }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:burghers_protected_faith }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:land_of_commerce }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:treasury_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:urban_development_grants }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:sponsor_maritime_contracts }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:control_over_the_coinage }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:allow_trade_center_sponsorship }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:shipwright_contracts }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:market_fairs }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:fund_karimi }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:toll_and_tariff_exemptions }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:dedicated_merchant_courts }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:noble_patronage }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:polish_merchant_seal }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:privateer_contracts }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:ceremonial_tax_exemptions }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:kulm_law }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:villes_franches }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:fra_leadership_of_marcel }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:fra_marcel_great_ordinance }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:fra_marcel_compromise_ordinance }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:petty_bureaucracy }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:cardinal_lead_guilds }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:libro_d_argento }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:bra_kreditwerk }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:bra_kreditwerk_reformed }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:vij_tamil_trading_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:jain_banking_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:jain_scholars }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:consolidated_corruption_of_the_burghers }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:magdeburg_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:novi_fori }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:shooting_societies }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:building_roads_rights }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:kannada_literature_aid }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:vij_allowance_of_religious_practices }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:mam_muhtasibs }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:trunk_road_to_erzurum_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:cas_mita_system }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:royal_factories_privilege }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:ira_iranian_art_patronage }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+			random_possible_privilege = {
+				limit = { this = estate_privilege:guild_investments }
+				root = {
+					add_to_variable_list = {
+						name = pie_et_grant_privileges
+						target = prev
+					}
+				}
+			}
+		}
+	}
+}
+
+pie_et_rebuild_revoke_privilege_list = {
+	clear_variable_list = pie_et_revoke_privileges
+
+	if = {
+		limit = {
+			has_variable = pie_et_estate_nobles
+			country_has_estate = estate_type:nobles_estate
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:nobles_land_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:auxilium_et_consilium
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:noble_serfdom_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:noble_fortification_licenses
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:noble_marriage_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:banal_lordship
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:primacy_of_nobility
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:noble_leaders_only
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:elaborate_court_ceremonies
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:nobles_protected_faith
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:nobility_council
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:manorial_courts
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:increased_civic_engagement
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:inherited_offices
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:recognized_communes
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:appoint_ecclesiastical_offices
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:control_of_the_borderlands
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:feudal_mercenary_contracts
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:liberum_veto
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:visconti_city_states
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:general_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:union_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:signoria_council
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:tysiatskii_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:the_ryad_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:kbo_kaigama
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:kbo_yerima
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:kbo_cima
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:office_of_the_farima_soura_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:office_of_the_sankar_zouma_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:golden_liberty
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:nieszawa_privileges
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:pacta_conventa
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:noble_armies
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:chancellor_nobles
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:great_offices_of_the_crown_of_france
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:residence_in_versailles
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:permanent_residence_in_versailles
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:right_to_inherit
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:inaugural_diplomas
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:district_paving_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:joint_assembly_decrees
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:kormlenije
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:ordinance_of_laborers
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:autonomous_local_commanders
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:bashtinas_and_pronijas_grants
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:zupa_districts
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:vlastele_krayishnik
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:golden_bull_of_1222
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:monetary_fiefs
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:scholar_officials
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:ghazi_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:share_of_the_spoils
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:tribal_host
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:tribal_autonomy
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:powerful_italian_families
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:plc_empower_orthodox_nobility
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:scottish_clans
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:autonomous_scottish_clans
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:sco_statutes_of_iona
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:coign_and_livery_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:libro_d_oro
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:avogadoria_de_comun
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:zontas
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:rajput_society
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:zamindar_tax_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:consolidated_corruption_of_the_nobles
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:privilege_of_koszyce
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:nihil_novi
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:noble_sponsored_navy
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:charter_of_the_nobility
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:reduced_responsibilities_for_the_nobles
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:reduced_taxation_for_the_nobles
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:heritable_iqta
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:manifesto_of_freedom
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:bavarian_share_of_land
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:cas_fuero_viejo
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:justicia_de_aragon
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:formalized_oath
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:ayans_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:cas_regimiento
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:lit_integrated_ruthenian_laws
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:lit_equal_status_of_orthodox_nobility
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:mam_refined_furusiyya
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:tur_banned_weaponry_for_peasants
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:noble_patronage_of_the_arts
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:nobles_estate
+				this = estate_privilege:statutes_of_piotrkow
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_clergy
+			country_has_estate = estate_type:clergy_estate
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clergy_literacy_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clergy_strengthen_faith
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clergy_enforced_unity
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clergy_military_orders
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clergy_lecture_oaths
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clergy_land_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clerical_advisory_council
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clergy_powerful_dioceses
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clergy_protected_faith
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clergy_religious_state
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:expansionist_zealotry
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:religious_diplomats
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:promote_cultural_unity
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:embellish_great_works_of_faith
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clergy_papal_emissary
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:freedom_of_interpretation
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:waqf_payments
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:maintain_clerical_proceedings
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:state_official_oaths
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:mandatory_clerical_donations
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:sponsor_printing_of_religious_texts
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:liturgical_mural_art
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:apostolic_tax_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:tax_exemption
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:clergy_in_administration
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:consolidated_corruption_of_the_clergy
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:commons_petition
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:austere_monastic_life
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:unity_brethren_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:warrior_tribunal
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:hurin_qusqu_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:reduced_from_military_obligations
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:fra_papacy_pragmatic_sanctions
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:french_cardinals
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:dharmic_dhimmi_communities
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:austrian_monastery_reform_melk
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:vienna_concordat_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:vij_patronization_of_local_gods
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:promotion_of_muslim_scholars
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:autonomous_kadiluks
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:clergy_estate
+				this = estate_privilege:ira_clerical_aristocracy
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_variable = pie_et_estate_burghers
+			country_has_estate = estate_type:burghers_estate
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:formal_guilds
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:trade_monopolies
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:control_over_monetary_policy
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:building_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:burghers_royal_burgh_commissioners
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:burghers_land_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:commercial_advisory_council
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:milanese_cloth_guilds_privileges
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:florence_guilds
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:novgorod_ivans_hundred
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:kbo_lake_chad_trade_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:kbo_serfdom_economy
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:amenokal_salt_traders
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:burghers_protected_faith
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:land_of_commerce
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:treasury_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:urban_development_grants
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:sponsor_maritime_contracts
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:control_over_the_coinage
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:allow_trade_center_sponsorship
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:shipwright_contracts
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:market_fairs
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:fund_karimi
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:toll_and_tariff_exemptions
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:dedicated_merchant_courts
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:noble_patronage
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:polish_merchant_seal
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:privateer_contracts
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:ceremonial_tax_exemptions
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:kulm_law
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:villes_franches
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:fra_leadership_of_marcel
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:fra_marcel_great_ordinance
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:fra_marcel_compromise_ordinance
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:petty_bureaucracy
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:cardinal_lead_guilds
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:libro_d_argento
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:bra_kreditwerk
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:bra_kreditwerk_reformed
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:vij_tamil_trading_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:jain_banking_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:jain_scholars
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:consolidated_corruption_of_the_burghers
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:magdeburg_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:novi_fori
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:shooting_societies
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:building_roads_rights
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:kannada_literature_aid
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:vij_allowance_of_religious_practices
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:mam_muhtasibs
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:trunk_road_to_erzurum_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:cas_mita_system
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:royal_factories_privilege
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:ira_iranian_art_patronage
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+		random_estate_privilege = {
+			limit = {
+				estate_type = estate_type:burghers_estate
+				this = estate_privilege:guild_investments
+			}
+			root = {
+				add_to_variable_list = {
+					name = pie_et_revoke_privileges
+					target = prev
+				}
+			}
+		}
+	}
+}
+
 pie_et_clear_selected_land_locations = {
 	every_owned_location = {
 		limit = {
@@ -60,8 +3995,42 @@ pie_et_clear_selected_land_locations = {
 	}
 }
 
+pie_et_clear_selected_project_locations = {
+	every_owned_location = {
+		limit = { has_variable = pie_et_selected_project }
+		remove_variable = pie_et_selected_project
+	}
+}
+
+pie_et_clear_project_receiver = {
+	remove_variable = pie_et_receiver_nobles
+	remove_variable = pie_et_receiver_clergy
+	remove_variable = pie_et_receiver_burghers
+}
+
+pie_et_clear_selected_privilege_terms = {
+	remove_variable = pie_et_term_grant_privilege
+	remove_variable = pie_et_term_reduce_privilege
+	remove_variable = pie_et_selected_grant_privilege
+	remove_variable = pie_et_selected_revoke_privilege
+	pie_et_clear_generated_selected_privilege_terms = yes
+	remove_variable = pie_et_priv_grant_nobles_land_rights
+	remove_variable = pie_et_priv_revoke_nobles_land_rights
+	remove_variable = pie_et_priv_grant_nobility_council
+	remove_variable = pie_et_priv_revoke_nobility_council
+	remove_variable = pie_et_priv_grant_clerical_advisory_council
+	remove_variable = pie_et_priv_revoke_clerical_advisory_council
+	remove_variable = pie_et_priv_grant_clergy_religious_state
+	remove_variable = pie_et_priv_revoke_clergy_religious_state
+	remove_variable = pie_et_priv_grant_formal_guilds
+	remove_variable = pie_et_priv_revoke_formal_guilds
+	remove_variable = pie_et_priv_grant_treasury_rights
+	remove_variable = pie_et_priv_revoke_treasury_rights
+}
+
 pie_et_clear_category = {
 	remove_variable = pie_et_category_land
+	remove_variable = pie_et_category_project
 	remove_variable = pie_et_category_privilege
 	remove_variable = pie_et_category_other
 }
@@ -75,10 +4044,23 @@ pie_et_clear_current_terms = {
 	remove_variable = pie_et_term_reduce_privilege
 	remove_variable = pie_et_term_repay_principal
 	pie_et_clear_selected_land_locations = yes
+	pie_et_clear_selected_project_locations = yes
+	pie_et_clear_project_receiver = yes
+	pie_et_clear_selected_privilege_terms = yes
 	pie_et_rebuild_land_lists = yes
+	pie_et_rebuild_project_lists = yes
+	remove_variable = pie_et_privilege_grant_open
+	remove_variable = pie_et_privilege_revoke_open
+	pie_et_clear_privilege_lists = yes
 }
 
 pie_et_init_trade = {
+	remove_variable = pie_et_term_repay_principal
+	if = {
+		limit = { has_variable = pie_et_category_other }
+		remove_variable = pie_et_category_other
+		set_variable = { name = pie_et_category_land value = yes }
+	}
 	if = {
 		limit = {
 			NOT = { has_variable = pie_et_estate_nobles }
@@ -101,6 +4083,7 @@ pie_et_init_trade = {
 	if = {
 		limit = {
 			NOT = { has_variable = pie_et_category_land }
+			NOT = { has_variable = pie_et_category_project }
 			NOT = { has_variable = pie_et_category_privilege }
 			NOT = { has_variable = pie_et_category_other }
 		}
@@ -114,47 +4097,84 @@ pie_et_init_trade = {
 		limit = { NOT = { has_variable = pie_et_interest } }
 		set_variable = { name = pie_et_interest value = 0 }
 	}
+	if = {
+		limit = { var:pie_et_gold <= 0 }
+		set_variable = { name = pie_et_interest value = 0 }
+	}
+	if = {
+		limit = { var:pie_et_interest > 0.25 }
+		set_variable = { name = pie_et_interest value = 0.25 }
+	}
+	pie_et_migrate_legacy_debts = yes
 	pie_et_rebuild_land_lists = yes
+	pie_et_rebuild_project_lists = yes
 }
 
 pie_et_select_nobles = {
 	pie_et_clear_selected_land_locations = yes
+	pie_et_clear_selected_project_locations = yes
+	pie_et_clear_project_receiver = yes
+	pie_et_clear_selected_privilege_terms = yes
 	pie_et_clear_selected_estate = yes
 	set_variable = { name = pie_et_estate_nobles value = yes }
 	remove_variable = pie_et_estate_picker_open
 	pie_et_rebuild_land_lists = yes
+	pie_et_rebuild_project_lists = yes
+	remove_variable = pie_et_privilege_grant_open
+	remove_variable = pie_et_privilege_revoke_open
+	pie_et_clear_privilege_lists = yes
 }
 
 pie_et_select_clergy = {
 	pie_et_clear_selected_land_locations = yes
+	pie_et_clear_selected_project_locations = yes
+	pie_et_clear_project_receiver = yes
+	pie_et_clear_selected_privilege_terms = yes
 	pie_et_clear_selected_estate = yes
 	set_variable = { name = pie_et_estate_clergy value = yes }
 	remove_variable = pie_et_estate_picker_open
 	pie_et_rebuild_land_lists = yes
+	pie_et_rebuild_project_lists = yes
+	remove_variable = pie_et_privilege_grant_open
+	remove_variable = pie_et_privilege_revoke_open
+	pie_et_clear_privilege_lists = yes
 }
 
 pie_et_select_burghers = {
 	pie_et_clear_selected_land_locations = yes
+	pie_et_clear_selected_project_locations = yes
+	pie_et_clear_project_receiver = yes
+	pie_et_clear_selected_privilege_terms = yes
 	pie_et_clear_selected_estate = yes
 	set_variable = { name = pie_et_estate_burghers value = yes }
 	remove_variable = pie_et_estate_picker_open
 	pie_et_rebuild_land_lists = yes
+	pie_et_rebuild_project_lists = yes
+	remove_variable = pie_et_privilege_grant_open
+	remove_variable = pie_et_privilege_revoke_open
+	pie_et_clear_privilege_lists = yes
 }
 
 pie_et_select_land = {
 	pie_et_clear_category = yes
 	set_variable = { name = pie_et_category_land value = yes }
 	pie_et_rebuild_land_lists = yes
+	pie_et_queue_trade_mapmode = yes
+}
+
+pie_et_select_project = {
+	pie_et_clear_category = yes
+	set_variable = { name = pie_et_category_project value = yes }
+	pie_et_rebuild_project_lists = yes
+	pie_et_queue_project_mapmode = yes
 }
 
 pie_et_select_privilege = {
 	pie_et_clear_category = yes
 	set_variable = { name = pie_et_category_privilege value = yes }
-}
-
-pie_et_select_other = {
-	pie_et_clear_category = yes
-	set_variable = { name = pie_et_category_other value = yes }
+	remove_variable = pie_et_privilege_grant_open
+	remove_variable = pie_et_privilege_revoke_open
+	pie_et_clear_privilege_lists = yes
 }
 
 pie_et_gold_inc = {
@@ -202,7 +4222,7 @@ pie_et_interest_inc = {
 	if = {
 		limit = {
 			var:pie_et_gold > 0
-			var:pie_et_interest < 0.50
+			var:pie_et_interest < 0.25
 		}
 		change_variable = { name = pie_et_interest add = 0.01 }
 	}
@@ -253,6 +4273,7 @@ pie_et_toggle_sell_land_group = {
 	}
 	else = {
 		set_variable = { name = pie_et_land_sell_open value = yes }
+		pie_et_queue_trade_mapmode = yes
 	}
 }
 
@@ -265,6 +4286,7 @@ pie_et_toggle_buy_land_group = {
 	}
 	else = {
 		set_variable = { name = pie_et_land_buy_open value = yes }
+		pie_et_queue_trade_mapmode = yes
 	}
 }
 
@@ -290,13 +4312,158 @@ pie_et_toggle_buy_land_location = {
 	}
 }
 
+pie_et_toggle_project_location = {
+	if = {
+		limit = { has_variable = pie_et_selected_project }
+		remove_variable = pie_et_selected_project
+	}
+	else = {
+		owner = { pie_et_clear_selected_project_locations = yes }
+		set_variable = { name = pie_et_selected_project value = yes }
+	}
+}
+
+pie_et_select_project_receiver_nobles = {
+	pie_et_clear_project_receiver = yes
+	if = {
+		limit = {
+			country_has_estate = estate_type:nobles_estate
+			NOT = { has_variable = pie_et_estate_nobles }
+		}
+		set_variable = { name = pie_et_receiver_nobles value = yes }
+	}
+}
+
+pie_et_select_project_receiver_clergy = {
+	pie_et_clear_project_receiver = yes
+	if = {
+		limit = {
+			country_has_estate = estate_type:clergy_estate
+			NOT = { has_variable = pie_et_estate_clergy }
+		}
+		set_variable = { name = pie_et_receiver_clergy value = yes }
+	}
+}
+
+pie_et_select_project_receiver_burghers = {
+	pie_et_clear_project_receiver = yes
+	if = {
+		limit = {
+			country_has_estate = estate_type:burghers_estate
+			NOT = { has_variable = pie_et_estate_burghers }
+		}
+		set_variable = { name = pie_et_receiver_burghers value = yes }
+	}
+}
+
+pie_et_toggle_privilege_grant_group = {
+	pie_et_init_trade = yes
+	if = {
+		limit = { has_variable = pie_et_privilege_grant_open }
+		remove_variable = pie_et_privilege_grant_open
+		clear_variable_list = pie_et_grant_privileges
+		pie_et_clear_generated_grant_privilege_visibility = yes
+	}
+	else = {
+		set_variable = { name = pie_et_privilege_grant_open value = yes }
+		pie_et_rebuild_grant_privilege_list = yes
+		pie_et_rebuild_generated_grant_privilege_visibility = yes
+	}
+}
+
+pie_et_toggle_privilege_revoke_group = {
+	pie_et_init_trade = yes
+	if = {
+		limit = { has_variable = pie_et_privilege_revoke_open }
+		remove_variable = pie_et_privilege_revoke_open
+		clear_variable_list = pie_et_revoke_privileges
+		pie_et_clear_generated_revoke_privilege_visibility = yes
+	}
+	else = {
+		set_variable = { name = pie_et_privilege_revoke_open value = yes }
+		pie_et_rebuild_revoke_privilege_list = yes
+		pie_et_rebuild_generated_revoke_privilege_visibility = yes
+	}
+}
+
+pie_et_select_dynamic_grant_privilege = {
+	pie_et_init_trade = yes
+	pie_et_clear_selected_privilege_terms = yes
+	set_variable = { name = pie_et_selected_grant_privilege value = scope:privilege }
+	set_variable = { name = pie_et_term_grant_privilege value = yes }
+}
+
+pie_et_select_dynamic_revoke_privilege = {
+	pie_et_init_trade = yes
+	pie_et_clear_selected_privilege_terms = yes
+	set_variable = { name = pie_et_selected_revoke_privilege value = scope:privilege }
+	set_variable = { name = pie_et_term_reduce_privilege value = yes }
+}
+
+pie_et_toggle_privilege_grant = {
+	pie_et_init_trade = yes
+	if = {
+		limit = { has_variable = $grant_var$ }
+		remove_variable = $grant_var$
+		remove_variable = pie_et_term_grant_privilege
+		remove_variable = pie_et_term_reduce_privilege
+	}
+	else = {
+		remove_variable = pie_et_term_grant_privilege
+		remove_variable = pie_et_term_reduce_privilege
+		pie_et_clear_selected_privilege_terms = yes
+		set_variable = { name = $grant_var$ value = yes }
+	}
+}
+
+pie_et_toggle_privilege_revoke = {
+	pie_et_init_trade = yes
+	if = {
+		limit = { has_variable = $revoke_var$ }
+		remove_variable = $revoke_var$
+		remove_variable = pie_et_term_grant_privilege
+		remove_variable = pie_et_term_reduce_privilege
+	}
+	else = {
+		remove_variable = pie_et_term_grant_privilege
+		remove_variable = pie_et_term_reduce_privilege
+		pie_et_clear_selected_privilege_terms = yes
+		set_variable = { name = $revoke_var$ value = yes }
+	}
+}
+
 pie_et_toggle_grant_privilege = {
 	pie_et_init_trade = yes
 	if = {
 		limit = { has_variable = pie_et_term_grant_privilege }
 		remove_variable = pie_et_term_grant_privilege
+		pie_et_clear_selected_privilege_terms = yes
 	}
-	else = {
+	else_if = {
+		limit = { pie_et_can_grant_nobles_land_rights = yes }
+		remove_variable = pie_et_term_reduce_privilege
+		pie_et_toggle_privilege_grant = {
+			grant_var = pie_et_priv_grant_nobles_land_rights
+			revoke_var = pie_et_priv_revoke_nobles_land_rights
+		}
+		set_variable = { name = pie_et_term_grant_privilege value = yes }
+	}
+	else_if = {
+		limit = { pie_et_can_grant_clerical_advisory_council = yes }
+		remove_variable = pie_et_term_reduce_privilege
+		pie_et_toggle_privilege_grant = {
+			grant_var = pie_et_priv_grant_clerical_advisory_council
+			revoke_var = pie_et_priv_revoke_clerical_advisory_council
+		}
+		set_variable = { name = pie_et_term_grant_privilege value = yes }
+	}
+	else_if = {
+		limit = { pie_et_can_grant_formal_guilds = yes }
+		remove_variable = pie_et_term_reduce_privilege
+		pie_et_toggle_privilege_grant = {
+			grant_var = pie_et_priv_grant_formal_guilds
+			revoke_var = pie_et_priv_revoke_formal_guilds
+		}
 		set_variable = { name = pie_et_term_grant_privilege value = yes }
 	}
 }
@@ -306,27 +4473,49 @@ pie_et_toggle_reduce_privilege = {
 	if = {
 		limit = { has_variable = pie_et_term_reduce_privilege }
 		remove_variable = pie_et_term_reduce_privilege
+		pie_et_clear_selected_privilege_terms = yes
 	}
-	else = {
+	else_if = {
+		limit = { pie_et_can_revoke_nobles_land_rights = yes }
+		remove_variable = pie_et_term_grant_privilege
+		pie_et_toggle_privilege_revoke = {
+			grant_var = pie_et_priv_grant_nobles_land_rights
+			revoke_var = pie_et_priv_revoke_nobles_land_rights
+		}
 		set_variable = { name = pie_et_term_reduce_privilege value = yes }
 	}
-}
-
-pie_et_toggle_repay_principal = {
-	pie_et_init_trade = yes
-	if = {
-		limit = { has_variable = pie_et_term_repay_principal }
-		remove_variable = pie_et_term_repay_principal
+	else_if = {
+		limit = { pie_et_can_revoke_clerical_advisory_council = yes }
+		remove_variable = pie_et_term_grant_privilege
+		pie_et_toggle_privilege_revoke = {
+			grant_var = pie_et_priv_grant_clerical_advisory_council
+			revoke_var = pie_et_priv_revoke_clerical_advisory_council
+		}
+		set_variable = { name = pie_et_term_reduce_privilege value = yes }
 	}
-	else = {
-		set_variable = { name = pie_et_term_repay_principal value = yes }
+	else_if = {
+		limit = { pie_et_can_revoke_formal_guilds = yes }
+		remove_variable = pie_et_term_grant_privilege
+		pie_et_toggle_privilege_revoke = {
+			grant_var = pie_et_priv_grant_formal_guilds
+			revoke_var = pie_et_priv_revoke_formal_guilds
+		}
+		set_variable = { name = pie_et_term_reduce_privilege value = yes }
 	}
 }
 
 pie_et_autogenerate_terms = {
 	pie_et_init_trade = yes
 	pie_et_clear_current_terms = yes
-	set_variable = { name = pie_et_gold value = 100 }
+	set_variable = {
+		name = pie_et_gold
+		value = {
+			value = monthly_income_trade_and_tax
+			multiply = 2
+			min = 10
+			max = 5000
+		}
+	}
 	set_variable = { name = pie_et_interest value = 0.05 }
 	set_variable = { name = pie_et_land_sell_open value = yes }
 	ordered_owned_location = {
@@ -336,6 +4525,259 @@ pie_et_autogenerate_terms = {
 		set_variable = { name = pie_et_selected_sell_land value = yes }
 	}
 	pie_et_rebuild_land_lists = yes
+	pie_et_rebuild_project_lists = yes
+}
+
+pie_et_toggle_debt_details = {
+	if = {
+		limit = { has_variable = pie_et_debt_details_open }
+		remove_variable = pie_et_debt_details_open
+	}
+	else = {
+		set_variable = { name = pie_et_debt_details_open value = yes }
+	}
+}
+
+pie_et_set_debt_slot = {
+	set_variable = { name = $debt_var$ value = var:pie_et_gold }
+	set_variable = { name = $interest_var$ value = var:pie_et_interest }
+	set_variable = { name = $months_var$ value = 60 }
+}
+
+pie_et_clear_debt_slot = {
+	remove_variable = $debt_var$
+	remove_variable = $interest_var$
+	remove_variable = $months_var$
+}
+
+pie_et_clear_due_debt_context = {
+	remove_variable = pie_et_debt_due_pending
+	remove_variable = pie_et_due_principal
+	remove_variable = pie_et_due_interest
+	remove_variable = pie_et_due_nobles
+	remove_variable = pie_et_due_clergy
+	remove_variable = pie_et_due_burghers
+	remove_variable = pie_et_due_slot_1
+	remove_variable = pie_et_due_slot_2
+	remove_variable = pie_et_due_slot_3
+	remove_variable = pie_et_due_slot_4
+	remove_variable = pie_et_due_slot_5
+	remove_variable = pie_et_due_slot_6
+	remove_variable = pie_et_due_slot_7
+	remove_variable = pie_et_due_slot_8
+}
+
+pie_et_queue_due_debt_slot = {
+	if = {
+		limit = {
+			NOT = { has_variable = pie_et_debt_due_pending }
+			has_variable = $debt_var$
+			var:$debt_var$ > 0
+		}
+		pie_et_clear_due_debt_context = yes
+		set_variable = { name = pie_et_debt_due_pending value = yes }
+		set_variable = { name = pie_et_due_principal value = var:$debt_var$ }
+		if = {
+			limit = { has_variable = $interest_var$ }
+			set_variable = { name = pie_et_due_interest value = var:$interest_var$ }
+		}
+		else = {
+			set_variable = { name = pie_et_due_interest value = 0 }
+		}
+		set_variable = { name = $estate_marker$ value = yes }
+		set_variable = { name = $slot_marker$ value = yes }
+		trigger_event_non_silently = pie_estate_trade.20
+	}
+}
+
+pie_et_repay_due_debt_slot = {
+	if = {
+		limit = {
+			has_variable = $debt_var$
+			var:$debt_var$ > 0
+			gold >= var:$debt_var$
+		}
+		add_gold = { value = var:$debt_var$ multiply = -1 }
+		add_gold_to_estate = {
+			estate_type = estate_type:$estate$
+			value = { value = var:$debt_var$ }
+		}
+		pie_et_clear_debt_slot = {
+			debt_var = $debt_var$
+			interest_var = $interest_var$
+			months_var = $months_var$
+		}
+	}
+}
+
+pie_et_extend_due_debt_slot = {
+	if = {
+		limit = {
+			has_variable = $debt_var$
+			var:$debt_var$ > 0
+		}
+		set_variable = { name = $months_var$ value = 60 }
+	}
+}
+
+pie_et_apply_due_debt_repayment = {
+	if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_1 } pie_et_repay_due_debt_slot = { estate = nobles_estate debt_var = pie_et_debt_nobles_1 interest_var = pie_et_interest_nobles_1 months_var = pie_et_months_nobles_1 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_2 } pie_et_repay_due_debt_slot = { estate = nobles_estate debt_var = pie_et_debt_nobles_2 interest_var = pie_et_interest_nobles_2 months_var = pie_et_months_nobles_2 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_3 } pie_et_repay_due_debt_slot = { estate = nobles_estate debt_var = pie_et_debt_nobles_3 interest_var = pie_et_interest_nobles_3 months_var = pie_et_months_nobles_3 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_4 } pie_et_repay_due_debt_slot = { estate = nobles_estate debt_var = pie_et_debt_nobles_4 interest_var = pie_et_interest_nobles_4 months_var = pie_et_months_nobles_4 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_5 } pie_et_repay_due_debt_slot = { estate = nobles_estate debt_var = pie_et_debt_nobles_5 interest_var = pie_et_interest_nobles_5 months_var = pie_et_months_nobles_5 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_6 } pie_et_repay_due_debt_slot = { estate = nobles_estate debt_var = pie_et_debt_nobles_6 interest_var = pie_et_interest_nobles_6 months_var = pie_et_months_nobles_6 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_7 } pie_et_repay_due_debt_slot = { estate = nobles_estate debt_var = pie_et_debt_nobles_7 interest_var = pie_et_interest_nobles_7 months_var = pie_et_months_nobles_7 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_8 } pie_et_repay_due_debt_slot = { estate = nobles_estate debt_var = pie_et_debt_nobles_8 interest_var = pie_et_interest_nobles_8 months_var = pie_et_months_nobles_8 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_1 } pie_et_repay_due_debt_slot = { estate = clergy_estate debt_var = pie_et_debt_clergy_1 interest_var = pie_et_interest_clergy_1 months_var = pie_et_months_clergy_1 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_2 } pie_et_repay_due_debt_slot = { estate = clergy_estate debt_var = pie_et_debt_clergy_2 interest_var = pie_et_interest_clergy_2 months_var = pie_et_months_clergy_2 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_3 } pie_et_repay_due_debt_slot = { estate = clergy_estate debt_var = pie_et_debt_clergy_3 interest_var = pie_et_interest_clergy_3 months_var = pie_et_months_clergy_3 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_4 } pie_et_repay_due_debt_slot = { estate = clergy_estate debt_var = pie_et_debt_clergy_4 interest_var = pie_et_interest_clergy_4 months_var = pie_et_months_clergy_4 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_5 } pie_et_repay_due_debt_slot = { estate = clergy_estate debt_var = pie_et_debt_clergy_5 interest_var = pie_et_interest_clergy_5 months_var = pie_et_months_clergy_5 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_6 } pie_et_repay_due_debt_slot = { estate = clergy_estate debt_var = pie_et_debt_clergy_6 interest_var = pie_et_interest_clergy_6 months_var = pie_et_months_clergy_6 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_7 } pie_et_repay_due_debt_slot = { estate = clergy_estate debt_var = pie_et_debt_clergy_7 interest_var = pie_et_interest_clergy_7 months_var = pie_et_months_clergy_7 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_8 } pie_et_repay_due_debt_slot = { estate = clergy_estate debt_var = pie_et_debt_clergy_8 interest_var = pie_et_interest_clergy_8 months_var = pie_et_months_clergy_8 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_1 } pie_et_repay_due_debt_slot = { estate = burghers_estate debt_var = pie_et_debt_burghers_1 interest_var = pie_et_interest_burghers_1 months_var = pie_et_months_burghers_1 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_2 } pie_et_repay_due_debt_slot = { estate = burghers_estate debt_var = pie_et_debt_burghers_2 interest_var = pie_et_interest_burghers_2 months_var = pie_et_months_burghers_2 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_3 } pie_et_repay_due_debt_slot = { estate = burghers_estate debt_var = pie_et_debt_burghers_3 interest_var = pie_et_interest_burghers_3 months_var = pie_et_months_burghers_3 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_4 } pie_et_repay_due_debt_slot = { estate = burghers_estate debt_var = pie_et_debt_burghers_4 interest_var = pie_et_interest_burghers_4 months_var = pie_et_months_burghers_4 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_5 } pie_et_repay_due_debt_slot = { estate = burghers_estate debt_var = pie_et_debt_burghers_5 interest_var = pie_et_interest_burghers_5 months_var = pie_et_months_burghers_5 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_6 } pie_et_repay_due_debt_slot = { estate = burghers_estate debt_var = pie_et_debt_burghers_6 interest_var = pie_et_interest_burghers_6 months_var = pie_et_months_burghers_6 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_7 } pie_et_repay_due_debt_slot = { estate = burghers_estate debt_var = pie_et_debt_burghers_7 interest_var = pie_et_interest_burghers_7 months_var = pie_et_months_burghers_7 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_8 } pie_et_repay_due_debt_slot = { estate = burghers_estate debt_var = pie_et_debt_burghers_8 interest_var = pie_et_interest_burghers_8 months_var = pie_et_months_burghers_8 } }
+	pie_et_clear_due_debt_context = yes
+}
+
+pie_et_apply_due_debt_extension = {
+	if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_1 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_nobles_1 months_var = pie_et_months_nobles_1 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_2 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_nobles_2 months_var = pie_et_months_nobles_2 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_3 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_nobles_3 months_var = pie_et_months_nobles_3 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_4 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_nobles_4 months_var = pie_et_months_nobles_4 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_5 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_nobles_5 months_var = pie_et_months_nobles_5 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_6 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_nobles_6 months_var = pie_et_months_nobles_6 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_7 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_nobles_7 months_var = pie_et_months_nobles_7 } }
+	else_if = { limit = { has_variable = pie_et_due_nobles has_variable = pie_et_due_slot_8 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_nobles_8 months_var = pie_et_months_nobles_8 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_1 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_clergy_1 months_var = pie_et_months_clergy_1 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_2 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_clergy_2 months_var = pie_et_months_clergy_2 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_3 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_clergy_3 months_var = pie_et_months_clergy_3 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_4 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_clergy_4 months_var = pie_et_months_clergy_4 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_5 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_clergy_5 months_var = pie_et_months_clergy_5 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_6 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_clergy_6 months_var = pie_et_months_clergy_6 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_7 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_clergy_7 months_var = pie_et_months_clergy_7 } }
+	else_if = { limit = { has_variable = pie_et_due_clergy has_variable = pie_et_due_slot_8 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_clergy_8 months_var = pie_et_months_clergy_8 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_1 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_burghers_1 months_var = pie_et_months_burghers_1 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_2 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_burghers_2 months_var = pie_et_months_burghers_2 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_3 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_burghers_3 months_var = pie_et_months_burghers_3 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_4 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_burghers_4 months_var = pie_et_months_burghers_4 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_5 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_burghers_5 months_var = pie_et_months_burghers_5 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_6 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_burghers_6 months_var = pie_et_months_burghers_6 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_7 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_burghers_7 months_var = pie_et_months_burghers_7 } }
+	else_if = { limit = { has_variable = pie_et_due_burghers has_variable = pie_et_due_slot_8 } pie_et_extend_due_debt_slot = { debt_var = pie_et_debt_burghers_8 months_var = pie_et_months_burghers_8 } }
+	pie_et_clear_due_debt_context = yes
+}
+
+pie_et_create_nobles_debt = {
+	if = { limit = { OR = { NOT = { has_variable = pie_et_debt_nobles_1 } var:pie_et_debt_nobles_1 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_nobles_1 interest_var = pie_et_interest_nobles_1 months_var = pie_et_months_nobles_1 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_nobles_2 } var:pie_et_debt_nobles_2 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_nobles_2 interest_var = pie_et_interest_nobles_2 months_var = pie_et_months_nobles_2 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_nobles_3 } var:pie_et_debt_nobles_3 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_nobles_3 interest_var = pie_et_interest_nobles_3 months_var = pie_et_months_nobles_3 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_nobles_4 } var:pie_et_debt_nobles_4 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_nobles_4 interest_var = pie_et_interest_nobles_4 months_var = pie_et_months_nobles_4 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_nobles_5 } var:pie_et_debt_nobles_5 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_nobles_5 interest_var = pie_et_interest_nobles_5 months_var = pie_et_months_nobles_5 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_nobles_6 } var:pie_et_debt_nobles_6 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_nobles_6 interest_var = pie_et_interest_nobles_6 months_var = pie_et_months_nobles_6 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_nobles_7 } var:pie_et_debt_nobles_7 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_nobles_7 interest_var = pie_et_interest_nobles_7 months_var = pie_et_months_nobles_7 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_nobles_8 } var:pie_et_debt_nobles_8 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_nobles_8 interest_var = pie_et_interest_nobles_8 months_var = pie_et_months_nobles_8 } }
+}
+
+pie_et_create_clergy_debt = {
+	if = { limit = { OR = { NOT = { has_variable = pie_et_debt_clergy_1 } var:pie_et_debt_clergy_1 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_clergy_1 interest_var = pie_et_interest_clergy_1 months_var = pie_et_months_clergy_1 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_clergy_2 } var:pie_et_debt_clergy_2 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_clergy_2 interest_var = pie_et_interest_clergy_2 months_var = pie_et_months_clergy_2 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_clergy_3 } var:pie_et_debt_clergy_3 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_clergy_3 interest_var = pie_et_interest_clergy_3 months_var = pie_et_months_clergy_3 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_clergy_4 } var:pie_et_debt_clergy_4 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_clergy_4 interest_var = pie_et_interest_clergy_4 months_var = pie_et_months_clergy_4 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_clergy_5 } var:pie_et_debt_clergy_5 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_clergy_5 interest_var = pie_et_interest_clergy_5 months_var = pie_et_months_clergy_5 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_clergy_6 } var:pie_et_debt_clergy_6 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_clergy_6 interest_var = pie_et_interest_clergy_6 months_var = pie_et_months_clergy_6 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_clergy_7 } var:pie_et_debt_clergy_7 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_clergy_7 interest_var = pie_et_interest_clergy_7 months_var = pie_et_months_clergy_7 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_clergy_8 } var:pie_et_debt_clergy_8 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_clergy_8 interest_var = pie_et_interest_clergy_8 months_var = pie_et_months_clergy_8 } }
+}
+
+pie_et_create_burghers_debt = {
+	if = { limit = { OR = { NOT = { has_variable = pie_et_debt_burghers_1 } var:pie_et_debt_burghers_1 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_burghers_1 interest_var = pie_et_interest_burghers_1 months_var = pie_et_months_burghers_1 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_burghers_2 } var:pie_et_debt_burghers_2 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_burghers_2 interest_var = pie_et_interest_burghers_2 months_var = pie_et_months_burghers_2 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_burghers_3 } var:pie_et_debt_burghers_3 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_burghers_3 interest_var = pie_et_interest_burghers_3 months_var = pie_et_months_burghers_3 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_burghers_4 } var:pie_et_debt_burghers_4 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_burghers_4 interest_var = pie_et_interest_burghers_4 months_var = pie_et_months_burghers_4 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_burghers_5 } var:pie_et_debt_burghers_5 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_burghers_5 interest_var = pie_et_interest_burghers_5 months_var = pie_et_months_burghers_5 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_burghers_6 } var:pie_et_debt_burghers_6 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_burghers_6 interest_var = pie_et_interest_burghers_6 months_var = pie_et_months_burghers_6 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_burghers_7 } var:pie_et_debt_burghers_7 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_burghers_7 interest_var = pie_et_interest_burghers_7 months_var = pie_et_months_burghers_7 } }
+	else_if = { limit = { OR = { NOT = { has_variable = pie_et_debt_burghers_8 } var:pie_et_debt_burghers_8 <= 0 } } pie_et_set_debt_slot = { debt_var = pie_et_debt_burghers_8 interest_var = pie_et_interest_burghers_8 months_var = pie_et_months_burghers_8 } }
+}
+
+pie_et_migrate_legacy_debt_slot = {
+	set_variable = { name = $slot_debt_var$ value = var:$legacy_debt_var$ }
+	if = {
+		limit = { has_variable = $legacy_interest_var$ }
+		set_variable = { name = $slot_interest_var$ value = var:$legacy_interest_var$ }
+	}
+	else = {
+		set_variable = { name = $slot_interest_var$ value = 0 }
+	}
+	set_variable = { name = $slot_months_var$ value = 60 }
+	remove_variable = $legacy_debt_var$
+	remove_variable = $legacy_interest_var$
+}
+
+pie_et_migrate_legacy_debts = {
+	if = {
+		limit = {
+			has_variable = pie_et_debt_nobles
+			var:pie_et_debt_nobles > 0
+			NOT = { has_variable = pie_et_debt_nobles_1 }
+		}
+		pie_et_migrate_legacy_debt_slot = {
+			legacy_debt_var = pie_et_debt_nobles
+			legacy_interest_var = pie_et_interest_nobles
+			slot_debt_var = pie_et_debt_nobles_1
+			slot_interest_var = pie_et_interest_nobles_1
+			slot_months_var = pie_et_months_nobles_1
+		}
+	}
+	else = {
+		remove_variable = pie_et_debt_nobles
+		remove_variable = pie_et_interest_nobles
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_debt_clergy
+			var:pie_et_debt_clergy > 0
+			NOT = { has_variable = pie_et_debt_clergy_1 }
+		}
+		pie_et_migrate_legacy_debt_slot = {
+			legacy_debt_var = pie_et_debt_clergy
+			legacy_interest_var = pie_et_interest_clergy
+			slot_debt_var = pie_et_debt_clergy_1
+			slot_interest_var = pie_et_interest_clergy_1
+			slot_months_var = pie_et_months_clergy_1
+		}
+	}
+	else = {
+		remove_variable = pie_et_debt_clergy
+		remove_variable = pie_et_interest_clergy
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_debt_burghers
+			var:pie_et_debt_burghers > 0
+			NOT = { has_variable = pie_et_debt_burghers_1 }
+		}
+		pie_et_migrate_legacy_debt_slot = {
+			legacy_debt_var = pie_et_debt_burghers
+			legacy_interest_var = pie_et_interest_burghers
+			slot_debt_var = pie_et_debt_burghers_1
+			slot_interest_var = pie_et_interest_burghers_1
+			slot_months_var = pie_et_months_burghers_1
+		}
+	}
+	else = {
+		remove_variable = pie_et_debt_burghers
+		remove_variable = pie_et_interest_burghers
+	}
 }
 
 pie_et_apply_selected_estate_gold = {
@@ -348,8 +4790,7 @@ pie_et_apply_selected_estate_gold = {
 				estate_type = estate_type:nobles_estate
 				value = { value = var:pie_et_gold multiply = -1 }
 			}
-			change_variable = { name = pie_et_debt_nobles add = { value = var:pie_et_gold } }
-			set_variable = { name = pie_et_interest_nobles value = var:pie_et_interest }
+			pie_et_create_nobles_debt = yes
 		}
 		else_if = {
 			limit = { has_variable = pie_et_estate_clergy }
@@ -357,8 +4798,7 @@ pie_et_apply_selected_estate_gold = {
 				estate_type = estate_type:clergy_estate
 				value = { value = var:pie_et_gold multiply = -1 }
 			}
-			change_variable = { name = pie_et_debt_clergy add = { value = var:pie_et_gold } }
-			set_variable = { name = pie_et_interest_clergy value = var:pie_et_interest }
+			pie_et_create_clergy_debt = yes
 		}
 		else_if = {
 			limit = { has_variable = pie_et_estate_burghers }
@@ -366,8 +4806,7 @@ pie_et_apply_selected_estate_gold = {
 				estate_type = estate_type:burghers_estate
 				value = { value = var:pie_et_gold multiply = -1 }
 			}
-			change_variable = { name = pie_et_debt_burghers add = { value = var:pie_et_gold } }
-			set_variable = { name = pie_et_interest_burghers value = var:pie_et_interest }
+			pie_et_create_burghers_debt = yes
 		}
 	}
 	else_if = {
@@ -397,61 +4836,173 @@ pie_et_apply_selected_estate_gold = {
 	}
 }
 
-pie_et_apply_principal_repayment = {
+pie_et_apply_selected_privileges = {
+	pie_et_apply_generated_selected_privileges = yes
+
 	if = {
-		limit = {
-			has_variable = pie_et_term_repay_principal
-			has_variable = pie_et_gold
-			var:pie_et_gold < 0
-		}
+		limit = { has_variable = pie_et_selected_grant_privilege }
 		if = {
 			limit = {
 				has_variable = pie_et_estate_nobles
-				has_variable = pie_et_debt_nobles
-				var:pie_et_debt_nobles > 0
+				country_has_estate = estate_type:nobles_estate
 			}
-			change_variable = { name = pie_et_debt_nobles add = { value = var:pie_et_gold } }
-			if = {
-				limit = { var:pie_et_debt_nobles < 0 }
-				set_variable = { name = pie_et_debt_nobles value = 0 }
-			}
-			if = {
-				limit = { var:pie_et_debt_nobles <= 0 }
-				set_variable = { name = pie_et_interest_nobles value = 0 }
+			"estate(estate_type:nobles_estate)" = {
+				random_possible_privilege = {
+					limit = { this = root.var:pie_et_selected_grant_privilege }
+					root = { grant_estate_privilege = prev }
+				}
 			}
 		}
 		else_if = {
 			limit = {
 				has_variable = pie_et_estate_clergy
-				has_variable = pie_et_debt_clergy
-				var:pie_et_debt_clergy > 0
+				country_has_estate = estate_type:clergy_estate
 			}
-			change_variable = { name = pie_et_debt_clergy add = { value = var:pie_et_gold } }
-			if = {
-				limit = { var:pie_et_debt_clergy < 0 }
-				set_variable = { name = pie_et_debt_clergy value = 0 }
-			}
-			if = {
-				limit = { var:pie_et_debt_clergy <= 0 }
-				set_variable = { name = pie_et_interest_clergy value = 0 }
+			"estate(estate_type:clergy_estate)" = {
+				random_possible_privilege = {
+					limit = { this = root.var:pie_et_selected_grant_privilege }
+					root = { grant_estate_privilege = prev }
+				}
 			}
 		}
 		else_if = {
 			limit = {
 				has_variable = pie_et_estate_burghers
-				has_variable = pie_et_debt_burghers
-				var:pie_et_debt_burghers > 0
+				country_has_estate = estate_type:burghers_estate
 			}
-			change_variable = { name = pie_et_debt_burghers add = { value = var:pie_et_gold } }
-			if = {
-				limit = { var:pie_et_debt_burghers < 0 }
-				set_variable = { name = pie_et_debt_burghers value = 0 }
-			}
-			if = {
-				limit = { var:pie_et_debt_burghers <= 0 }
-				set_variable = { name = pie_et_interest_burghers value = 0 }
+			"estate(estate_type:burghers_estate)" = {
+				random_possible_privilege = {
+					limit = { this = root.var:pie_et_selected_grant_privilege }
+					root = { grant_estate_privilege = prev }
+				}
 			}
 		}
+	}
+	if = {
+		limit = { has_variable = pie_et_selected_revoke_privilege }
+		if = {
+			limit = {
+				has_variable = pie_et_estate_nobles
+				country_has_estate = estate_type:nobles_estate
+			}
+			random_estate_privilege = {
+				limit = {
+					estate_type = estate_type:nobles_estate
+					this = root.var:pie_et_selected_revoke_privilege
+				}
+				root = { revoke_estate_privilege = prev }
+			}
+		}
+		else_if = {
+			limit = {
+				has_variable = pie_et_estate_clergy
+				country_has_estate = estate_type:clergy_estate
+			}
+			random_estate_privilege = {
+				limit = {
+					estate_type = estate_type:clergy_estate
+					this = root.var:pie_et_selected_revoke_privilege
+				}
+				root = { revoke_estate_privilege = prev }
+			}
+		}
+		else_if = {
+			limit = {
+				has_variable = pie_et_estate_burghers
+				country_has_estate = estate_type:burghers_estate
+			}
+			random_estate_privilege = {
+				limit = {
+					estate_type = estate_type:burghers_estate
+					this = root.var:pie_et_selected_revoke_privilege
+				}
+				root = { revoke_estate_privilege = prev }
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_grant_nobles_land_rights
+			pie_et_can_grant_nobles_land_rights = yes
+		}
+		grant_estate_privilege = estate_privilege:nobles_land_rights
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_revoke_nobles_land_rights
+			pie_et_can_revoke_nobles_land_rights = yes
+		}
+		revoke_estate_privilege = estate_privilege:nobles_land_rights
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_grant_nobility_council
+			pie_et_can_grant_nobility_council = yes
+		}
+		grant_estate_privilege = estate_privilege:nobility_council
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_revoke_nobility_council
+			pie_et_can_revoke_nobility_council = yes
+		}
+		revoke_estate_privilege = estate_privilege:nobility_council
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_grant_clerical_advisory_council
+			pie_et_can_grant_clerical_advisory_council = yes
+		}
+		grant_estate_privilege = estate_privilege:clerical_advisory_council
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_revoke_clerical_advisory_council
+			pie_et_can_revoke_clerical_advisory_council = yes
+		}
+		revoke_estate_privilege = estate_privilege:clerical_advisory_council
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_grant_clergy_religious_state
+			pie_et_can_grant_clergy_religious_state = yes
+		}
+		grant_estate_privilege = estate_privilege:clergy_religious_state
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_revoke_clergy_religious_state
+			pie_et_can_revoke_clergy_religious_state = yes
+		}
+		revoke_estate_privilege = estate_privilege:clergy_religious_state
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_grant_formal_guilds
+			pie_et_can_grant_formal_guilds = yes
+		}
+		grant_estate_privilege = estate_privilege:formal_guilds
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_revoke_formal_guilds
+			pie_et_can_revoke_formal_guilds = yes
+		}
+		revoke_estate_privilege = estate_privilege:formal_guilds
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_grant_treasury_rights
+			pie_et_can_grant_treasury_rights = yes
+		}
+		grant_estate_privilege = estate_privilege:treasury_rights
+	}
+	if = {
+		limit = {
+			has_variable = pie_et_priv_revoke_treasury_rights
+			pie_et_can_revoke_treasury_rights = yes
+		}
+		revoke_estate_privilege = estate_privilege:treasury_rights
 	}
 }
 
@@ -460,22 +5011,16 @@ pie_et_apply_selected_estate_satisfaction = {
 		limit = { has_variable = pie_et_estate_nobles }
 		if = { limit = { has_variable = pie_et_term_estate_funds_project } add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.05 } }
 		if = { limit = { has_variable = pie_et_term_crown_grants_rights } add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.05 } }
-		if = { limit = { has_variable = pie_et_term_grant_privilege } add_estate_satisfaction = { type = estate_type:nobles_estate value = 0.10 } }
-		if = { limit = { has_variable = pie_et_term_reduce_privilege } add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.10 } }
 	}
 	else_if = {
 		limit = { has_variable = pie_et_estate_clergy }
 		if = { limit = { has_variable = pie_et_term_estate_funds_project } add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.05 } }
 		if = { limit = { has_variable = pie_et_term_crown_grants_rights } add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.05 } }
-		if = { limit = { has_variable = pie_et_term_grant_privilege } add_estate_satisfaction = { type = estate_type:clergy_estate value = 0.10 } }
-		if = { limit = { has_variable = pie_et_term_reduce_privilege } add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.10 } }
 	}
 	else_if = {
 		limit = { has_variable = pie_et_estate_burghers }
 		if = { limit = { has_variable = pie_et_term_estate_funds_project } add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.05 } }
 		if = { limit = { has_variable = pie_et_term_crown_grants_rights } add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.05 } }
-		if = { limit = { has_variable = pie_et_term_grant_privilege } add_estate_satisfaction = { type = estate_type:burghers_estate value = 0.10 } }
-		if = { limit = { has_variable = pie_et_term_reduce_privilege } add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.10 } }
 	}
 }
 
@@ -539,6 +5084,31 @@ pie_et_apply_selected_land_trades = {
 	pie_et_rebuild_land_lists = yes
 }
 
+pie_et_apply_selected_project_transfer = {
+	every_owned_location = {
+		limit = {
+			has_variable = pie_et_selected_project
+			pie_et_selected_estate_project_candidate = yes
+		}
+		if = {
+			limit = { owner = { has_variable = pie_et_receiver_nobles } }
+			pie_transfer_urbanization_project_to_nobles = yes
+		}
+		else_if = {
+			limit = { owner = { has_variable = pie_et_receiver_clergy } }
+			pie_transfer_urbanization_project_to_clergy = yes
+		}
+		else_if = {
+			limit = { owner = { has_variable = pie_et_receiver_burghers } }
+			pie_transfer_urbanization_project_to_burghers = yes
+		}
+		remove_variable = pie_et_selected_project
+	}
+
+	pie_et_clear_project_receiver = yes
+	pie_et_rebuild_project_lists = yes
+}
+
 pie_et_apply_land_grant_terms = {
 	if = {
 		limit = { has_variable = pie_et_term_crown_grants_rights }
@@ -552,77 +5122,93 @@ pie_et_accept_trade = {
 	if = {
 		limit = { pie_et_trade_can_accept = yes }
 		pie_et_apply_selected_estate_gold = yes
-		pie_et_apply_principal_repayment = yes
 		pie_et_apply_selected_estate_satisfaction = yes
 		pie_et_apply_land_grant_terms = yes
+		pie_et_apply_selected_project_transfer = yes
+		pie_et_apply_selected_privileges = yes
 		pie_et_clear_current_terms = yes
-		clear_variable_list = pie_et_mapmode_trigger
+		pie_et_queue_default_mapmode = yes
 		remove_variable = pie_et_window_open
 	}
 }
 
+pie_et_pay_debt_slot_monthly_interest = {
+	if = {
+		limit = {
+			has_variable = $debt_var$
+			var:$debt_var$ > 0
+			NOT = { has_variable = $months_var$ }
+		}
+		set_variable = { name = $months_var$ value = 60 }
+	}
+	if = {
+		limit = {
+			has_variable = $debt_var$
+			var:$debt_var$ > 0
+			has_variable = $months_var$
+			var:$months_var$ > 0
+		}
+		if = {
+			limit = {
+				has_variable = $interest_var$
+				var:$interest_var$ > 0
+			}
+			if = {
+				limit = {
+					gold >= { value = var:$debt_var$ multiply = var:$interest_var$ divide = 12 }
+				}
+				add_gold = { value = var:$debt_var$ multiply = var:$interest_var$ divide = -12 }
+				add_gold_to_estate = {
+					estate_type = estate_type:$estate$
+					value = { value = var:$debt_var$ multiply = var:$interest_var$ divide = 12 }
+				}
+			}
+			else = {
+				add_estate_satisfaction = { type = estate_type:$estate$ value = -0.01 }
+			}
+		}
+		change_variable = { name = $months_var$ add = -1 }
+	}
+	if = {
+		limit = {
+			has_variable = $debt_var$
+			var:$debt_var$ > 0
+			has_variable = $months_var$
+			var:$months_var$ <= 0
+			NOT = { has_variable = pie_et_debt_due_pending }
+		}
+		pie_et_queue_due_debt_slot = {
+			debt_var = $debt_var$
+			interest_var = $interest_var$
+			estate_marker = $estate_marker$
+			slot_marker = $slot_marker$
+		}
+	}
+}
+
 pie_et_pay_estate_monthly_interest = {
-	if = {
-		limit = {
-			has_variable = pie_et_debt_nobles
-			has_variable = pie_et_interest_nobles
-			var:pie_et_debt_nobles > 0
-			var:pie_et_interest_nobles > 0
-		}
-		if = {
-			limit = {
-				gold >= { value = var:pie_et_debt_nobles multiply = var:pie_et_interest_nobles divide = 12 }
-			}
-			add_gold = { value = var:pie_et_debt_nobles multiply = var:pie_et_interest_nobles divide = -12 }
-			add_gold_to_estate = {
-				estate_type = estate_type:nobles_estate
-				value = { value = var:pie_et_debt_nobles multiply = var:pie_et_interest_nobles divide = 12 }
-			}
-		}
-		else = {
-			add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.01 }
-		}
-	}
-	if = {
-		limit = {
-			has_variable = pie_et_debt_clergy
-			has_variable = pie_et_interest_clergy
-			var:pie_et_debt_clergy > 0
-			var:pie_et_interest_clergy > 0
-		}
-		if = {
-			limit = {
-				gold >= { value = var:pie_et_debt_clergy multiply = var:pie_et_interest_clergy divide = 12 }
-			}
-			add_gold = { value = var:pie_et_debt_clergy multiply = var:pie_et_interest_clergy divide = -12 }
-			add_gold_to_estate = {
-				estate_type = estate_type:clergy_estate
-				value = { value = var:pie_et_debt_clergy multiply = var:pie_et_interest_clergy divide = 12 }
-			}
-		}
-		else = {
-			add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.01 }
-		}
-	}
-	if = {
-		limit = {
-			has_variable = pie_et_debt_burghers
-			has_variable = pie_et_interest_burghers
-			var:pie_et_debt_burghers > 0
-			var:pie_et_interest_burghers > 0
-		}
-		if = {
-			limit = {
-				gold >= { value = var:pie_et_debt_burghers multiply = var:pie_et_interest_burghers divide = 12 }
-			}
-			add_gold = { value = var:pie_et_debt_burghers multiply = var:pie_et_interest_burghers divide = -12 }
-			add_gold_to_estate = {
-				estate_type = estate_type:burghers_estate
-				value = { value = var:pie_et_debt_burghers multiply = var:pie_et_interest_burghers divide = 12 }
-			}
-		}
-		else = {
-			add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.01 }
-		}
-	}
+	pie_et_pay_debt_slot_monthly_interest = { estate = nobles_estate debt_var = pie_et_debt_nobles_1 interest_var = pie_et_interest_nobles_1 months_var = pie_et_months_nobles_1 estate_marker = pie_et_due_nobles slot_marker = pie_et_due_slot_1 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = nobles_estate debt_var = pie_et_debt_nobles_2 interest_var = pie_et_interest_nobles_2 months_var = pie_et_months_nobles_2 estate_marker = pie_et_due_nobles slot_marker = pie_et_due_slot_2 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = nobles_estate debt_var = pie_et_debt_nobles_3 interest_var = pie_et_interest_nobles_3 months_var = pie_et_months_nobles_3 estate_marker = pie_et_due_nobles slot_marker = pie_et_due_slot_3 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = nobles_estate debt_var = pie_et_debt_nobles_4 interest_var = pie_et_interest_nobles_4 months_var = pie_et_months_nobles_4 estate_marker = pie_et_due_nobles slot_marker = pie_et_due_slot_4 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = nobles_estate debt_var = pie_et_debt_nobles_5 interest_var = pie_et_interest_nobles_5 months_var = pie_et_months_nobles_5 estate_marker = pie_et_due_nobles slot_marker = pie_et_due_slot_5 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = nobles_estate debt_var = pie_et_debt_nobles_6 interest_var = pie_et_interest_nobles_6 months_var = pie_et_months_nobles_6 estate_marker = pie_et_due_nobles slot_marker = pie_et_due_slot_6 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = nobles_estate debt_var = pie_et_debt_nobles_7 interest_var = pie_et_interest_nobles_7 months_var = pie_et_months_nobles_7 estate_marker = pie_et_due_nobles slot_marker = pie_et_due_slot_7 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = nobles_estate debt_var = pie_et_debt_nobles_8 interest_var = pie_et_interest_nobles_8 months_var = pie_et_months_nobles_8 estate_marker = pie_et_due_nobles slot_marker = pie_et_due_slot_8 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = clergy_estate debt_var = pie_et_debt_clergy_1 interest_var = pie_et_interest_clergy_1 months_var = pie_et_months_clergy_1 estate_marker = pie_et_due_clergy slot_marker = pie_et_due_slot_1 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = clergy_estate debt_var = pie_et_debt_clergy_2 interest_var = pie_et_interest_clergy_2 months_var = pie_et_months_clergy_2 estate_marker = pie_et_due_clergy slot_marker = pie_et_due_slot_2 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = clergy_estate debt_var = pie_et_debt_clergy_3 interest_var = pie_et_interest_clergy_3 months_var = pie_et_months_clergy_3 estate_marker = pie_et_due_clergy slot_marker = pie_et_due_slot_3 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = clergy_estate debt_var = pie_et_debt_clergy_4 interest_var = pie_et_interest_clergy_4 months_var = pie_et_months_clergy_4 estate_marker = pie_et_due_clergy slot_marker = pie_et_due_slot_4 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = clergy_estate debt_var = pie_et_debt_clergy_5 interest_var = pie_et_interest_clergy_5 months_var = pie_et_months_clergy_5 estate_marker = pie_et_due_clergy slot_marker = pie_et_due_slot_5 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = clergy_estate debt_var = pie_et_debt_clergy_6 interest_var = pie_et_interest_clergy_6 months_var = pie_et_months_clergy_6 estate_marker = pie_et_due_clergy slot_marker = pie_et_due_slot_6 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = clergy_estate debt_var = pie_et_debt_clergy_7 interest_var = pie_et_interest_clergy_7 months_var = pie_et_months_clergy_7 estate_marker = pie_et_due_clergy slot_marker = pie_et_due_slot_7 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = clergy_estate debt_var = pie_et_debt_clergy_8 interest_var = pie_et_interest_clergy_8 months_var = pie_et_months_clergy_8 estate_marker = pie_et_due_clergy slot_marker = pie_et_due_slot_8 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = burghers_estate debt_var = pie_et_debt_burghers_1 interest_var = pie_et_interest_burghers_1 months_var = pie_et_months_burghers_1 estate_marker = pie_et_due_burghers slot_marker = pie_et_due_slot_1 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = burghers_estate debt_var = pie_et_debt_burghers_2 interest_var = pie_et_interest_burghers_2 months_var = pie_et_months_burghers_2 estate_marker = pie_et_due_burghers slot_marker = pie_et_due_slot_2 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = burghers_estate debt_var = pie_et_debt_burghers_3 interest_var = pie_et_interest_burghers_3 months_var = pie_et_months_burghers_3 estate_marker = pie_et_due_burghers slot_marker = pie_et_due_slot_3 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = burghers_estate debt_var = pie_et_debt_burghers_4 interest_var = pie_et_interest_burghers_4 months_var = pie_et_months_burghers_4 estate_marker = pie_et_due_burghers slot_marker = pie_et_due_slot_4 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = burghers_estate debt_var = pie_et_debt_burghers_5 interest_var = pie_et_interest_burghers_5 months_var = pie_et_months_burghers_5 estate_marker = pie_et_due_burghers slot_marker = pie_et_due_slot_5 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = burghers_estate debt_var = pie_et_debt_burghers_6 interest_var = pie_et_interest_burghers_6 months_var = pie_et_months_burghers_6 estate_marker = pie_et_due_burghers slot_marker = pie_et_due_slot_6 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = burghers_estate debt_var = pie_et_debt_burghers_7 interest_var = pie_et_interest_burghers_7 months_var = pie_et_months_burghers_7 estate_marker = pie_et_due_burghers slot_marker = pie_et_due_slot_7 }
+	pie_et_pay_debt_slot_monthly_interest = { estate = burghers_estate debt_var = pie_et_debt_burghers_8 interest_var = pie_et_interest_burghers_8 months_var = pie_et_months_burghers_8 estate_marker = pie_et_due_burghers slot_marker = pie_et_due_slot_8 }
 }

@@ -29,6 +29,27 @@ pie_et_sgui_start_proxy_trade = {
 	}
 }
 
+pie_et_sgui_open_land_mapmode = {
+	scope = country
+	effect = {
+		pie_et_queue_trade_mapmode = yes
+	}
+}
+
+pie_et_sgui_open_project_mapmode = {
+	scope = country
+	effect = {
+		pie_et_queue_project_mapmode = yes
+	}
+}
+
+pie_et_sgui_close_situation_mapmodes = {
+	scope = country
+	effect = {
+		pie_et_queue_default_mapmode = yes
+	}
+}
+
 pie_et_sgui_close_window = {
 	scope = country
 	effect = {
@@ -37,9 +58,19 @@ pie_et_sgui_close_window = {
 		remove_variable = pie_et_estate_picker_open
 		remove_variable = pie_et_land_sell_open
 		remove_variable = pie_et_land_buy_open
+		remove_variable = pie_et_privilege_grant_open
+		remove_variable = pie_et_privilege_revoke_open
+		remove_variable = pie_et_debt_details_open
+		pie_et_clear_selected_project_locations = yes
+		pie_et_clear_project_receiver = yes
+		pie_et_clear_selected_privilege_terms = yes
+		pie_et_clear_generated_privilege_visibility = yes
 		clear_variable_list = pie_et_sell_land_locations
 		clear_variable_list = pie_et_buy_land_locations
-		clear_variable_list = pie_et_mapmode_trigger
+		clear_variable_list = pie_et_project_locations
+		clear_variable_list = pie_et_grant_privileges
+		clear_variable_list = pie_et_revoke_privileges
+		pie_et_queue_default_mapmode = yes
 	}
 }
 
@@ -71,14 +102,24 @@ pie_et_sgui_select_land = {
 	effect = { pie_et_select_land = yes }
 }
 
+pie_et_sgui_select_project = {
+	scope = country
+	effect = { pie_et_select_project = yes }
+}
+
 pie_et_sgui_select_privilege = {
 	scope = country
 	effect = { pie_et_select_privilege = yes }
 }
 
-pie_et_sgui_select_other = {
+pie_et_sgui_toggle_privilege_grant_group = {
 	scope = country
-	effect = { pie_et_select_other = yes }
+	effect = { pie_et_toggle_privilege_grant_group = yes }
+}
+
+pie_et_sgui_toggle_privilege_revoke_group = {
+	scope = country
+	effect = { pie_et_toggle_privilege_revoke_group = yes }
 }
 
 pie_et_sgui_gold_inc = {
@@ -151,6 +192,183 @@ pie_et_sgui_toggle_buy_land_location = {
 	effect = { pie_et_toggle_buy_land_location = yes }
 }
 
+pie_et_sgui_toggle_project_location = {
+	scope = location
+	is_valid = { pie_et_selected_estate_project_candidate = yes }
+	effect = { pie_et_toggle_project_location = yes }
+}
+
+pie_et_sgui_select_project_receiver_nobles = {
+	scope = country
+	is_valid = {
+		country_has_estate = estate_type:nobles_estate
+		NOT = { has_variable = pie_et_estate_nobles }
+	}
+	effect = { pie_et_select_project_receiver_nobles = yes }
+}
+
+pie_et_sgui_select_project_receiver_clergy = {
+	scope = country
+	is_valid = {
+		country_has_estate = estate_type:clergy_estate
+		NOT = { has_variable = pie_et_estate_clergy }
+	}
+	effect = { pie_et_select_project_receiver_clergy = yes }
+}
+
+pie_et_sgui_select_project_receiver_burghers = {
+	scope = country
+	is_valid = {
+		country_has_estate = estate_type:burghers_estate
+		NOT = { has_variable = pie_et_estate_burghers }
+	}
+	effect = { pie_et_select_project_receiver_burghers = yes }
+}
+
+pie_et_sgui_select_dynamic_grant_privilege = {
+	scope = country
+	saved_scopes = { privilege }
+	effect = { pie_et_select_dynamic_grant_privilege = yes }
+}
+
+pie_et_sgui_select_dynamic_revoke_privilege = {
+	scope = country
+	saved_scopes = { privilege }
+	effect = { pie_et_select_dynamic_revoke_privilege = yes }
+}
+
+pie_et_sgui_toggle_grant_nobles_land_rights = {
+	scope = country
+	is_valid = { pie_et_can_grant_nobles_land_rights = yes }
+	effect = {
+		pie_et_toggle_privilege_grant = {
+			grant_var = pie_et_priv_grant_nobles_land_rights
+			revoke_var = pie_et_priv_revoke_nobles_land_rights
+		}
+	}
+}
+
+pie_et_sgui_toggle_revoke_nobles_land_rights = {
+	scope = country
+	is_valid = { pie_et_can_revoke_nobles_land_rights = yes }
+	effect = {
+		pie_et_toggle_privilege_revoke = {
+			grant_var = pie_et_priv_grant_nobles_land_rights
+			revoke_var = pie_et_priv_revoke_nobles_land_rights
+		}
+	}
+}
+
+pie_et_sgui_toggle_grant_nobility_council = {
+	scope = country
+	is_valid = { pie_et_can_grant_nobility_council = yes }
+	effect = {
+		pie_et_toggle_privilege_grant = {
+			grant_var = pie_et_priv_grant_nobility_council
+			revoke_var = pie_et_priv_revoke_nobility_council
+		}
+	}
+}
+
+pie_et_sgui_toggle_revoke_nobility_council = {
+	scope = country
+	is_valid = { pie_et_can_revoke_nobility_council = yes }
+	effect = {
+		pie_et_toggle_privilege_revoke = {
+			grant_var = pie_et_priv_grant_nobility_council
+			revoke_var = pie_et_priv_revoke_nobility_council
+		}
+	}
+}
+
+pie_et_sgui_toggle_grant_clerical_advisory_council = {
+	scope = country
+	is_valid = { pie_et_can_grant_clerical_advisory_council = yes }
+	effect = {
+		pie_et_toggle_privilege_grant = {
+			grant_var = pie_et_priv_grant_clerical_advisory_council
+			revoke_var = pie_et_priv_revoke_clerical_advisory_council
+		}
+	}
+}
+
+pie_et_sgui_toggle_revoke_clerical_advisory_council = {
+	scope = country
+	is_valid = { pie_et_can_revoke_clerical_advisory_council = yes }
+	effect = {
+		pie_et_toggle_privilege_revoke = {
+			grant_var = pie_et_priv_grant_clerical_advisory_council
+			revoke_var = pie_et_priv_revoke_clerical_advisory_council
+		}
+	}
+}
+
+pie_et_sgui_toggle_grant_clergy_religious_state = {
+	scope = country
+	is_valid = { pie_et_can_grant_clergy_religious_state = yes }
+	effect = {
+		pie_et_toggle_privilege_grant = {
+			grant_var = pie_et_priv_grant_clergy_religious_state
+			revoke_var = pie_et_priv_revoke_clergy_religious_state
+		}
+	}
+}
+
+pie_et_sgui_toggle_revoke_clergy_religious_state = {
+	scope = country
+	is_valid = { pie_et_can_revoke_clergy_religious_state = yes }
+	effect = {
+		pie_et_toggle_privilege_revoke = {
+			grant_var = pie_et_priv_grant_clergy_religious_state
+			revoke_var = pie_et_priv_revoke_clergy_religious_state
+		}
+	}
+}
+
+pie_et_sgui_toggle_grant_formal_guilds = {
+	scope = country
+	is_valid = { pie_et_can_grant_formal_guilds = yes }
+	effect = {
+		pie_et_toggle_privilege_grant = {
+			grant_var = pie_et_priv_grant_formal_guilds
+			revoke_var = pie_et_priv_revoke_formal_guilds
+		}
+	}
+}
+
+pie_et_sgui_toggle_revoke_formal_guilds = {
+	scope = country
+	is_valid = { pie_et_can_revoke_formal_guilds = yes }
+	effect = {
+		pie_et_toggle_privilege_revoke = {
+			grant_var = pie_et_priv_grant_formal_guilds
+			revoke_var = pie_et_priv_revoke_formal_guilds
+		}
+	}
+}
+
+pie_et_sgui_toggle_grant_treasury_rights = {
+	scope = country
+	is_valid = { pie_et_can_grant_treasury_rights = yes }
+	effect = {
+		pie_et_toggle_privilege_grant = {
+			grant_var = pie_et_priv_grant_treasury_rights
+			revoke_var = pie_et_priv_revoke_treasury_rights
+		}
+	}
+}
+
+pie_et_sgui_toggle_revoke_treasury_rights = {
+	scope = country
+	is_valid = { pie_et_can_revoke_treasury_rights = yes }
+	effect = {
+		pie_et_toggle_privilege_revoke = {
+			grant_var = pie_et_priv_grant_treasury_rights
+			revoke_var = pie_et_priv_revoke_treasury_rights
+		}
+	}
+}
+
 pie_et_sgui_toggle_grant_privilege = {
 	scope = country
 	effect = { pie_et_toggle_grant_privilege = yes }
@@ -161,9 +379,9 @@ pie_et_sgui_toggle_reduce_privilege = {
 	effect = { pie_et_toggle_reduce_privilege = yes }
 }
 
-pie_et_sgui_toggle_repay_principal = {
+pie_et_sgui_toggle_debt_details = {
 	scope = country
-	effect = { pie_et_toggle_repay_principal = yes }
+	effect = { pie_et_toggle_debt_details = yes }
 }
 
 pie_et_sgui_autogenerate_terms = {
