@@ -1,4 +1,4 @@
-monthly_country_pulse = {
+﻿monthly_country_pulse = {
 	on_actions = {
 		pie_siege_starvation_monthly
 	}
@@ -8,12 +8,11 @@ pie_siege_starvation_monthly = {
 	effect = {
 		every_owned_location = {
 			if = {
-				limit = {
-					OR = {
-						has_variable = pie_starving_siege_months
-						has_siege = yes
-					}
-				}
+				limit = { has_siege = yes }
+				pie_apply_starving_siege_pressure = yes
+			}
+			else_if = {
+				limit = { has_variable = pie_starving_siege_months }
 				pie_apply_starving_siege_pressure = yes
 			}
 		}

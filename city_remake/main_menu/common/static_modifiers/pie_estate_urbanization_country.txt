@@ -2,3 +2,8 @@ pie_burghers_exchange_city_bonus = {
 	tax_income_efficiency = 0.01
 	bank_interest = -0.005
 }
+
+pie_royal_credit_pledge = {
+	global_crown_estate_power = -0.2
+	monthly_legitimacy = -0.1
+}

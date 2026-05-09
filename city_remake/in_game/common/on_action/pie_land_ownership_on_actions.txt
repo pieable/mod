@@ -1,4 +1,4 @@
-on_location_changed_owner = {
+﻿on_location_changed_owner = {
 	on_actions = {
 		pie_land_ownership_on_location_changed_owner
 	}

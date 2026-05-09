@@ -57,6 +57,7 @@ pie_et_sgui_close_window = {
 		remove_variable = pie_et_window_open
 		remove_variable = pie_et_estate_picker_open
 		remove_variable = pie_et_land_sell_open
+		remove_variable = pie_et_land_grant_unregistered_open
 		remove_variable = pie_et_land_buy_open
 		remove_variable = pie_et_privilege_grant_open
 		remove_variable = pie_et_privilege_revoke_open
@@ -66,6 +67,7 @@ pie_et_sgui_close_window = {
 		pie_et_clear_selected_privilege_terms = yes
 		pie_et_clear_generated_privilege_visibility = yes
 		clear_variable_list = pie_et_sell_land_locations
+		clear_variable_list = pie_et_grant_unregistered_land_locations
 		clear_variable_list = pie_et_buy_land_locations
 		clear_variable_list = pie_et_project_locations
 		clear_variable_list = pie_et_grant_privileges
@@ -110,6 +112,11 @@ pie_et_sgui_select_project = {
 pie_et_sgui_select_privilege = {
 	scope = country
 	effect = { pie_et_select_privilege = yes }
+}
+
+pie_et_sgui_select_other = {
+	scope = country
+	effect = { pie_et_select_other = yes }
 }
 
 pie_et_sgui_toggle_privilege_grant_group = {
@@ -160,6 +167,11 @@ pie_et_sgui_interest_dec = {
 	effect = { pie_et_interest_dec = yes }
 }
 
+pie_et_sgui_clear_selected_privilege_terms = {
+	scope = country
+	effect = { pie_et_clear_selected_privilege_terms = yes }
+}
+
 pie_et_sgui_toggle_estate_funds_project = {
 	scope = country
 	effect = { pie_et_toggle_estate_funds_project = yes }
@@ -170,9 +182,19 @@ pie_et_sgui_toggle_crown_grants_rights = {
 	effect = { pie_et_toggle_crown_grants_rights = yes }
 }
 
+pie_et_sgui_toggle_royal_credit_pledge = {
+	scope = country
+	effect = { pie_et_toggle_royal_credit_pledge = yes }
+}
+
 pie_et_sgui_toggle_sell_land_group = {
 	scope = country
 	effect = { pie_et_toggle_sell_land_group = yes }
+}
+
+pie_et_sgui_toggle_grant_unregistered_land_group = {
+	scope = country
+	effect = { pie_et_toggle_grant_unregistered_land_group = yes }
 }
 
 pie_et_sgui_toggle_buy_land_group = {
@@ -184,6 +206,12 @@ pie_et_sgui_toggle_sell_land_location = {
 	scope = location
 	is_valid = { pie_et_sell_land_candidate = yes }
 	effect = { pie_et_toggle_sell_land_location = yes }
+}
+
+pie_et_sgui_toggle_grant_unregistered_land_location = {
+	scope = location
+	is_valid = { pie_et_grant_unregistered_land_candidate = yes }
+	effect = { pie_et_toggle_grant_unregistered_land_location = yes }
 }
 
 pie_et_sgui_toggle_buy_land_location = {

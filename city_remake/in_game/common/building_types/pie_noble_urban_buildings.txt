@@ -48,6 +48,8 @@
 		local_army_levy_size_modifier = 0.2
 		monthly_prestige = 0.005
 		local_population_growth = 0.0005
+	}
+	raw_modifier = {
 		local_nobles_desired_pop = 0.005
 	}
 
@@ -162,6 +164,8 @@ pie_noble_court_city = {
 		local_cultural_influence = 1
 		local_cultural_tradition = 1
 		monthly_prestige = 0.02
+	}
+	raw_modifier = {
 		local_nobles_desired_pop_scaled = 0.01
 	}
 

@@ -15,6 +15,16 @@ pie_et_has_selected_estate = {
 	}
 }
 
+pie_et_debt_slot_is_open = {
+	OR = {
+		NOT = { has_variable = $debt_var$ }
+		AND = {
+			has_variable = $debt_var$
+			var:$debt_var$ <= 0
+		}
+	}
+}
+
 pie_et_has_any_trade_term = {
 	OR = {
 		AND = {
@@ -25,10 +35,12 @@ pie_et_has_any_trade_term = {
 			has_variable = pie_et_gold
 			var:pie_et_gold < 0
 		}
+		has_variable = pie_et_term_royal_credit_pledge
 		has_variable = pie_et_term_estate_funds_project
 		has_variable = pie_et_term_crown_grants_rights
 		pie_et_has_selected_privilege_term = yes
 		pie_et_has_selected_sell_land = yes
+		pie_et_has_selected_grant_unregistered_land = yes
 		pie_et_has_selected_buy_land = yes
 		AND = {
 			pie_et_has_selected_project = yes
@@ -41,8 +53,7 @@ pie_et_has_selected_privilege_term = {
 	OR = {
 		has_variable = pie_et_selected_grant_privilege
 		has_variable = pie_et_selected_revoke_privilege
-		has_variable = pie_et_generated_selected_grant_privilege
-		has_variable = pie_et_generated_selected_revoke_privilege
+		pie_et_generated_selected_privilege_is_valid = yes
 		has_variable = pie_et_priv_grant_nobles_land_rights
 		has_variable = pie_et_priv_revoke_nobles_land_rights
 		has_variable = pie_et_priv_grant_nobility_council
@@ -158,64 +169,40 @@ pie_et_selected_estate_has_open_debt_slot = {
 		AND = {
 			has_variable = pie_et_estate_nobles
 			OR = {
-				NOT = { has_variable = pie_et_debt_nobles_1 }
-				var:pie_et_debt_nobles_1 <= 0
-				NOT = { has_variable = pie_et_debt_nobles_2 }
-				var:pie_et_debt_nobles_2 <= 0
-				NOT = { has_variable = pie_et_debt_nobles_3 }
-				var:pie_et_debt_nobles_3 <= 0
-				NOT = { has_variable = pie_et_debt_nobles_4 }
-				var:pie_et_debt_nobles_4 <= 0
-				NOT = { has_variable = pie_et_debt_nobles_5 }
-				var:pie_et_debt_nobles_5 <= 0
-				NOT = { has_variable = pie_et_debt_nobles_6 }
-				var:pie_et_debt_nobles_6 <= 0
-				NOT = { has_variable = pie_et_debt_nobles_7 }
-				var:pie_et_debt_nobles_7 <= 0
-				NOT = { has_variable = pie_et_debt_nobles_8 }
-				var:pie_et_debt_nobles_8 <= 0
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_nobles_1 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_nobles_2 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_nobles_3 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_nobles_4 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_nobles_5 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_nobles_6 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_nobles_7 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_nobles_8 }
 			}
 		}
 		AND = {
 			has_variable = pie_et_estate_clergy
 			OR = {
-				NOT = { has_variable = pie_et_debt_clergy_1 }
-				var:pie_et_debt_clergy_1 <= 0
-				NOT = { has_variable = pie_et_debt_clergy_2 }
-				var:pie_et_debt_clergy_2 <= 0
-				NOT = { has_variable = pie_et_debt_clergy_3 }
-				var:pie_et_debt_clergy_3 <= 0
-				NOT = { has_variable = pie_et_debt_clergy_4 }
-				var:pie_et_debt_clergy_4 <= 0
-				NOT = { has_variable = pie_et_debt_clergy_5 }
-				var:pie_et_debt_clergy_5 <= 0
-				NOT = { has_variable = pie_et_debt_clergy_6 }
-				var:pie_et_debt_clergy_6 <= 0
-				NOT = { has_variable = pie_et_debt_clergy_7 }
-				var:pie_et_debt_clergy_7 <= 0
-				NOT = { has_variable = pie_et_debt_clergy_8 }
-				var:pie_et_debt_clergy_8 <= 0
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_clergy_1 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_clergy_2 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_clergy_3 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_clergy_4 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_clergy_5 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_clergy_6 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_clergy_7 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_clergy_8 }
 			}
 		}
 		AND = {
 			has_variable = pie_et_estate_burghers
 			OR = {
-				NOT = { has_variable = pie_et_debt_burghers_1 }
-				var:pie_et_debt_burghers_1 <= 0
-				NOT = { has_variable = pie_et_debt_burghers_2 }
-				var:pie_et_debt_burghers_2 <= 0
-				NOT = { has_variable = pie_et_debt_burghers_3 }
-				var:pie_et_debt_burghers_3 <= 0
-				NOT = { has_variable = pie_et_debt_burghers_4 }
-				var:pie_et_debt_burghers_4 <= 0
-				NOT = { has_variable = pie_et_debt_burghers_5 }
-				var:pie_et_debt_burghers_5 <= 0
-				NOT = { has_variable = pie_et_debt_burghers_6 }
-				var:pie_et_debt_burghers_6 <= 0
-				NOT = { has_variable = pie_et_debt_burghers_7 }
-				var:pie_et_debt_burghers_7 <= 0
-				NOT = { has_variable = pie_et_debt_burghers_8 }
-				var:pie_et_debt_burghers_8 <= 0
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_burghers_1 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_burghers_2 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_burghers_3 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_burghers_4 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_burghers_5 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_burghers_6 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_burghers_7 }
+				pie_et_debt_slot_is_open = { debt_var = pie_et_debt_burghers_8 }
 			}
 		}
 	}
@@ -250,7 +237,18 @@ pie_et_sell_land_candidate = {
 	has_siege = no
 	is_looted = no
 	has_variable = pie_land_owner_crown
-	owner = { pie_et_has_selected_estate = yes }
+	owner ?= { pie_et_has_selected_estate = yes }
+}
+
+pie_et_grant_unregistered_land_candidate = {
+	is_ownable = yes
+	has_owner = yes
+	is_land = yes
+	NOT = { is_capital = yes }
+	has_siege = no
+	is_looted = no
+	NOT = { pie_land_has_defined_owner = yes }
+	owner ?= { pie_et_has_selected_estate = yes }
 }
 
 pie_et_buy_land_candidate = {
@@ -260,18 +258,18 @@ pie_et_buy_land_candidate = {
 	NOT = { is_capital = yes }
 	has_siege = no
 	is_looted = no
-	owner = { pie_et_has_selected_estate = yes }
+	owner ?= { pie_et_has_selected_estate = yes }
 	OR = {
 		AND = {
-			owner = { has_variable = pie_et_estate_nobles }
+			owner ?= { has_variable = pie_et_estate_nobles }
 			has_variable = pie_land_owner_nobles
 		}
 		AND = {
-			owner = { has_variable = pie_et_estate_clergy }
+			owner ?= { has_variable = pie_et_estate_clergy }
 			has_variable = pie_land_owner_clergy
 		}
 		AND = {
-			owner = { has_variable = pie_et_estate_burghers }
+			owner ?= { has_variable = pie_et_estate_burghers }
 			has_variable = pie_land_owner_burghers
 		}
 	}
@@ -281,22 +279,22 @@ pie_et_selected_estate_project_candidate = {
 	is_ownable = yes
 	has_owner = yes
 	is_land = yes
-	owner = { pie_et_has_selected_estate = yes }
+	owner ?= { pie_et_has_selected_estate = yes }
 	OR = {
 		has_variable = pie_town_project_active
 		has_variable = pie_city_project_active
 	}
 	OR = {
 		AND = {
-			owner = { has_variable = pie_et_estate_nobles }
+			owner ?= { has_variable = pie_et_estate_nobles }
 			has_variable = pie_project_estate_nobles
 		}
 		AND = {
-			owner = { has_variable = pie_et_estate_clergy }
+			owner ?= { has_variable = pie_et_estate_clergy }
 			has_variable = pie_project_estate_clergy
 		}
 		AND = {
-			owner = { has_variable = pie_et_estate_burghers }
+			owner ?= { has_variable = pie_et_estate_burghers }
 			has_variable = pie_project_estate_burghers
 		}
 	}
@@ -306,6 +304,13 @@ pie_et_has_selected_sell_land = {
 	any_owned_location = {
 		has_variable = pie_et_selected_sell_land
 		pie_et_sell_land_candidate = yes
+	}
+}
+
+pie_et_has_selected_grant_unregistered_land = {
+	any_owned_location = {
+		has_variable = pie_et_selected_grant_unregistered_land
+		pie_et_grant_unregistered_land_candidate = yes
 	}
 }
 
@@ -354,49 +359,46 @@ pie_et_trade_can_accept = {
 	pie_et_has_selected_estate = yes
 	pie_et_has_any_trade_term = yes
 	pie_et_acceptance_value >= 0
-	if = {
-		limit = {
-			has_variable = pie_et_gold
-			var:pie_et_gold > 0
+	OR = {
+		NOT = {
+			AND = {
+				has_variable = pie_et_gold
+				var:pie_et_gold > 0
+			}
 		}
-		pie_et_selected_estate_can_lend_gold = yes
-		pie_et_selected_estate_has_open_debt_slot = yes
-		pie_et_loan_within_country_capacity = yes
+		AND = {
+			pie_et_selected_estate_can_lend_gold = yes
+			pie_et_selected_estate_has_open_debt_slot = yes
+			pie_et_loan_within_country_capacity = yes
+		}
 	}
-	if = {
-		limit = {
-			has_variable = pie_et_gold
-			var:pie_et_gold < 0
+	OR = {
+		NOT = {
+			AND = {
+				has_variable = pie_et_gold
+				var:pie_et_gold < 0
+			}
 		}
 		pie_et_can_pay_offered_gold = yes
 	}
-	if = {
-		limit = { has_variable = pie_et_term_crown_grants_rights }
+	OR = {
+		NOT = { has_variable = pie_et_term_crown_grants_rights }
 		pie_et_selected_estate_land_grant_candidate = yes
 	}
-	if = {
-		limit = { pie_et_has_selected_project = yes }
+	OR = {
+		NOT = { pie_et_has_selected_project = yes }
 		pie_et_has_project_receiver = yes
 	}
-	if = {
-		limit = {
-			OR = {
-				has_variable = pie_et_generated_selected_grant_privilege
-				has_variable = pie_et_generated_selected_revoke_privilege
-			}
-		}
-		pie_et_generated_selected_privilege_is_valid = yes
-	}
-	if = { limit = { has_variable = pie_et_priv_grant_nobles_land_rights } pie_et_can_grant_nobles_land_rights = yes }
-	if = { limit = { has_variable = pie_et_priv_revoke_nobles_land_rights } pie_et_can_revoke_nobles_land_rights = yes }
-	if = { limit = { has_variable = pie_et_priv_grant_nobility_council } pie_et_can_grant_nobility_council = yes }
-	if = { limit = { has_variable = pie_et_priv_revoke_nobility_council } pie_et_can_revoke_nobility_council = yes }
-	if = { limit = { has_variable = pie_et_priv_grant_clerical_advisory_council } pie_et_can_grant_clerical_advisory_council = yes }
-	if = { limit = { has_variable = pie_et_priv_revoke_clerical_advisory_council } pie_et_can_revoke_clerical_advisory_council = yes }
-	if = { limit = { has_variable = pie_et_priv_grant_clergy_religious_state } pie_et_can_grant_clergy_religious_state = yes }
-	if = { limit = { has_variable = pie_et_priv_revoke_clergy_religious_state } pie_et_can_revoke_clergy_religious_state = yes }
-	if = { limit = { has_variable = pie_et_priv_grant_formal_guilds } pie_et_can_grant_formal_guilds = yes }
-	if = { limit = { has_variable = pie_et_priv_revoke_formal_guilds } pie_et_can_revoke_formal_guilds = yes }
-	if = { limit = { has_variable = pie_et_priv_grant_treasury_rights } pie_et_can_grant_treasury_rights = yes }
-	if = { limit = { has_variable = pie_et_priv_revoke_treasury_rights } pie_et_can_revoke_treasury_rights = yes }
+	OR = { NOT = { has_variable = pie_et_priv_grant_nobles_land_rights } pie_et_can_grant_nobles_land_rights = yes }
+	OR = { NOT = { has_variable = pie_et_priv_revoke_nobles_land_rights } pie_et_can_revoke_nobles_land_rights = yes }
+	OR = { NOT = { has_variable = pie_et_priv_grant_nobility_council } pie_et_can_grant_nobility_council = yes }
+	OR = { NOT = { has_variable = pie_et_priv_revoke_nobility_council } pie_et_can_revoke_nobility_council = yes }
+	OR = { NOT = { has_variable = pie_et_priv_grant_clerical_advisory_council } pie_et_can_grant_clerical_advisory_council = yes }
+	OR = { NOT = { has_variable = pie_et_priv_revoke_clerical_advisory_council } pie_et_can_revoke_clerical_advisory_council = yes }
+	OR = { NOT = { has_variable = pie_et_priv_grant_clergy_religious_state } pie_et_can_grant_clergy_religious_state = yes }
+	OR = { NOT = { has_variable = pie_et_priv_revoke_clergy_religious_state } pie_et_can_revoke_clergy_religious_state = yes }
+	OR = { NOT = { has_variable = pie_et_priv_grant_formal_guilds } pie_et_can_grant_formal_guilds = yes }
+	OR = { NOT = { has_variable = pie_et_priv_revoke_formal_guilds } pie_et_can_revoke_formal_guilds = yes }
+	OR = { NOT = { has_variable = pie_et_priv_grant_treasury_rights } pie_et_can_grant_treasury_rights = yes }
+	OR = { NOT = { has_variable = pie_et_priv_revoke_treasury_rights } pie_et_can_revoke_treasury_rights = yes }
 }

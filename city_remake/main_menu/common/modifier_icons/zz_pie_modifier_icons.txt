@@ -1,0 +1,29 @@
+﻿pie_estate_special_building_cost_modifier = {
+	positive = "gfx/interface/icons/modifier_types/small_estate_building_cost_modifier.dds"
+	negative = "gfx/interface/icons/modifier_types/small_estate_building_cost_modifier.dds"
+}
+
+pie_estate_urban_downgrade_cost_modifier = {
+	positive = "gfx/interface/icons/modifier_types/city_upgrade_cost_modifier.dds"
+	negative = "gfx/interface/icons/modifier_types/city_upgrade_cost_modifier.dds"
+}
+
+pie_estate_urban_building_dismantle_cost_modifier = {
+	positive = "gfx/interface/icons/modifier_types/city_upgrade_cost_modifier.dds"
+	negative = "gfx/interface/icons/modifier_types/city_upgrade_cost_modifier.dds"
+}
+
+pie_governor_building_cost_modifier = {
+	positive = "gfx/interface/icons/modifier_types/city_upgrade_cost_modifier.dds"
+	negative = "gfx/interface/icons/modifier_types/city_upgrade_cost_modifier.dds"
+}
+
+pie_rural_infrastructure_building_cost_modifier = {
+	positive = "gfx/interface/icons/modifier_types/town_upgrade_cost_modifier.dds"
+	negative = "gfx/interface/icons/modifier_types/town_upgrade_cost_modifier.dds"
+}
+
+pie_urban_infrastructure_building_cost_modifier = {
+	positive = "gfx/interface/icons/modifier_types/city_upgrade_cost_modifier.dds"
+	negative = "gfx/interface/icons/modifier_types/city_upgrade_cost_modifier.dds"
+}

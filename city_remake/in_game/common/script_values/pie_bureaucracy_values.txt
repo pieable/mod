@@ -1,4 +1,4 @@
-pie_bureaucracy_points = {
+﻿pie_bureaucracy_points = {
 	value = 0
 
 	add = total_effective_building_levels:pie_rural_village_office

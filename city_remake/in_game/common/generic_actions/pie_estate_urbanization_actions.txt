@@ -1,6 +1,8 @@
 pie_destroy_urban_location = {
 	type = situation
 	show_message = no
+	ai_tick = never
+	automation_tick = never
 
 	potential = {
 		always = yes
@@ -174,6 +176,8 @@ pie_destroy_urban_location = {
 pie_destroy_estate_urban_building = {
 	type = situation
 	show_message = no
+	ai_tick = never
+	automation_tick = never
 
 	potential = {
 		always = yes
@@ -445,6 +449,354 @@ pie_register_crown_land = {
 		}
 		else = {
 			custom_tooltip = pie_register_crown_land_none
+		}
+	}
+}
+
+pie_et_select_sell_land_from_map = {
+	type = owncountry
+	show_message = no
+	show_in_gui_list = no
+	ai_tick = never
+	automation_tick = never
+
+	potential = {
+		always = yes
+	}
+
+	allow = {
+		scope:actor = {
+			pie_et_has_selected_estate = yes
+			any_owned_location = {
+				OR = {
+					pie_et_sell_land_candidate = yes
+					has_variable = pie_et_selected_sell_land
+				}
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		interaction_source_list = {
+			scope:actor = {
+				every_owned_location = {
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_location
+		name = "pie_et_select_sell_land_from_map_select"
+		none_available_msg_key = "pie_et_select_sell_land_from_map_none"
+		tooltip_msg_key = "pie_et_select_sell_land_from_map_location_tt"
+		column = { data = name }
+		column = { data = population }
+		column = { data = rank }
+		source_flags = only_actual_locations
+		map_mode = pie_estate_trade_land
+		visible = {
+			owner ?= scope:actor
+			OR = {
+				pie_et_sell_land_candidate = yes
+				has_variable = pie_et_selected_sell_land
+			}
+		}
+		enabled = {
+			owner ?= scope:actor
+			OR = {
+				pie_et_sell_land_candidate = yes
+				has_variable = pie_et_selected_sell_land
+			}
+		}
+		selected = {
+			has_variable = pie_et_selected_sell_land
+		}
+		map_color = {
+			if = {
+				limit = { has_variable = pie_et_selected_sell_land }
+				value = define:NMapColors|MAP_COLOR_HIGH
+			}
+			else_if = {
+				limit = { pie_et_sell_land_candidate = yes }
+				value = define:NMapColors|MAP_COLOR_MID
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		secondary_map_color = {
+			if = {
+				limit = { has_variable = pie_et_selected_sell_land }
+				value = define:NMapColors|MAP_COLOR_MID
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		only_color_selectable = yes
+	}
+
+	effect = {
+		scope:actor = {
+			pie_et_init_trade = yes
+			set_variable = { name = pie_et_window_open value = yes }
+			set_variable = { name = pie_et_land_sell_open value = yes }
+			pie_et_queue_trade_mapmode = yes
+		}
+		if = {
+			limit = {
+				exists = scope:target_location
+			}
+			scope:target_location = {
+				if = {
+					limit = {
+						owner ?= scope:actor
+						OR = {
+							pie_et_sell_land_candidate = yes
+							has_variable = pie_et_selected_sell_land
+						}
+					}
+					pie_et_toggle_sell_land_location = yes
+				}
+				else = {
+					custom_tooltip = pie_et_select_sell_land_from_map_none
+				}
+			}
+		}
+		else = {
+			custom_tooltip = pie_et_select_sell_land_from_map_none
+		}
+	}
+}
+
+pie_et_select_grant_unregistered_land_from_map = {
+	type = owncountry
+	show_message = no
+	show_in_gui_list = no
+	ai_tick = never
+	automation_tick = never
+
+	potential = {
+		always = yes
+	}
+
+	allow = {
+		scope:actor = {
+			pie_et_has_selected_estate = yes
+			any_owned_location = {
+				OR = {
+					pie_et_grant_unregistered_land_candidate = yes
+					has_variable = pie_et_selected_grant_unregistered_land
+				}
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		interaction_source_list = {
+			scope:actor = {
+				every_owned_location = {
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_location
+		name = "pie_et_select_grant_unregistered_land_from_map_select"
+		none_available_msg_key = "pie_et_select_grant_unregistered_land_from_map_none"
+		tooltip_msg_key = "pie_et_select_grant_unregistered_land_from_map_location_tt"
+		column = { data = name }
+		column = { data = population }
+		column = { data = rank }
+		source_flags = only_actual_locations
+		map_mode = pie_estate_trade_land
+		visible = {
+			owner ?= scope:actor
+			OR = {
+				pie_et_grant_unregistered_land_candidate = yes
+				has_variable = pie_et_selected_grant_unregistered_land
+			}
+		}
+		enabled = {
+			owner ?= scope:actor
+			OR = {
+				pie_et_grant_unregistered_land_candidate = yes
+				has_variable = pie_et_selected_grant_unregistered_land
+			}
+		}
+		selected = {
+			has_variable = pie_et_selected_grant_unregistered_land
+		}
+		map_color = {
+			if = {
+				limit = { has_variable = pie_et_selected_grant_unregistered_land }
+				value = define:NMapColors|MAP_COLOR_HIGH
+			}
+			else_if = {
+				limit = { pie_et_grant_unregistered_land_candidate = yes }
+				value = define:NMapColors|MAP_COLOR_MID
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		secondary_map_color = {
+			if = {
+				limit = { has_variable = pie_et_selected_grant_unregistered_land }
+				value = define:NMapColors|MAP_COLOR_MID
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		only_color_selectable = yes
+	}
+
+	effect = {
+		scope:actor = {
+			pie_et_init_trade = yes
+			set_variable = { name = pie_et_window_open value = yes }
+			set_variable = { name = pie_et_land_grant_unregistered_open value = yes }
+			pie_et_queue_trade_mapmode = yes
+		}
+		if = {
+			limit = {
+				exists = scope:target_location
+			}
+			scope:target_location = {
+				if = {
+					limit = {
+						owner ?= scope:actor
+						OR = {
+							pie_et_grant_unregistered_land_candidate = yes
+							has_variable = pie_et_selected_grant_unregistered_land
+						}
+					}
+					pie_et_toggle_grant_unregistered_land_location = yes
+				}
+				else = {
+					custom_tooltip = pie_et_select_grant_unregistered_land_from_map_none
+				}
+			}
+		}
+		else = {
+			custom_tooltip = pie_et_select_grant_unregistered_land_from_map_none
+		}
+	}
+}
+
+pie_et_select_buy_land_from_map = {
+	type = owncountry
+	show_message = no
+	show_in_gui_list = no
+	ai_tick = never
+	automation_tick = never
+
+	potential = {
+		always = yes
+	}
+
+	allow = {
+		scope:actor = {
+			pie_et_has_selected_estate = yes
+			any_owned_location = {
+				OR = {
+					pie_et_buy_land_candidate = yes
+					has_variable = pie_et_selected_buy_land
+				}
+			}
+		}
+	}
+
+	select_trigger = {
+		looking_for_a = location
+		interaction_source_list = {
+			scope:actor = {
+				every_owned_location = {
+					add_to_list = source
+				}
+			}
+		}
+		target_flag = target_location
+		name = "pie_et_select_buy_land_from_map_select"
+		none_available_msg_key = "pie_et_select_buy_land_from_map_none"
+		tooltip_msg_key = "pie_et_select_buy_land_from_map_location_tt"
+		column = { data = name }
+		column = { data = population }
+		column = { data = rank }
+		source_flags = only_actual_locations
+		map_mode = pie_estate_trade_land
+		visible = {
+			owner ?= scope:actor
+			OR = {
+				pie_et_buy_land_candidate = yes
+				has_variable = pie_et_selected_buy_land
+			}
+		}
+		enabled = {
+			owner ?= scope:actor
+			OR = {
+				pie_et_buy_land_candidate = yes
+				has_variable = pie_et_selected_buy_land
+			}
+		}
+		selected = {
+			has_variable = pie_et_selected_buy_land
+		}
+		map_color = {
+			if = {
+				limit = { has_variable = pie_et_selected_buy_land }
+				value = define:NMapColors|MAP_COLOR_HIGH
+			}
+			else_if = {
+				limit = { pie_et_buy_land_candidate = yes }
+				value = define:NMapColors|MAP_COLOR_MID
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		secondary_map_color = {
+			if = {
+				limit = { has_variable = pie_et_selected_buy_land }
+				value = define:NMapColors|MAP_COLOR_MID
+			}
+			else = {
+				value = define:NMapColors|DEFAULT_COLOR
+			}
+		}
+		only_color_selectable = yes
+	}
+
+	effect = {
+		scope:actor = {
+			pie_et_init_trade = yes
+			set_variable = { name = pie_et_window_open value = yes }
+			set_variable = { name = pie_et_land_buy_open value = yes }
+			pie_et_queue_trade_mapmode = yes
+		}
+		if = {
+			limit = {
+				exists = scope:target_location
+			}
+			scope:target_location = {
+				if = {
+					limit = {
+						owner ?= scope:actor
+						OR = {
+							pie_et_buy_land_candidate = yes
+							has_variable = pie_et_selected_buy_land
+						}
+					}
+					pie_et_toggle_buy_land_location = yes
+				}
+				else = {
+					custom_tooltip = pie_et_select_buy_land_from_map_none
+				}
+			}
+		}
+		else = {
+			custom_tooltip = pie_et_select_buy_land_from_map_none
 		}
 	}
 }

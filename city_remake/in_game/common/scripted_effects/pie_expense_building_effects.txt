@@ -55,7 +55,7 @@ pie_expense_building_level_balance = {
 			divide = -2
 			max = "court_maintenance"
 			min = 0
-			multiply = "modifier(court_spending_cost)"
+			multiply = "modifier(court_spending_cost_modifier)"
 			multiply = pie_expense_economical_base_without_institutions
 			multiply = 0.1
 		}

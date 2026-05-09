@@ -80,6 +80,25 @@ pie_ab_sgui_toggle_core_auto_build = {
 			limit = {
 				any_owned_location = {
 					has_variable = pie_ab_auto_build
+					NOT = { integration_level = core }
+				}
+			}
+			every_owned_location = {
+				limit = {
+					has_variable = pie_ab_auto_build
+					NOT = { integration_level = core }
+				}
+				remove_variable = pie_ab_auto_build
+			}
+			every_owned_location = {
+				limit = { integration_level = core }
+				set_variable = { name = pie_ab_auto_build value = 1 }
+			}
+		}
+		else_if = {
+			limit = {
+				any_owned_location = {
+					has_variable = pie_ab_auto_build
 					integration_level = core
 				}
 			}

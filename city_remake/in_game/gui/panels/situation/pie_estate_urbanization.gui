@@ -7,6 +7,7 @@
 			ui_direction_button_holder_right = {}
 
 			button_close_alt = {
+			tooltip = "pie_gui_generic_button_tt"
 				blockoverride "close_onclick" {
 					onclick = "[GetScriptedGui('pie_et_sgui_close_situation_mapmodes').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 					onclick = "[LateralView.Close]"
@@ -277,7 +278,7 @@
 							spacing = 8
 
 							button_regular = {
-								size = { 170 32 }
+								size = { 190 32 }
 								onclick = "[GetScriptedGui('pie_ab_sgui_toggle_all_auto_build').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								onrightclick = "[GetScriptedGui('pie_ab_sgui_toggle_core_auto_build').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								tooltip = "pie_estate_urbanization_toggle_all_tt"
@@ -292,9 +293,22 @@
 										frame = 2
 									}
 									text_single = {
+										visible = "[GreaterThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_ab_auto_build_non_core_enabled_count'), '(CFixedPoint)0')]"
 										layoutpolicy_horizontal = expanding
 										align = center|nobaseline
-										text = "pie_estate_urbanization_toggle_all"
+										text = "pie_estate_urbanization_toggle_all_on"
+									}
+									text_single = {
+										visible = "[And(GreaterThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_ab_auto_build_enabled_count'), '(CFixedPoint)0'), Not(GreaterThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_ab_auto_build_non_core_enabled_count'), '(CFixedPoint)0')))]"
+										layoutpolicy_horizontal = expanding
+										align = center|nobaseline
+										text = "pie_estate_urbanization_toggle_all_core"
+									}
+									text_single = {
+										visible = "[Not(GreaterThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_ab_auto_build_enabled_count'), '(CFixedPoint)0'))]"
+										layoutpolicy_horizontal = expanding
+										align = center|nobaseline
+										text = "pie_estate_urbanization_toggle_all_off"
 									}
 								}
 							}
@@ -1026,32 +1040,27 @@
 				}
 
 				text_single = {
-					parentanchor = vcenter
 					text = "pie_estate_trade_current_partner"
 					default_format = "#yellow_titles"
 				}
 
 				text_single = {
 					visible = "[And3(Not(GetPlayer.MakeScope.Var('pie_et_estate_nobles').IsSet), Not(GetPlayer.MakeScope.Var('pie_et_estate_clergy').IsSet), Not(GetPlayer.MakeScope.Var('pie_et_estate_burghers').IsSet))]"
-					parentanchor = vcenter
 					text = "pie_estate_trade_no_estate_selected"
 				}
 
 				text_single = {
 					visible = "[GetPlayer.MakeScope.Var('pie_et_estate_nobles').IsSet]"
-					parentanchor = vcenter
 					text = "pie_estate_trade_nobles"
 				}
 
 				text_single = {
 					visible = "[GetPlayer.MakeScope.Var('pie_et_estate_clergy').IsSet]"
-					parentanchor = vcenter
 					text = "pie_estate_trade_clergy"
 				}
 
 				text_single = {
 					visible = "[GetPlayer.MakeScope.Var('pie_et_estate_burghers').IsSet]"
-					parentanchor = vcenter
 					text = "pie_estate_trade_burghers"
 				}
 
@@ -1132,28 +1141,25 @@
 								spacing = 8
 
 								checkbox_diamond_alt = {
-									parentanchor = vcenter
+								tooltip = "pie_gui_generic_button_tt"
 									checked = "[GetPlayer.MakeScope.Var('pie_et_term_estate_funds_project').IsSet]"
 									onclick = "[GetScriptedGui('pie_et_sgui_toggle_estate_funds_project').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								}
 
 								icon = {
-									parentanchor = vcenter
 									size = { 28 28 }
 									texture = "gfx/interface/icons/peace_treaty/increase_gold.dds"
 								}
 
 								text_single = {
-									parentanchor = vcenter
 									layoutpolicy_horizontal = expanding
 									text = "pie_estate_trade_term_estate_funds_project"
 								}
 
 								text_single = {
-									parentanchor = vcenter
 									size = { 48 22 }
 									align = right|nobaseline
-									raw_text = "#N -20#!"
+									raw_text = "#N [GetPlayer.MakeScope.ScriptValue('pie_et_estate_funds_project_acceptance')|0]#!"
 								}
 							}
 						}
@@ -1171,28 +1177,25 @@
 								spacing = 8
 
 								checkbox_diamond_alt = {
-									parentanchor = vcenter
+								tooltip = "pie_gui_generic_button_tt"
 									checked = "[GetPlayer.MakeScope.Var('pie_et_term_crown_grants_rights').IsSet]"
 									onclick = "[GetScriptedGui('pie_et_sgui_toggle_crown_grants_rights').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								}
 
 								icon = {
-									parentanchor = vcenter
 									size = { 28 28 }
 									texture = "gfx/interface/icons/peace_treaty/seize_land_treaty.dds"
 								}
 
 								text_single = {
-									parentanchor = vcenter
 									layoutpolicy_horizontal = expanding
 									text = "pie_estate_trade_term_crown_grants_rights"
 								}
 
 								text_single = {
-									parentanchor = vcenter
 									size = { 48 22 }
 									align = right|nobaseline
-									raw_text = "#P +20#!"
+									raw_text = "#P +[GetPlayer.MakeScope.ScriptValue('pie_et_crown_grants_rights_acceptance')|0]#!"
 								}
 							}
 						}
@@ -1218,25 +1221,22 @@
 								spacing = 8
 
 								checkbox_diamond_alt = {
-									parentanchor = vcenter
+								tooltip = "pie_gui_generic_button_tt"
 									checked = "[GetPlayer.MakeScope.Var('pie_et_term_grant_privilege').IsSet]"
 									onclick = "[GetScriptedGui('pie_et_sgui_toggle_grant_privilege').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								}
 
 								icon = {
-									parentanchor = vcenter
 									size = { 28 28 }
 									texture = "gfx/interface/icons/privileges/building_rights.dds"
 								}
 
 								text_single = {
-									parentanchor = vcenter
 									layoutpolicy_horizontal = expanding
 									text = "pie_estate_trade_term_grant_privilege"
 								}
 
 								text_single = {
-									parentanchor = vcenter
 									size = { 48 22 }
 									align = right|nobaseline
 									raw_text = "#P +30#!"
@@ -1257,25 +1257,22 @@
 								spacing = 8
 
 								checkbox_diamond_alt = {
-									parentanchor = vcenter
+								tooltip = "pie_gui_generic_button_tt"
 									checked = "[GetPlayer.MakeScope.Var('pie_et_term_reduce_privilege').IsSet]"
 									onclick = "[GetScriptedGui('pie_et_sgui_toggle_reduce_privilege').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								}
 
 								icon = {
-									parentanchor = vcenter
 									size = { 28 28 }
 									texture = "gfx/interface/icons/peace_treaty/demand_treaty.dds"
 								}
 
 								text_single = {
-									parentanchor = vcenter
 									layoutpolicy_horizontal = expanding
 									text = "pie_estate_trade_term_reduce_privilege"
 								}
 
 								text_single = {
-									parentanchor = vcenter
 									size = { 48 22 }
 									align = right|nobaseline
 									raw_text = "#N -30#!"
@@ -1376,13 +1373,12 @@
 						spacing = 6
 
 						icon = {
-							parentanchor = vcenter
 							size = { 28 28 }
 							texture = "gfx/interface/icons/resources/gold.dds"
 						}
 
 						button_minus = {
-							parentanchor = vcenter
+						tooltip = "pie_gui_generic_button_tt"
 							size = { 24 24 }
 							click_modifiers = {
 								ondefault = "[GetScriptedGui('pie_et_sgui_gold_dec').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -1403,7 +1399,7 @@
 						}
 
 						button_plus = {
-							parentanchor = vcenter
+						tooltip = "pie_gui_generic_button_tt"
 							size = { 24 24 }
 							click_modifiers = {
 								ondefault = "[GetScriptedGui('pie_et_sgui_gold_inc').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -1415,13 +1411,12 @@
 						expand = {}
 
 						text_single = {
-							parentanchor = vcenter
 							text = "pie_estate_trade_interest"
 							default_format = "#yellow_titles"
 						}
 
 						button_minus = {
-							parentanchor = vcenter
+						tooltip = "pie_gui_generic_button_tt"
 							size = { 24 24 }
 							enabled = "[GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('pie_et_gold').GetValue, '(CFixedPoint)0')]"
 							onclick = "[GetScriptedGui('pie_et_sgui_interest_dec').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
@@ -1439,7 +1434,7 @@
 						}
 
 						button_plus = {
-							parentanchor = vcenter
+						tooltip = "pie_gui_generic_button_tt"
 							size = { 24 24 }
 							enabled = "[GreaterThan_CFixedPoint(GetPlayer.MakeScope.Var('pie_et_gold').GetValue, '(CFixedPoint)0')]"
 							onclick = "[GetScriptedGui('pie_et_sgui_interest_inc').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"

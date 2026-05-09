@@ -1,0 +1,11 @@
+﻿l_simp_chinese:
+ STATIC_MODIFIER_NAME_pie_land_owner_crown_modifier:0 "王室直辖地"
+ STATIC_MODIFIER_DESC_pie_land_owner_crown_modifier:0 "这块土地已登记在王室直接行政之下。"
+ STATIC_MODIFIER_NAME_pie_land_owner_nobles_modifier:0 "贵族领地"
+ STATIC_MODIFIER_DESC_pie_land_owner_nobles_modifier:0 "这块土地的地方权利已登记给贵族。"
+ STATIC_MODIFIER_NAME_pie_land_owner_clergy_modifier:0 "教会地产"
+ STATIC_MODIFIER_DESC_pie_land_owner_clergy_modifier:0 "这块土地的地方权利已登记给教士。"
+ STATIC_MODIFIER_NAME_pie_land_owner_burghers_modifier:0 "城市地产"
+ STATIC_MODIFIER_DESC_pie_land_owner_burghers_modifier:0 "这块土地的地方权利已登记给市民。"
+ STATIC_MODIFIER_NAME_pie_land_owner_peasants_modifier:0 "农民自有地"
+ STATIC_MODIFIER_DESC_pie_land_owner_peasants_modifier:0 "这块土地的地方权利已登记给自由农。"

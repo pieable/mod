@@ -26,9 +26,7 @@ pie_court_expense_building = {
 		is_capital = yes
 	}
 	remove_if = {
-		location = {
-			is_capital = no
-		}
+		is_no_longer_capital = yes
 	}
 
 	modifier = {
@@ -123,9 +121,7 @@ pie_diplomatic_expense_building = {
 		is_capital = yes
 	}
 	remove_if = {
-		location = {
-			is_capital = no
-		}
+		is_no_longer_capital = yes
 	}
 
 	modifier = {
@@ -224,9 +220,7 @@ pie_stability_expense_building = {
 		is_capital = yes
 	}
 	remove_if = {
-		location = {
-			is_capital = no
-		}
+		is_no_longer_capital = yes
 	}
 
 	modifier = {

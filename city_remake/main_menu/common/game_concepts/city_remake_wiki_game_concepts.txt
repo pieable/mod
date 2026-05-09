@@ -1,0 +1,172 @@
+city_remake_wiki = {
+	alias = { city_remake city_remake_mod city_remake_wiki }
+	texture = "flat_icons/country"
+}
+
+city_remake_wiki_estate_trade = {
+	alias = { estate_trade estate_bargain estate_deal }
+	family = city_remake_wiki
+	texture = "flat_icons/action"
+}
+
+city_remake_wiki_estate_trade_terms = {
+	alias = { estate_trade_terms trade_terms bargain_terms }
+	family = city_remake_wiki_estate_trade
+	texture = "flat_icons/action"
+}
+
+city_remake_wiki_estate_trade_acceptance = {
+	alias = { estate_trade_acceptance trade_acceptance bargain_acceptance }
+	family = city_remake_wiki_estate_trade
+	texture = "flat_icons/effect"
+}
+
+city_remake_wiki_estate_trade_debt = {
+	alias = { estate_debt estate_loan estate_credit }
+	family = city_remake_wiki_estate_trade
+	texture = "gfx/interface/icons/resources/war_exhaustion.dds"
+}
+
+city_remake_wiki_land_bureaucracy = {
+	alias = { land_bureaucracy crown_land bureaucracy_land }
+	family = city_remake_wiki
+	texture = "map_modes/provinces"
+}
+
+city_remake_wiki_land_ownership = {
+	alias = { land_ownership land_owner estate_land }
+	family = city_remake_wiki_land_bureaucracy
+	texture = "map_modes/provinces"
+}
+
+city_remake_wiki_land_integration = {
+	alias = { land_integration conquered_land_integration }
+	family = city_remake_wiki_land_bureaucracy
+	texture = "flat_icons/effect"
+}
+
+city_remake_wiki_bureaucracy_coverage = {
+	alias = { bureaucracy_coverage bureaucracy_points crown_survey }
+	family = city_remake_wiki_land_bureaucracy
+	texture = "flat_icons/country"
+}
+
+city_remake_wiki_consumption_growth = {
+	alias = { consumption_growth demand_growth wealth_consumption }
+	family = city_remake_wiki
+	texture = "flat_icons/trade_market/demand"
+}
+
+city_remake_wiki_pop_consumption = {
+	alias = { pop_consumption population_consumption local_wealth_consumption }
+	family = city_remake_wiki_consumption_growth
+	texture = "flat_icons/trade_market/demand"
+}
+
+city_remake_wiki_food_growth = {
+	alias = { food_growth food_population_growth starvation_growth }
+	family = city_remake_wiki_consumption_growth
+	texture = "flat_icons/trade_market/food_stockpile"
+}
+
+city_remake_wiki_wealth_attraction = {
+	alias = { wealth_attraction migration_attraction tax_base_attraction }
+	family = city_remake_wiki_consumption_growth
+	texture = "flat_icons/effect"
+}
+
+city_remake_wiki_estate_urbanization = {
+	alias = { estate_urbanization urbanization estate_city }
+	family = city_remake_wiki
+	texture = "flat_icons/geography/characters"
+}
+
+city_remake_wiki_urbanization_candidates = {
+	alias = { urbanization_candidates town_candidate city_candidate }
+	family = city_remake_wiki_estate_urbanization
+	texture = "map_modes/provinces"
+}
+
+city_remake_wiki_urbanization_estate_logic = {
+	alias = { urbanization_estate_logic estate_urban_logic }
+	family = city_remake_wiki_estate_urbanization
+	texture = "flat_icons/action"
+}
+
+city_remake_wiki_urban_origin_downgrade = {
+	alias = { urban_origin_downgrade city_downgrade town_downgrade }
+	family = city_remake_wiki_estate_urbanization
+	texture = "flat_icons/effect"
+}
+
+city_remake_wiki_estate_buildings = {
+	alias = { estate_buildings special_estate_buildings }
+	family = city_remake_wiki
+	texture = "outliner/categories/buildings"
+}
+
+city_remake_wiki_auto_estate_buildings = {
+	alias = { auto_estate_buildings urban_estate_buildings }
+	family = city_remake_wiki_estate_buildings
+	texture = "outliner/categories/buildings"
+}
+
+city_remake_wiki_added_infrastructure_buildings = {
+	alias = { added_infrastructure_buildings rural_infrastructure urban_infrastructure }
+	family = city_remake_wiki_estate_buildings
+	texture = "outliner/categories/buildings"
+}
+
+city_remake_wiki_added_resource_expense_buildings = {
+	alias = { added_resource_expense_buildings resource_buildings expense_buildings }
+	family = city_remake_wiki_estate_buildings
+	texture = "outliner/categories/buildings"
+}
+
+city_remake_wiki_war_changes = {
+	alias = { war_changes war_rework war_modifiers }
+	family = city_remake_wiki
+	texture = "location_icons/garrison"
+}
+
+city_remake_wiki_war_momentum = {
+	alias = { war_momentum momentum war_score_pressure }
+	family = city_remake_wiki_war_changes
+	texture = "location_icons/garrison"
+}
+
+city_remake_wiki_civil_war_pressure = {
+	alias = { civil_war_pressure diplomatic_pressure war_exhaustion_pressure }
+	family = city_remake_wiki_war_changes
+	texture = "gfx/interface/icons/resources/war_exhaustion.dds"
+}
+
+city_remake_wiki_siege_starvation = {
+	alias = { siege_starvation starving_siege food_siege }
+	family = city_remake_wiki_war_changes
+	texture = "location_icons/garrison"
+}
+
+city_remake_wiki_city_projects = {
+	alias = { city_projects urbanization_projects town_projects }
+	family = city_remake_wiki
+	texture = "flat_icons/action"
+}
+
+city_remake_wiki_project_capacity = {
+	alias = { project_capacity urbanization_project_capacity }
+	family = city_remake_wiki_city_projects
+	texture = "flat_icons/country"
+}
+
+city_remake_wiki_project_flow = {
+	alias = { project_flow urbanization_project_flow }
+	family = city_remake_wiki_city_projects
+	texture = "flat_icons/action"
+}
+
+city_remake_wiki_project_transfer = {
+	alias = { project_transfer urbanization_project_transfer }
+	family = city_remake_wiki_city_projects
+	texture = "flat_icons/effect"
+}

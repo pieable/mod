@@ -1,4 +1,4 @@
-pie_land_grant_score = {
+﻿pie_land_grant_score = {
 	value = location_tax_base
 
 	if = {
@@ -9,30 +9,21 @@ pie_land_grant_score = {
 	if = {
 		limit = {
 			owner = { has_variable = pie_et_estate_nobles }
-			local_relative_estate_power = {
-				estate_type = estate_type:nobles_estate
-				value >= 0.34
-			}
+			modifier:local_nobles_estate_power >= 0.34
 		}
 		add = 25
 	}
 	else_if = {
 		limit = {
 			owner = { has_variable = pie_et_estate_clergy }
-			local_relative_estate_power = {
-				estate_type = estate_type:clergy_estate
-				value >= 0.34
-			}
+			modifier:local_clergy_estate_power >= 0.34
 		}
 		add = 25
 	}
 	else_if = {
 		limit = {
 			owner = { has_variable = pie_et_estate_burghers }
-			local_relative_estate_power = {
-				estate_type = estate_type:burghers_estate
-				value >= 0.34
-			}
+			modifier:local_burghers_estate_power >= 0.34
 		}
 		add = 25
 	}
@@ -173,37 +164,25 @@ pie_land_passive_claim_score = {
 
 	if = {
 		limit = {
-			local_relative_estate_power = {
-				estate_type = estate_type:nobles_estate
-				value >= 0.4
-			}
+			modifier:local_nobles_estate_power >= 0.4
 		}
 		add = 15
 	}
 	else_if = {
 		limit = {
-			local_relative_estate_power = {
-				estate_type = estate_type:clergy_estate
-				value >= 0.4
-			}
+			modifier:local_clergy_estate_power >= 0.4
 		}
 		add = 15
 	}
 	else_if = {
 		limit = {
-			local_relative_estate_power = {
-				estate_type = estate_type:burghers_estate
-				value >= 0.4
-			}
+			modifier:local_burghers_estate_power >= 0.4
 		}
 		add = 15
 	}
 	else_if = {
 		limit = {
-			local_relative_estate_power = {
-				estate_type = estate_type:peasants_estate
-				value >= 0.4
-			}
+			modifier:local_peasants_estate_power >= 0.4
 		}
 		add = 10
 	}

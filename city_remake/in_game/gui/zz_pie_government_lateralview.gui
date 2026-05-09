@@ -1,3 +1,4 @@
+﻿types CountryHeaders {
 type estate_card_privilege_common_widget = estate_privilege_action_button_alt {
 	datacontext = "[PrivilegeItem.GetUIAction]"
 	datacontext = "[PrivilegeItem.GetPrivilege]"
@@ -54,7 +55,6 @@ type estate_card_privilege_common_widget = estate_privilege_action_button_alt {
 		}
 	}
 }
-
 type estate_card_privilege = widget {
 	size = { -1 55 }
 	layoutpolicy_horizontal = expanding
@@ -239,4 +239,5 @@ type estate_card_privilege = widget {
 			}
 		}
 	}
+}
 }

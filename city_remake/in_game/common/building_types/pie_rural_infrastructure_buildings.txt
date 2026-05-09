@@ -35,10 +35,12 @@
 
 	modifier = {
 		free_building_levels = 50
-		local_laborers_desired_pop = 0.5
 		local_market_access = 0.005
 		local_build_buildings_cost = -0.03
 		local_monthly_prosperity = 0.0005
+	}
+	raw_modifier = {
+		local_laborers_desired_pop = 0.5
 	}
 
 	graphical_tags = { market }
@@ -78,8 +80,11 @@ pie_rural_village_office = {
 		NOT = { has_building = building_type:pie_urban_civic_center }
 	}
 
-	modifier = {
+	raw_modifier = {
 		local_nobles_desired_pop = 0.025
+	}
+
+	modifier = {
 		local_max_control = 0.025
 		local_monthly_prosperity = 0.0005
 	}
@@ -121,8 +126,11 @@ pie_rural_parish_church = {
 		NOT = { has_building = building_type:pie_urban_church_quarter }
 	}
 
-	modifier = {
+	raw_modifier = {
 		local_clergy_desired_pop = 0.05
+	}
+
+	modifier = {
 		local_max_control = 0.025
 		local_monthly_literacy = 0.02
 		local_pop_conversion_speed = 0.001
@@ -166,8 +174,11 @@ pie_rural_handicraft_workshop = {
 		NOT = { has_building = building_type:pie_urban_guild_quarter }
 	}
 
-	modifier = {
+	raw_modifier = {
 		local_burghers_desired_pop = 0.5
+	}
+
+	modifier = {
 		local_pop_promotion_speed_modifier = 0.1
 		local_production_efficiency = 0.05
 		local_build_buildings_cost = -0.03

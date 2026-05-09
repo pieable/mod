@@ -1,4 +1,4 @@
-monthly_country_pulse = {
+﻿monthly_country_pulse = {
 	on_actions = {
 		pie_ab_auto_build_monthly
 		pie_et_trade_monthly
@@ -40,10 +40,7 @@ pie_ab_auto_build_monthly = {
 				has_variable = pie_ab_best_cost
 				can_build_building = var:pie_ab_best_bt
 				num_civil_constructions = 0
-				OR = {
-					NOT = { owner = { has_variable = pie_ab_profit_threshold } }
-					var:pie_ab_best_profit >= owner.var:pie_ab_profit_threshold
-				}
+				var:pie_ab_best_profit >= owner.var:pie_ab_profit_threshold
 			}
 			if = {
 				limit = {
@@ -95,10 +92,7 @@ pie_ai_building_capacity_monthly = {
 			limit = {
 				controller = root
 				num_civil_constructions = 0
-				OR = {
-					location_rank = location_rank:town
-					location_rank = location_rank:city
-				}
+				location_rank = location_rank:city
 				has_building = building_type:pie_rural_market_fair
 				NOT = { has_building = building_type:pie_urban_market_square }
 				can_build_building = building_type:pie_urban_market_square
@@ -119,10 +113,53 @@ pie_ai_building_capacity_monthly = {
 				limit = {
 					controller = root
 					num_civil_constructions = 0
-					OR = {
-						location_rank = location_rank:town
-						location_rank = location_rank:city
+					location_rank = location_rank:town
+					NOT = { location_rank = location_rank:city }
+					has_building = building_type:pie_rural_market_fair
+					NOT = { has_building = building_type:pie_urban_market_square }
+					can_build_building = building_type:pie_urban_market_square
+					owner = {
+						gold >= 250
+						can_build_building = building_type:pie_urban_market_square
 					}
+				}
+				construct_building = { building_type = building_type:pie_urban_market_square }
+				owner = { set_variable = { name = pie_ai_capacity_building_queued value = yes } }
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = { has_variable = pie_ai_capacity_building_queued }
+			}
+			random_owned_location = {
+				limit = {
+					controller = root
+					num_civil_constructions = 0
+					location_rank = location_rank:city
+					NOT = { has_building = building_type:pie_rural_market_fair }
+					NOT = { has_building = building_type:pie_urban_market_square }
+					can_build_building = building_type:pie_rural_market_fair
+					owner = {
+						gold >= 150
+						can_build_building = building_type:pie_rural_market_fair
+					}
+				}
+				construct_building = { building_type = building_type:pie_rural_market_fair }
+				owner = { set_variable = { name = pie_ai_capacity_building_queued value = yes } }
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = { has_variable = pie_ai_capacity_building_queued }
+			}
+			random_owned_location = {
+				limit = {
+					controller = root
+					num_civil_constructions = 0
+					location_rank = location_rank:town
+					NOT = { location_rank = location_rank:city }
 					NOT = { has_building = building_type:pie_rural_market_fair }
 					NOT = { has_building = building_type:pie_urban_market_square }
 					can_build_building = building_type:pie_rural_market_fair

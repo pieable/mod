@@ -26,7 +26,7 @@
 	}
 
 	remove_if = {
-		location = { has_road_to_capital = no }
+		has_road_to_capital = no
 	}
 
 	expensive = yes
@@ -39,7 +39,7 @@
 	build_time = government_build_time
 
 	unique_production_methods = {
-		local_governor_maintenance = {
+		pie_local_governor_maintenance = {
 			tools = 1
 			masonry = 1
 			weaponry = 0.5
@@ -91,7 +91,7 @@ REPLACE:naval_governor = {
 	}
 
 	remove_if = {
-		location = { is_connected_to = owner.capital }
+		is_connected_to = owner.capital
 	}
 
 	expensive = yes
@@ -104,7 +104,7 @@ REPLACE:naval_governor = {
 	build_time = government_build_time
 
 	unique_production_methods = {
-		naval_governor_maintenance = {
+		pie_naval_governor_maintenance = {
 			tools = 1
 			masonry = 1
 			weaponry = 0.5

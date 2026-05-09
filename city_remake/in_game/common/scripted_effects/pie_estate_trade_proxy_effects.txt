@@ -93,7 +93,6 @@ pie_et_start_proxy_trade_nobles = {
 					}
 					save_scope_as = pie_et_primary_proxy_country
 					set_variable = { name = pie_et_proxy_country value = yes }
-					set_variable = { name = pie_et_proxy_country_nobles value = yes }
 					change_country_type = navy
 					change_country_name = PIE_ET_PROXY_NOBLES_NAME
 					change_country_adjective = PIE_ET_PROXY_NOBLES_ADJ
@@ -177,7 +176,6 @@ pie_et_start_proxy_trade_clergy = {
 					}
 					save_scope_as = pie_et_primary_proxy_country
 					set_variable = { name = pie_et_proxy_country value = yes }
-					set_variable = { name = pie_et_proxy_country_clergy value = yes }
 					change_country_type = navy
 					change_country_name = PIE_ET_PROXY_CLERGY_NAME
 					change_country_adjective = PIE_ET_PROXY_CLERGY_ADJ
@@ -261,7 +259,6 @@ pie_et_start_proxy_trade_burghers = {
 					}
 					save_scope_as = pie_et_primary_proxy_country
 					set_variable = { name = pie_et_proxy_country value = yes }
-					set_variable = { name = pie_et_proxy_country_burghers value = yes }
 					change_country_type = navy
 					change_country_name = PIE_ET_PROXY_BURGHERS_NAME
 					change_country_adjective = PIE_ET_PROXY_BURGHERS_ADJ

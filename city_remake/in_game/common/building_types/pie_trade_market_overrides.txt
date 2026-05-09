@@ -13,7 +13,7 @@ REPLACE:marketplace = {
 	build_time = merchant_build_time
 
 	unique_production_methods = {
-		marketplace_maintenance = {
+		pie_marketplace_maintenance = {
 			cloth = 0.05
 			jewelry = 0.05
 			paper = 0.05
@@ -51,7 +51,7 @@ REPLACE:merchants_quarters = {
 	build_time = merchant_build_time
 
 	unique_production_methods = {
-		merchants_quarters_maintenance = {
+		pie_merchants_quarters_maintenance = {
 			cloth = 0.075
 			jewelry = 0.075
 			paper = 0.075
@@ -91,7 +91,7 @@ REPLACE:grand_marketplace = {
 	build_time = merchant_build_time
 
 	unique_production_methods = {
-		grand_marketplace_maintenance = {
+		pie_grand_marketplace_maintenance = {
 			cloth = 0.1
 			jewelry = 0.1
 			paper = 0.1
@@ -131,7 +131,7 @@ REPLACE:commerce_center = {
 	build_time = merchant_build_time
 
 	unique_production_methods = {
-		commerce_center_maintenance = {
+		pie_commerce_center_maintenance = {
 			cloth = 0.1
 			jewelry = 0.1
 			paper = 0.1

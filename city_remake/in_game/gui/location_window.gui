@@ -528,7 +528,7 @@ types LocationWindowTypes
 							texture = "gfx/interface/buttons/flats/upgrade_button2.dds"
 						}
 						visible = "[And3(LocationBuildingItem.GetBuilding.CanPlayerUpgrade, Not(LocationBuildingItem.GetBuilding.GetType.IsForeign), Not(LocationBuildingItem.GetBuilding.GetType.OnlyEstatesCanBuild))]"
-						datacontext = "[LocationBuildingItem.GetBuilding.GetType.GetNextReplaced(Player.Self)]"
+						datacontext = "[LocationBuildingItem.GetBuilding.GetType.GetNextReplacementBuilding(Player.Self)]"
 						datacontext = "[LocationBuildingItem.GetBuilding.GetLocation]"
 						enabled = "[CanUpgradeToBuilding(BuildingType.Self, Location.Self)]"
 						action_tooltip = {

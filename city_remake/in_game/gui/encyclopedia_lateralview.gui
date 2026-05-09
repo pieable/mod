@@ -1,0 +1,453 @@
+lateralview_full = {
+	name = "encyclopedia_lateralview"
+
+    blockoverride "panel_header" {
+        window_header_alt = {
+            blockoverride "header_text" {
+                text = "HEADING_ENCYCLOPEDIA"
+            }
+            blockoverride "window_header_alt_color_texture"{
+				using = color_default_brown_texture
+			}
+        }
+    }
+
+	blockoverride "panel_content" {
+		vbox = {
+            vbox = {
+                using = layoutpolicy_expanding
+                using = bg_main_inner_notabs_alt
+                using = window_main_tabs_margin_alt
+
+                hbox = {
+                    name = "main"
+                    layoutpolicy_horizontal = expanding
+                    layoutpolicy_vertical = expanding
+                    spacing = 20
+
+                    vbox = {
+                        min_width = 320
+                        max_width = 320
+
+                        margin = { 0 10 }
+                        layoutpolicy_vertical = expanding
+
+                        hbox = {
+                            layoutpolicy_horizontal = expanding
+                            margin_right = 10
+
+                            button_regular = {
+                                name = "select_page"
+                                layoutpolicy_horizontal = expanding
+
+                                text = "ENCYCLOPEDIA_ALL_PAGES"
+                                onclick = "[GetVariableSystem.Clear('crm_encyclopedia_active')]"
+
+                                action_tooltip = {
+                                    title = "ENCYCLOPEDIA_ALL_PAGES"
+                                    on_action = "[Encyclopedia.ViewAllEntries]"
+                                }
+
+                                tooltipwidget = { BasicFunctionalTooltip = {} }
+
+                                modify_texture = {
+                                    visible = "[And(ObjectsEqual( Encyclopedia.GetCurrentPage, Encyclopedia.GetAllPage ), Not(GetVariableSystem.HasValue('crm_encyclopedia_active', 'yes')))]"
+                                    alpha = 0.1
+                                }
+                            }
+                        }
+
+                        hbox = {
+                            layoutpolicy_horizontal = expanding
+                            margin_right = 10
+                            maximumsize = { -1 35 }
+
+                            button_regular = {
+                                name = "crm_select_page"
+                                layoutpolicy_horizontal = expanding
+
+                                text = "ENCYCLOPEDIA_PAGE_CITY_REMAKE"
+                                onclick = "[GetVariableSystem.Set('crm_encyclopedia_active', 'yes')]"
+
+                                action_tooltip = {
+                                    title = "ENCYCLOPEDIA_PAGE_CITY_REMAKE"
+                                    on_action = "[Encyclopedia.ViewAllEntries]"
+                                }
+
+                                tooltipwidget = { BasicFunctionalTooltip = {} }
+
+                                modify_texture = {
+                                    visible = "[GetVariableSystem.HasValue('crm_encyclopedia_active', 'yes')]"
+                                    alpha = 0.1
+                                }
+                            }
+                        }
+
+                        scrollbox = {
+                            layoutpolicy_horizontal = expanding
+                            layoutpolicy_vertical = expanding
+
+                            blockoverride "scrollbox_content" {
+                                fixedgridbox = {
+                                    name = "entries"
+                                    addcolumn = 100%
+                                    addrow = 35
+                                    setitemsizefromcell = yes
+                                    datamodel = "[Encyclopedia.AccessPages]"
+
+                                    item = {
+                                        widget = {
+                                            hbox = {
+                                                layoutpolicy_horizontal = expanding
+                                                margin_right = 10
+
+                                                button_regular = {
+                                                    name = "select_page"
+                                                    layoutpolicy_horizontal = expanding
+
+                                                    text = "[EncyclopediaPage.GetTitle]"
+                                                    onclick = "[GetVariableSystem.Clear('crm_encyclopedia_active')]"
+
+                                                    action_tooltip = {
+                                                        title = "ENCYCLOPEDIAGE_OPEN_PAGE"
+                                                        on_action = "[GameEncyclopedia.SetCurrentPage( EncyclopediaPage.AccessSelf )]"
+                                                    }
+
+                                                    tooltipwidget = { BasicFunctionalTooltip = {} }
+
+                                                    modify_texture = {
+                                                        visible = "[And(ObjectsEqual( Encyclopedia.GetCurrentPage, EncyclopediaPage.Self ), Not(GetVariableSystem.HasValue('crm_encyclopedia_active', 'yes')))]"
+                                                        alpha = 0.1
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        expand = {}
+                    }
+
+                    vbox = {
+                        name = "current"
+                        datacontext = "[Encyclopedia.AccessCurrentPage]"
+                        layoutpolicy_horizontal = expanding
+                        layoutpolicy_vertical = expanding
+                        margin_top = 10
+                        spacing = 10
+
+                        vbox = {
+                            layoutpolicy_horizontal = expanding
+                            layoutpolicy_vertical = expanding
+                            visible = "[Not(GetVariableSystem.HasValue('crm_encyclopedia_active', 'yes'))]"
+
+                            hbox = {
+                                layoutpolicy_horizontal = expanding
+                                margin = { 10 0 }
+                                spacing = 5
+                                hbox = {
+                                    name = "search_controls"
+                                    layoutpolicy_horizontal = expanding
+                                    margin = { 10 0 }
+                                    spacing = 5
+
+                                    using = searchbar_background
+                                    using = searchbar_icon
+
+                                    editbox_search_field =	{
+                                        min_width = 1300
+                                        blockoverride "editbox_properties" {
+                                            name = "search_input"
+                                            onreturnpressed = "[EncyclopediaPage.FilterFromText]"
+                                            ontextedited = "[EncyclopediaPage.FilterFromText]"
+                                            maxcharacters = 50
+                                        }
+                                    }
+
+                                    expand = {}
+                                }
+
+                                hbox = {
+                                    ui_direction_button = {
+                                        size = { 22 22 }
+                                        enabled = "[NotEqualTo_int32(GameEncyclopedia.GetCurrentSubpageNumber, '(int32)1')]"
+                                        onclick = "[GameEncyclopedia.GoToPreviousSubPage]"
+                                        tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "ENCYCLOPEDIA_GO_TO_PREVIOUS_SUBPAGE" } } }
+
+                                        mirror = horizontal
+                                        texture = "gfx/interface/buttons/flats/button_simple_right.dds"
+                                        using = button_regular_icon_color
+                                    }
+
+                                    hbox = {
+                                        using = bg_number_container_bckg
+                                        blockoverride "number_container_extra" {
+                                            alpha = 0.4
+                                            margin = {4 4}
+                                        }
+
+                                        hbox = {
+                                            name = "search_controls"
+                                            layoutpolicy_horizontal = expanding
+                                            margin = { 10 0 }
+                                            spacing = 5
+
+                                            using = searchbar_background
+
+                                            editbox_search_field =	{
+                                                min_width = 35
+                                                blockoverride "editbox_standard_size" {
+                                                    size = { 30 30 }
+                                                }
+                                                blockoverride "editbox_properties" {
+                                                    name = "subpage_number"
+                                                    onreturnpressed = "[GameEncyclopedia.GoToEditBoxSubPage]"
+                                                    ontextedited = "[GameEncyclopedia.GoToEditBoxSubPage]"
+                                                    maxcharacters = "[GameEncyclopedia.GetCurrentMaxSubpageNumber]"
+                                                    text = "[GameEncyclopedia.GetCurrentSubpageNumber]"
+                                                }
+                                            }
+
+                                            expand = {}
+                                        }
+
+                                        text_single = {
+                                            size = { 30 30 }
+                                            align = center
+                                            using = Font_Type_Headers
+                                            raw_text = "/[GameEncyclopedia.GetCurrentMaxSubpageNumber]"
+                                            autoresize = no
+                                        }
+                                    }
+
+                                    ui_direction_button = {
+                                        size = { 22 22 }
+                                        enabled = "[NotEqualTo_int32(GameEncyclopedia.GetCurrentSubpageNumber, GameEncyclopedia.GetCurrentMaxSubpageNumber)]"
+                                        onclick = "[GameEncyclopedia.GoToNextSubPage]"
+                                        tooltipwidget = { LeftClickButtonTooltip = { blockoverride "onclick_text" { text = "ENCYCLOPEDIA_GO_TO_NEXT_SUBPAGE" } } }
+
+                                        texture = "gfx/interface/buttons/flats/button_simple_right.dds"
+                                        using = button_regular_icon_color
+                                    }
+                                    expand = {}
+                                }
+                            }
+
+                            scrollbox = {
+                                layoutpolicy_horizontal = expanding
+                                layoutpolicy_vertical = expanding
+
+                                blockoverride "scrollbox_content" {
+                                    dynamicgridbox = {
+                                        name = "entries"
+                                        datamodel = "[GameEncyclopedia.GetCurrentSubPageViewedEntries]"
+
+                                        item = {
+                                            widget = {
+                                                vbox = {
+                                                    set_parent_size_to_minimum = yes
+                                                    margin = { 0 10 }
+
+                                                    vbox = {
+                                                        layoutpolicy_horizontal = expanding
+                                                        datacontext = "[EncyclopediaEntryView.Get]"
+                                                        spacing = 10
+                                                        using = bg_paper_card
+
+                                                        blockoverride "card_color" {
+                                                            using = color_intense_bg_blue_texture
+                                                            blend_mode = multiply
+                                                        }
+
+                                                        max_width = 1450
+                                                        min_width = 1450
+
+                                                        icon = {
+                                                            layoutpolicy_horizontal = expanding
+                                                            using = button_main_tab_texture
+                                                            frame = 4
+
+                                                            modify_texture = {
+                                                                using = color_intense_bg_blue_texture
+                                                                blend_mode = multiply
+                                                            }
+
+                                                            modify_texture = {
+                                                                using = overlay_leather_texture
+                                                                blend_mode = overlay
+                                                                alpha = 0.2
+                                                            }
+
+                                                            hbox = {
+                                                                margin = { 40 0 }
+                                                                margin_top = 8
+
+                                                                icon = {
+                                                                    name = "image"
+                                                                    texture = "[EncyclopediaEntry.GetImage]"
+                                                                    visible = "[EncyclopediaEntry.HasImage]"
+                                                                    size = { 45 45 }
+                                                                    framesize = "[EncyclopediaEntry.GetFrameSize]"
+                                                                    frame = "[EncyclopediaEntry.GetFrame]"
+                                                                }
+
+                                                                text_single = {
+                                                                    name = "title"
+                                                                    using = layoutpolicy_expanding
+                                                                    using = Font_Size_Medium
+                                                                    fontsize = 18
+                                                                    autoresize = no
+
+                                                                    default_format = "#yellow_titles"
+                                                                    text = "[EncyclopediaEntry.GetTitle]"
+                                                                }
+                                                            }
+                                                        }
+
+                                                        TooltipListScrollArea = {
+                                                            blockoverride "scrollarea_content" {
+                                                                vbox = {
+                                                                    set_parent_dimension_to_minimum = height
+                                                                    layoutpolicy_horizontal = expanding
+
+                                                                    text_multi = {
+                                                                        name = "body"
+                                                                        max_width = 1450
+                                                                        min_width = 1450
+                                                                        autoresize = yes
+
+                                                                        text = "[EncyclopediaEntry.GetBody]"
+                                                                        margin = { 40 10 }
+                                                                    }
+                                                                }
+                                                            }
+                                                            block "block_scrollarea" {
+                                                                maximumsize = { -1 800 }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                expand = {}
+                            }
+                        }
+
+                        vbox = {
+                            layoutpolicy_horizontal = expanding
+                            layoutpolicy_vertical = expanding
+                            visible = "[GetVariableSystem.HasValue('crm_encyclopedia_active', 'yes')]"
+
+                            hbox = {
+                                layoutpolicy_horizontal = expanding
+                                margin = { 10 3 }
+                                spacing = 5
+
+                                button_regular = { layoutpolicy_horizontal = expanding text = "CITY_REMAKE_WIKI_FILTER_ALL" onclick = "[GetVariableSystem.Set('crm_filter', 'all')]" down = "[GetVariableSystem.HasValue('crm_filter', 'all')]" action_tooltip = { title = "CITY_REMAKE_WIKI_FILTER_ALL" } tooltipwidget = { BasicFunctionalTooltip = {} } blockoverride "background" {} }
+                                button_regular = { layoutpolicy_horizontal = expanding text = "CITY_REMAKE_WIKI_FILTER_ESTATE_TRADE" onclick = "[GetVariableSystem.Set('crm_filter', 'estate_trade')]" down = "[GetVariableSystem.HasValue('crm_filter', 'estate_trade')]" action_tooltip = { title = "CITY_REMAKE_WIKI_FILTER_ESTATE_TRADE" } tooltipwidget = { BasicFunctionalTooltip = {} } blockoverride "background" {} }
+                                button_regular = { layoutpolicy_horizontal = expanding text = "CITY_REMAKE_WIKI_FILTER_LAND_BUREAUCRACY" onclick = "[GetVariableSystem.Set('crm_filter', 'land_bureaucracy')]" down = "[GetVariableSystem.HasValue('crm_filter', 'land_bureaucracy')]" action_tooltip = { title = "CITY_REMAKE_WIKI_FILTER_LAND_BUREAUCRACY" } tooltipwidget = { BasicFunctionalTooltip = {} } blockoverride "background" {} }
+                                button_regular = { layoutpolicy_horizontal = expanding text = "CITY_REMAKE_WIKI_FILTER_CONSUMPTION_GROWTH" onclick = "[GetVariableSystem.Set('crm_filter', 'consumption_growth')]" down = "[GetVariableSystem.HasValue('crm_filter', 'consumption_growth')]" action_tooltip = { title = "CITY_REMAKE_WIKI_FILTER_CONSUMPTION_GROWTH" } tooltipwidget = { BasicFunctionalTooltip = {} } blockoverride "background" {} }
+                            }
+
+                            hbox = {
+                                layoutpolicy_horizontal = expanding
+                                margin = { 10 3 }
+                                spacing = 5
+
+                                button_regular = { layoutpolicy_horizontal = expanding text = "CITY_REMAKE_WIKI_FILTER_ESTATE_URBANIZATION" onclick = "[GetVariableSystem.Set('crm_filter', 'estate_urbanization')]" down = "[GetVariableSystem.HasValue('crm_filter', 'estate_urbanization')]" action_tooltip = { title = "CITY_REMAKE_WIKI_FILTER_ESTATE_URBANIZATION" } tooltipwidget = { BasicFunctionalTooltip = {} } blockoverride "background" {} }
+                                button_regular = { layoutpolicy_horizontal = expanding text = "CITY_REMAKE_WIKI_FILTER_ESTATE_BUILDINGS" onclick = "[GetVariableSystem.Set('crm_filter', 'estate_buildings')]" down = "[GetVariableSystem.HasValue('crm_filter', 'estate_buildings')]" action_tooltip = { title = "CITY_REMAKE_WIKI_FILTER_ESTATE_BUILDINGS" } tooltipwidget = { BasicFunctionalTooltip = {} } blockoverride "background" {} }
+                                button_regular = { layoutpolicy_horizontal = expanding text = "CITY_REMAKE_WIKI_FILTER_WAR_CHANGES" onclick = "[GetVariableSystem.Set('crm_filter', 'war_changes')]" down = "[GetVariableSystem.HasValue('crm_filter', 'war_changes')]" action_tooltip = { title = "CITY_REMAKE_WIKI_FILTER_WAR_CHANGES" } tooltipwidget = { BasicFunctionalTooltip = {} } blockoverride "background" {} }
+                                button_regular = { layoutpolicy_horizontal = expanding text = "CITY_REMAKE_WIKI_FILTER_CITY_PROJECTS" onclick = "[GetVariableSystem.Set('crm_filter', 'city_projects')]" down = "[GetVariableSystem.HasValue('crm_filter', 'city_projects')]" action_tooltip = { title = "CITY_REMAKE_WIKI_FILTER_CITY_PROJECTS" } tooltipwidget = { BasicFunctionalTooltip = {} } blockoverride "background" {} }
+                            }
+
+                            scrollbox = {
+                                layoutpolicy_horizontal = expanding
+                                layoutpolicy_vertical = expanding
+
+                                blockoverride "scrollbox_content" {
+                                    vbox = {
+                                        vbox = {
+                                            set_parent_size_to_minimum = yes
+                                            margin = { 0 10 }
+                                            vbox = {
+                                                layoutpolicy_horizontal = expanding
+                                                spacing = 10
+                                                using = bg_paper_card
+                                                blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply }
+                                                max_width = 1450
+                                                min_width = 1450
+                                                icon = {
+                                                    layoutpolicy_horizontal = expanding
+                                                    using = button_main_tab_texture
+                                                    frame = 4
+                                                    modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply }
+                                                    modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 }
+                                                    hbox = {
+                                                        margin = { 40 0 }
+                                                        margin_top = 8
+                                                        icon = { texture = "gfx/interface/icons/flat_icons/building_panel/employees.dds" size = { 45 45 } }
+                                                        text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki" }
+                                                    }
+                                                }
+                                                TooltipListScrollArea = {
+                                                    blockoverride "scrollarea_content" {
+                                                        vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding
+                                                            text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_desc" margin = { 40 10 } }
+                                                        }
+                                                    }
+                                                    block "block_scrollarea" { maximumsize = { -1 800 } }
+                                                }
+                                            }
+                                        }
+
+                                        vbox = { visible = "[Or(GetVariableSystem.HasValue('crm_filter', 'all'), GetVariableSystem.HasValue('crm_filter', 'estate_trade'))]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/effect.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_estate_trade" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_estate_trade_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'estate_trade')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/action.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_estate_trade_terms" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_estate_trade_terms_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'estate_trade')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/effect.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_estate_trade_acceptance" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_estate_trade_acceptance_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'estate_trade')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/resources/war_exhaustion.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_estate_trade_debt" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_estate_trade_debt_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+
+                                        vbox = { visible = "[Or(GetVariableSystem.HasValue('crm_filter', 'all'), GetVariableSystem.HasValue('crm_filter', 'land_bureaucracy'))]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/map_modes/provinces.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_land_bureaucracy" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_land_bureaucracy_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'land_bureaucracy')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/map_modes/provinces.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_land_ownership" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_land_ownership_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'land_bureaucracy')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/effect.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_land_integration" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_land_integration_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'land_bureaucracy')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/country.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_bureaucracy_coverage" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_bureaucracy_coverage_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+
+                                        vbox = { visible = "[Or(GetVariableSystem.HasValue('crm_filter', 'all'), GetVariableSystem.HasValue('crm_filter', 'consumption_growth'))]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/trade_market/demand.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_consumption_growth" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_consumption_growth_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'consumption_growth')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/trade_market/demand.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_pop_consumption" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_pop_consumption_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'consumption_growth')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/trade_market/food_stockpile.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_food_growth" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_food_growth_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'consumption_growth')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/effect.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_wealth_attraction" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_wealth_attraction_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+
+                                        vbox = { visible = "[Or(GetVariableSystem.HasValue('crm_filter', 'all'), GetVariableSystem.HasValue('crm_filter', 'estate_urbanization'))]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/geography/characters.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_estate_urbanization" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_estate_urbanization_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'estate_urbanization')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/map_modes/provinces.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_urbanization_candidates" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_urbanization_candidates_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'estate_urbanization')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/action.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_urbanization_estate_logic" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_urbanization_estate_logic_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'estate_urbanization')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/effect.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_urban_origin_downgrade" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_urban_origin_downgrade_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+
+                                        vbox = { visible = "[Or(GetVariableSystem.HasValue('crm_filter', 'all'), GetVariableSystem.HasValue('crm_filter', 'estate_buildings'))]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/balance/buildings_abroad.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_estate_buildings" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_estate_buildings_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'estate_buildings')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/balance/buildings_abroad.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_auto_estate_buildings" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_auto_estate_buildings_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'estate_buildings')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/balance/buildings_abroad.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_added_infrastructure_buildings" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_added_infrastructure_buildings_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'estate_buildings')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/balance/buildings_abroad.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_added_resource_expense_buildings" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_added_resource_expense_buildings_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+
+                                        vbox = { visible = "[Or(GetVariableSystem.HasValue('crm_filter', 'all'), GetVariableSystem.HasValue('crm_filter', 'war_changes'))]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/location_icons/garrison.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_war_changes" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_war_changes_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'war_changes')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/location_icons/garrison.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_war_momentum" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_war_momentum_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'war_changes')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/resources/war_exhaustion.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_civil_war_pressure" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_civil_war_pressure_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'war_changes')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/location_icons/garrison.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_siege_starvation" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_siege_starvation_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+
+                                        vbox = { visible = "[Or(GetVariableSystem.HasValue('crm_filter', 'all'), GetVariableSystem.HasValue('crm_filter', 'city_projects'))]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/action.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_city_projects" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_city_projects_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'city_projects')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/country.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_project_capacity" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_project_capacity_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'city_projects')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/action.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_project_flow" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_project_flow_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+                                        vbox = { visible = "[GetVariableSystem.HasValue('crm_filter', 'city_projects')]" set_parent_size_to_minimum = yes margin = { 0 10 } vbox = { layoutpolicy_horizontal = expanding spacing = 10 using = bg_paper_card blockoverride "card_color" { using = color_intense_bg_blue_texture blend_mode = multiply } max_width = 1450 min_width = 1450 icon = { layoutpolicy_horizontal = expanding using = button_main_tab_texture frame = 4 modify_texture = { using = color_intense_bg_blue_texture blend_mode = multiply } modify_texture = { using = overlay_leather_texture blend_mode = overlay alpha = 0.2 } hbox = { margin = { 40 0 } margin_top = 8 icon = { texture = "gfx/interface/icons/flat_icons/effect.dds" size = { 45 45 } } text_single = { name = "title" using = layoutpolicy_expanding using = Font_Size_Medium fontsize = 18 autoresize = no default_format = "#yellow_titles" text = "game_concept_city_remake_wiki_project_transfer" } } } TooltipListScrollArea = { blockoverride "scrollarea_content" { vbox = { set_parent_dimension_to_minimum = height layoutpolicy_horizontal = expanding text_multi = { name = "body" max_width = 1450 min_width = 1450 autoresize = yes text = "game_concept_city_remake_wiki_project_transfer_desc" margin = { 40 10 } } } } block "block_scrollarea" { maximumsize = { -1 800 } } } } }
+
+                                        expand = {}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+		}
+	}
+}

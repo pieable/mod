@@ -3,6 +3,8 @@ REPLACE:laborers = {
 
 	editor = 1.0
 
+	grow = yes
+
 	assimilation_conversion_factor = 0.5
 
 	pop_food_consumption = 1.0
@@ -21,5 +23,6 @@ REPLACE:laborers = {
 
 	literacy_impact = {
 		local_production_efficiency = medium_production_efficiency_bonus
+		local_max_rgo_size_modifier = 0.1
 	}
 }

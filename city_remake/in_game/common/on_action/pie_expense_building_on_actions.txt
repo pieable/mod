@@ -1,4 +1,10 @@
-monthly_country_pulse = {
+﻿monthly_country_pulse = {
+	on_actions = {
+		pie_expense_building_monthly
+	}
+}
+
+pie_expense_building_monthly = {
 	trigger = {
 		country_type = location
 		exists = capital

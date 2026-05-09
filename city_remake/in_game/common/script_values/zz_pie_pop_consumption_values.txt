@@ -1,4 +1,4 @@
-pie_pop_local_effective_control = {
+﻿pie_pop_local_effective_control = {
 	value = local_control
 	min = 0.01
 }

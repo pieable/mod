@@ -57,8 +57,6 @@ noicthy_update_army = {
 noicthy_cleanup = {
 	remove_variable = noicthy_war_momentum_army_size
 	remove_variable = noicthy_potential_peak
-	remove_variable = noicthy_army_peak
-	remove_variable = noicthy_manpower_peak
 	remove_variable = noicthy_was_auto_conquered
 
 	remove_country_modifier = noicthy_war_momentum_army
@@ -89,8 +87,6 @@ noicthy_init = {
 	every_country = {
 		limit = { has_variable = noicthy_potential_peak }
 		remove_variable = noicthy_potential_peak
-		remove_variable = noicthy_army_peak
-		remove_variable = noicthy_manpower_peak
 	}
 
 	location:bouvet_island = {

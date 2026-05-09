@@ -119,41 +119,40 @@ noicthy_on_game_start = {
 # the mod triggers a rebuild. Version comparison catches mod updates.
 
 noicthy_init_pulse = {
-	trigger = {
-		NOT = {
-			has_global_variable = noicthy_rebuilding
-		}
-
-		location:bouvet_island = {
-			OR = {
-				NOT = {
-					has_location_modifier = noicthy_active
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_global_variable = noicthy_rebuilding }
+				location:bouvet_island = {
+					NOT = { has_location_modifier = noicthy_active }
 				}
-
-				AND = {
+			}
+			noicthy_init = yes
+		}
+		else_if = {
+			limit = {
+				NOT = { has_global_variable = noicthy_rebuilding }
+				location:bouvet_island = {
 					has_variable = noicthy_version
 					var:noicthy_version < @noicthy_version
 				}
 			}
+			noicthy_init = yes
 		}
-	}
-
-	effect = {
-		noicthy_init = yes
 	}
 }
 
 # Monthly update: fires for countries at war or with residual state needing cleanup.
 
 noicthy_monthly_pulse = {
-	trigger = {
-		OR = {
-			at_war = yes
-			has_variable = noicthy_war_momentum_army_size
-		}
-	}
-
 	effect = {
-		noicthy_monthly_update = yes
+		if = {
+			limit = { at_war = yes }
+			noicthy_monthly_update = yes
+		}
+		else_if = {
+			limit = { has_variable = noicthy_war_momentum_army_size }
+			noicthy_monthly_update = yes
+		}
 	}
 }

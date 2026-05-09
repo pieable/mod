@@ -1,0 +1,74 @@
+REPLACE:glass_guild = {
+	is_foreign = no
+	pop_type = burghers
+	max_levels = guild_max_level
+
+	category = basic_industry_category
+
+	employment_size = guild_employment
+
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	build_time = guild_build_time
+
+	unique_production_methods = {
+		pie_glass_guild_maintenance = {
+			lumber = 0.2
+			sand = 1.0
+			tools = 0.38
+			produced = glass
+			output = 0.75
+
+			category = guild_input
+		}
+		pie_metal_glass_guild_maintenance = {
+			lumber = 0.31
+			sand = 1.0
+			tools = 0.41
+			alum = 0.04
+			lead = 0.08
+			produced = glass
+			output = 1
+
+			debug_max_profit = 0.4
+
+			category = guild_input
+		}
+	}
+	construction_demand = guild_construction
+
+	modifier = {
+	}
+	custom_tags = { guild }
+}
+
+REPLACE:saltpeter_guild = {
+	is_foreign = no
+	pop_type = burghers
+	max_levels = guild_max_level
+
+	category = basic_industry_category
+
+	employment_size = guild_employment
+
+	town = yes
+	city = yes
+	megalopolis = yes
+
+	build_time = guild_build_time
+
+	unique_production_methods = {
+		pie_saltpeter_guild_demands = {
+			pottery = 0.2
+			livestock = 1.0
+			produced = saltpeter
+			output = 1
+			category = guild_input
+		}
+	}
+
+	custom_tags = { guild }
+	construction_demand = guild_construction
+}

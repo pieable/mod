@@ -2,1469 +2,371 @@
 
 pie_et_generated_selected_privilege_is_valid = {
 	OR = {
-		AND = {
-			has_variable = pie_et_sg_nobles_land_rights
-			has_variable = pie_et_pg_nobles_land_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_nobles_land_rights
-			has_variable = pie_et_pr_nobles_land_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_auxilium_et_consilium
-			has_variable = pie_et_pg_auxilium_et_consilium
-		}
-		AND = {
-			has_variable = pie_et_sr_auxilium_et_consilium
-			has_variable = pie_et_pr_auxilium_et_consilium
-		}
-		AND = {
-			has_variable = pie_et_sg_noble_serfdom_rights
-			has_variable = pie_et_pg_noble_serfdom_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_noble_serfdom_rights
-			has_variable = pie_et_pr_noble_serfdom_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_noble_fortification_licenses
-			has_variable = pie_et_pg_noble_fortification_licenses
-		}
-		AND = {
-			has_variable = pie_et_sr_noble_fortification_licenses
-			has_variable = pie_et_pr_noble_fortification_licenses
-		}
-		AND = {
-			has_variable = pie_et_sg_noble_marriage_rights
-			has_variable = pie_et_pg_noble_marriage_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_noble_marriage_rights
-			has_variable = pie_et_pr_noble_marriage_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_banal_lordship
-			has_variable = pie_et_pg_banal_lordship
-		}
-		AND = {
-			has_variable = pie_et_sr_banal_lordship
-			has_variable = pie_et_pr_banal_lordship
-		}
-		AND = {
-			has_variable = pie_et_sg_primacy_of_nobility
-			has_variable = pie_et_pg_primacy_of_nobility
-		}
-		AND = {
-			has_variable = pie_et_sr_primacy_of_nobility
-			has_variable = pie_et_pr_primacy_of_nobility
-		}
-		AND = {
-			has_variable = pie_et_sg_noble_leaders_only
-			has_variable = pie_et_pg_noble_leaders_only
-		}
-		AND = {
-			has_variable = pie_et_sr_noble_leaders_only
-			has_variable = pie_et_pr_noble_leaders_only
-		}
-		AND = {
-			has_variable = pie_et_sg_elaborate_court_ceremonies
-			has_variable = pie_et_pg_elaborate_court_ceremonies
-		}
-		AND = {
-			has_variable = pie_et_sr_elaborate_court_ceremonies
-			has_variable = pie_et_pr_elaborate_court_ceremonies
-		}
-		AND = {
-			has_variable = pie_et_sg_nobles_protected_faith
-			has_variable = pie_et_pg_nobles_protected_faith
-		}
-		AND = {
-			has_variable = pie_et_sr_nobles_protected_faith
-			has_variable = pie_et_pr_nobles_protected_faith
-		}
-		AND = {
-			has_variable = pie_et_sg_nobility_council
-			has_variable = pie_et_pg_nobility_council
-		}
-		AND = {
-			has_variable = pie_et_sr_nobility_council
-			has_variable = pie_et_pr_nobility_council
-		}
-		AND = {
-			has_variable = pie_et_sg_manorial_courts
-			has_variable = pie_et_pg_manorial_courts
-		}
-		AND = {
-			has_variable = pie_et_sr_manorial_courts
-			has_variable = pie_et_pr_manorial_courts
-		}
-		AND = {
-			has_variable = pie_et_sg_increased_civic_engagement
-			has_variable = pie_et_pg_increased_civic_engagement
-		}
-		AND = {
-			has_variable = pie_et_sr_increased_civic_engagement
-			has_variable = pie_et_pr_increased_civic_engagement
-		}
-		AND = {
-			has_variable = pie_et_sg_inherited_offices
-			has_variable = pie_et_pg_inherited_offices
-		}
-		AND = {
-			has_variable = pie_et_sr_inherited_offices
-			has_variable = pie_et_pr_inherited_offices
-		}
-		AND = {
-			has_variable = pie_et_sg_recognized_communes
-			has_variable = pie_et_pg_recognized_communes
-		}
-		AND = {
-			has_variable = pie_et_sr_recognized_communes
-			has_variable = pie_et_pr_recognized_communes
-		}
-		AND = {
-			has_variable = pie_et_sg_appoint_ecclesiastical_offices
-			has_variable = pie_et_pg_appoint_ecclesiastical_offices
-		}
-		AND = {
-			has_variable = pie_et_sr_appoint_ecclesiastical_offices
-			has_variable = pie_et_pr_appoint_ecclesiastical_offices
-		}
-		AND = {
-			has_variable = pie_et_sg_control_of_the_borderlands
-			has_variable = pie_et_pg_control_of_the_borderlands
-		}
-		AND = {
-			has_variable = pie_et_sr_control_of_the_borderlands
-			has_variable = pie_et_pr_control_of_the_borderlands
-		}
-		AND = {
-			has_variable = pie_et_sg_feudal_mercenary_contracts
-			has_variable = pie_et_pg_feudal_mercenary_contracts
-		}
-		AND = {
-			has_variable = pie_et_sr_feudal_mercenary_contracts
-			has_variable = pie_et_pr_feudal_mercenary_contracts
-		}
-		AND = {
-			has_variable = pie_et_sg_liberum_veto
-			has_variable = pie_et_pg_liberum_veto
-		}
-		AND = {
-			has_variable = pie_et_sr_liberum_veto
-			has_variable = pie_et_pr_liberum_veto
-		}
-		AND = {
-			has_variable = pie_et_sg_visconti_city_states
-			has_variable = pie_et_pg_visconti_city_states
-		}
-		AND = {
-			has_variable = pie_et_sr_visconti_city_states
-			has_variable = pie_et_pr_visconti_city_states
-		}
-		AND = {
-			has_variable = pie_et_sg_general_privilege
-			has_variable = pie_et_pg_general_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_general_privilege
-			has_variable = pie_et_pr_general_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_union_privilege
-			has_variable = pie_et_pg_union_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_union_privilege
-			has_variable = pie_et_pr_union_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_signoria_council
-			has_variable = pie_et_pg_signoria_council
-		}
-		AND = {
-			has_variable = pie_et_sr_signoria_council
-			has_variable = pie_et_pr_signoria_council
-		}
-		AND = {
-			has_variable = pie_et_sg_tysiatskii_privilege
-			has_variable = pie_et_pg_tysiatskii_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_tysiatskii_privilege
-			has_variable = pie_et_pr_tysiatskii_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_the_ryad_privilege
-			has_variable = pie_et_pg_the_ryad_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_the_ryad_privilege
-			has_variable = pie_et_pr_the_ryad_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_kbo_kaigama
-			has_variable = pie_et_pg_kbo_kaigama
-		}
-		AND = {
-			has_variable = pie_et_sr_kbo_kaigama
-			has_variable = pie_et_pr_kbo_kaigama
-		}
-		AND = {
-			has_variable = pie_et_sg_kbo_yerima
-			has_variable = pie_et_pg_kbo_yerima
-		}
-		AND = {
-			has_variable = pie_et_sr_kbo_yerima
-			has_variable = pie_et_pr_kbo_yerima
-		}
-		AND = {
-			has_variable = pie_et_sg_kbo_cima
-			has_variable = pie_et_pg_kbo_cima
-		}
-		AND = {
-			has_variable = pie_et_sr_kbo_cima
-			has_variable = pie_et_pr_kbo_cima
-		}
-		AND = {
-			has_variable = pie_et_sg_office_of_the_farima_soura_privilege
-			has_variable = pie_et_pg_office_of_the_farima_soura_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_office_of_the_farima_soura_privilege
-			has_variable = pie_et_pr_office_of_the_farima_soura_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_office_of_the_sankar_zouma_privilege
-			has_variable = pie_et_pg_office_of_the_sankar_zouma_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_office_of_the_sankar_zouma_privilege
-			has_variable = pie_et_pr_office_of_the_sankar_zouma_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_golden_liberty
-			has_variable = pie_et_pg_golden_liberty
-		}
-		AND = {
-			has_variable = pie_et_sr_golden_liberty
-			has_variable = pie_et_pr_golden_liberty
-		}
-		AND = {
-			has_variable = pie_et_sg_nieszawa_privileges
-			has_variable = pie_et_pg_nieszawa_privileges
-		}
-		AND = {
-			has_variable = pie_et_sr_nieszawa_privileges
-			has_variable = pie_et_pr_nieszawa_privileges
-		}
-		AND = {
-			has_variable = pie_et_sg_pacta_conventa
-			has_variable = pie_et_pg_pacta_conventa
-		}
-		AND = {
-			has_variable = pie_et_sr_pacta_conventa
-			has_variable = pie_et_pr_pacta_conventa
-		}
-		AND = {
-			has_variable = pie_et_sg_noble_armies
-			has_variable = pie_et_pg_noble_armies
-		}
-		AND = {
-			has_variable = pie_et_sr_noble_armies
-			has_variable = pie_et_pr_noble_armies
-		}
-		AND = {
-			has_variable = pie_et_sg_chancellor_nobles
-			has_variable = pie_et_pg_chancellor_nobles
-		}
-		AND = {
-			has_variable = pie_et_sr_chancellor_nobles
-			has_variable = pie_et_pr_chancellor_nobles
-		}
-		AND = {
-			has_variable = pie_et_sg_great_offices_of_the_crown_of_france
-			has_variable = pie_et_pg_great_offices_of_the_crown_of_france
-		}
-		AND = {
-			has_variable = pie_et_sr_great_offices_of_the_crown_of_france
-			has_variable = pie_et_pr_great_offices_of_the_crown_of_france
-		}
-		AND = {
-			has_variable = pie_et_sg_residence_in_versailles
-			has_variable = pie_et_pg_residence_in_versailles
-		}
-		AND = {
-			has_variable = pie_et_sr_residence_in_versailles
-			has_variable = pie_et_pr_residence_in_versailles
-		}
-		AND = {
-			has_variable = pie_et_sg_permanent_residence_in_versailles
-			has_variable = pie_et_pg_permanent_residence_in_versailles
-		}
-		AND = {
-			has_variable = pie_et_sr_permanent_residence_in_versailles
-			has_variable = pie_et_pr_permanent_residence_in_versailles
-		}
-		AND = {
-			has_variable = pie_et_sg_right_to_inherit
-			has_variable = pie_et_pg_right_to_inherit
-		}
-		AND = {
-			has_variable = pie_et_sr_right_to_inherit
-			has_variable = pie_et_pr_right_to_inherit
-		}
-		AND = {
-			has_variable = pie_et_sg_inaugural_diplomas
-			has_variable = pie_et_pg_inaugural_diplomas
-		}
-		AND = {
-			has_variable = pie_et_sr_inaugural_diplomas
-			has_variable = pie_et_pr_inaugural_diplomas
-		}
-		AND = {
-			has_variable = pie_et_sg_district_paving_privilege
-			has_variable = pie_et_pg_district_paving_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_district_paving_privilege
-			has_variable = pie_et_pr_district_paving_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_joint_assembly_decrees
-			has_variable = pie_et_pg_joint_assembly_decrees
-		}
-		AND = {
-			has_variable = pie_et_sr_joint_assembly_decrees
-			has_variable = pie_et_pr_joint_assembly_decrees
-		}
-		AND = {
-			has_variable = pie_et_sg_kormlenije
-			has_variable = pie_et_pg_kormlenije
-		}
-		AND = {
-			has_variable = pie_et_sr_kormlenije
-			has_variable = pie_et_pr_kormlenije
-		}
-		AND = {
-			has_variable = pie_et_sg_ordinance_of_laborers
-			has_variable = pie_et_pg_ordinance_of_laborers
-		}
-		AND = {
-			has_variable = pie_et_sr_ordinance_of_laborers
-			has_variable = pie_et_pr_ordinance_of_laborers
-		}
-		AND = {
-			has_variable = pie_et_sg_autonomous_local_commanders
-			has_variable = pie_et_pg_autonomous_local_commanders
-		}
-		AND = {
-			has_variable = pie_et_sr_autonomous_local_commanders
-			has_variable = pie_et_pr_autonomous_local_commanders
-		}
-		AND = {
-			has_variable = pie_et_sg_bashtinas_and_pronijas_grants
-			has_variable = pie_et_pg_bashtinas_and_pronijas_grants
-		}
-		AND = {
-			has_variable = pie_et_sr_bashtinas_and_pronijas_grants
-			has_variable = pie_et_pr_bashtinas_and_pronijas_grants
-		}
-		AND = {
-			has_variable = pie_et_sg_zupa_districts
-			has_variable = pie_et_pg_zupa_districts
-		}
-		AND = {
-			has_variable = pie_et_sr_zupa_districts
-			has_variable = pie_et_pr_zupa_districts
-		}
-		AND = {
-			has_variable = pie_et_sg_vlastele_krayishnik
-			has_variable = pie_et_pg_vlastele_krayishnik
-		}
-		AND = {
-			has_variable = pie_et_sr_vlastele_krayishnik
-			has_variable = pie_et_pr_vlastele_krayishnik
-		}
-		AND = {
-			has_variable = pie_et_sg_golden_bull_of_1222
-			has_variable = pie_et_pg_golden_bull_of_1222
-		}
-		AND = {
-			has_variable = pie_et_sr_golden_bull_of_1222
-			has_variable = pie_et_pr_golden_bull_of_1222
-		}
-		AND = {
-			has_variable = pie_et_sg_monetary_fiefs
-			has_variable = pie_et_pg_monetary_fiefs
-		}
-		AND = {
-			has_variable = pie_et_sr_monetary_fiefs
-			has_variable = pie_et_pr_monetary_fiefs
-		}
-		AND = {
-			has_variable = pie_et_sg_scholar_officials
-			has_variable = pie_et_pg_scholar_officials
-		}
-		AND = {
-			has_variable = pie_et_sr_scholar_officials
-			has_variable = pie_et_pr_scholar_officials
-		}
-		AND = {
-			has_variable = pie_et_sg_ghazi_privilege
-			has_variable = pie_et_pg_ghazi_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_ghazi_privilege
-			has_variable = pie_et_pr_ghazi_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_share_of_the_spoils
-			has_variable = pie_et_pg_share_of_the_spoils
-		}
-		AND = {
-			has_variable = pie_et_sr_share_of_the_spoils
-			has_variable = pie_et_pr_share_of_the_spoils
-		}
-		AND = {
-			has_variable = pie_et_sg_tribal_host
-			has_variable = pie_et_pg_tribal_host
-		}
-		AND = {
-			has_variable = pie_et_sr_tribal_host
-			has_variable = pie_et_pr_tribal_host
-		}
-		AND = {
-			has_variable = pie_et_sg_tribal_autonomy
-			has_variable = pie_et_pg_tribal_autonomy
-		}
-		AND = {
-			has_variable = pie_et_sr_tribal_autonomy
-			has_variable = pie_et_pr_tribal_autonomy
-		}
-		AND = {
-			has_variable = pie_et_sg_powerful_italian_families
-			has_variable = pie_et_pg_powerful_italian_families
-		}
-		AND = {
-			has_variable = pie_et_sr_powerful_italian_families
-			has_variable = pie_et_pr_powerful_italian_families
-		}
-		AND = {
-			has_variable = pie_et_sg_plc_empower_orthodox_nobility
-			has_variable = pie_et_pg_plc_empower_orthodox_nobility
-		}
-		AND = {
-			has_variable = pie_et_sr_plc_empower_orthodox_nobility
-			has_variable = pie_et_pr_plc_empower_orthodox_nobility
-		}
-		AND = {
-			has_variable = pie_et_sg_scottish_clans
-			has_variable = pie_et_pg_scottish_clans
-		}
-		AND = {
-			has_variable = pie_et_sr_scottish_clans
-			has_variable = pie_et_pr_scottish_clans
-		}
-		AND = {
-			has_variable = pie_et_sg_autonomous_scottish_clans
-			has_variable = pie_et_pg_autonomous_scottish_clans
-		}
-		AND = {
-			has_variable = pie_et_sr_autonomous_scottish_clans
-			has_variable = pie_et_pr_autonomous_scottish_clans
-		}
-		AND = {
-			has_variable = pie_et_sg_sco_statutes_of_iona
-			has_variable = pie_et_pg_sco_statutes_of_iona
-		}
-		AND = {
-			has_variable = pie_et_sr_sco_statutes_of_iona
-			has_variable = pie_et_pr_sco_statutes_of_iona
-		}
-		AND = {
-			has_variable = pie_et_sg_coign_and_livery_privilege
-			has_variable = pie_et_pg_coign_and_livery_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_coign_and_livery_privilege
-			has_variable = pie_et_pr_coign_and_livery_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_libro_d_oro
-			has_variable = pie_et_pg_libro_d_oro
-		}
-		AND = {
-			has_variable = pie_et_sr_libro_d_oro
-			has_variable = pie_et_pr_libro_d_oro
-		}
-		AND = {
-			has_variable = pie_et_sg_avogadoria_de_comun
-			has_variable = pie_et_pg_avogadoria_de_comun
-		}
-		AND = {
-			has_variable = pie_et_sr_avogadoria_de_comun
-			has_variable = pie_et_pr_avogadoria_de_comun
-		}
-		AND = {
-			has_variable = pie_et_sg_zontas
-			has_variable = pie_et_pg_zontas
-		}
-		AND = {
-			has_variable = pie_et_sr_zontas
-			has_variable = pie_et_pr_zontas
-		}
-		AND = {
-			has_variable = pie_et_sg_rajput_society
-			has_variable = pie_et_pg_rajput_society
-		}
-		AND = {
-			has_variable = pie_et_sr_rajput_society
-			has_variable = pie_et_pr_rajput_society
-		}
-		AND = {
-			has_variable = pie_et_sg_zamindar_tax_privilege
-			has_variable = pie_et_pg_zamindar_tax_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_zamindar_tax_privilege
-			has_variable = pie_et_pr_zamindar_tax_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_consolidated_corruption_of_the_nobles
-			has_variable = pie_et_pg_consolidated_corruption_of_the_nobles
-		}
-		AND = {
-			has_variable = pie_et_sr_consolidated_corruption_of_the_nobles
-			has_variable = pie_et_pr_consolidated_corruption_of_the_nobles
-		}
-		AND = {
-			has_variable = pie_et_sg_privilege_of_koszyce
-			has_variable = pie_et_pg_privilege_of_koszyce
-		}
-		AND = {
-			has_variable = pie_et_sr_privilege_of_koszyce
-			has_variable = pie_et_pr_privilege_of_koszyce
-		}
-		AND = {
-			has_variable = pie_et_sg_nihil_novi
-			has_variable = pie_et_pg_nihil_novi
-		}
-		AND = {
-			has_variable = pie_et_sr_nihil_novi
-			has_variable = pie_et_pr_nihil_novi
-		}
-		AND = {
-			has_variable = pie_et_sg_noble_sponsored_navy
-			has_variable = pie_et_pg_noble_sponsored_navy
-		}
-		AND = {
-			has_variable = pie_et_sr_noble_sponsored_navy
-			has_variable = pie_et_pr_noble_sponsored_navy
-		}
-		AND = {
-			has_variable = pie_et_sg_charter_of_the_nobility
-			has_variable = pie_et_pg_charter_of_the_nobility
-		}
-		AND = {
-			has_variable = pie_et_sr_charter_of_the_nobility
-			has_variable = pie_et_pr_charter_of_the_nobility
-		}
-		AND = {
-			has_variable = pie_et_sg_reduced_responsibilities_for_the_nobles
-			has_variable = pie_et_pg_reduced_responsibilities_for_the_nobles
-		}
-		AND = {
-			has_variable = pie_et_sr_reduced_responsibilities_for_the_nobles
-			has_variable = pie_et_pr_reduced_responsibilities_for_the_nobles
-		}
-		AND = {
-			has_variable = pie_et_sg_reduced_taxation_for_the_nobles
-			has_variable = pie_et_pg_reduced_taxation_for_the_nobles
-		}
-		AND = {
-			has_variable = pie_et_sr_reduced_taxation_for_the_nobles
-			has_variable = pie_et_pr_reduced_taxation_for_the_nobles
-		}
-		AND = {
-			has_variable = pie_et_sg_heritable_iqta
-			has_variable = pie_et_pg_heritable_iqta
-		}
-		AND = {
-			has_variable = pie_et_sr_heritable_iqta
-			has_variable = pie_et_pr_heritable_iqta
-		}
-		AND = {
-			has_variable = pie_et_sg_manifesto_of_freedom
-			has_variable = pie_et_pg_manifesto_of_freedom
-		}
-		AND = {
-			has_variable = pie_et_sr_manifesto_of_freedom
-			has_variable = pie_et_pr_manifesto_of_freedom
-		}
-		AND = {
-			has_variable = pie_et_sg_bavarian_share_of_land
-			has_variable = pie_et_pg_bavarian_share_of_land
-		}
-		AND = {
-			has_variable = pie_et_sr_bavarian_share_of_land
-			has_variable = pie_et_pr_bavarian_share_of_land
-		}
-		AND = {
-			has_variable = pie_et_sg_cas_fuero_viejo
-			has_variable = pie_et_pg_cas_fuero_viejo
-		}
-		AND = {
-			has_variable = pie_et_sr_cas_fuero_viejo
-			has_variable = pie_et_pr_cas_fuero_viejo
-		}
-		AND = {
-			has_variable = pie_et_sg_justicia_de_aragon
-			has_variable = pie_et_pg_justicia_de_aragon
-		}
-		AND = {
-			has_variable = pie_et_sr_justicia_de_aragon
-			has_variable = pie_et_pr_justicia_de_aragon
-		}
-		AND = {
-			has_variable = pie_et_sg_formalized_oath
-			has_variable = pie_et_pg_formalized_oath
-		}
-		AND = {
-			has_variable = pie_et_sr_formalized_oath
-			has_variable = pie_et_pr_formalized_oath
-		}
-		AND = {
-			has_variable = pie_et_sg_ayans_privilege
-			has_variable = pie_et_pg_ayans_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_ayans_privilege
-			has_variable = pie_et_pr_ayans_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_cas_regimiento
-			has_variable = pie_et_pg_cas_regimiento
-		}
-		AND = {
-			has_variable = pie_et_sr_cas_regimiento
-			has_variable = pie_et_pr_cas_regimiento
-		}
-		AND = {
-			has_variable = pie_et_sg_lit_integrated_ruthenian_laws
-			has_variable = pie_et_pg_lit_integrated_ruthenian_laws
-		}
-		AND = {
-			has_variable = pie_et_sr_lit_integrated_ruthenian_laws
-			has_variable = pie_et_pr_lit_integrated_ruthenian_laws
-		}
-		AND = {
-			has_variable = pie_et_sg_lit_equal_status_of_orthodox_nobility
-			has_variable = pie_et_pg_lit_equal_status_of_orthodox_nobility
-		}
-		AND = {
-			has_variable = pie_et_sr_lit_equal_status_of_orthodox_nobility
-			has_variable = pie_et_pr_lit_equal_status_of_orthodox_nobility
-		}
-		AND = {
-			has_variable = pie_et_sg_mam_refined_furusiyya
-			has_variable = pie_et_pg_mam_refined_furusiyya
-		}
-		AND = {
-			has_variable = pie_et_sr_mam_refined_furusiyya
-			has_variable = pie_et_pr_mam_refined_furusiyya
-		}
-		AND = {
-			has_variable = pie_et_sg_tur_banned_weaponry_for_peasants
-			has_variable = pie_et_pg_tur_banned_weaponry_for_peasants
-		}
-		AND = {
-			has_variable = pie_et_sr_tur_banned_weaponry_for_peasants
-			has_variable = pie_et_pr_tur_banned_weaponry_for_peasants
-		}
-		AND = {
-			has_variable = pie_et_sg_noble_patronage_of_the_arts
-			has_variable = pie_et_pg_noble_patronage_of_the_arts
-		}
-		AND = {
-			has_variable = pie_et_sr_noble_patronage_of_the_arts
-			has_variable = pie_et_pr_noble_patronage_of_the_arts
-		}
-		AND = {
-			has_variable = pie_et_sg_statutes_of_piotrkow
-			has_variable = pie_et_pg_statutes_of_piotrkow
-		}
-		AND = {
-			has_variable = pie_et_sr_statutes_of_piotrkow
-			has_variable = pie_et_pr_statutes_of_piotrkow
-		}
-		AND = {
-			has_variable = pie_et_sg_clergy_literacy_rights
-			has_variable = pie_et_pg_clergy_literacy_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_clergy_literacy_rights
-			has_variable = pie_et_pr_clergy_literacy_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_clergy_strengthen_faith
-			has_variable = pie_et_pg_clergy_strengthen_faith
-		}
-		AND = {
-			has_variable = pie_et_sr_clergy_strengthen_faith
-			has_variable = pie_et_pr_clergy_strengthen_faith
-		}
-		AND = {
-			has_variable = pie_et_sg_clergy_enforced_unity
-			has_variable = pie_et_pg_clergy_enforced_unity
-		}
-		AND = {
-			has_variable = pie_et_sr_clergy_enforced_unity
-			has_variable = pie_et_pr_clergy_enforced_unity
-		}
-		AND = {
-			has_variable = pie_et_sg_clergy_military_orders
-			has_variable = pie_et_pg_clergy_military_orders
-		}
-		AND = {
-			has_variable = pie_et_sr_clergy_military_orders
-			has_variable = pie_et_pr_clergy_military_orders
-		}
-		AND = {
-			has_variable = pie_et_sg_clergy_lecture_oaths
-			has_variable = pie_et_pg_clergy_lecture_oaths
-		}
-		AND = {
-			has_variable = pie_et_sr_clergy_lecture_oaths
-			has_variable = pie_et_pr_clergy_lecture_oaths
-		}
-		AND = {
-			has_variable = pie_et_sg_clergy_land_rights
-			has_variable = pie_et_pg_clergy_land_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_clergy_land_rights
-			has_variable = pie_et_pr_clergy_land_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_clerical_advisory_council
-			has_variable = pie_et_pg_clerical_advisory_council
-		}
-		AND = {
-			has_variable = pie_et_sr_clerical_advisory_council
-			has_variable = pie_et_pr_clerical_advisory_council
-		}
-		AND = {
-			has_variable = pie_et_sg_clergy_powerful_dioceses
-			has_variable = pie_et_pg_clergy_powerful_dioceses
-		}
-		AND = {
-			has_variable = pie_et_sr_clergy_powerful_dioceses
-			has_variable = pie_et_pr_clergy_powerful_dioceses
-		}
-		AND = {
-			has_variable = pie_et_sg_clergy_protected_faith
-			has_variable = pie_et_pg_clergy_protected_faith
-		}
-		AND = {
-			has_variable = pie_et_sr_clergy_protected_faith
-			has_variable = pie_et_pr_clergy_protected_faith
-		}
-		AND = {
-			has_variable = pie_et_sg_clergy_religious_state
-			has_variable = pie_et_pg_clergy_religious_state
-		}
-		AND = {
-			has_variable = pie_et_sr_clergy_religious_state
-			has_variable = pie_et_pr_clergy_religious_state
-		}
-		AND = {
-			has_variable = pie_et_sg_expansionist_zealotry
-			has_variable = pie_et_pg_expansionist_zealotry
-		}
-		AND = {
-			has_variable = pie_et_sr_expansionist_zealotry
-			has_variable = pie_et_pr_expansionist_zealotry
-		}
-		AND = {
-			has_variable = pie_et_sg_religious_diplomats
-			has_variable = pie_et_pg_religious_diplomats
-		}
-		AND = {
-			has_variable = pie_et_sr_religious_diplomats
-			has_variable = pie_et_pr_religious_diplomats
-		}
-		AND = {
-			has_variable = pie_et_sg_promote_cultural_unity
-			has_variable = pie_et_pg_promote_cultural_unity
-		}
-		AND = {
-			has_variable = pie_et_sr_promote_cultural_unity
-			has_variable = pie_et_pr_promote_cultural_unity
-		}
-		AND = {
-			has_variable = pie_et_sg_embellish_great_works_of_faith
-			has_variable = pie_et_pg_embellish_great_works_of_faith
-		}
-		AND = {
-			has_variable = pie_et_sr_embellish_great_works_of_faith
-			has_variable = pie_et_pr_embellish_great_works_of_faith
-		}
-		AND = {
-			has_variable = pie_et_sg_clergy_papal_emissary
-			has_variable = pie_et_pg_clergy_papal_emissary
-		}
-		AND = {
-			has_variable = pie_et_sr_clergy_papal_emissary
-			has_variable = pie_et_pr_clergy_papal_emissary
-		}
-		AND = {
-			has_variable = pie_et_sg_freedom_of_interpretation
-			has_variable = pie_et_pg_freedom_of_interpretation
-		}
-		AND = {
-			has_variable = pie_et_sr_freedom_of_interpretation
-			has_variable = pie_et_pr_freedom_of_interpretation
-		}
-		AND = {
-			has_variable = pie_et_sg_waqf_payments
-			has_variable = pie_et_pg_waqf_payments
-		}
-		AND = {
-			has_variable = pie_et_sr_waqf_payments
-			has_variable = pie_et_pr_waqf_payments
-		}
-		AND = {
-			has_variable = pie_et_sg_maintain_clerical_proceedings
-			has_variable = pie_et_pg_maintain_clerical_proceedings
-		}
-		AND = {
-			has_variable = pie_et_sr_maintain_clerical_proceedings
-			has_variable = pie_et_pr_maintain_clerical_proceedings
-		}
-		AND = {
-			has_variable = pie_et_sg_state_official_oaths
-			has_variable = pie_et_pg_state_official_oaths
-		}
-		AND = {
-			has_variable = pie_et_sr_state_official_oaths
-			has_variable = pie_et_pr_state_official_oaths
-		}
-		AND = {
-			has_variable = pie_et_sg_mandatory_clerical_donations
-			has_variable = pie_et_pg_mandatory_clerical_donations
-		}
-		AND = {
-			has_variable = pie_et_sr_mandatory_clerical_donations
-			has_variable = pie_et_pr_mandatory_clerical_donations
-		}
-		AND = {
-			has_variable = pie_et_sg_sponsor_printing_of_religious_texts
-			has_variable = pie_et_pg_sponsor_printing_of_religious_texts
-		}
-		AND = {
-			has_variable = pie_et_sr_sponsor_printing_of_religious_texts
-			has_variable = pie_et_pr_sponsor_printing_of_religious_texts
-		}
-		AND = {
-			has_variable = pie_et_sg_liturgical_mural_art
-			has_variable = pie_et_pg_liturgical_mural_art
-		}
-		AND = {
-			has_variable = pie_et_sr_liturgical_mural_art
-			has_variable = pie_et_pr_liturgical_mural_art
-		}
-		AND = {
-			has_variable = pie_et_sg_apostolic_tax_privilege
-			has_variable = pie_et_pg_apostolic_tax_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_apostolic_tax_privilege
-			has_variable = pie_et_pr_apostolic_tax_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_tax_exemption
-			has_variable = pie_et_pg_tax_exemption
-		}
-		AND = {
-			has_variable = pie_et_sr_tax_exemption
-			has_variable = pie_et_pr_tax_exemption
-		}
-		AND = {
-			has_variable = pie_et_sg_clergy_in_administration
-			has_variable = pie_et_pg_clergy_in_administration
-		}
-		AND = {
-			has_variable = pie_et_sr_clergy_in_administration
-			has_variable = pie_et_pr_clergy_in_administration
-		}
-		AND = {
-			has_variable = pie_et_sg_consolidated_corruption_of_the_clergy
-			has_variable = pie_et_pg_consolidated_corruption_of_the_clergy
-		}
-		AND = {
-			has_variable = pie_et_sr_consolidated_corruption_of_the_clergy
-			has_variable = pie_et_pr_consolidated_corruption_of_the_clergy
-		}
-		AND = {
-			has_variable = pie_et_sg_commons_petition
-			has_variable = pie_et_pg_commons_petition
-		}
-		AND = {
-			has_variable = pie_et_sr_commons_petition
-			has_variable = pie_et_pr_commons_petition
-		}
-		AND = {
-			has_variable = pie_et_sg_austere_monastic_life
-			has_variable = pie_et_pg_austere_monastic_life
-		}
-		AND = {
-			has_variable = pie_et_sr_austere_monastic_life
-			has_variable = pie_et_pr_austere_monastic_life
-		}
-		AND = {
-			has_variable = pie_et_sg_unity_brethren_privilege
-			has_variable = pie_et_pg_unity_brethren_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_unity_brethren_privilege
-			has_variable = pie_et_pr_unity_brethren_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_warrior_tribunal
-			has_variable = pie_et_pg_warrior_tribunal
-		}
-		AND = {
-			has_variable = pie_et_sr_warrior_tribunal
-			has_variable = pie_et_pr_warrior_tribunal
-		}
-		AND = {
-			has_variable = pie_et_sg_hurin_qusqu_privilege
-			has_variable = pie_et_pg_hurin_qusqu_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_hurin_qusqu_privilege
-			has_variable = pie_et_pr_hurin_qusqu_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_reduced_from_military_obligations
-			has_variable = pie_et_pg_reduced_from_military_obligations
-		}
-		AND = {
-			has_variable = pie_et_sr_reduced_from_military_obligations
-			has_variable = pie_et_pr_reduced_from_military_obligations
-		}
-		AND = {
-			has_variable = pie_et_sg_fra_papacy_pragmatic_sanctions
-			has_variable = pie_et_pg_fra_papacy_pragmatic_sanctions
-		}
-		AND = {
-			has_variable = pie_et_sr_fra_papacy_pragmatic_sanctions
-			has_variable = pie_et_pr_fra_papacy_pragmatic_sanctions
-		}
-		AND = {
-			has_variable = pie_et_sg_french_cardinals
-			has_variable = pie_et_pg_french_cardinals
-		}
-		AND = {
-			has_variable = pie_et_sr_french_cardinals
-			has_variable = pie_et_pr_french_cardinals
-		}
-		AND = {
-			has_variable = pie_et_sg_dharmic_dhimmi_communities
-			has_variable = pie_et_pg_dharmic_dhimmi_communities
-		}
-		AND = {
-			has_variable = pie_et_sr_dharmic_dhimmi_communities
-			has_variable = pie_et_pr_dharmic_dhimmi_communities
-		}
-		AND = {
-			has_variable = pie_et_sg_austrian_monastery_reform_melk
-			has_variable = pie_et_pg_austrian_monastery_reform_melk
-		}
-		AND = {
-			has_variable = pie_et_sr_austrian_monastery_reform_melk
-			has_variable = pie_et_pr_austrian_monastery_reform_melk
-		}
-		AND = {
-			has_variable = pie_et_sg_vienna_concordat_privilege
-			has_variable = pie_et_pg_vienna_concordat_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_vienna_concordat_privilege
-			has_variable = pie_et_pr_vienna_concordat_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_vij_patronization_of_local_gods
-			has_variable = pie_et_pg_vij_patronization_of_local_gods
-		}
-		AND = {
-			has_variable = pie_et_sr_vij_patronization_of_local_gods
-			has_variable = pie_et_pr_vij_patronization_of_local_gods
-		}
-		AND = {
-			has_variable = pie_et_sg_promotion_of_muslim_scholars
-			has_variable = pie_et_pg_promotion_of_muslim_scholars
-		}
-		AND = {
-			has_variable = pie_et_sr_promotion_of_muslim_scholars
-			has_variable = pie_et_pr_promotion_of_muslim_scholars
-		}
-		AND = {
-			has_variable = pie_et_sg_autonomous_kadiluks
-			has_variable = pie_et_pg_autonomous_kadiluks
-		}
-		AND = {
-			has_variable = pie_et_sr_autonomous_kadiluks
-			has_variable = pie_et_pr_autonomous_kadiluks
-		}
-		AND = {
-			has_variable = pie_et_sg_ira_clerical_aristocracy
-			has_variable = pie_et_pg_ira_clerical_aristocracy
-		}
-		AND = {
-			has_variable = pie_et_sr_ira_clerical_aristocracy
-			has_variable = pie_et_pr_ira_clerical_aristocracy
-		}
-		AND = {
-			has_variable = pie_et_sg_formal_guilds
-			has_variable = pie_et_pg_formal_guilds
-		}
-		AND = {
-			has_variable = pie_et_sr_formal_guilds
-			has_variable = pie_et_pr_formal_guilds
-		}
-		AND = {
-			has_variable = pie_et_sg_trade_monopolies
-			has_variable = pie_et_pg_trade_monopolies
-		}
-		AND = {
-			has_variable = pie_et_sr_trade_monopolies
-			has_variable = pie_et_pr_trade_monopolies
-		}
-		AND = {
-			has_variable = pie_et_sg_control_over_monetary_policy
-			has_variable = pie_et_pg_control_over_monetary_policy
-		}
-		AND = {
-			has_variable = pie_et_sr_control_over_monetary_policy
-			has_variable = pie_et_pr_control_over_monetary_policy
-		}
-		AND = {
-			has_variable = pie_et_sg_building_rights
-			has_variable = pie_et_pg_building_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_building_rights
-			has_variable = pie_et_pr_building_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_burghers_royal_burgh_commissioners
-			has_variable = pie_et_pg_burghers_royal_burgh_commissioners
-		}
-		AND = {
-			has_variable = pie_et_sr_burghers_royal_burgh_commissioners
-			has_variable = pie_et_pr_burghers_royal_burgh_commissioners
-		}
-		AND = {
-			has_variable = pie_et_sg_burghers_land_rights
-			has_variable = pie_et_pg_burghers_land_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_burghers_land_rights
-			has_variable = pie_et_pr_burghers_land_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_commercial_advisory_council
-			has_variable = pie_et_pg_commercial_advisory_council
-		}
-		AND = {
-			has_variable = pie_et_sr_commercial_advisory_council
-			has_variable = pie_et_pr_commercial_advisory_council
-		}
-		AND = {
-			has_variable = pie_et_sg_milanese_cloth_guilds_privileges
-			has_variable = pie_et_pg_milanese_cloth_guilds_privileges
-		}
-		AND = {
-			has_variable = pie_et_sr_milanese_cloth_guilds_privileges
-			has_variable = pie_et_pr_milanese_cloth_guilds_privileges
-		}
-		AND = {
-			has_variable = pie_et_sg_florence_guilds
-			has_variable = pie_et_pg_florence_guilds
-		}
-		AND = {
-			has_variable = pie_et_sr_florence_guilds
-			has_variable = pie_et_pr_florence_guilds
-		}
-		AND = {
-			has_variable = pie_et_sg_novgorod_ivans_hundred
-			has_variable = pie_et_pg_novgorod_ivans_hundred
-		}
-		AND = {
-			has_variable = pie_et_sr_novgorod_ivans_hundred
-			has_variable = pie_et_pr_novgorod_ivans_hundred
-		}
-		AND = {
-			has_variable = pie_et_sg_kbo_lake_chad_trade_privilege
-			has_variable = pie_et_pg_kbo_lake_chad_trade_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_kbo_lake_chad_trade_privilege
-			has_variable = pie_et_pr_kbo_lake_chad_trade_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_kbo_serfdom_economy
-			has_variable = pie_et_pg_kbo_serfdom_economy
-		}
-		AND = {
-			has_variable = pie_et_sr_kbo_serfdom_economy
-			has_variable = pie_et_pr_kbo_serfdom_economy
-		}
-		AND = {
-			has_variable = pie_et_sg_amenokal_salt_traders
-			has_variable = pie_et_pg_amenokal_salt_traders
-		}
-		AND = {
-			has_variable = pie_et_sr_amenokal_salt_traders
-			has_variable = pie_et_pr_amenokal_salt_traders
-		}
-		AND = {
-			has_variable = pie_et_sg_burghers_protected_faith
-			has_variable = pie_et_pg_burghers_protected_faith
-		}
-		AND = {
-			has_variable = pie_et_sr_burghers_protected_faith
-			has_variable = pie_et_pr_burghers_protected_faith
-		}
-		AND = {
-			has_variable = pie_et_sg_land_of_commerce
-			has_variable = pie_et_pg_land_of_commerce
-		}
-		AND = {
-			has_variable = pie_et_sr_land_of_commerce
-			has_variable = pie_et_pr_land_of_commerce
-		}
-		AND = {
-			has_variable = pie_et_sg_treasury_rights
-			has_variable = pie_et_pg_treasury_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_treasury_rights
-			has_variable = pie_et_pr_treasury_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_urban_development_grants
-			has_variable = pie_et_pg_urban_development_grants
-		}
-		AND = {
-			has_variable = pie_et_sr_urban_development_grants
-			has_variable = pie_et_pr_urban_development_grants
-		}
-		AND = {
-			has_variable = pie_et_sg_sponsor_maritime_contracts
-			has_variable = pie_et_pg_sponsor_maritime_contracts
-		}
-		AND = {
-			has_variable = pie_et_sr_sponsor_maritime_contracts
-			has_variable = pie_et_pr_sponsor_maritime_contracts
-		}
-		AND = {
-			has_variable = pie_et_sg_control_over_the_coinage
-			has_variable = pie_et_pg_control_over_the_coinage
-		}
-		AND = {
-			has_variable = pie_et_sr_control_over_the_coinage
-			has_variable = pie_et_pr_control_over_the_coinage
-		}
-		AND = {
-			has_variable = pie_et_sg_allow_trade_center_sponsorship
-			has_variable = pie_et_pg_allow_trade_center_sponsorship
-		}
-		AND = {
-			has_variable = pie_et_sr_allow_trade_center_sponsorship
-			has_variable = pie_et_pr_allow_trade_center_sponsorship
-		}
-		AND = {
-			has_variable = pie_et_sg_shipwright_contracts
-			has_variable = pie_et_pg_shipwright_contracts
-		}
-		AND = {
-			has_variable = pie_et_sr_shipwright_contracts
-			has_variable = pie_et_pr_shipwright_contracts
-		}
-		AND = {
-			has_variable = pie_et_sg_market_fairs
-			has_variable = pie_et_pg_market_fairs
-		}
-		AND = {
-			has_variable = pie_et_sr_market_fairs
-			has_variable = pie_et_pr_market_fairs
-		}
-		AND = {
-			has_variable = pie_et_sg_fund_karimi
-			has_variable = pie_et_pg_fund_karimi
-		}
-		AND = {
-			has_variable = pie_et_sr_fund_karimi
-			has_variable = pie_et_pr_fund_karimi
-		}
-		AND = {
-			has_variable = pie_et_sg_toll_and_tariff_exemptions
-			has_variable = pie_et_pg_toll_and_tariff_exemptions
-		}
-		AND = {
-			has_variable = pie_et_sr_toll_and_tariff_exemptions
-			has_variable = pie_et_pr_toll_and_tariff_exemptions
-		}
-		AND = {
-			has_variable = pie_et_sg_dedicated_merchant_courts
-			has_variable = pie_et_pg_dedicated_merchant_courts
-		}
-		AND = {
-			has_variable = pie_et_sr_dedicated_merchant_courts
-			has_variable = pie_et_pr_dedicated_merchant_courts
-		}
-		AND = {
-			has_variable = pie_et_sg_noble_patronage
-			has_variable = pie_et_pg_noble_patronage
-		}
-		AND = {
-			has_variable = pie_et_sr_noble_patronage
-			has_variable = pie_et_pr_noble_patronage
-		}
-		AND = {
-			has_variable = pie_et_sg_polish_merchant_seal
-			has_variable = pie_et_pg_polish_merchant_seal
-		}
-		AND = {
-			has_variable = pie_et_sr_polish_merchant_seal
-			has_variable = pie_et_pr_polish_merchant_seal
-		}
-		AND = {
-			has_variable = pie_et_sg_privateer_contracts
-			has_variable = pie_et_pg_privateer_contracts
-		}
-		AND = {
-			has_variable = pie_et_sr_privateer_contracts
-			has_variable = pie_et_pr_privateer_contracts
-		}
-		AND = {
-			has_variable = pie_et_sg_ceremonial_tax_exemptions
-			has_variable = pie_et_pg_ceremonial_tax_exemptions
-		}
-		AND = {
-			has_variable = pie_et_sr_ceremonial_tax_exemptions
-			has_variable = pie_et_pr_ceremonial_tax_exemptions
-		}
-		AND = {
-			has_variable = pie_et_sg_kulm_law
-			has_variable = pie_et_pg_kulm_law
-		}
-		AND = {
-			has_variable = pie_et_sr_kulm_law
-			has_variable = pie_et_pr_kulm_law
-		}
-		AND = {
-			has_variable = pie_et_sg_villes_franches
-			has_variable = pie_et_pg_villes_franches
-		}
-		AND = {
-			has_variable = pie_et_sr_villes_franches
-			has_variable = pie_et_pr_villes_franches
-		}
-		AND = {
-			has_variable = pie_et_sg_fra_leadership_of_marcel
-			has_variable = pie_et_pg_fra_leadership_of_marcel
-		}
-		AND = {
-			has_variable = pie_et_sr_fra_leadership_of_marcel
-			has_variable = pie_et_pr_fra_leadership_of_marcel
-		}
-		AND = {
-			has_variable = pie_et_sg_fra_marcel_great_ordinance
-			has_variable = pie_et_pg_fra_marcel_great_ordinance
-		}
-		AND = {
-			has_variable = pie_et_sr_fra_marcel_great_ordinance
-			has_variable = pie_et_pr_fra_marcel_great_ordinance
-		}
-		AND = {
-			has_variable = pie_et_sg_fra_marcel_compromise_ordinance
-			has_variable = pie_et_pg_fra_marcel_compromise_ordinance
-		}
-		AND = {
-			has_variable = pie_et_sr_fra_marcel_compromise_ordinance
-			has_variable = pie_et_pr_fra_marcel_compromise_ordinance
-		}
-		AND = {
-			has_variable = pie_et_sg_petty_bureaucracy
-			has_variable = pie_et_pg_petty_bureaucracy
-		}
-		AND = {
-			has_variable = pie_et_sr_petty_bureaucracy
-			has_variable = pie_et_pr_petty_bureaucracy
-		}
-		AND = {
-			has_variable = pie_et_sg_cardinal_lead_guilds
-			has_variable = pie_et_pg_cardinal_lead_guilds
-		}
-		AND = {
-			has_variable = pie_et_sr_cardinal_lead_guilds
-			has_variable = pie_et_pr_cardinal_lead_guilds
-		}
-		AND = {
-			has_variable = pie_et_sg_libro_d_argento
-			has_variable = pie_et_pg_libro_d_argento
-		}
-		AND = {
-			has_variable = pie_et_sr_libro_d_argento
-			has_variable = pie_et_pr_libro_d_argento
-		}
-		AND = {
-			has_variable = pie_et_sg_bra_kreditwerk
-			has_variable = pie_et_pg_bra_kreditwerk
-		}
-		AND = {
-			has_variable = pie_et_sr_bra_kreditwerk
-			has_variable = pie_et_pr_bra_kreditwerk
-		}
-		AND = {
-			has_variable = pie_et_sg_bra_kreditwerk_reformed
-			has_variable = pie_et_pg_bra_kreditwerk_reformed
-		}
-		AND = {
-			has_variable = pie_et_sr_bra_kreditwerk_reformed
-			has_variable = pie_et_pr_bra_kreditwerk_reformed
-		}
-		AND = {
-			has_variable = pie_et_sg_vij_tamil_trading_rights
-			has_variable = pie_et_pg_vij_tamil_trading_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_vij_tamil_trading_rights
-			has_variable = pie_et_pr_vij_tamil_trading_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_jain_banking_rights
-			has_variable = pie_et_pg_jain_banking_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_jain_banking_rights
-			has_variable = pie_et_pr_jain_banking_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_jain_scholars
-			has_variable = pie_et_pg_jain_scholars
-		}
-		AND = {
-			has_variable = pie_et_sr_jain_scholars
-			has_variable = pie_et_pr_jain_scholars
-		}
-		AND = {
-			has_variable = pie_et_sg_consolidated_corruption_of_the_burghers
-			has_variable = pie_et_pg_consolidated_corruption_of_the_burghers
-		}
-		AND = {
-			has_variable = pie_et_sr_consolidated_corruption_of_the_burghers
-			has_variable = pie_et_pr_consolidated_corruption_of_the_burghers
-		}
-		AND = {
-			has_variable = pie_et_sg_magdeburg_rights
-			has_variable = pie_et_pg_magdeburg_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_magdeburg_rights
-			has_variable = pie_et_pr_magdeburg_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_novi_fori
-			has_variable = pie_et_pg_novi_fori
-		}
-		AND = {
-			has_variable = pie_et_sr_novi_fori
-			has_variable = pie_et_pr_novi_fori
-		}
-		AND = {
-			has_variable = pie_et_sg_shooting_societies
-			has_variable = pie_et_pg_shooting_societies
-		}
-		AND = {
-			has_variable = pie_et_sr_shooting_societies
-			has_variable = pie_et_pr_shooting_societies
-		}
-		AND = {
-			has_variable = pie_et_sg_building_roads_rights
-			has_variable = pie_et_pg_building_roads_rights
-		}
-		AND = {
-			has_variable = pie_et_sr_building_roads_rights
-			has_variable = pie_et_pr_building_roads_rights
-		}
-		AND = {
-			has_variable = pie_et_sg_kannada_literature_aid
-			has_variable = pie_et_pg_kannada_literature_aid
-		}
-		AND = {
-			has_variable = pie_et_sr_kannada_literature_aid
-			has_variable = pie_et_pr_kannada_literature_aid
-		}
-		AND = {
-			has_variable = pie_et_sg_vij_allowance_of_religious_practices
-			has_variable = pie_et_pg_vij_allowance_of_religious_practices
-		}
-		AND = {
-			has_variable = pie_et_sr_vij_allowance_of_religious_practices
-			has_variable = pie_et_pr_vij_allowance_of_religious_practices
-		}
-		AND = {
-			has_variable = pie_et_sg_mam_muhtasibs
-			has_variable = pie_et_pg_mam_muhtasibs
-		}
-		AND = {
-			has_variable = pie_et_sr_mam_muhtasibs
-			has_variable = pie_et_pr_mam_muhtasibs
-		}
-		AND = {
-			has_variable = pie_et_sg_trunk_road_to_erzurum_privilege
-			has_variable = pie_et_pg_trunk_road_to_erzurum_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_trunk_road_to_erzurum_privilege
-			has_variable = pie_et_pr_trunk_road_to_erzurum_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_cas_mita_system
-			has_variable = pie_et_pg_cas_mita_system
-		}
-		AND = {
-			has_variable = pie_et_sr_cas_mita_system
-			has_variable = pie_et_pr_cas_mita_system
-		}
-		AND = {
-			has_variable = pie_et_sg_royal_factories_privilege
-			has_variable = pie_et_pg_royal_factories_privilege
-		}
-		AND = {
-			has_variable = pie_et_sr_royal_factories_privilege
-			has_variable = pie_et_pr_royal_factories_privilege
-		}
-		AND = {
-			has_variable = pie_et_sg_ira_iranian_art_patronage
-			has_variable = pie_et_pg_ira_iranian_art_patronage
-		}
-		AND = {
-			has_variable = pie_et_sr_ira_iranian_art_patronage
-			has_variable = pie_et_pr_ira_iranian_art_patronage
-		}
-		AND = {
-			has_variable = pie_et_sg_guild_investments
-			has_variable = pie_et_pg_guild_investments
-		}
-		AND = {
-			has_variable = pie_et_sr_guild_investments
-			has_variable = pie_et_pr_guild_investments
-		}
+		has_variable = pie_et_sg_nobles_land_rights
+		has_variable = pie_et_sr_nobles_land_rights
+		has_variable = pie_et_sg_auxilium_et_consilium
+		has_variable = pie_et_sr_auxilium_et_consilium
+		has_variable = pie_et_sg_noble_serfdom_rights
+		has_variable = pie_et_sr_noble_serfdom_rights
+		has_variable = pie_et_sg_noble_fortification_licenses
+		has_variable = pie_et_sr_noble_fortification_licenses
+		has_variable = pie_et_sg_noble_marriage_rights
+		has_variable = pie_et_sr_noble_marriage_rights
+		has_variable = pie_et_sg_banal_lordship
+		has_variable = pie_et_sr_banal_lordship
+		has_variable = pie_et_sg_primacy_of_nobility
+		has_variable = pie_et_sr_primacy_of_nobility
+		has_variable = pie_et_sg_noble_leaders_only
+		has_variable = pie_et_sr_noble_leaders_only
+		has_variable = pie_et_sg_elaborate_court_ceremonies
+		has_variable = pie_et_sr_elaborate_court_ceremonies
+		has_variable = pie_et_sg_nobles_protected_faith
+		has_variable = pie_et_sr_nobles_protected_faith
+		has_variable = pie_et_sg_nobility_council
+		has_variable = pie_et_sr_nobility_council
+		has_variable = pie_et_sg_manorial_courts
+		has_variable = pie_et_sr_manorial_courts
+		has_variable = pie_et_sg_increased_civic_engagement
+		has_variable = pie_et_sr_increased_civic_engagement
+		has_variable = pie_et_sg_inherited_offices
+		has_variable = pie_et_sr_inherited_offices
+		has_variable = pie_et_sg_recognized_communes
+		has_variable = pie_et_sr_recognized_communes
+		has_variable = pie_et_sg_appoint_ecclesiastical_offices
+		has_variable = pie_et_sr_appoint_ecclesiastical_offices
+		has_variable = pie_et_sg_control_of_the_borderlands
+		has_variable = pie_et_sr_control_of_the_borderlands
+		has_variable = pie_et_sg_feudal_mercenary_contracts
+		has_variable = pie_et_sr_feudal_mercenary_contracts
+		has_variable = pie_et_sg_liberum_veto
+		has_variable = pie_et_sr_liberum_veto
+		has_variable = pie_et_sg_visconti_city_states
+		has_variable = pie_et_sr_visconti_city_states
+		has_variable = pie_et_sg_general_privilege
+		has_variable = pie_et_sr_general_privilege
+		has_variable = pie_et_sg_union_privilege
+		has_variable = pie_et_sr_union_privilege
+		has_variable = pie_et_sg_signoria_council
+		has_variable = pie_et_sr_signoria_council
+		has_variable = pie_et_sg_tysiatskii_privilege
+		has_variable = pie_et_sr_tysiatskii_privilege
+		has_variable = pie_et_sg_the_ryad_privilege
+		has_variable = pie_et_sr_the_ryad_privilege
+		has_variable = pie_et_sg_kbo_kaigama
+		has_variable = pie_et_sr_kbo_kaigama
+		has_variable = pie_et_sg_kbo_yerima
+		has_variable = pie_et_sr_kbo_yerima
+		has_variable = pie_et_sg_kbo_cima
+		has_variable = pie_et_sr_kbo_cima
+		has_variable = pie_et_sg_office_of_the_farima_soura_privilege
+		has_variable = pie_et_sr_office_of_the_farima_soura_privilege
+		has_variable = pie_et_sg_office_of_the_sankar_zouma_privilege
+		has_variable = pie_et_sr_office_of_the_sankar_zouma_privilege
+		has_variable = pie_et_sg_golden_liberty
+		has_variable = pie_et_sr_golden_liberty
+		has_variable = pie_et_sg_nieszawa_privileges
+		has_variable = pie_et_sr_nieszawa_privileges
+		has_variable = pie_et_sg_pacta_conventa
+		has_variable = pie_et_sr_pacta_conventa
+		has_variable = pie_et_sg_noble_armies
+		has_variable = pie_et_sr_noble_armies
+		has_variable = pie_et_sg_chancellor_nobles
+		has_variable = pie_et_sr_chancellor_nobles
+		has_variable = pie_et_sg_great_offices_of_the_crown_of_france
+		has_variable = pie_et_sr_great_offices_of_the_crown_of_france
+		has_variable = pie_et_sg_residence_in_versailles
+		has_variable = pie_et_sr_residence_in_versailles
+		has_variable = pie_et_sg_permanent_residence_in_versailles
+		has_variable = pie_et_sr_permanent_residence_in_versailles
+		has_variable = pie_et_sg_right_to_inherit
+		has_variable = pie_et_sr_right_to_inherit
+		has_variable = pie_et_sg_inaugural_diplomas
+		has_variable = pie_et_sr_inaugural_diplomas
+		has_variable = pie_et_sg_district_paving_privilege
+		has_variable = pie_et_sr_district_paving_privilege
+		has_variable = pie_et_sg_joint_assembly_decrees
+		has_variable = pie_et_sr_joint_assembly_decrees
+		has_variable = pie_et_sg_kormlenije
+		has_variable = pie_et_sr_kormlenije
+		has_variable = pie_et_sg_ordinance_of_laborers
+		has_variable = pie_et_sr_ordinance_of_laborers
+		has_variable = pie_et_sg_autonomous_local_commanders
+		has_variable = pie_et_sr_autonomous_local_commanders
+		has_variable = pie_et_sg_bashtinas_and_pronijas_grants
+		has_variable = pie_et_sr_bashtinas_and_pronijas_grants
+		has_variable = pie_et_sg_zupa_districts
+		has_variable = pie_et_sr_zupa_districts
+		has_variable = pie_et_sg_vlastele_krayishnik
+		has_variable = pie_et_sr_vlastele_krayishnik
+		has_variable = pie_et_sg_golden_bull_of_1222
+		has_variable = pie_et_sr_golden_bull_of_1222
+		has_variable = pie_et_sg_monetary_fiefs
+		has_variable = pie_et_sr_monetary_fiefs
+		has_variable = pie_et_sg_scholar_officials
+		has_variable = pie_et_sr_scholar_officials
+		has_variable = pie_et_sg_ghazi_privilege
+		has_variable = pie_et_sr_ghazi_privilege
+		has_variable = pie_et_sg_share_of_the_spoils
+		has_variable = pie_et_sr_share_of_the_spoils
+		has_variable = pie_et_sg_tribal_host
+		has_variable = pie_et_sr_tribal_host
+		has_variable = pie_et_sg_tribal_autonomy
+		has_variable = pie_et_sr_tribal_autonomy
+		has_variable = pie_et_sg_powerful_italian_families
+		has_variable = pie_et_sr_powerful_italian_families
+		has_variable = pie_et_sg_plc_empower_orthodox_nobility
+		has_variable = pie_et_sr_plc_empower_orthodox_nobility
+		has_variable = pie_et_sg_scottish_clans
+		has_variable = pie_et_sr_scottish_clans
+		has_variable = pie_et_sg_autonomous_scottish_clans
+		has_variable = pie_et_sr_autonomous_scottish_clans
+		has_variable = pie_et_sg_sco_statutes_of_iona
+		has_variable = pie_et_sr_sco_statutes_of_iona
+		has_variable = pie_et_sg_coign_and_livery_privilege
+		has_variable = pie_et_sr_coign_and_livery_privilege
+		has_variable = pie_et_sg_libro_d_oro
+		has_variable = pie_et_sr_libro_d_oro
+		has_variable = pie_et_sg_avogadoria_de_comun
+		has_variable = pie_et_sr_avogadoria_de_comun
+		has_variable = pie_et_sg_zontas
+		has_variable = pie_et_sr_zontas
+		has_variable = pie_et_sg_rajput_society
+		has_variable = pie_et_sr_rajput_society
+		has_variable = pie_et_sg_zamindar_tax_privilege
+		has_variable = pie_et_sr_zamindar_tax_privilege
+		has_variable = pie_et_sg_consolidated_corruption_of_the_nobles
+		has_variable = pie_et_sr_consolidated_corruption_of_the_nobles
+		has_variable = pie_et_sg_privilege_of_koszyce
+		has_variable = pie_et_sr_privilege_of_koszyce
+		has_variable = pie_et_sg_nihil_novi
+		has_variable = pie_et_sr_nihil_novi
+		has_variable = pie_et_sg_noble_sponsored_navy
+		has_variable = pie_et_sr_noble_sponsored_navy
+		has_variable = pie_et_sg_charter_of_the_nobility
+		has_variable = pie_et_sr_charter_of_the_nobility
+		has_variable = pie_et_sg_reduced_responsibilities_for_the_nobles
+		has_variable = pie_et_sr_reduced_responsibilities_for_the_nobles
+		has_variable = pie_et_sg_reduced_taxation_for_the_nobles
+		has_variable = pie_et_sr_reduced_taxation_for_the_nobles
+		has_variable = pie_et_sg_heritable_iqta
+		has_variable = pie_et_sr_heritable_iqta
+		has_variable = pie_et_sg_manifesto_of_freedom
+		has_variable = pie_et_sr_manifesto_of_freedom
+		has_variable = pie_et_sg_bavarian_share_of_land
+		has_variable = pie_et_sr_bavarian_share_of_land
+		has_variable = pie_et_sg_cas_fuero_viejo
+		has_variable = pie_et_sr_cas_fuero_viejo
+		has_variable = pie_et_sg_justicia_de_aragon
+		has_variable = pie_et_sr_justicia_de_aragon
+		has_variable = pie_et_sg_formalized_oath
+		has_variable = pie_et_sr_formalized_oath
+		has_variable = pie_et_sg_ayans_privilege
+		has_variable = pie_et_sr_ayans_privilege
+		has_variable = pie_et_sg_cas_regimiento
+		has_variable = pie_et_sr_cas_regimiento
+		has_variable = pie_et_sg_lit_integrated_ruthenian_laws
+		has_variable = pie_et_sr_lit_integrated_ruthenian_laws
+		has_variable = pie_et_sg_lit_equal_status_of_orthodox_nobility
+		has_variable = pie_et_sr_lit_equal_status_of_orthodox_nobility
+		has_variable = pie_et_sg_mam_refined_furusiyya
+		has_variable = pie_et_sr_mam_refined_furusiyya
+		has_variable = pie_et_sg_tur_banned_weaponry_for_peasants
+		has_variable = pie_et_sr_tur_banned_weaponry_for_peasants
+		has_variable = pie_et_sg_noble_patronage_of_the_arts
+		has_variable = pie_et_sr_noble_patronage_of_the_arts
+		has_variable = pie_et_sg_statutes_of_piotrkow
+		has_variable = pie_et_sr_statutes_of_piotrkow
+		has_variable = pie_et_sg_clergy_literacy_rights
+		has_variable = pie_et_sr_clergy_literacy_rights
+		has_variable = pie_et_sg_clergy_strengthen_faith
+		has_variable = pie_et_sr_clergy_strengthen_faith
+		has_variable = pie_et_sg_clergy_enforced_unity
+		has_variable = pie_et_sr_clergy_enforced_unity
+		has_variable = pie_et_sg_clergy_military_orders
+		has_variable = pie_et_sr_clergy_military_orders
+		has_variable = pie_et_sg_clergy_lecture_oaths
+		has_variable = pie_et_sr_clergy_lecture_oaths
+		has_variable = pie_et_sg_clergy_land_rights
+		has_variable = pie_et_sr_clergy_land_rights
+		has_variable = pie_et_sg_clerical_advisory_council
+		has_variable = pie_et_sr_clerical_advisory_council
+		has_variable = pie_et_sg_clergy_powerful_dioceses
+		has_variable = pie_et_sr_clergy_powerful_dioceses
+		has_variable = pie_et_sg_clergy_protected_faith
+		has_variable = pie_et_sr_clergy_protected_faith
+		has_variable = pie_et_sg_clergy_religious_state
+		has_variable = pie_et_sr_clergy_religious_state
+		has_variable = pie_et_sg_expansionist_zealotry
+		has_variable = pie_et_sr_expansionist_zealotry
+		has_variable = pie_et_sg_religious_diplomats
+		has_variable = pie_et_sr_religious_diplomats
+		has_variable = pie_et_sg_promote_cultural_unity
+		has_variable = pie_et_sr_promote_cultural_unity
+		has_variable = pie_et_sg_embellish_great_works_of_faith
+		has_variable = pie_et_sr_embellish_great_works_of_faith
+		has_variable = pie_et_sg_clergy_papal_emissary
+		has_variable = pie_et_sr_clergy_papal_emissary
+		has_variable = pie_et_sg_freedom_of_interpretation
+		has_variable = pie_et_sr_freedom_of_interpretation
+		has_variable = pie_et_sg_waqf_payments
+		has_variable = pie_et_sr_waqf_payments
+		has_variable = pie_et_sg_maintain_clerical_proceedings
+		has_variable = pie_et_sr_maintain_clerical_proceedings
+		has_variable = pie_et_sg_state_official_oaths
+		has_variable = pie_et_sr_state_official_oaths
+		has_variable = pie_et_sg_mandatory_clerical_donations
+		has_variable = pie_et_sr_mandatory_clerical_donations
+		has_variable = pie_et_sg_sponsor_printing_of_religious_texts
+		has_variable = pie_et_sr_sponsor_printing_of_religious_texts
+		has_variable = pie_et_sg_liturgical_mural_art
+		has_variable = pie_et_sr_liturgical_mural_art
+		has_variable = pie_et_sg_apostolic_tax_privilege
+		has_variable = pie_et_sr_apostolic_tax_privilege
+		has_variable = pie_et_sg_tax_exemption
+		has_variable = pie_et_sr_tax_exemption
+		has_variable = pie_et_sg_clergy_in_administration
+		has_variable = pie_et_sr_clergy_in_administration
+		has_variable = pie_et_sg_consolidated_corruption_of_the_clergy
+		has_variable = pie_et_sr_consolidated_corruption_of_the_clergy
+		has_variable = pie_et_sg_commons_petition
+		has_variable = pie_et_sr_commons_petition
+		has_variable = pie_et_sg_austere_monastic_life
+		has_variable = pie_et_sr_austere_monastic_life
+		has_variable = pie_et_sg_unity_brethren_privilege
+		has_variable = pie_et_sr_unity_brethren_privilege
+		has_variable = pie_et_sg_warrior_tribunal
+		has_variable = pie_et_sr_warrior_tribunal
+		has_variable = pie_et_sg_hurin_qusqu_privilege
+		has_variable = pie_et_sr_hurin_qusqu_privilege
+		has_variable = pie_et_sg_reduced_from_military_obligations
+		has_variable = pie_et_sr_reduced_from_military_obligations
+		has_variable = pie_et_sg_fra_papacy_pragmatic_sanctions
+		has_variable = pie_et_sr_fra_papacy_pragmatic_sanctions
+		has_variable = pie_et_sg_french_cardinals
+		has_variable = pie_et_sr_french_cardinals
+		has_variable = pie_et_sg_dharmic_dhimmi_communities
+		has_variable = pie_et_sr_dharmic_dhimmi_communities
+		has_variable = pie_et_sg_austrian_monastery_reform_melk
+		has_variable = pie_et_sr_austrian_monastery_reform_melk
+		has_variable = pie_et_sg_vienna_concordat_privilege
+		has_variable = pie_et_sr_vienna_concordat_privilege
+		has_variable = pie_et_sg_vij_patronization_of_local_gods
+		has_variable = pie_et_sr_vij_patronization_of_local_gods
+		has_variable = pie_et_sg_promotion_of_muslim_scholars
+		has_variable = pie_et_sr_promotion_of_muslim_scholars
+		has_variable = pie_et_sg_autonomous_kadiluks
+		has_variable = pie_et_sr_autonomous_kadiluks
+		has_variable = pie_et_sg_ira_clerical_aristocracy
+		has_variable = pie_et_sr_ira_clerical_aristocracy
+		has_variable = pie_et_sg_formal_guilds
+		has_variable = pie_et_sr_formal_guilds
+		has_variable = pie_et_sg_trade_monopolies
+		has_variable = pie_et_sr_trade_monopolies
+		has_variable = pie_et_sg_control_over_monetary_policy
+		has_variable = pie_et_sr_control_over_monetary_policy
+		has_variable = pie_et_sg_building_rights
+		has_variable = pie_et_sr_building_rights
+		has_variable = pie_et_sg_burghers_royal_burgh_commissioners
+		has_variable = pie_et_sr_burghers_royal_burgh_commissioners
+		has_variable = pie_et_sg_burghers_land_rights
+		has_variable = pie_et_sr_burghers_land_rights
+		has_variable = pie_et_sg_commercial_advisory_council
+		has_variable = pie_et_sr_commercial_advisory_council
+		has_variable = pie_et_sg_milanese_cloth_guilds_privileges
+		has_variable = pie_et_sr_milanese_cloth_guilds_privileges
+		has_variable = pie_et_sg_florence_guilds
+		has_variable = pie_et_sr_florence_guilds
+		has_variable = pie_et_sg_novgorod_ivans_hundred
+		has_variable = pie_et_sr_novgorod_ivans_hundred
+		has_variable = pie_et_sg_kbo_lake_chad_trade_privilege
+		has_variable = pie_et_sr_kbo_lake_chad_trade_privilege
+		has_variable = pie_et_sg_kbo_serfdom_economy
+		has_variable = pie_et_sr_kbo_serfdom_economy
+		has_variable = pie_et_sg_amenokal_salt_traders
+		has_variable = pie_et_sr_amenokal_salt_traders
+		has_variable = pie_et_sg_burghers_protected_faith
+		has_variable = pie_et_sr_burghers_protected_faith
+		has_variable = pie_et_sg_land_of_commerce
+		has_variable = pie_et_sr_land_of_commerce
+		has_variable = pie_et_sg_treasury_rights
+		has_variable = pie_et_sr_treasury_rights
+		has_variable = pie_et_sg_urban_development_grants
+		has_variable = pie_et_sr_urban_development_grants
+		has_variable = pie_et_sg_sponsor_maritime_contracts
+		has_variable = pie_et_sr_sponsor_maritime_contracts
+		has_variable = pie_et_sg_control_over_the_coinage
+		has_variable = pie_et_sr_control_over_the_coinage
+		has_variable = pie_et_sg_allow_trade_center_sponsorship
+		has_variable = pie_et_sr_allow_trade_center_sponsorship
+		has_variable = pie_et_sg_shipwright_contracts
+		has_variable = pie_et_sr_shipwright_contracts
+		has_variable = pie_et_sg_market_fairs
+		has_variable = pie_et_sr_market_fairs
+		has_variable = pie_et_sg_fund_karimi
+		has_variable = pie_et_sr_fund_karimi
+		has_variable = pie_et_sg_toll_and_tariff_exemptions
+		has_variable = pie_et_sr_toll_and_tariff_exemptions
+		has_variable = pie_et_sg_dedicated_merchant_courts
+		has_variable = pie_et_sr_dedicated_merchant_courts
+		has_variable = pie_et_sg_noble_patronage
+		has_variable = pie_et_sr_noble_patronage
+		has_variable = pie_et_sg_polish_merchant_seal
+		has_variable = pie_et_sr_polish_merchant_seal
+		has_variable = pie_et_sg_privateer_contracts
+		has_variable = pie_et_sr_privateer_contracts
+		has_variable = pie_et_sg_ceremonial_tax_exemptions
+		has_variable = pie_et_sr_ceremonial_tax_exemptions
+		has_variable = pie_et_sg_kulm_law
+		has_variable = pie_et_sr_kulm_law
+		has_variable = pie_et_sg_villes_franches
+		has_variable = pie_et_sr_villes_franches
+		has_variable = pie_et_sg_fra_leadership_of_marcel
+		has_variable = pie_et_sr_fra_leadership_of_marcel
+		has_variable = pie_et_sg_fra_marcel_great_ordinance
+		has_variable = pie_et_sr_fra_marcel_great_ordinance
+		has_variable = pie_et_sg_fra_marcel_compromise_ordinance
+		has_variable = pie_et_sr_fra_marcel_compromise_ordinance
+		has_variable = pie_et_sg_petty_bureaucracy
+		has_variable = pie_et_sr_petty_bureaucracy
+		has_variable = pie_et_sg_cardinal_lead_guilds
+		has_variable = pie_et_sr_cardinal_lead_guilds
+		has_variable = pie_et_sg_libro_d_argento
+		has_variable = pie_et_sr_libro_d_argento
+		has_variable = pie_et_sg_bra_kreditwerk
+		has_variable = pie_et_sr_bra_kreditwerk
+		has_variable = pie_et_sg_bra_kreditwerk_reformed
+		has_variable = pie_et_sr_bra_kreditwerk_reformed
+		has_variable = pie_et_sg_vij_tamil_trading_rights
+		has_variable = pie_et_sr_vij_tamil_trading_rights
+		has_variable = pie_et_sg_jain_banking_rights
+		has_variable = pie_et_sr_jain_banking_rights
+		has_variable = pie_et_sg_jain_scholars
+		has_variable = pie_et_sr_jain_scholars
+		has_variable = pie_et_sg_consolidated_corruption_of_the_burghers
+		has_variable = pie_et_sr_consolidated_corruption_of_the_burghers
+		has_variable = pie_et_sg_magdeburg_rights
+		has_variable = pie_et_sr_magdeburg_rights
+		has_variable = pie_et_sg_novi_fori
+		has_variable = pie_et_sr_novi_fori
+		has_variable = pie_et_sg_shooting_societies
+		has_variable = pie_et_sr_shooting_societies
+		has_variable = pie_et_sg_building_roads_rights
+		has_variable = pie_et_sr_building_roads_rights
+		has_variable = pie_et_sg_kannada_literature_aid
+		has_variable = pie_et_sr_kannada_literature_aid
+		has_variable = pie_et_sg_vij_allowance_of_religious_practices
+		has_variable = pie_et_sr_vij_allowance_of_religious_practices
+		has_variable = pie_et_sg_mam_muhtasibs
+		has_variable = pie_et_sr_mam_muhtasibs
+		has_variable = pie_et_sg_trunk_road_to_erzurum_privilege
+		has_variable = pie_et_sr_trunk_road_to_erzurum_privilege
+		has_variable = pie_et_sg_cas_mita_system
+		has_variable = pie_et_sr_cas_mita_system
+		has_variable = pie_et_sg_royal_factories_privilege
+		has_variable = pie_et_sr_royal_factories_privilege
+		has_variable = pie_et_sg_ira_iranian_art_patronage
+		has_variable = pie_et_sr_ira_iranian_art_patronage
+		has_variable = pie_et_sg_guild_investments
+		has_variable = pie_et_sr_guild_investments
 	}
 }

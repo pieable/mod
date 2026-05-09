@@ -1,0 +1,47 @@
+﻿pie_estate_special_building_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+pie_estate_urban_downgrade_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+pie_estate_urban_building_dismantle_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+pie_governor_building_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+pie_rural_infrastructure_building_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}
+
+pie_urban_infrastructure_building_cost_modifier={
+	color=bad
+	percent=yes
+	game_data={
+		category=country
+	}
+}

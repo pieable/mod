@@ -15,7 +15,7 @@ REPLACE:stockade = {
 	expensive = yes
 
 	unique_production_methods = {
-		stockade_maintenance = {
+		pie_stockade_maintenance = {
 			lumber = 0.1
 			weaponry = 0.02
 			tar = 0.02
@@ -86,7 +86,7 @@ REPLACE:castle = {
 	expensive = yes
 
 	unique_production_methods = {
-		castle_maintenance = {
+		pie_castle_maintenance = {
 			stone = 0.1
 			tools = 0.05
 			weaponry = 0.1
@@ -164,7 +164,7 @@ REPLACE:bastion = {
 	expensive = yes
 
 	unique_production_methods = {
-		bastion_maintenance = {
+		pie_bastion_maintenance = {
 			stone = 0.5
 			firearms = 0.5
 			cannons = 0.5
@@ -242,7 +242,7 @@ REPLACE:star_fort = {
 	expensive = yes
 
 	unique_production_methods = {
-		star_fort_maintenance = {
+		pie_star_fort_maintenance = {
 			stone = 1
 			firearms = 1
 			cannons = 1.0
@@ -315,7 +315,7 @@ REPLACE:fortress = {
 	expensive = yes
 
 	unique_production_methods = {
-		fortress_maintenance = {
+		pie_fortress_maintenance = {
 			stone = 2
 			firearms = 4
 			cannons = 4

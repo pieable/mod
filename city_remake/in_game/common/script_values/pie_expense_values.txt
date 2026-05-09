@@ -1,4 +1,4 @@
-pie_expense_monthly_government_power = {
+﻿pie_expense_monthly_government_power = {
 	if = {
 		limit = { uses_government_power = legitimacy }
 		value = "modifier(monthly_legitimacy)"

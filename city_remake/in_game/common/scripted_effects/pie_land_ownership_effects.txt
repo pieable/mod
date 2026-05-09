@@ -1,4 +1,4 @@
-pie_clear_land_owner = {
+﻿pie_clear_land_owner = {
 	remove_variable = pie_land_owner_crown
 	remove_variable = pie_land_owner_nobles
 	remove_variable = pie_land_owner_clergy
@@ -92,37 +92,25 @@ pie_apply_land_survey_estate_backlash = {
 	else = {
 		if = {
 			limit = {
-				local_relative_estate_power = {
-					estate_type = estate_type:nobles_estate
-					value >= 0.4
-				}
+				modifier:local_nobles_estate_power >= 0.4
 			}
 			owner = { add_estate_satisfaction = { type = estate_type:nobles_estate value = -0.02 } }
 		}
 		if = {
 			limit = {
-				local_relative_estate_power = {
-					estate_type = estate_type:clergy_estate
-					value >= 0.4
-				}
+				modifier:local_clergy_estate_power >= 0.4
 			}
 			owner = { add_estate_satisfaction = { type = estate_type:clergy_estate value = -0.02 } }
 		}
 		if = {
 			limit = {
-				local_relative_estate_power = {
-					estate_type = estate_type:burghers_estate
-					value >= 0.4
-				}
+				modifier:local_burghers_estate_power >= 0.4
 			}
 			owner = { add_estate_satisfaction = { type = estate_type:burghers_estate value = -0.02 } }
 		}
 		if = {
 			limit = {
-				local_relative_estate_power = {
-					estate_type = estate_type:peasants_estate
-					value >= 0.45
-				}
+				modifier:local_peasants_estate_power >= 0.45
 			}
 			owner = { add_estate_satisfaction = { type = estate_type:peasants_estate value = -0.01 } }
 		}

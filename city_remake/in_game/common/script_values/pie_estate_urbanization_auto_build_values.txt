@@ -1,4 +1,4 @@
-pie_ab_remaining_build_capacity = {
+﻿pie_ab_remaining_build_capacity = {
 	value = building_max_level
 	subtract = building_level
 	subtract = building_levels_under_construction
@@ -13,5 +13,24 @@ pie_ab_min_gold_with_spent = {
 	if = {
 		limit = { owner = { has_variable = pie_ab_spent } }
 		add = owner.var:pie_ab_spent
+	}
+}
+
+pie_ab_auto_build_enabled_count = {
+	value = 0
+	every_owned_location = {
+		limit = { has_variable = pie_ab_auto_build }
+		add = 1
+	}
+}
+
+pie_ab_auto_build_non_core_enabled_count = {
+	value = 0
+	every_owned_location = {
+		limit = {
+			has_variable = pie_ab_auto_build
+			NOT = { integration_level = core }
+		}
+		add = 1
 	}
 }
