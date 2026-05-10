@@ -86,6 +86,8 @@
  pie_bureaucracy_tier_2: "市政档案"
  pie_bureaucracy_tier_3: "总督清丈"
  pie_bureaucracy_tier_4: "中央财政署"
+ pie_bureaucracy_coverage_display: "官僚覆盖"
+ pie_bureaucracy_coverage_display_tt: "当前覆盖度：#Y [GetPlayer.MakeScope.ScriptValue('pie_bureaucracy_coverage')|0]%#!\n官僚点数：#Y [GetPlayer.MakeScope.ScriptValue('pie_bureaucracy_points')|0]#!\n\n官僚覆盖度 = 官僚点数 × 100 / 全国地点数。"
  pie_bureaucracy_tier_3_required_tt: "需要官僚覆盖度至少达到 #Y 60#!，代表国家已经能组织省级土地清丈。"
  pie_survey_crown_land_province: "省份土地清丈"
  pie_survey_crown_land_province_desc: "派出文书、执达吏和地方官员清丈一个省份，把合格的传统土地，或可被重新审查的阶层土地，登记为王室直辖地。清丈阶层土地会降低对应阶层满意度。"
