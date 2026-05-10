@@ -82,6 +82,81 @@ window = {
 		}
 	}
 
+	fixedgridbox = {
+		ignore_layout = yes
+		size = { 1 1 }
+		addcolumn = 1
+		addrow = 1
+		alwaystransparent = yes
+		alpha = 0
+		datamodel = "[GetPlayer.MakeScope.GetList('pie_et_sell_land_selector_trigger')]"
+
+		item = {
+			widget = {
+				size = { 1 1 }
+				datacontext = "[GetGenericAction('pie_et_select_sell_land_from_map')]"
+
+				state = {
+					name = pie_et_restart_sell_land_selector
+					trigger_on_create = yes
+					duration = 0.05
+					on_finish = "[PerformGenericAction(GenericAction.Self)]"
+					on_finish = "[GetScriptedGui('pie_et_sgui_clear_land_selector_triggers').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+		}
+	}
+
+	fixedgridbox = {
+		ignore_layout = yes
+		size = { 1 1 }
+		addcolumn = 1
+		addrow = 1
+		alwaystransparent = yes
+		alpha = 0
+		datamodel = "[GetPlayer.MakeScope.GetList('pie_et_grant_unregistered_land_selector_trigger')]"
+
+		item = {
+			widget = {
+				size = { 1 1 }
+				datacontext = "[GetGenericAction('pie_et_select_grant_unregistered_land_from_map')]"
+
+				state = {
+					name = pie_et_restart_grant_unregistered_land_selector
+					trigger_on_create = yes
+					duration = 0.05
+					on_finish = "[PerformGenericAction(GenericAction.Self)]"
+					on_finish = "[GetScriptedGui('pie_et_sgui_clear_land_selector_triggers').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+		}
+	}
+
+	fixedgridbox = {
+		ignore_layout = yes
+		size = { 1 1 }
+		addcolumn = 1
+		addrow = 1
+		alwaystransparent = yes
+		alpha = 0
+		datamodel = "[GetPlayer.MakeScope.GetList('pie_et_buy_land_selector_trigger')]"
+
+		item = {
+			widget = {
+				size = { 1 1 }
+				datacontext = "[GetGenericAction('pie_et_select_buy_land_from_map')]"
+
+				state = {
+					name = pie_et_restart_buy_land_selector
+					trigger_on_create = yes
+					duration = 0.05
+					on_finish = "[PerformGenericAction(GenericAction.Self)]"
+					on_finish = "[GetScriptedGui('pie_et_sgui_clear_land_selector_triggers').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+				}
+			}
+		}
+	}
+
 	vbox = {
 		using = layoutpolicy_expanding
 		allow_outside = yes
@@ -434,12 +509,10 @@ window = {
 									layoutpolicy_horizontal = expanding
 									spacing = 4
 
-									action_button_regular = {
+									button_regular = {
 								layoutpolicy_horizontal = expanding
 								size = { -1 42 }
-								title = "pie_estate_trade_land_sell_group"
-								actor = "[GetPlayer]"
-								left_action = { action_name = "pie_et_select_sell_land_from_map" }
+								onclick = "[GetScriptedGui('pie_et_sgui_toggle_sell_land_group').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								down = "[Or(GetPlayer.MakeScope.Var('pie_et_land_sell_open').IsSet, GreaterThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_et_selected_sell_land_count'), '(CFixedPoint)0'))]"
 								tooltip = "pie_estate_trade_land_map_pick_sell_desc"
 
@@ -474,12 +547,10 @@ window = {
 								}
 							}
 
-									action_button_regular = {
+									button_regular = {
 								layoutpolicy_horizontal = expanding
 								size = { -1 42 }
-								title = "pie_estate_trade_land_grant_unregistered_group"
-								actor = "[GetPlayer]"
-								left_action = { action_name = "pie_et_select_grant_unregistered_land_from_map" }
+								onclick = "[GetScriptedGui('pie_et_sgui_toggle_grant_unregistered_land_group').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								down = "[Or(GetPlayer.MakeScope.Var('pie_et_land_grant_unregistered_open').IsSet, GreaterThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_et_selected_grant_unregistered_land_count'), '(CFixedPoint)0'))]"
 								tooltip = "pie_estate_trade_land_map_pick_grant_unregistered_desc"
 
@@ -514,12 +585,10 @@ window = {
 								}
 							}
 
-									action_button_regular = {
+									button_regular = {
 								layoutpolicy_horizontal = expanding
 								size = { -1 42 }
-								title = "pie_estate_trade_land_buy_group"
-								actor = "[GetPlayer]"
-								left_action = { action_name = "pie_et_select_buy_land_from_map" }
+								onclick = "[GetScriptedGui('pie_et_sgui_toggle_buy_land_group').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 								down = "[Or(GetPlayer.MakeScope.Var('pie_et_land_buy_open').IsSet, GreaterThan_CFixedPoint(GetPlayer.MakeScope.ScriptValue('pie_et_selected_buy_land_count'), '(CFixedPoint)0'))]"
 								tooltip = "pie_estate_trade_land_map_pick_buy_desc"
 

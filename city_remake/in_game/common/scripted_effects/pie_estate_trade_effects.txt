@@ -42,6 +42,36 @@ pie_et_queue_default_mapmode = {
 	}
 }
 
+pie_et_clear_land_selector_triggers = {
+	clear_variable_list = pie_et_sell_land_selector_trigger
+	clear_variable_list = pie_et_grant_unregistered_land_selector_trigger
+	clear_variable_list = pie_et_buy_land_selector_trigger
+}
+
+pie_et_queue_sell_land_selector = {
+	pie_et_clear_land_selector_triggers = yes
+	add_to_variable_list = {
+		name = pie_et_sell_land_selector_trigger
+		target = this
+	}
+}
+
+pie_et_queue_grant_unregistered_land_selector = {
+	pie_et_clear_land_selector_triggers = yes
+	add_to_variable_list = {
+		name = pie_et_grant_unregistered_land_selector_trigger
+		target = this
+	}
+}
+
+pie_et_queue_buy_land_selector = {
+	pie_et_clear_land_selector_triggers = yes
+	add_to_variable_list = {
+		name = pie_et_buy_land_selector_trigger
+		target = this
+	}
+}
+
 pie_et_rebuild_land_lists = {
 	save_temporary_scope_as = pie_et_land_list_owner
 	clear_variable_list = pie_et_sell_land_locations
@@ -4089,6 +4119,7 @@ pie_et_close_land_picker_state = {
 	clear_variable_list = pie_et_sell_land_locations
 	clear_variable_list = pie_et_grant_unregistered_land_locations
 	clear_variable_list = pie_et_buy_land_locations
+	pie_et_clear_land_selector_triggers = yes
 }
 
 pie_et_close_project_picker_state = {
@@ -4410,12 +4441,14 @@ pie_et_toggle_sell_land_group = {
 	if = {
 		limit = { has_variable = pie_et_land_sell_open }
 		remove_variable = pie_et_land_sell_open
+		pie_et_clear_land_selector_triggers = yes
 	}
 	else = {
 		remove_variable = pie_et_land_grant_unregistered_open
 		remove_variable = pie_et_land_buy_open
 		set_variable = { name = pie_et_land_sell_open value = yes }
 		pie_et_queue_trade_mapmode = yes
+		pie_et_queue_sell_land_selector = yes
 	}
 }
 
@@ -4429,12 +4462,14 @@ pie_et_toggle_grant_unregistered_land_group = {
 	if = {
 		limit = { has_variable = pie_et_land_grant_unregistered_open }
 		remove_variable = pie_et_land_grant_unregistered_open
+		pie_et_clear_land_selector_triggers = yes
 	}
 	else = {
 		remove_variable = pie_et_land_sell_open
 		remove_variable = pie_et_land_buy_open
 		set_variable = { name = pie_et_land_grant_unregistered_open value = yes }
 		pie_et_queue_trade_mapmode = yes
+		pie_et_queue_grant_unregistered_land_selector = yes
 	}
 }
 
@@ -4448,12 +4483,14 @@ pie_et_toggle_buy_land_group = {
 	if = {
 		limit = { has_variable = pie_et_land_buy_open }
 		remove_variable = pie_et_land_buy_open
+		pie_et_clear_land_selector_triggers = yes
 	}
 	else = {
 		remove_variable = pie_et_land_sell_open
 		remove_variable = pie_et_land_grant_unregistered_open
 		set_variable = { name = pie_et_land_buy_open value = yes }
 		pie_et_queue_trade_mapmode = yes
+		pie_et_queue_buy_land_selector = yes
 	}
 }
 

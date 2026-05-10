@@ -51,6 +51,13 @@ pie_et_sgui_close_situation_mapmodes = {
 	}
 }
 
+pie_et_sgui_clear_land_selector_triggers = {
+	scope = country
+	effect = {
+		pie_et_clear_land_selector_triggers = yes
+	}
+}
+
 pie_et_sgui_close_window = {
 	scope = country
 	effect = {
@@ -60,6 +67,7 @@ pie_et_sgui_close_window = {
 		remove_variable = pie_et_land_sell_open
 		remove_variable = pie_et_land_grant_unregistered_open
 		remove_variable = pie_et_land_buy_open
+		pie_et_clear_land_selector_triggers = yes
 		remove_variable = pie_et_privilege_grant_open
 		remove_variable = pie_et_privilege_revoke_open
 		remove_variable = pie_et_debt_details_open
