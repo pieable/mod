@@ -96,6 +96,7 @@ types Cards
 										size = { 480 30 }
 										parentanchor = center
 										onclick = "[GetScriptedGui('pie_et_sgui_open_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
+										onclick = "[LateralView.Close]"
 										tooltip = "pie_estate_trade_open_tt"
 										action_tooltip = {
 											click_type = left

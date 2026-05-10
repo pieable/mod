@@ -4040,6 +4040,7 @@ pie_et_clear_selected_land_locations = {
 		remove_variable = pie_et_selected_grant_unregistered_land
 		remove_variable = pie_et_selected_buy_land
 	}
+	refresh_map_colors = yes
 }
 
 pie_et_clear_selected_project_locations = {

@@ -28,6 +28,7 @@ window = {
 					trigger_on_create = yes
 					duration = 0.01
 					on_start = "[MapMode.SetMapMode]"
+					on_finish = "[MapMode.SetMapMode]"
 				}
 			}
 		}
