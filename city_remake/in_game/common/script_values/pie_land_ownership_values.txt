@@ -9,21 +9,21 @@
 	if = {
 		limit = {
 			owner = { has_variable = pie_et_estate_nobles }
-			modifier:local_nobles_estate_power >= 0.34
+			"local_relative_estate_power(estate_type:nobles_estate)" >= 0.34
 		}
 		add = 25
 	}
 	else_if = {
 		limit = {
 			owner = { has_variable = pie_et_estate_clergy }
-			modifier:local_clergy_estate_power >= 0.34
+			"local_relative_estate_power(estate_type:clergy_estate)" >= 0.34
 		}
 		add = 25
 	}
 	else_if = {
 		limit = {
 			owner = { has_variable = pie_et_estate_burghers }
-			modifier:local_burghers_estate_power >= 0.34
+			"local_relative_estate_power(estate_type:burghers_estate)" >= 0.34
 		}
 		add = 25
 	}
@@ -152,6 +152,35 @@ pie_land_natural_integration_score = {
 
 	add = integration_progress
 	add = location_tax_base
+
+	if = {
+		limit = { pie_land_nobles_natural_integration_helper = yes }
+		add = {
+			value = "local_relative_estate_power(estate_type:nobles_estate)"
+			multiply = 100
+		}
+	}
+	else_if = {
+		limit = { pie_land_clergy_natural_integration_helper = yes }
+		add = {
+			value = "local_relative_estate_power(estate_type:clergy_estate)"
+			multiply = 100
+		}
+	}
+	else_if = {
+		limit = { pie_land_burghers_natural_integration_helper = yes }
+		add = {
+			value = "local_relative_estate_power(estate_type:burghers_estate)"
+			multiply = 100
+		}
+	}
+	else_if = {
+		limit = { pie_land_peasants_natural_integration_helper = yes }
+		add = {
+			value = "local_relative_estate_power(estate_type:peasants_estate)"
+			multiply = 100
+		}
+	}
 }
 
 pie_land_passive_claim_score = {
@@ -163,27 +192,31 @@ pie_land_passive_claim_score = {
 	}
 
 	if = {
-		limit = {
-			modifier:local_nobles_estate_power >= 0.4
+		limit = { pie_land_nobles_passive_claim_candidate = yes }
+		add = {
+			value = "local_relative_estate_power(estate_type:nobles_estate)"
+			multiply = 100
 		}
-		add = 15
 	}
 	else_if = {
-		limit = {
-			modifier:local_clergy_estate_power >= 0.4
+		limit = { pie_land_clergy_passive_claim_candidate = yes }
+		add = {
+			value = "local_relative_estate_power(estate_type:clergy_estate)"
+			multiply = 100
 		}
-		add = 15
 	}
 	else_if = {
-		limit = {
-			modifier:local_burghers_estate_power >= 0.4
+		limit = { pie_land_burghers_passive_claim_candidate = yes }
+		add = {
+			value = "local_relative_estate_power(estate_type:burghers_estate)"
+			multiply = 100
 		}
-		add = 15
 	}
 	else_if = {
-		limit = {
-			modifier:local_peasants_estate_power >= 0.4
+		limit = { pie_land_peasant_freehold_candidate = yes }
+		add = {
+			value = "local_relative_estate_power(estate_type:peasants_estate)"
+			multiply = 100
 		}
-		add = 10
 	}
 }

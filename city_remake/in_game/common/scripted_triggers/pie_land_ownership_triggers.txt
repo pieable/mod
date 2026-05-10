@@ -151,12 +151,53 @@ pie_land_natural_same_religion_group = {
 	dominant_religion.group = owner.religion.group
 }
 
+pie_land_nobles_local_power_leader = {
+	"local_relative_estate_power(estate_type:nobles_estate)" >= "local_relative_estate_power(estate_type:crown_estate)"
+	"local_relative_estate_power(estate_type:nobles_estate)" >= "local_relative_estate_power(estate_type:clergy_estate)"
+	"local_relative_estate_power(estate_type:nobles_estate)" >= "local_relative_estate_power(estate_type:burghers_estate)"
+	"local_relative_estate_power(estate_type:nobles_estate)" >= "local_relative_estate_power(estate_type:peasants_estate)"
+	"local_relative_estate_power(estate_type:nobles_estate)" >= "local_relative_estate_power(estate_type:dhimmi_estate)"
+	"local_relative_estate_power(estate_type:nobles_estate)" >= "local_relative_estate_power(estate_type:tribes_estate)"
+	"local_relative_estate_power(estate_type:nobles_estate)" >= "local_relative_estate_power(estate_type:cossacks_estate)"
+}
+
+pie_land_clergy_local_power_leader = {
+	"local_relative_estate_power(estate_type:clergy_estate)" >= "local_relative_estate_power(estate_type:crown_estate)"
+	"local_relative_estate_power(estate_type:clergy_estate)" >= "local_relative_estate_power(estate_type:nobles_estate)"
+	"local_relative_estate_power(estate_type:clergy_estate)" >= "local_relative_estate_power(estate_type:burghers_estate)"
+	"local_relative_estate_power(estate_type:clergy_estate)" >= "local_relative_estate_power(estate_type:peasants_estate)"
+	"local_relative_estate_power(estate_type:clergy_estate)" >= "local_relative_estate_power(estate_type:dhimmi_estate)"
+	"local_relative_estate_power(estate_type:clergy_estate)" >= "local_relative_estate_power(estate_type:tribes_estate)"
+	"local_relative_estate_power(estate_type:clergy_estate)" >= "local_relative_estate_power(estate_type:cossacks_estate)"
+}
+
+pie_land_burghers_local_power_leader = {
+	"local_relative_estate_power(estate_type:burghers_estate)" >= "local_relative_estate_power(estate_type:crown_estate)"
+	"local_relative_estate_power(estate_type:burghers_estate)" >= "local_relative_estate_power(estate_type:nobles_estate)"
+	"local_relative_estate_power(estate_type:burghers_estate)" >= "local_relative_estate_power(estate_type:clergy_estate)"
+	"local_relative_estate_power(estate_type:burghers_estate)" >= "local_relative_estate_power(estate_type:peasants_estate)"
+	"local_relative_estate_power(estate_type:burghers_estate)" >= "local_relative_estate_power(estate_type:dhimmi_estate)"
+	"local_relative_estate_power(estate_type:burghers_estate)" >= "local_relative_estate_power(estate_type:tribes_estate)"
+	"local_relative_estate_power(estate_type:burghers_estate)" >= "local_relative_estate_power(estate_type:cossacks_estate)"
+}
+
+pie_land_peasants_local_power_leader = {
+	"local_relative_estate_power(estate_type:peasants_estate)" >= "local_relative_estate_power(estate_type:crown_estate)"
+	"local_relative_estate_power(estate_type:peasants_estate)" >= "local_relative_estate_power(estate_type:nobles_estate)"
+	"local_relative_estate_power(estate_type:peasants_estate)" >= "local_relative_estate_power(estate_type:clergy_estate)"
+	"local_relative_estate_power(estate_type:peasants_estate)" >= "local_relative_estate_power(estate_type:burghers_estate)"
+	"local_relative_estate_power(estate_type:peasants_estate)" >= "local_relative_estate_power(estate_type:dhimmi_estate)"
+	"local_relative_estate_power(estate_type:peasants_estate)" >= "local_relative_estate_power(estate_type:tribes_estate)"
+	"local_relative_estate_power(estate_type:peasants_estate)" >= "local_relative_estate_power(estate_type:cossacks_estate)"
+}
+
 pie_land_nobles_natural_integration_helper = {
 	owner = {
 		country_has_estate = estate_type:nobles_estate
 		estate_satisfaction:nobles_estate >= 0.45
 	}
-	modifier:local_nobles_estate_power >= 0.33
+	"local_relative_estate_power(estate_type:nobles_estate)" >= 0.3
+	pie_land_nobles_local_power_leader = yes
 	OR = {
 		local_control < 0.6
 		any_buildings_in_location = { building_type = building_type:toll_castle }
@@ -173,7 +214,8 @@ pie_land_clergy_natural_integration_helper = {
 		country_has_estate = estate_type:clergy_estate
 		estate_satisfaction:clergy_estate >= 0.45
 	}
-	modifier:local_clergy_estate_power >= 0.3
+	"local_relative_estate_power(estate_type:clergy_estate)" >= 0.3
+	pie_land_clergy_local_power_leader = yes
 	OR = {
 		pie_land_natural_state_religion = yes
 		pie_land_natural_same_religion_group = yes
@@ -196,7 +238,8 @@ pie_land_burghers_natural_integration_helper = {
 		country_has_estate = estate_type:burghers_estate
 		estate_satisfaction:burghers_estate >= 0.45
 	}
-	modifier:local_burghers_estate_power >= 0.3
+	"local_relative_estate_power(estate_type:burghers_estate)" >= 0.3
+	pie_land_burghers_local_power_leader = yes
 	market_access >= 0.7
 	OR = {
 		any_buildings_in_location = { building_type = building_type:pie_urban_market_square }
@@ -217,8 +260,9 @@ pie_land_peasants_natural_integration_helper = {
 		estate_satisfaction:peasants_estate >= 0.45
 	}
 	local_control >= 0.45
-	modifier:local_peasants_estate_power >= 0.35
-	modifier:local_nobles_estate_power < 0.4
+	"local_relative_estate_power(estate_type:peasants_estate)" >= 0.35
+	"local_relative_estate_power(estate_type:nobles_estate)" < 0.4
+	pie_land_peasants_local_power_leader = yes
 	OR = {
 		pie_land_natural_close_culture = yes
 		any_buildings_in_location = { building_type = building_type:pie_rural_village_office }
@@ -275,7 +319,8 @@ pie_land_nobles_passive_claim_candidate = {
 	pie_land_traditional_claim_candidate = yes
 	owner = { country_has_estate = estate_type:nobles_estate }
 	local_control < 0.75
-	modifier:local_nobles_estate_power >= 0.4
+	"local_relative_estate_power(estate_type:nobles_estate)" >= 0.4
+	pie_land_nobles_local_power_leader = yes
 	OR = {
 		any_buildings_in_location = { building_type = building_type:toll_castle }
 		any_buildings_in_location = { building_type = building_type:local_noble_delegation }
@@ -289,7 +334,8 @@ pie_land_nobles_passive_claim_candidate = {
 pie_land_clergy_passive_claim_candidate = {
 	pie_land_traditional_claim_candidate = yes
 	owner = { country_has_estate = estate_type:clergy_estate }
-	modifier:local_clergy_estate_power >= 0.4
+	"local_relative_estate_power(estate_type:clergy_estate)" >= 0.4
+	pie_land_clergy_local_power_leader = yes
 	OR = {
 		any_buildings_in_location = { building_type = building_type:pie_rural_parish_church }
 		any_buildings_in_location = { building_type = building_type:pie_urban_church_quarter }
@@ -305,7 +351,8 @@ pie_land_clergy_passive_claim_candidate = {
 pie_land_burghers_passive_claim_candidate = {
 	pie_land_traditional_claim_candidate = yes
 	owner = { country_has_estate = estate_type:burghers_estate }
-	modifier:local_burghers_estate_power >= 0.4
+	"local_relative_estate_power(estate_type:burghers_estate)" >= 0.4
+	pie_land_burghers_local_power_leader = yes
 	OR = {
 		any_buildings_in_location = { building_type = building_type:pie_urban_market_square }
 		any_buildings_in_location = { building_type = building_type:pie_urban_civic_center }
@@ -323,8 +370,9 @@ pie_land_peasant_freehold_candidate = {
 	pie_land_traditional_claim_candidate = yes
 	owner = { country_has_estate = estate_type:peasants_estate }
 	local_control >= 0.5
-	modifier:local_peasants_estate_power >= 0.4
-	modifier:local_nobles_estate_power < 0.3
+	"local_relative_estate_power(estate_type:peasants_estate)" >= 0.4
+	"local_relative_estate_power(estate_type:nobles_estate)" < 0.3
+	pie_land_peasants_local_power_leader = yes
 	OR = {
 		any_buildings_in_location = { building_type = building_type:pie_rural_village_office }
 		any_buildings_in_location = { building_type = building_type:pie_urban_civic_center }
