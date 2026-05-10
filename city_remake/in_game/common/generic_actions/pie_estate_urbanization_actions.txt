@@ -491,6 +491,7 @@ pie_et_select_sell_land_from_map = {
 		tooltip_msg_key = "pie_et_select_sell_land_from_map_location_tt"
 		column = { data = name }
 		column = { data = population }
+		column = { data = pie_et_sell_land_acceptance }
 		column = { data = rank }
 		source_flags = only_actual_locations
 		map_mode = pie_estate_trade_land
@@ -539,8 +540,15 @@ pie_et_select_sell_land_from_map = {
 	effect = {
 		scope:actor = {
 			pie_et_init_trade = yes
+			pie_et_clear_category = yes
+			pie_et_close_project_picker_state = yes
+			pie_et_close_privilege_picker_state = yes
+			set_variable = { name = pie_et_category_land value = yes }
 			set_variable = { name = pie_et_window_open value = yes }
+			remove_variable = pie_et_land_grant_unregistered_open
+			remove_variable = pie_et_land_buy_open
 			set_variable = { name = pie_et_land_sell_open value = yes }
+			pie_et_rebuild_land_lists = yes
 			pie_et_queue_trade_mapmode = yes
 		}
 		if = {
@@ -607,6 +615,7 @@ pie_et_select_grant_unregistered_land_from_map = {
 		tooltip_msg_key = "pie_et_select_grant_unregistered_land_from_map_location_tt"
 		column = { data = name }
 		column = { data = population }
+		column = { data = pie_et_grant_unregistered_land_acceptance }
 		column = { data = rank }
 		source_flags = only_actual_locations
 		map_mode = pie_estate_trade_land
@@ -655,8 +664,15 @@ pie_et_select_grant_unregistered_land_from_map = {
 	effect = {
 		scope:actor = {
 			pie_et_init_trade = yes
+			pie_et_clear_category = yes
+			pie_et_close_project_picker_state = yes
+			pie_et_close_privilege_picker_state = yes
+			set_variable = { name = pie_et_category_land value = yes }
 			set_variable = { name = pie_et_window_open value = yes }
+			remove_variable = pie_et_land_sell_open
+			remove_variable = pie_et_land_buy_open
 			set_variable = { name = pie_et_land_grant_unregistered_open value = yes }
+			pie_et_rebuild_land_lists = yes
 			pie_et_queue_trade_mapmode = yes
 		}
 		if = {
@@ -723,6 +739,7 @@ pie_et_select_buy_land_from_map = {
 		tooltip_msg_key = "pie_et_select_buy_land_from_map_location_tt"
 		column = { data = name }
 		column = { data = population }
+		column = { data = pie_et_buy_land_acceptance }
 		column = { data = rank }
 		source_flags = only_actual_locations
 		map_mode = pie_estate_trade_land
@@ -771,8 +788,15 @@ pie_et_select_buy_land_from_map = {
 	effect = {
 		scope:actor = {
 			pie_et_init_trade = yes
+			pie_et_clear_category = yes
+			pie_et_close_project_picker_state = yes
+			pie_et_close_privilege_picker_state = yes
+			set_variable = { name = pie_et_category_land value = yes }
 			set_variable = { name = pie_et_window_open value = yes }
+			remove_variable = pie_et_land_sell_open
+			remove_variable = pie_et_land_grant_unregistered_open
 			set_variable = { name = pie_et_land_buy_open value = yes }
+			pie_et_rebuild_land_lists = yes
 			pie_et_queue_trade_mapmode = yes
 		}
 		if = {

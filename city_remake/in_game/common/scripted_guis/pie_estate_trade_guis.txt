@@ -9,6 +9,7 @@ pie_et_sgui_open_window = {
 	scope = country
 	effect = {
 		pie_et_init_trade = yes
+		pie_et_sync_generated_selected_privilege_term_flags = yes
 		pie_et_queue_trade_mapmode = yes
 		set_variable = { name = pie_et_window_open value = yes }
 	}
@@ -172,6 +173,7 @@ pie_et_sgui_clear_selected_privilege_terms = {
 	effect = { pie_et_clear_selected_privilege_terms = yes }
 }
 
+
 pie_et_sgui_toggle_estate_funds_project = {
 	scope = country
 	effect = { pie_et_toggle_estate_funds_project = yes }
@@ -204,25 +206,45 @@ pie_et_sgui_toggle_buy_land_group = {
 
 pie_et_sgui_toggle_sell_land_location = {
 	scope = location
-	is_valid = { pie_et_sell_land_candidate = yes }
+	is_valid = {
+		OR = {
+			pie_et_sell_land_candidate = yes
+			has_variable = pie_et_selected_sell_land
+		}
+	}
 	effect = { pie_et_toggle_sell_land_location = yes }
 }
 
 pie_et_sgui_toggle_grant_unregistered_land_location = {
 	scope = location
-	is_valid = { pie_et_grant_unregistered_land_candidate = yes }
+	is_valid = {
+		OR = {
+			pie_et_grant_unregistered_land_candidate = yes
+			has_variable = pie_et_selected_grant_unregistered_land
+		}
+	}
 	effect = { pie_et_toggle_grant_unregistered_land_location = yes }
 }
 
 pie_et_sgui_toggle_buy_land_location = {
 	scope = location
-	is_valid = { pie_et_buy_land_candidate = yes }
+	is_valid = {
+		OR = {
+			pie_et_buy_land_candidate = yes
+			has_variable = pie_et_selected_buy_land
+		}
+	}
 	effect = { pie_et_toggle_buy_land_location = yes }
 }
 
 pie_et_sgui_toggle_project_location = {
 	scope = location
-	is_valid = { pie_et_selected_estate_project_candidate = yes }
+	is_valid = {
+		OR = {
+			pie_et_selected_estate_project_candidate = yes
+			has_variable = pie_et_selected_project
+		}
+	}
 	effect = { pie_et_toggle_project_location = yes }
 }
 
@@ -251,18 +273,6 @@ pie_et_sgui_select_project_receiver_burghers = {
 		NOT = { has_variable = pie_et_estate_burghers }
 	}
 	effect = { pie_et_select_project_receiver_burghers = yes }
-}
-
-pie_et_sgui_select_dynamic_grant_privilege = {
-	scope = country
-	saved_scopes = { privilege }
-	effect = { pie_et_select_dynamic_grant_privilege = yes }
-}
-
-pie_et_sgui_select_dynamic_revoke_privilege = {
-	scope = country
-	saved_scopes = { privilege }
-	effect = { pie_et_select_dynamic_revoke_privilege = yes }
 }
 
 pie_et_sgui_toggle_grant_nobles_land_rights = {

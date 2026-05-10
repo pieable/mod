@@ -95,6 +95,7 @@ types Cards
 										visible = "[EqualTo_string(GenericAction.GetKey, 'pie_estate_trade_open_action')]"
 										size = { 480 30 }
 										parentanchor = center
+										onclick = "[GetScriptedGui('pie_et_sgui_open_window').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										tooltip = "pie_estate_trade_open_tt"
 										action_tooltip = {
 											click_type = left
@@ -115,6 +116,7 @@ types Cards
 										visible = "[EqualTo_string(GenericAction.GetKey, 'pie_estate_trade_land_map')]"
 										size = { 480 30 }
 										parentanchor = center
+										onclick = "[GetScriptedGui('pie_et_sgui_open_land_mapmode').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										tooltip = "pie_estate_trade_land_map_desc"
 										action_tooltip = {
 											click_type = left
@@ -135,6 +137,7 @@ types Cards
 										visible = "[EqualTo_string(GenericAction.GetKey, 'pie_estate_urbanization_projects_map')]"
 										size = { 480 30 }
 										parentanchor = center
+										onclick = "[GetScriptedGui('pie_et_sgui_open_project_mapmode').Execute(GuiScope.SetRoot(GetPlayer.MakeScope).End)]"
 										tooltip = "pie_estate_urbanization_projects_map_desc"
 										action_tooltip = {
 											click_type = left

@@ -358,16 +358,6 @@ pie_et_selected_terms_summary_count = {
 	}
 }
 
-pie_et_selected_grant_privilege_acceptance = {
-	value = 600
-	multiply = pie_et_positive_trade_acceptance_factor
-}
-
-pie_et_selected_revoke_privilege_acceptance = {
-	value = -700
-	multiply = pie_et_negative_trade_acceptance_factor
-}
-
 pie_et_priv_grant_nobles_land_rights_acceptance = {
 	value = 650
 	multiply = pie_et_positive_trade_acceptance_factor
@@ -432,15 +422,6 @@ pie_et_selected_privilege_acceptance = {
 	value = 0
 
 	add = pie_et_generated_selected_privilege_acceptance
-
-	if = {
-		limit = { has_variable = pie_et_selected_grant_privilege }
-		add = pie_et_selected_grant_privilege_acceptance
-	}
-	if = {
-		limit = { has_variable = pie_et_selected_revoke_privilege }
-		add = pie_et_selected_revoke_privilege_acceptance
-	}
 
 	if = { limit = { has_variable = pie_et_priv_grant_nobles_land_rights } add = pie_et_priv_grant_nobles_land_rights_acceptance }
 	if = { limit = { has_variable = pie_et_priv_revoke_nobles_land_rights } add = pie_et_priv_revoke_nobles_land_rights_acceptance }
