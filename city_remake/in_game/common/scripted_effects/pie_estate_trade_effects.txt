@@ -156,7 +156,10 @@ pie_et_rebuild_project_lists = {
 pie_et_clear_privilege_lists = {
 	clear_variable_list = pie_et_grant_privileges
 	clear_variable_list = pie_et_revoke_privileges
+	clear_variable_list = pie_et_peasant_grant_privileges
+	clear_variable_list = pie_et_peasant_revoke_privileges
 	pie_et_clear_generated_privilege_visibility = yes
+	pie_et_clear_generated_peasant_privilege_visibility = yes
 }
 
 pie_et_rebuild_grant_privilege_list = {
@@ -4091,6 +4094,7 @@ pie_et_clear_selected_privilege_terms = {
 	remove_variable = pie_et_term_grant_privilege
 	remove_variable = pie_et_term_reduce_privilege
 	pie_et_clear_generated_selected_privilege_terms = yes
+	pie_et_clear_generated_peasant_selected_privilege_terms = yes
 	remove_variable = pie_et_priv_grant_nobles_land_rights
 	remove_variable = pie_et_priv_revoke_nobles_land_rights
 	remove_variable = pie_et_priv_grant_nobility_council
@@ -4129,6 +4133,8 @@ pie_et_close_project_picker_state = {
 pie_et_close_privilege_picker_state = {
 	remove_variable = pie_et_privilege_grant_open
 	remove_variable = pie_et_privilege_revoke_open
+	remove_variable = pie_et_peasant_privilege_grant_open
+	remove_variable = pie_et_peasant_privilege_revoke_open
 	pie_et_clear_privilege_lists = yes
 }
 
@@ -4611,6 +4617,36 @@ pie_et_toggle_privilege_revoke_group = {
 	}
 }
 
+pie_et_toggle_peasant_privilege_grant_group = {
+	pie_et_init_trade = yes
+	if = {
+		limit = { has_variable = pie_et_peasant_privilege_grant_open }
+		remove_variable = pie_et_peasant_privilege_grant_open
+		clear_variable_list = pie_et_peasant_grant_privileges
+		pie_et_clear_generated_peasant_grant_privilege_visibility = yes
+	}
+	else = {
+		set_variable = { name = pie_et_peasant_privilege_grant_open value = yes }
+		pie_et_rebuild_peasant_grant_privilege_list = yes
+		pie_et_rebuild_generated_peasant_grant_privilege_visibility = yes
+	}
+}
+
+pie_et_toggle_peasant_privilege_revoke_group = {
+	pie_et_init_trade = yes
+	if = {
+		limit = { has_variable = pie_et_peasant_privilege_revoke_open }
+		remove_variable = pie_et_peasant_privilege_revoke_open
+		clear_variable_list = pie_et_peasant_revoke_privileges
+		pie_et_clear_generated_peasant_revoke_privilege_visibility = yes
+	}
+	else = {
+		set_variable = { name = pie_et_peasant_privilege_revoke_open value = yes }
+		pie_et_rebuild_peasant_revoke_privilege_list = yes
+		pie_et_rebuild_generated_peasant_revoke_privilege_visibility = yes
+	}
+}
+
 pie_et_toggle_privilege_grant = {
 	pie_et_init_trade = yes
 	if = {
@@ -5062,6 +5098,7 @@ pie_et_apply_selected_estate_gold = {
 
 pie_et_apply_selected_privileges = {
 	pie_et_apply_generated_selected_privileges = yes
+	pie_et_apply_generated_peasant_selected_privileges = yes
 
 	if = {
 		limit = {

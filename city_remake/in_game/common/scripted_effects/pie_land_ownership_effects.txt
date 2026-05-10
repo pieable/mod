@@ -118,40 +118,44 @@ pie_apply_land_survey_estate_backlash = {
 }
 
 pie_set_passive_land_owner = {
-	if = {
-		limit = { pie_land_nobles_passive_claim_candidate = yes }
-		pie_set_land_owner_nobles = yes
-	}
-	else_if = {
-		limit = { pie_land_clergy_passive_claim_candidate = yes }
-		pie_set_land_owner_clergy = yes
-	}
-	else_if = {
-		limit = { pie_land_burghers_passive_claim_candidate = yes }
-		pie_set_land_owner_burghers = yes
-	}
-	else_if = {
-		limit = { pie_land_peasant_freehold_candidate = yes }
-		pie_set_land_owner_peasants = yes
+	random_list = {
+		1 = {
+			trigger = { pie_land_nobles_passive_claim_candidate = yes }
+			pie_set_land_owner_nobles = yes
+		}
+		1 = {
+			trigger = { pie_land_clergy_passive_claim_candidate = yes }
+			pie_set_land_owner_clergy = yes
+		}
+		1 = {
+			trigger = { pie_land_burghers_passive_claim_candidate = yes }
+			pie_set_land_owner_burghers = yes
+		}
+		1 = {
+			trigger = { pie_land_peasant_freehold_candidate = yes }
+			pie_set_land_owner_peasants = yes
+		}
 	}
 }
 
 pie_set_natural_integrated_land_owner = {
-	if = {
-		limit = { pie_land_nobles_natural_integration_helper = yes }
-		pie_set_land_owner_nobles = yes
-	}
-	else_if = {
-		limit = { pie_land_clergy_natural_integration_helper = yes }
-		pie_set_land_owner_clergy = yes
-	}
-	else_if = {
-		limit = { pie_land_burghers_natural_integration_helper = yes }
-		pie_set_land_owner_burghers = yes
-	}
-	else_if = {
-		limit = { pie_land_peasants_natural_integration_helper = yes }
-		pie_set_land_owner_peasants = yes
+	random_list = {
+		1 = {
+			trigger = { pie_land_nobles_natural_integration_helper = yes }
+			pie_set_land_owner_nobles = yes
+		}
+		1 = {
+			trigger = { pie_land_clergy_natural_integration_helper = yes }
+			pie_set_land_owner_clergy = yes
+		}
+		1 = {
+			trigger = { pie_land_burghers_natural_integration_helper = yes }
+			pie_set_land_owner_burghers = yes
+		}
+		1 = {
+			trigger = { pie_land_peasants_natural_integration_helper = yes }
+			pie_set_land_owner_peasants = yes
+		}
 	}
 }
 

@@ -70,17 +70,22 @@ pie_et_sgui_close_window = {
 		pie_et_clear_land_selector_triggers = yes
 		remove_variable = pie_et_privilege_grant_open
 		remove_variable = pie_et_privilege_revoke_open
+		remove_variable = pie_et_peasant_privilege_grant_open
+		remove_variable = pie_et_peasant_privilege_revoke_open
 		remove_variable = pie_et_debt_details_open
 		pie_et_clear_selected_project_locations = yes
 		pie_et_clear_project_receiver = yes
 		pie_et_clear_selected_privilege_terms = yes
 		pie_et_clear_generated_privilege_visibility = yes
+		pie_et_clear_generated_peasant_privilege_visibility = yes
 		clear_variable_list = pie_et_sell_land_locations
 		clear_variable_list = pie_et_grant_unregistered_land_locations
 		clear_variable_list = pie_et_buy_land_locations
 		clear_variable_list = pie_et_project_locations
 		clear_variable_list = pie_et_grant_privileges
 		clear_variable_list = pie_et_revoke_privileges
+		clear_variable_list = pie_et_peasant_grant_privileges
+		clear_variable_list = pie_et_peasant_revoke_privileges
 		pie_et_queue_default_mapmode = yes
 	}
 }
@@ -136,6 +141,26 @@ pie_et_sgui_toggle_privilege_grant_group = {
 pie_et_sgui_toggle_privilege_revoke_group = {
 	scope = country
 	effect = { pie_et_toggle_privilege_revoke_group = yes }
+}
+
+pie_et_sgui_toggle_peasant_privilege_grant_group = {
+	scope = country
+	is_valid = {
+		has_variable = pie_et_estate_nobles
+		country_has_estate = estate_type:nobles_estate
+		country_has_estate = estate_type:peasants_estate
+	}
+	effect = { pie_et_toggle_peasant_privilege_grant_group = yes }
+}
+
+pie_et_sgui_toggle_peasant_privilege_revoke_group = {
+	scope = country
+	is_valid = {
+		has_variable = pie_et_estate_nobles
+		country_has_estate = estate_type:nobles_estate
+		country_has_estate = estate_type:peasants_estate
+	}
+	effect = { pie_et_toggle_peasant_privilege_revoke_group = yes }
 }
 
 pie_et_sgui_gold_inc = {

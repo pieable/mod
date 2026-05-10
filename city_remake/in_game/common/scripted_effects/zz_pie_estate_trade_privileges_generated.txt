@@ -11601,6 +11601,10 @@ pie_et_apply_generated_selected_privileges = {
 
 pie_et_sync_generated_selected_privilege_term_flags = {
 	if = {
+		limit = { pie_et_generated_selected_privilege_is_valid = yes }
+		pie_et_clear_generated_peasant_selected_privilege_terms = yes
+	}
+	if = {
 		limit = {
 			OR = {
 				has_variable = pie_et_sg_nobles_land_rights

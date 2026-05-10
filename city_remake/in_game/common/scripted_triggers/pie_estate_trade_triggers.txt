@@ -52,6 +52,7 @@ pie_et_has_any_trade_term = {
 pie_et_has_selected_privilege_term = {
 	OR = {
 		pie_et_generated_selected_privilege_is_valid = yes
+		pie_et_generated_peasant_selected_privilege_is_valid = yes
 		has_variable = pie_et_priv_grant_nobles_land_rights
 		has_variable = pie_et_priv_revoke_nobles_land_rights
 		has_variable = pie_et_priv_grant_nobility_council

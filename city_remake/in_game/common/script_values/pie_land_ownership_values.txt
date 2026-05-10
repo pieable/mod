@@ -160,21 +160,21 @@ pie_land_natural_integration_score = {
 			multiply = 100
 		}
 	}
-	else_if = {
+	if = {
 		limit = { pie_land_clergy_natural_integration_helper = yes }
 		add = {
 			value = "local_relative_estate_power(estate_type:clergy_estate)"
 			multiply = 100
 		}
 	}
-	else_if = {
+	if = {
 		limit = { pie_land_burghers_natural_integration_helper = yes }
 		add = {
 			value = "local_relative_estate_power(estate_type:burghers_estate)"
 			multiply = 100
 		}
 	}
-	else_if = {
+	if = {
 		limit = { pie_land_peasants_natural_integration_helper = yes }
 		add = {
 			value = "local_relative_estate_power(estate_type:peasants_estate)"
@@ -198,21 +198,21 @@ pie_land_passive_claim_score = {
 			multiply = 100
 		}
 	}
-	else_if = {
+	if = {
 		limit = { pie_land_clergy_passive_claim_candidate = yes }
 		add = {
 			value = "local_relative_estate_power(estate_type:clergy_estate)"
 			multiply = 100
 		}
 	}
-	else_if = {
+	if = {
 		limit = { pie_land_burghers_passive_claim_candidate = yes }
 		add = {
 			value = "local_relative_estate_power(estate_type:burghers_estate)"
 			multiply = 100
 		}
 	}
-	else_if = {
+	if = {
 		limit = { pie_land_peasant_freehold_candidate = yes }
 		add = {
 			value = "local_relative_estate_power(estate_type:peasants_estate)"

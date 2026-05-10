@@ -422,6 +422,7 @@ pie_et_selected_privilege_acceptance = {
 	value = 0
 
 	add = pie_et_generated_selected_privilege_acceptance
+	add = pie_et_generated_peasant_selected_privilege_acceptance
 
 	if = { limit = { has_variable = pie_et_priv_grant_nobles_land_rights } add = pie_et_priv_grant_nobles_land_rights_acceptance }
 	if = { limit = { has_variable = pie_et_priv_revoke_nobles_land_rights } add = pie_et_priv_revoke_nobles_land_rights_acceptance }
