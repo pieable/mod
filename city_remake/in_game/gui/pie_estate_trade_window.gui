@@ -22329,11 +22329,10 @@ button_regular = {
 										spacing = 2
 										ignoreinvisible = yes
 
-																		fixedgridbox = {
+																		vbox = {
 										visible = "[DataModelHasItems(GetPlayer.MakeScope.GetList('pie_et_selected_sell_land_locations'))]"
 										layoutpolicy_horizontal = expanding
-										addcolumn = 1
-										addrow = 38
+										spacing = 2
 										datamodel = "[GetPlayer.MakeScope.GetList('pie_et_selected_sell_land_locations')]"
 
 										item = {
@@ -22397,11 +22396,10 @@ button_regular = {
 										}
 									}
 
-fixedgridbox = {
+vbox = {
 										visible = "[DataModelHasItems(GetPlayer.MakeScope.GetList('pie_et_selected_grant_unregistered_land_locations'))]"
 										layoutpolicy_horizontal = expanding
-										addcolumn = 1
-										addrow = 38
+										spacing = 2
 										datamodel = "[GetPlayer.MakeScope.GetList('pie_et_selected_grant_unregistered_land_locations')]"
 
 										item = {
@@ -22465,11 +22463,10 @@ fixedgridbox = {
 										}
 									}
 
-fixedgridbox = {
+vbox = {
 										visible = "[DataModelHasItems(GetPlayer.MakeScope.GetList('pie_et_selected_buy_land_locations'))]"
 										layoutpolicy_horizontal = expanding
-										addcolumn = 1
-										addrow = 38
+										spacing = 2
 										datamodel = "[GetPlayer.MakeScope.GetList('pie_et_selected_buy_land_locations')]"
 
 										item = {
@@ -22533,11 +22530,10 @@ fixedgridbox = {
 										}
 									}
 
-fixedgridbox = {
+vbox = {
 										visible = "[DataModelHasItems(GetPlayer.MakeScope.GetList('pie_et_selected_project_locations'))]"
 										layoutpolicy_horizontal = expanding
-										addcolumn = 1
-										addrow = 38
+										spacing = 2
 										datamodel = "[GetPlayer.MakeScope.GetList('pie_et_selected_project_locations')]"
 
 										item = {
