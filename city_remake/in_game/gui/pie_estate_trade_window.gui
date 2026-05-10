@@ -22138,6 +22138,7 @@ window = {
 
 						scrollarea = {
 							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
 							size = { -1 194 }
 							scrollbarpolicy_horizontal = always_off
 							scrollbarpolicy_vertical = as_needed
@@ -22156,9 +22157,7 @@ window = {
 
 							scrollwidget = {
 								vbox = {
-									parentanchor = top
 									layoutpolicy_horizontal = expanding
-									set_parent_dimension_to_minimum = height
 									spacing = 2
 									ignoreinvisible = yes
 
@@ -22325,7 +22324,6 @@ button_regular = {
 
 									vbox = {
 										layoutpolicy_horizontal = expanding
-										set_parent_dimension_to_minimum = height
 										spacing = 2
 										ignoreinvisible = yes
 
