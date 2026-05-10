@@ -4,7 +4,7 @@ template flexible_interaction_target_entry_setup {
 	maximumsize = { 530 -1 }
 }
 
-template pie_et_hide_grant_unregistered_land_selector {
+template pie_et_hide_grant_unregistered_land_selector_header {
 	visible = "[Not(EqualTo_string(SelectInteractionTargetView.GetTitle, Localize('pie_et_select_grant_unregistered_land_from_map_select')))]"
 }
 
@@ -86,7 +86,7 @@ types SelectInteractionTargetTypes
 
 template select_interaction_target_header {
 	window_header_alt = {
-		using = pie_et_hide_grant_unregistered_land_selector
+		using = pie_et_hide_grant_unregistered_land_selector_header
 		using = bg_main_inner_alt
 		blockoverride "window_header_alt_color_texture"{
 			using = color_default_brown_texture
@@ -102,7 +102,6 @@ template select_interaction_target_header {
 
 template select_interaction_target {
 	vbox = {
-		using = pie_et_hide_grant_unregistered_land_selector
 		using = layoutpolicy_expanding
 		using = bg_secondary_inner_alt
 		using = window_main_tabs_margin_alt
