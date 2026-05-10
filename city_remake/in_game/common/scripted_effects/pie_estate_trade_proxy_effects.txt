@@ -1,4 +1,4 @@
-pie_et_cleanup_proxy_trade = {
+﻿pie_et_cleanup_proxy_trade = {
 	remove_variable = pie_et_trade_war_active
 	remove_variable = pie_et_selected_estate_nobles
 	remove_variable = pie_et_selected_estate_clergy

@@ -1,4 +1,4 @@
-noicthy_update_pressure = {
+﻿noicthy_update_pressure = {
 	set_local_variable = { name = noicthy_pressure value = 0 }
 	set_local_variable = { name = noicthy_leader_tax value = country_tax_base }
 

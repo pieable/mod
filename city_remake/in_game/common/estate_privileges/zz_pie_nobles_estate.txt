@@ -1,4 +1,4 @@
-REPLACE:auxilium_et_consilium = {
+﻿REPLACE:auxilium_et_consilium = {
 	estate = nobles_estate
 
 	potential = {

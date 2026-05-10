@@ -1,4 +1,4 @@
-REPLACE:positive_province_food_growth = {
+﻿REPLACE:positive_province_food_growth = {
 	game_data = {
 		category = province
 	}

@@ -1,4 +1,4 @@
-pie_clear_urban_origin = {
+﻿pie_clear_urban_origin = {
 	if = { limit = { has_variable = pie_pending_origin_nobles_town } remove_variable = pie_pending_origin_nobles_town }
 	if = { limit = { has_variable = pie_pending_origin_nobles_city } remove_variable = pie_pending_origin_nobles_city }
 	if = { limit = { has_variable = pie_pending_origin_clergy_town } remove_variable = pie_pending_origin_clergy_town }

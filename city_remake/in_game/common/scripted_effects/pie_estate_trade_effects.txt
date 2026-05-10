@@ -1,4 +1,4 @@
-pie_et_clear_selected_estate = {
+﻿pie_et_clear_selected_estate = {
 	remove_variable = pie_et_estate_nobles
 	remove_variable = pie_et_estate_clergy
 	remove_variable = pie_et_estate_burghers
@@ -74,9 +74,6 @@ pie_et_queue_buy_land_selector = {
 
 pie_et_rebuild_land_lists = {
 	save_temporary_scope_as = pie_et_land_list_owner
-	clear_variable_list = pie_et_sell_land_locations
-	clear_variable_list = pie_et_grant_unregistered_land_locations
-	clear_variable_list = pie_et_buy_land_locations
 	clear_variable_list = pie_et_selected_sell_land_locations
 	clear_variable_list = pie_et_selected_grant_unregistered_land_locations
 	clear_variable_list = pie_et_selected_buy_land_locations
@@ -4120,9 +4117,6 @@ pie_et_close_land_picker_state = {
 	remove_variable = pie_et_land_sell_open
 	remove_variable = pie_et_land_grant_unregistered_open
 	remove_variable = pie_et_land_buy_open
-	clear_variable_list = pie_et_sell_land_locations
-	clear_variable_list = pie_et_grant_unregistered_land_locations
-	clear_variable_list = pie_et_buy_land_locations
 	pie_et_clear_land_selector_triggers = yes
 }
 

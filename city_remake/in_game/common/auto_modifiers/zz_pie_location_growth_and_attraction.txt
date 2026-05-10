@@ -1,4 +1,4 @@
-pie_location_wealth_attraction_1 = {
+﻿pie_location_wealth_attraction_1 = {
 	type = location
 	category = location
 	hide_effects = yes

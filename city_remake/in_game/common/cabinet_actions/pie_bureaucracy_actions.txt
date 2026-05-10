@@ -1,4 +1,4 @@
-pie_survey_crown_land_province = {
+﻿pie_survey_crown_land_province = {
 	ability = adm
 	icon = increase_control_province
 	allow_multiple = no

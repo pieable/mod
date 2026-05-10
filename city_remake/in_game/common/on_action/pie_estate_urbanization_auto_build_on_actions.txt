@@ -11,6 +11,7 @@ pie_ab_auto_build_monthly = {
 		is_ai = no
 	}
 	effect = {
+		save_scope_as = actor
 		if = {
 			limit = { NOT = { has_variable = pie_ab_profit_threshold } }
 			set_variable = { name = pie_ab_profit_threshold value = 0 }
@@ -86,6 +87,7 @@ pie_ai_building_capacity_monthly = {
 		is_ai = yes
 	}
 	effect = {
+		save_scope_as = actor
 		remove_variable = pie_ai_capacity_building_queued
 
 		random_owned_location = {

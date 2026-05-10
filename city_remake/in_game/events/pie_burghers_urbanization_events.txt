@@ -1,9 +1,10 @@
-namespace = pie_burghers_urban
+﻿namespace = pie_burghers_urban
 
 pie_burghers_urban.1 = {
 	type = country_event
 	title = pie_burghers_urban.1.title
 	desc = pie_burghers_urban.1.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -73,6 +74,7 @@ pie_burghers_urban.2 = {
 	type = country_event
 	title = pie_burghers_urban.2.title
 	desc = pie_burghers_urban.2.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -142,6 +144,7 @@ pie_burghers_urban.11 = {
 	type = country_event
 	title = pie_burghers_urban.11.title
 	desc = pie_burghers_urban.11.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -196,6 +199,7 @@ pie_burghers_urban.12 = {
 	type = country_event
 	title = pie_burghers_urban.12.title
 	desc = pie_burghers_urban.12.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {

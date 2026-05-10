@@ -135,7 +135,6 @@ type country_header = widget {
 
 				icon = {
 					size = { 24 24 }
-					parentanchor = vcenter
 					texture = "[GetConceptTexture('bureaucracy')]"
 					texture_density = 2
 				}

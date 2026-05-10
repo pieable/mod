@@ -1,4 +1,4 @@
-pie_estate_urbanization_projects = {
+﻿pie_estate_urbanization_projects = {
 	map_color = {
 		if = {
 			limit = {

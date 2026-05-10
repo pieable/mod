@@ -1,4 +1,4 @@
-pie_starving_urban_siege_target = {
+﻿pie_starving_urban_siege_target = {
 	has_siege = yes
 	has_combat = no
 	OR = {

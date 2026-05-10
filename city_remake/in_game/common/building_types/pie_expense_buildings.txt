@@ -1,4 +1,4 @@
-pie_court_expense_building = {
+﻿pie_court_expense_building = {
 	is_foreign = no
 	pop_type = nobles
 	max_levels = 99999

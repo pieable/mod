@@ -1,4 +1,4 @@
-REPLACE:build_gravel_road_demand = {
+﻿REPLACE:build_gravel_road_demand = {
 	lumber = 1.5
 	masonry = 2.5
 	sand = 1.0

@@ -26,7 +26,7 @@
 	}
 
 	remove_if = {
-		has_road_to_capital = no
+		location = { has_road_to_capital = no }
 	}
 
 	expensive = yes
@@ -91,7 +91,7 @@ REPLACE:naval_governor = {
 	}
 
 	remove_if = {
-		is_connected_to = owner.capital
+		location = { is_connected_to = owner.capital }
 	}
 
 	expensive = yes

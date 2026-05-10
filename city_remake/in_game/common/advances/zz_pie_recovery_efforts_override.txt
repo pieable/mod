@@ -1,4 +1,4 @@
-REPLACE:recovery_efforts = {
+﻿REPLACE:recovery_efforts = {
 	icon = offensive_army
 	age = age_2_renaissance
 

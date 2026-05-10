@@ -1,4 +1,4 @@
-integrate_area = {
+﻿integrate_area = {
 	ability = mil
 	allow_multiple = yes
 

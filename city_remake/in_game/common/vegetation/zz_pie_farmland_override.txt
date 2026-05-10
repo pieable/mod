@@ -1,4 +1,4 @@
-REPLACE:farmland = {
+﻿REPLACE:farmland = {
 	color = terrain_farmlands
 	movement_cost = 1.10
 	proximity = -0.05

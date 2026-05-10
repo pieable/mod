@@ -1,4 +1,4 @@
-REPLACE:stockade = {
+﻿REPLACE:stockade = {
 	max_levels = 1
 	pop_type = soldiers
 

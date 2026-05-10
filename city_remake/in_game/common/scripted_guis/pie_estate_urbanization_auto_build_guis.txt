@@ -1,7 +1,8 @@
-pie_ab_sgui_compare_new_profit = {
+﻿pie_ab_sgui_compare_new_profit = {
 	scope = location
 	saved_scopes = { bt profit cost }
 	effect = {
+		owner = { save_scope_as = actor }
 		if = {
 			limit = {
 				scope:profit > var:pie_ab_best_profit

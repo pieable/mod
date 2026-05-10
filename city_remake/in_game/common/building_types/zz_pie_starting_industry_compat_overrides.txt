@@ -1,4 +1,4 @@
-REPLACE:glass_guild = {
+﻿REPLACE:glass_guild = {
 	is_foreign = no
 	pop_type = burghers
 	max_levels = guild_max_level

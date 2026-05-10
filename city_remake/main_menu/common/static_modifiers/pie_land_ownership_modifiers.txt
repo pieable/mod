@@ -1,4 +1,4 @@
-pie_land_owner_crown_modifier = {
+﻿pie_land_owner_crown_modifier = {
 	game_data = {
 		category = location
 	}

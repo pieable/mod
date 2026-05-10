@@ -1,4 +1,4 @@
-noicthy_apply_occupation = {
+﻿noicthy_apply_occupation = {
 	set_local_variable = { name = noicthy_occupied_forts value = 0 }
 	set_local_variable = { name = noicthy_occupied_non_forts value = 0 }
 	set_local_variable = { name = noicthy_total_forts value = num_forts }

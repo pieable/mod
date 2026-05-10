@@ -1,4 +1,4 @@
-pie_et_selected_estate_power_value = {
+﻿pie_et_selected_estate_power_value = {
 	value = 0
 
 	if = {

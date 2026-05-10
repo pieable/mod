@@ -1,4 +1,4 @@
-integrate_province = {
+﻿integrate_province = {
 	ability = mil
 	allow_multiple = yes
 

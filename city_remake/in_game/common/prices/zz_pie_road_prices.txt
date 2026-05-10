@@ -1,4 +1,4 @@
-REPLACE:build_gravel_road = {
+﻿REPLACE:build_gravel_road = {
 	gold = 30
 }
 

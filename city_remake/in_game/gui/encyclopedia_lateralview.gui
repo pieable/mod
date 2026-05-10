@@ -372,6 +372,7 @@ lateralview_full = {
                                 blockoverride "scrollbox_content" {
                                     vbox = {
                                         vbox = {
+                                            visible = "[Or(Not(GetVariableSystem.Exists('crm_filter')), GetVariableSystem.HasValue('crm_filter', 'all'))]"
                                             set_parent_size_to_minimum = yes
                                             margin = { 0 10 }
                                             vbox = {

@@ -1,4 +1,4 @@
-REPLACE:market_fairs = {
+﻿REPLACE:market_fairs = {
 	estate = burghers_estate
 
 	country_modifier = {

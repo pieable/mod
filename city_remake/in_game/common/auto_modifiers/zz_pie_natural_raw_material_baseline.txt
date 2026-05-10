@@ -1,4 +1,4 @@
-pie_natural_raw_material_baseline = {
+﻿pie_natural_raw_material_baseline = {
 	requires_real = no
 	potential_trigger = { always = yes }
 	hide_effects = no

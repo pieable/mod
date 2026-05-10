@@ -1,6 +1,4 @@
 ﻿l_english:
- market_fairs: "Market Fairs"
- market_fairs_desc: "The state recognizes burgher control over recurring fairs, local trade hubs, and the organization of exchange networks. It grants #Y +10%#! global merchant capacity, #Y +0.1#! global trades per burgher, raises Burgher target satisfaction, and increases Burgher Estate power."
 
  pie_burghers_market_town: "Merchant Hall"
  pie_burghers_market_town_desc: "The commercial core of a town financed by local burghers and merchants. By reducing local construction costs, expanding burgher jobs, adding trades per burgher, and granting an extra 5 levels to the entire market-building line, it helps this location grow into a true trade node."

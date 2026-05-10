@@ -396,6 +396,7 @@ pie_land_ownership_yearly = {
 			limit = { pie_land_natural_integration_candidate = yes }
 			order_by = pie_land_natural_integration_score
 			max = 10
+			check_range_bounds = no
 			pie_progress_natural_land_integration = yes
 		}
 	}

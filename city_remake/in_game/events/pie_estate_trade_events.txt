@@ -1,10 +1,10 @@
-namespace = pie_estate_trade
+﻿namespace = pie_estate_trade
 
 pie_estate_trade.1 = {
 	type = country_event
-	is_triggered_only = yes
 	title = pie_estate_trade.1.title
 	desc = pie_estate_trade.1.desc
+	outcome = neutral
 
 	option = {
 		name = pie_estate_trade.ok
@@ -13,10 +13,9 @@ pie_estate_trade.1 = {
 
 pie_estate_trade.10 = {
 	type = country_event
-	is_triggered_only = yes
-	interface_lock = yes
 	title = pie_estate_trade.10.title
 	desc = pie_estate_trade.10.desc
+	outcome = neutral
 
 	option = {
 		name = pie_estate_trade.10.nobles
@@ -43,10 +42,9 @@ pie_estate_trade.10 = {
 
 pie_estate_trade.20 = {
 	type = country_event
-	is_triggered_only = yes
-	interface_lock = yes
 	title = pie_estate_trade.20.title
 	desc = pie_estate_trade.20.desc
+	outcome = neutral
 
 	option = {
 		name = pie_estate_trade.20.repay
@@ -74,9 +72,9 @@ pie_estate_trade.20 = {
 
 pie_estate_trade.2 = {
 	type = country_event
-	is_triggered_only = yes
 	title = pie_estate_trade.2.title
 	desc = pie_estate_trade.2.desc
+	outcome = neutral
 
 	option = {
 		name = pie_estate_trade.ok
@@ -85,9 +83,9 @@ pie_estate_trade.2 = {
 
 pie_estate_trade.3 = {
 	type = country_event
-	is_triggered_only = yes
 	title = pie_estate_trade.3.title
 	desc = pie_estate_trade.3.desc
+	outcome = neutral
 
 	option = {
 		name = pie_estate_trade.ok

@@ -1,10 +1,11 @@
-namespace = pie_estate_urban_project
+﻿namespace = pie_estate_urban_project
 
 pie_estate_urban_project.1 = {
 	type = country_event
 	orphan = yes
 	title = pie_estate_urban_project.1.title
 	desc = pie_estate_urban_project.1.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -41,6 +42,7 @@ pie_estate_urban_project.2 = {
 	orphan = yes
 	title = pie_estate_urban_project.2.title
 	desc = pie_estate_urban_project.2.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -77,6 +79,7 @@ pie_estate_urban_project.3 = {
 	orphan = yes
 	title = pie_estate_urban_project.3.title
 	desc = pie_estate_urban_project.3.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -113,6 +116,7 @@ pie_estate_urban_project.4 = {
 	orphan = yes
 	title = pie_estate_urban_project.4.title
 	desc = pie_estate_urban_project.4.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -149,6 +153,7 @@ pie_estate_urban_project.5 = {
 	orphan = yes
 	title = pie_estate_urban_project.5.title
 	desc = pie_estate_urban_project.5.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -185,6 +190,7 @@ pie_estate_urban_project.6 = {
 	orphan = yes
 	title = pie_estate_urban_project.6.title
 	desc = pie_estate_urban_project.6.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {

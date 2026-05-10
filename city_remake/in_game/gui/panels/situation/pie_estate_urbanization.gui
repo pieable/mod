@@ -655,19 +655,19 @@
 						text_single = {
 							layoutpolicy_horizontal = expanding
 							maximumsize = { 210 -1 }
+							datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate')]"
 							text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate').GetNameWithNoTooltip]"
 							align = left|nobaseline
 							tooltipwidget = {
-								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate')]"
 								using = Estate_tooltip
 							}
 						}
 
 						text_single = {
 							align = right|nobaseline
+							datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate')]"
 							raw_text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate').GetGold|2]([SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate').GetBalance|+=2])@gold!"
 							tooltipwidget = {
-								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('nobles_estate')]"
 								using = Estate_tooltip
 							}
 						}
@@ -751,19 +751,19 @@
 						text_single = {
 							layoutpolicy_horizontal = expanding
 							maximumsize = { 210 -1 }
+							datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate')]"
 							text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate').GetNameWithNoTooltip]"
 							align = left|nobaseline
 							tooltipwidget = {
-								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate')]"
 								using = Estate_tooltip
 							}
 						}
 
 						text_single = {
 							align = right|nobaseline
+							datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate')]"
 							raw_text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate').GetGold|2]([SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate').GetBalance|+=2])@gold!"
 							tooltipwidget = {
-								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('clergy_estate')]"
 								using = Estate_tooltip
 							}
 						}
@@ -847,19 +847,19 @@
 						text_single = {
 							layoutpolicy_horizontal = expanding
 							maximumsize = { 210 -1 }
+							datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate')]"
 							text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate').GetNameWithNoTooltip]"
 							align = left|nobaseline
 							tooltipwidget = {
-								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate')]"
 								using = Estate_tooltip
 							}
 						}
 
 						text_single = {
 							align = right|nobaseline
+							datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate')]"
 							raw_text = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate').GetGold|2]([SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate').GetBalance|+=2])@gold!"
 							tooltipwidget = {
-								datacontext = "[SituationView.GetPlayer.GetGovernment.GetEstateFromKey('burghers_estate')]"
 								using = Estate_tooltip
 							}
 						}

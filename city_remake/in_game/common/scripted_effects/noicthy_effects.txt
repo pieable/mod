@@ -1,4 +1,4 @@
-@noicthy_version = 201
+﻿@noicthy_version = 201
 
 noicthy_monthly_update = {
 	if = {

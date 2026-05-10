@@ -1,4 +1,4 @@
-REPLACE:fishing_village = {
+﻿REPLACE:fishing_village = {
 	is_foreign = no
 	max_levels = rural_building_cap
 	pop_type = peasants
@@ -216,6 +216,7 @@ REPLACE:market_village = {
 			output = 0.3
 			sand = 1.0
 
+			debug_max_profit = 0.8
 			category = guild_input
 		}
 
@@ -324,6 +325,7 @@ pie_grain_farmstead = {
 				scope:target ?= { raw_material = goods:wheat }
 			}
 
+			debug_max_profit = 0.5
 			category = building_maintenance
 		}
 
@@ -350,6 +352,7 @@ pie_grain_farmstead = {
 				scope:target ?= { raw_material = goods:millet }
 			}
 
+			debug_max_profit = 0.63
 			category = building_maintenance
 		}
 
@@ -361,6 +364,7 @@ pie_grain_farmstead = {
 			produced = legumes
 			output = 0.70
 
+			debug_max_profit = 0.53
 			category = building_maintenance
 		}
 
@@ -376,6 +380,7 @@ pie_grain_farmstead = {
 				scope:target ?= { raw_material = goods:legumes }
 			}
 
+			debug_max_profit = 1.78
 			category = building_maintenance
 		}
 
@@ -387,6 +392,7 @@ pie_grain_farmstead = {
 			produced = rice
 			output = 0.85
 
+			debug_max_profit = 0.35
 			category = building_maintenance
 		}
 
@@ -402,6 +408,7 @@ pie_grain_farmstead = {
 				scope:target ?= { raw_material = goods:rice }
 			}
 
+			debug_max_profit = 1.06
 			category = building_maintenance
 		}
 
@@ -417,6 +424,7 @@ pie_grain_farmstead = {
 				scope:target ?= { raw_material = goods:maize }
 			}
 
+			debug_max_profit = 1.13
 			category = building_maintenance
 		}
 
@@ -432,6 +440,7 @@ pie_grain_farmstead = {
 				scope:target ?= { raw_material = goods:potato }
 			}
 
+			debug_max_profit = 1.96
 			category = building_maintenance
 		}
 
@@ -443,6 +452,7 @@ pie_grain_farmstead = {
 			produced = livestock
 			output = 0.80
 
+			debug_max_profit = 1.36
 			category = building_maintenance
 		}
 
@@ -458,6 +468,7 @@ pie_grain_farmstead = {
 				scope:target ?= { raw_material = goods:livestock }
 			}
 
+			debug_max_profit = 2.85
 			category = building_maintenance
 		}
 	}
@@ -509,6 +520,7 @@ pie_base_metal_mines = {
 			produced = copper
 			output = 0.55
 
+			debug_max_profit = 1.18
 			category = building_maintenance
 		}
 		pie_base_metal_mines_native_copper = {
@@ -523,6 +535,7 @@ pie_base_metal_mines = {
 				scope:target ?= { raw_material = goods:copper }
 			}
 
+			debug_max_profit = 4
 			category = building_maintenance
 		}
 		pie_base_metal_mines_tin = {
@@ -533,6 +546,7 @@ pie_base_metal_mines = {
 			produced = tin
 			output = 0.50
 
+			debug_max_profit = 0.45
 			category = building_maintenance
 		}
 		pie_base_metal_mines_native_tin = {
@@ -547,6 +561,7 @@ pie_base_metal_mines = {
 				scope:target ?= { raw_material = goods:tin }
 			}
 
+			debug_max_profit = 2.64
 			category = building_maintenance
 		}
 		pie_base_metal_mines_lead = {
@@ -557,6 +572,7 @@ pie_base_metal_mines = {
 			produced = lead
 			output = 0.50
 
+			debug_max_profit = 0.49
 			category = building_maintenance
 		}
 		pie_base_metal_mines_native_lead = {
@@ -571,6 +587,7 @@ pie_base_metal_mines = {
 				scope:target ?= { raw_material = goods:lead }
 			}
 
+			debug_max_profit = 2.74
 			category = building_maintenance
 		}
 		pie_base_metal_mines_iron = {
@@ -581,6 +598,7 @@ pie_base_metal_mines = {
 			produced = iron
 			output = 0.55
 
+			debug_max_profit = 1.4
 			category = building_maintenance
 		}
 		pie_base_metal_mines_native_iron = {
@@ -595,6 +613,7 @@ pie_base_metal_mines = {
 				scope:target ?= { raw_material = goods:iron }
 			}
 
+			debug_max_profit = 4.46
 			category = building_maintenance
 		}
 		pie_base_metal_mines_coal = {
@@ -605,6 +624,7 @@ pie_base_metal_mines = {
 			produced = coal
 			output = 0.60
 
+			debug_max_profit = 0.8
 			category = building_maintenance
 		}
 		pie_base_metal_mines_native_coal = {
@@ -619,6 +639,7 @@ pie_base_metal_mines = {
 				scope:target ?= { raw_material = goods:coal }
 			}
 
+			debug_max_profit = 2.71
 			category = building_maintenance
 		}
 		pie_base_metal_mines_native_saltpeter = {
@@ -633,6 +654,7 @@ pie_base_metal_mines = {
 				scope:target ?= { raw_material = goods:saltpeter }
 			}
 
+			debug_max_profit = 4.41
 			category = building_maintenance
 		}
 		pie_base_metal_mines_native_alum = {
@@ -647,6 +669,7 @@ pie_base_metal_mines = {
 				scope:target ?= { raw_material = goods:alum }
 			}
 
+			debug_max_profit = 7.34
 			category = building_maintenance
 		}
 	}
@@ -695,6 +718,7 @@ pie_special_mineral_works = {
 				scope:target ?= { raw_material = goods:gems }
 			}
 
+			debug_max_profit = 8.53
 			category = building_maintenance
 		}
 		pie_special_mineral_works_native_marble = {
@@ -709,6 +733,7 @@ pie_special_mineral_works = {
 				scope:target ?= { raw_material = goods:marble }
 			}
 
+			debug_max_profit = 8.81
 			category = building_maintenance
 		}
 		pie_special_mineral_works_native_mercury = {
@@ -723,6 +748,7 @@ pie_special_mineral_works = {
 				scope:target ?= { raw_material = goods:mercury }
 			}
 
+			debug_max_profit = 6.23
 			category = building_maintenance
 		}
 		pie_special_mineral_works_native_goods_gold = {
@@ -737,6 +763,7 @@ pie_special_mineral_works = {
 				scope:target ?= { raw_material = goods:goods_gold }
 			}
 
+			debug_max_profit = 18.76
 			category = building_maintenance
 		}
 		pie_special_mineral_works_native_silver = {
@@ -751,6 +778,7 @@ pie_special_mineral_works = {
 				scope:target ?= { raw_material = goods:silver }
 			}
 
+			debug_max_profit = 13.82
 			category = building_maintenance
 		}
 		pie_special_mineral_works_native_amber = {
@@ -765,6 +793,7 @@ pie_special_mineral_works = {
 				scope:target ?= { raw_material = goods:amber }
 			}
 
+			debug_max_profit = 10.6
 			category = building_maintenance
 		}
 	}
@@ -813,6 +842,7 @@ pie_horse_ranches = {
 				scope:target ?= { raw_material = goods:horses }
 			}
 
+			debug_max_profit = 7.46
 			category = building_maintenance
 		}
 		pie_horse_ranches_wool = {
@@ -822,6 +852,7 @@ pie_horse_ranches = {
 			produced = wool
 			output = 0.85
 
+			debug_max_profit = 2.22
 			category = building_maintenance
 		}
 		pie_horse_ranches_native_wool = {
@@ -835,6 +866,7 @@ pie_horse_ranches = {
 				scope:target ?= { raw_material = goods:wool }
 			}
 
+			debug_max_profit = 4.64
 			category = building_maintenance
 		}
 		pie_horse_ranches_fiber_crops = {
@@ -845,6 +877,7 @@ pie_horse_ranches = {
 			produced = fiber_crops
 			output = 0.70
 
+			debug_max_profit = 2.12
 			category = building_maintenance
 		}
 		pie_horse_ranches_native_fiber_crops = {
@@ -859,6 +892,7 @@ pie_horse_ranches = {
 				scope:target ?= { raw_material = goods:fiber_crops }
 			}
 
+			debug_max_profit = 4.08
 			category = building_maintenance
 		}
 	}
@@ -903,6 +937,7 @@ pie_river_coastal_fishery = {
 			produced = fish
 			output = 0.75
 
+			debug_max_profit = 0.64
 			category = building_maintenance
 		}
 		pie_river_coastal_fishery_native_fish = {
@@ -917,6 +952,7 @@ pie_river_coastal_fishery = {
 				scope:target ?= { raw_material = goods:fish }
 			}
 
+			debug_max_profit = 1.78
 			category = building_maintenance
 		}
 		pie_river_coastal_fishery_native_pearls = {
@@ -931,6 +967,7 @@ pie_river_coastal_fishery = {
 				scope:target ?= { raw_material = goods:pearls }
 			}
 
+			debug_max_profit = 12.8
 			category = building_maintenance
 		}
 		pie_river_coastal_fishery_native_salt = {
@@ -945,6 +982,7 @@ pie_river_coastal_fishery = {
 				scope:target ?= { raw_material = goods:salt }
 			}
 
+			debug_max_profit = 15
 			category = building_maintenance
 		}
 	}
@@ -992,6 +1030,7 @@ pie_fur_trapping_camps = {
 			produced = wild_game
 			output = 0.70
 
+			debug_max_profit = 0.87
 			category = building_maintenance
 		}
 		pie_fur_trapping_camps_native_wild_game = {
@@ -1006,6 +1045,7 @@ pie_fur_trapping_camps = {
 				scope:target ?= { raw_material = goods:wild_game }
 			}
 
+			debug_max_profit = 2.34
 			category = building_maintenance
 		}
 		pie_fur_trapping_camps_fur = {
@@ -1016,6 +1056,7 @@ pie_fur_trapping_camps = {
 			produced = fur
 			output = 0.45
 
+			debug_max_profit = 1.4
 			category = building_maintenance
 		}
 		pie_fur_trapping_camps_native_fur = {
@@ -1030,6 +1071,7 @@ pie_fur_trapping_camps = {
 				scope:target ?= { raw_material = goods:fur }
 			}
 
+			debug_max_profit = 5.67
 			category = building_maintenance
 		}
 		pie_fur_trapping_camps_beeswax = {
@@ -1040,6 +1082,7 @@ pie_fur_trapping_camps = {
 			produced = beeswax
 			output = 0.45
 
+			debug_max_profit = 2.47
 			category = building_maintenance
 		}
 		pie_fur_trapping_camps_native_beeswax = {
@@ -1054,6 +1097,7 @@ pie_fur_trapping_camps = {
 				scope:target ?= { raw_material = goods:beeswax }
 			}
 
+			debug_max_profit = 8.53
 			category = building_maintenance
 		}
 		pie_fur_trapping_camps_lumber = {
@@ -1064,6 +1108,7 @@ pie_fur_trapping_camps = {
 			produced = lumber
 			output = 0.80
 
+			debug_max_profit = 1.7
 			category = building_maintenance
 		}
 		pie_fur_trapping_camps_native_lumber = {
@@ -1078,6 +1123,7 @@ pie_fur_trapping_camps = {
 				scope:target ?= { raw_material = goods:lumber }
 			}
 
+			debug_max_profit = 3.29
 			category = building_maintenance
 		}
 		pie_fur_trapping_camps_medicaments = {
@@ -1088,6 +1134,7 @@ pie_fur_trapping_camps = {
 			produced = medicaments
 			output = 0.35
 
+			debug_max_profit = 0.35
 			category = building_maintenance
 		}
 		pie_fur_trapping_camps_native_medicaments = {
@@ -1098,6 +1145,7 @@ pie_fur_trapping_camps = {
 			produced = medicaments
 			output = 1.00
 
+			debug_max_profit = 3.77
 			category = building_maintenance
 		}
 		pie_fur_trapping_camps_native_ivory = {
@@ -1112,6 +1160,7 @@ pie_fur_trapping_camps = {
 				scope:target ?= { raw_material = goods:ivory }
 			}
 
+			debug_max_profit = 13.82
 			category = building_maintenance
 		}
 	}
@@ -1166,6 +1215,7 @@ pie_coffee_grove = {
 				scope:target ?= { raw_material = goods:coffee }
 			}
 
+			debug_max_profit = 9.53
 			category = building_maintenance
 		}
 		
@@ -1181,6 +1231,7 @@ pie_coffee_grove = {
 				scope:target ?= { raw_material = goods:tea }
 			}
 
+			debug_max_profit = 9.53
 			category = building_maintenance
 		}
 		
@@ -1196,6 +1247,7 @@ pie_coffee_grove = {
 				scope:target ?= { raw_material = goods:silk }
 			}
 
+			debug_max_profit = 14.1
 			category = building_maintenance
 		}
 		
@@ -1211,6 +1263,7 @@ pie_coffee_grove = {
 				scope:target ?= { raw_material = goods:dyes }
 			}
 
+			debug_max_profit = 15.67
 			category = building_maintenance
 		}
 		
@@ -1226,6 +1279,7 @@ pie_coffee_grove = {
 				scope:target ?= { raw_material = goods:incense }
 			}
 
+			debug_max_profit = 10.37
 			category = building_maintenance
 		}
 		
@@ -1241,6 +1295,7 @@ pie_coffee_grove = {
 				scope:target ?= { raw_material = goods:wine }
 			}
 
+			debug_max_profit = 5.9
 			category = building_maintenance
 		}
 		
@@ -1256,6 +1311,7 @@ pie_coffee_grove = {
 				scope:target ?= { raw_material = goods:cocoa }
 			}
 
+			debug_max_profit = 13.04
 			category = building_maintenance
 		}
 		
@@ -1271,6 +1327,7 @@ pie_coffee_grove = {
 				scope:target ?= { raw_material = goods:pepper }
 			}
 
+			debug_max_profit = 20.28
 			category = building_maintenance
 		}
 		
@@ -1286,6 +1343,7 @@ pie_coffee_grove = {
 				scope:target ?= { raw_material = goods:cloves }
 			}
 
+			debug_max_profit = 20.28
 			category = building_maintenance
 		}
 		
@@ -1301,6 +1359,7 @@ pie_coffee_grove = {
 				scope:target ?= { raw_material = goods:saffron }
 			}
 
+			debug_max_profit = 21.73
 			category = building_maintenance
 		}
 		
@@ -1316,6 +1375,7 @@ pie_coffee_grove = {
 				scope:target ?= { raw_material = goods:chili }
 			}
 
+			debug_max_profit = 21.73
 			category = building_maintenance
 		}
 	}
@@ -1564,7 +1624,7 @@ REPLACE:sheep_farms = {
 	unique_production_methods = {
 		pie_sheep_farm_maintenance = {
 			produced = wool
-			output = 0.5
+			output = 1.0
 
 			lumber = 0.5
 			tools = 0.1

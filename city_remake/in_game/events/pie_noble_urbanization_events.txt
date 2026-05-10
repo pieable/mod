@@ -4,6 +4,7 @@ pie_noble_urban.1 = {
 	type = country_event
 	title = pie_noble_urban.1.title
 	desc = pie_noble_urban.1.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -73,6 +74,7 @@ pie_noble_urban.2 = {
 	type = country_event
 	title = pie_noble_urban.2.title
 	desc = pie_noble_urban.2.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -142,6 +144,7 @@ pie_noble_urban.3 = {
 	type = country_event
 	title = pie_noble_urban.3.title
 	desc = pie_noble_urban.3.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -199,6 +202,7 @@ pie_noble_urban.11 = {
 	type = country_event
 	title = pie_noble_urban.11.title
 	desc = pie_noble_urban.11.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {
@@ -253,6 +257,7 @@ pie_noble_urban.12 = {
 	type = country_event
 	title = pie_noble_urban.12.title
 	desc = pie_noble_urban.12.desc
+	outcome = neutral
 
 	immediate = {
 		event_illustration_estate_effect = {

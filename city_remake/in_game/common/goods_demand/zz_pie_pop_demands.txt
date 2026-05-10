@@ -7,7 +7,7 @@
 #
 ############################################################
 
-pop_demand = {
+REPLACE:pop_demand = {
 
 	#########################
 	# Alcohol
@@ -89,43 +89,43 @@ pop_demand = {
 
 
 
-nobles_demand = {
+REPLACE:nobles_demand = {
 	hidden = yes
 	copy_from = pop_demand
 	category = pop_needs
 }
-clergy_demand = {
+REPLACE:clergy_demand = {
 	hidden = yes
 	copy_from = pop_demand
 	category = pop_needs
 }
-burghers_demand = {
+REPLACE:burghers_demand = {
 	hidden = yes
 	copy_from = pop_demand
 	category = pop_needs
 }
-soldiers_demand = {
+REPLACE:soldiers_demand = {
 	hidden = yes
 	copy_from = pop_demand
 	category = pop_needs
 }
-laborers_demand = {
+REPLACE:laborers_demand = {
 	hidden = yes
 	copy_from = pop_demand
 	category = pop_needs
 }
-peasants_demand = {
+REPLACE:peasants_demand = {
 	hidden = yes
 	copy_from = pop_demand
 	category = pop_needs
 }
-slaves_demand = {
+REPLACE:slaves_demand = {
 	hidden = yes
 	copy_from = pop_demand
 	category = pop_needs
 }
 
-tribesmen_demand = {
+REPLACE:tribesmen_demand = {
 	hidden = yes
 	copy_from = pop_demand
 	category = pop_needs

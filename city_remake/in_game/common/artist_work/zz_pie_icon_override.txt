@@ -1,4 +1,4 @@
-REPLACE:icon = {
+﻿REPLACE:icon = {
 	captured = yes
 	allow = {
 		artist_type = iconographer

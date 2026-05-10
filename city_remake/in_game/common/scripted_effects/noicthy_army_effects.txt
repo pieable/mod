@@ -1,4 +1,4 @@
-noicthy_calculate_army_penalty = {
+﻿noicthy_calculate_army_penalty = {
 	set_local_variable = { name = noicthy_combined_army value = local_var:noicthy_effective_strength }
 	set_local_variable = { name = noicthy_combined_peak value = var:noicthy_potential_peak }
 

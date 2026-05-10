@@ -1,4 +1,4 @@
-pie_et_sgui_init = {
+﻿pie_et_sgui_init = {
 	scope = country
 	effect = {
 		pie_et_init_trade = yes
@@ -78,9 +78,6 @@ pie_et_sgui_close_window = {
 		pie_et_clear_selected_privilege_terms = yes
 		pie_et_clear_generated_privilege_visibility = yes
 		pie_et_clear_generated_peasant_privilege_visibility = yes
-		clear_variable_list = pie_et_sell_land_locations
-		clear_variable_list = pie_et_grant_unregistered_land_locations
-		clear_variable_list = pie_et_buy_land_locations
 		clear_variable_list = pie_et_project_locations
 		clear_variable_list = pie_et_grant_privileges
 		clear_variable_list = pie_et_revoke_privileges

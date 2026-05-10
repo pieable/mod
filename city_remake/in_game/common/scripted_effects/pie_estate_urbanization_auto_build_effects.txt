@@ -1,7 +1,8 @@
-pie_ab_precompute_best_building = {
+﻿pie_ab_precompute_best_building = {
 	save_scope_as = pie_ab_loc
 	owner = {
 		save_scope_as = pie_ab_owner
+		save_scope_as = actor
 
 		scope:pie_ab_loc = {
 			set_variable = { name = pie_ab_best_profit value = 0 }
@@ -84,6 +85,7 @@ pie_ab_precompute_best_building = {
 }
 
 pie_ab_queue_precompute_enabled_locations = {
+	save_scope_as = actor
 	clear_variable_list = pie_ab_locations
 	clear_variable_list = pie_ab_trigger
 

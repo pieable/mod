@@ -1,4 +1,4 @@
-REPLACE:marketplace = {
+﻿REPLACE:marketplace = {
 	is_foreign = no
 	max_levels = market_max_level
 	pop_type = burghers

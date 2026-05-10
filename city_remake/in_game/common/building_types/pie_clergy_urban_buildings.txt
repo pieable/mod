@@ -1,4 +1,4 @@
-pie_clergy_parish_town = {
+﻿pie_clergy_parish_town = {
 	is_foreign = no
 	max_levels = estate_building_single_level
 	pop_type = clergy
