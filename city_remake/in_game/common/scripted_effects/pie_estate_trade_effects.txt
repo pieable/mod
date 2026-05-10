@@ -4467,6 +4467,7 @@ pie_et_toggle_sell_land_location = {
 		set_variable = { name = pie_et_selected_sell_land value = yes }
 	}
 	owner = { pie_et_rebuild_land_lists = yes }
+	refresh_map_colors = yes
 }
 
 pie_et_toggle_grant_unregistered_land_location = {
@@ -4480,6 +4481,7 @@ pie_et_toggle_grant_unregistered_land_location = {
 		set_variable = { name = pie_et_selected_grant_unregistered_land value = yes }
 	}
 	owner = { pie_et_rebuild_land_lists = yes }
+	refresh_map_colors = yes
 }
 
 pie_et_toggle_buy_land_location = {
@@ -4493,6 +4495,7 @@ pie_et_toggle_buy_land_location = {
 		set_variable = { name = pie_et_selected_buy_land value = yes }
 	}
 	owner = { pie_et_rebuild_land_lists = yes }
+	refresh_map_colors = yes
 }
 
 pie_et_toggle_project_location = {
