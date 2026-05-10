@@ -145,21 +145,11 @@ pie_et_sgui_toggle_privilege_revoke_group = {
 
 pie_et_sgui_toggle_peasant_privilege_grant_group = {
 	scope = country
-	is_valid = {
-		has_variable = pie_et_estate_nobles
-		country_has_estate = estate_type:nobles_estate
-		country_has_estate = estate_type:peasants_estate
-	}
 	effect = { pie_et_toggle_peasant_privilege_grant_group = yes }
 }
 
 pie_et_sgui_toggle_peasant_privilege_revoke_group = {
 	scope = country
-	is_valid = {
-		has_variable = pie_et_estate_nobles
-		country_has_estate = estate_type:nobles_estate
-		country_has_estate = estate_type:peasants_estate
-	}
 	effect = { pie_et_toggle_peasant_privilege_revoke_group = yes }
 }
 
